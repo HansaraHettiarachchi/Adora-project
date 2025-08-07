@@ -1,22 +1,22 @@
-import { Container } from "react-bootstrap";
-import Footer from "../comp/Footer";
-import Header from "../comp/Header";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
+import HeroSection from '../components/Home/HeroSection';
+import TopSellingFlowers from '../components/Home/TopSellingFlowers';
+import GiftOfferSection from '../components/Home/GiftOfferSection';
+import PopularCategories from '../components/Home/PopularCategories';
+import HowItWorksSection from '../components/Home/HowItWorksSection';
 
-const Home = () => {
-
-    return (
-        <>
-            <Header />
-
-            <Container className="my-5">
-                <h1 className="text-success">Welcome to Adora Flower Shop</h1>
-                <p>Explore our collection of beautiful flowers for any occasion.</p>
-            </Container>
-
-            <Footer />
-        </>
-    );
-}
+const Home: React.FC = () => {
+  return (
+    <>
+      <HeroSection />
+      <div className="container my-5">
+        <TopSellingFlowers />
+        <GiftOfferSection />
+        <PopularCategories />
+        <HowItWorksSection />
+      </div>
+    </>
+  );
+};
 
 export default Home;
