@@ -4,17 +4,29 @@ import TopSellingFlowers from '../components/Home/TopSellingFlowers';
 import GiftOfferSection from '../components/Home/GiftOfferSection';
 import PopularCategories from '../components/Home/PopularCategories';
 import HowItWorksSection from '../components/Home/HowItWorksSection';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import { Container } from 'react-bootstrap';
 
 const Home: React.FC = () => {
   return (
     <>
+      <Header />
       <HeroSection />
-      <div className="container my-5">
-        <TopSellingFlowers />
-        <GiftOfferSection />
-        <PopularCategories />
-        <HowItWorksSection />
-      </div>
+      <Container className='d-flex justify-content-center'>
+        <Container >
+                // Create Your design here
+          <TopSellingFlowers />
+          <GiftOfferSection />
+
+          <PopularCategories />
+          <HowItWorksSection />
+
+
+        </Container>
+      </Container>
+
+      <Footer />
     </>
   );
 };

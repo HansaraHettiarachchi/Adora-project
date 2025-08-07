@@ -16,11 +16,11 @@ const Header: React.FC = () => {
         <Navbar.Toggle aria-controls="adora-navbar" />
         <Navbar.Collapse id="adora-navbar">
           <Nav className="mx-auto fw-semibold text-uppercase">
-            <Nav.Link href="/" className="text-success">Home</Nav.Link>
-            <Nav.Link href="/shop">Shop</Nav.Link>
-            <Nav.Link href="/category">Category</Nav.Link>
-            <Nav.Link href="/about">About</Nav.Link>
-            <Nav.Link href="/contact">Contact</Nav.Link>
+            <Nav.Link onClick={() => navigate("/home")} className="text-success">Home</Nav.Link>
+            <Nav.Link onClick={() => navigate("/shop")}>Shop</Nav.Link>
+            <Nav.Link onClick={() => navigate("/home")}>Category</Nav.Link>
+            <Nav.Link onClick={() => navigate("/about")}>About</Nav.Link>
+            <Nav.Link onClick={() => navigate("/contact")}>Contact</Nav.Link>
           </Nav>
           <div className="d-flex align-items-center gap-3 text-success fs-5">
             <Nav.Link href="/search" className="p-0 text-success"><FaSearch /></Nav.Link>
@@ -29,8 +29,8 @@ const Header: React.FC = () => {
               href="/user"
               className="p-0 text-success"
               onClick={(e) => {
-                e.preventDefault(); 
-                navigate('/user'); 
+                e.preventDefault();
+                navigate('/user');
               }}
             >
               <FaUser />
