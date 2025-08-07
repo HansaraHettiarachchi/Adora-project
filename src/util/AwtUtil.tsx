@@ -1,5 +1,5 @@
 import { jwtDecode } from "jwt-decode";
-import type { DecodedUserData } from "../components/types/EntitiesTypes";
+import type { DecodedUserData } from "../types/EntitiesTypes";
 
 export const getTypeFromDay = (days: number): string => {
     if (days === 1) return "day";
