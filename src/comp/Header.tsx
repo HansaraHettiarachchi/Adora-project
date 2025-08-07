@@ -1,6 +1,6 @@
 import React from 'react';
 import { FaSearch, FaShoppingCart, FaUser } from 'react-icons/fa';
-import logo from '../../assets/images/logo.png';
+import logo from '../assets/images/logo.png';
 import { Container, Nav, Navbar } from 'react-bootstrap';
 
 const Header: React.FC = () => {

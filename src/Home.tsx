@@ -1,6 +1,6 @@
 import { Container } from "react-bootstrap";
-import Footer from "./Footer";
-import Header from "./Header";
+import Footer from "./comp/Footer";
+import Header from "./comp/Header";
 import 'bootstrap/dist/css/bootstrap.min.css';
 
 const Home = () => {

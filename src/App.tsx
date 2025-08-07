@@ -3,10 +3,10 @@ import reactLogo from './assets/react.svg'
 import viteLogo from '/vite.svg'
 import './App.css'
 import { Route, Routes } from 'react-router-dom';
-import Home from './comp/landingPage/Home';
-import Header from './comp/landingPage/Header';
+import Home from './Home';
+import Header from './comp/Header';
 import { Container } from 'react-bootstrap';
-import Footer from './comp/landingPage/Footer';
+import Footer from './comp/Footer';
 
 // const protectedRoutes = [
 //   // { path: "/user-profile", element: <AdminPannel /> },
