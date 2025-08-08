@@ -34,7 +34,7 @@ const About = () => {
       </Carousel>
 
       {/* About Us Section */}
-      <Container className="py-5" style={{ marginBottom: "1rem" }}>
+      <Container className="py-5" style={{ marginBottom: "1rem" }} fluid>
         <Row className="justify-content-center text-center">
           <Col lg={8} style={{ lineHeight: "1.8" }}>
             <h2 style={{ color: "#23B540", fontWeight: "bold" }}>ABOUT US</h2>
