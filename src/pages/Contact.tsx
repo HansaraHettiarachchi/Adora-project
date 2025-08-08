@@ -33,18 +33,24 @@ const Contact = () => {
                     </Row>
 
                     {/*Map Section*/}
-
-                    <div style={{position:"relative", marginBottom:"100px"}}>
                     <Row className="mb-5 justify-content-center">
                         <Col md={12}>
-                        <div style={{width:'100%', height:'500px', overflow:'hidden'}}>
-                            <iframe 
+                        <div
+                        style={{
+                            position:"relative",
+                            height:"500px",
+                            width:"1000px",
+                            right:"100px",
+                            opacity:1,
+                            overflow:"hidden"
+                        }}>
+                        <iframe 
                             title="Google map"
                             src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d63316.90505205257!2d79.9808373!3d6.8819013!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x8bc570145eafbc15%3A0x15f655659825b160!2sFlower%20Garden%20Road%2C%20Colombo%2007%2C%20Sri%20Lanka!5e0!3m2!1sen!2sus!4v1633031234567!5m2!1sen!2sus"
                             width="100%"
                             height="100%"
                             style={{border:0}}
-                            ></iframe>
+                        ></iframe>
                         </div>
                         </Col>
                     </Row>
@@ -91,8 +97,11 @@ const Contact = () => {
                             <div className="text-center">
                                 <button type="submit" className="btn btn-success" 
                                 style={{
-                                    borderRadius:"20px", 
+                                    border:"4px solid #39A108",
+                                    borderRadius:"50px", 
+                                    height:"47px",
                                     backgroundColor:"white",
+                                    width:"175px",
                                     borderColor:"#39A108", 
                                     color:"#39A108",
                                     lineHeight:"100%",
@@ -104,7 +113,6 @@ const Contact = () => {
                         </Form>
                         </Col>
                     </Row>
-                    </div>
                 </Container>
             </Container>
 
