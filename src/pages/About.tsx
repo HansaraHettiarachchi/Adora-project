@@ -61,7 +61,7 @@ const About = () => {
                 fontWeight: "bold",
                 display: "flex",
                 justifyContent: "center",
-                marginTop: '150px'
+                marginTop: "150px",
               }}
             >
               23 Years Of Experience
@@ -156,7 +156,7 @@ const About = () => {
       {/* History Section */}
       <Container className="py-5" style={{ maxWidth: "1000px" }}>
         <Row className="align-items-center">
-        {/* Left: Images */}
+          {/* Left: Images */}
           <Col md={8}>
             <Row className="g-4">
               {[1, 4, 3, 2].map((num, idx) => (
@@ -194,14 +194,14 @@ const About = () => {
                 fontWeight: "bold",
                 display: "flex",
                 justifyContent: "center",
-                marginTop: '80px'
+                marginTop: "80px",
               }}
             >
               OUR HISTORY
             </h2>
             <Row className="justify-content-center text-center">
               <Col lg={8} style={{ lineHeight: "1.8" }}>
-                <p style={{ color: "#A6A3A3", lineHeight: '1.5'}}>
+                <p style={{ color: "#A6A3A3", lineHeight: "1.5" }}>
                   From timeless floral beauty to modern plant care — we’ve got
                   it all in one place. Whether you’re styling your home, garden,
                   or office, our shop offers a carefully selected range of
@@ -216,6 +216,154 @@ const About = () => {
           </Col>
         </Row>
       </Container>
+
+      {/* Result Section */}
+      <Container
+        fluid
+        style={{
+          backgroundImage:
+            "linear-gradient(rgba(22, 76, 13, 0.8), rgba(22, 76, 13, 0.8)), url('src/assets/images/about_result_section.png')",
+          backgroundSize: "cover",
+          backgroundPosition: "center",
+          backgroundRepeat: "no-repeat",
+          maxWidth: "1000px",
+          color: "white",
+          minHeight: "50vh",
+          display: "flex",
+          flexDirection: "column",
+          justifyContent: "center",
+          textAlign: "center",
+          marginBottom: "2rem",
+        }}
+        className="py-5"
+      >
+        <h2 style={{ color: "#23B540", fontWeight: "bold" }}>
+          WHAT IS OUR RESULT?
+        </h2>
+        <Row className="justify-content-center align-items-center">
+          <Col
+            xs={6}
+            md={3}
+            className="mb-4"
+            style={{ transform: "translateY(-20px)", marginTop: "4rem" }}
+          >
+            <div>
+              <h3
+                style={{
+                  fontSize: "2.5rem",
+                  border: "2px solid white",
+                  display: "inline-block",
+                  padding: "10px 20px",
+                  borderRadius: "10px",
+                  width: "80px",
+                  height: "100px",
+                }}
+              >
+                55<h3>+</h3>
+              </h3>
+              <p
+                style={{
+                  fontSize: "0.8rem",
+                  fontWeight: "bold",
+                }}
+              >
+                Years of experience
+              </p>
+            </div>
+          </Col>
+          <Col
+            xs={6}
+            md={3}
+            className="mb-4"
+            style={{ transform: "translateY(20px)", marginTop: "6rem" }}
+          >
+            <div>
+              <h3
+                style={{
+                  fontSize: "2.5rem",
+                  border: "2px solid white",
+                  display: "inline-block",
+                  padding: "10px 20px",
+                  borderRadius: "10px",
+                  width: "80px",
+                  height: "100px",
+                }}
+              >
+                25<h3>k</h3>
+              </h3>
+              <p
+                style={{
+                  fontSize: "0.8rem",
+                  fontWeight: "bold",
+                }}
+              >
+                Happy Clients
+              </p>
+            </div>
+          </Col>
+          <Col
+            xs={6}
+            md={3}
+            className="mb-4"
+            style={{ transform: "translateY(-20px)", marginTop: "4rem" }}
+          >
+            <div>
+              <h3
+                style={{
+                  fontSize: "2.5rem",
+                  border: "2px solid white",
+                  display: "inline-block",
+                  padding: "10px 20px",
+                  borderRadius: "10px",
+                  width: "80px",
+                  height: "100px",
+                }}
+              >
+                15<h3>+</h3>
+              </h3>
+              <p
+                style={{
+                  fontSize: "0.8rem",
+                  fontWeight: "bold",
+                }}
+              >
+                Showrooms
+              </p>
+            </div>
+          </Col>
+          <Col
+            xs={6}
+            md={3}
+            className="mb-4"
+            style={{ transform: "translateY(20px)", marginTop: "6rem" }}
+          >
+            <div>
+              <h3
+                style={{
+                  fontSize: "2.5rem",
+                  border: "2px solid white",
+                  display: "inline-block",
+                  padding: "10px 20px",
+                  borderRadius: "10px",
+                  width: "80px",
+                  height: "100px",
+                }}
+              >
+                45<h3>+</h3>
+              </h3>
+              <p
+                style={{
+                  fontSize: "0.8rem",
+                  fontWeight: "bold",
+                }}
+              >
+                Award Winning
+              </p>
+            </div>
+          </Col>
+        </Row>
+      </Container>
+
       <Footer />
     </>
   );
