@@ -14,12 +14,16 @@ const About = () => {
       <Header />
 
       {/* Top Carousel */}
-      <Carousel fade interval={30000}>
+      <Carousel fade interval={3000}>
         {[1, 2, 3, 4, 5].map((num) => (
           <Carousel.Item key={num}>
             <img
               className="d-block w-100 about-carousel-img"
-              style={{ height: "500px", objectFit: "cover" }}
+              style={{
+                height: "500px",
+                objectFit: "cover",
+                marginBottom: "1rem",
+              }}
               src={`src/assets/images/about_slide (${num}).${
                 num === 1 ? "png" : "jpg"
               }`}
@@ -30,7 +34,7 @@ const About = () => {
       </Carousel>
 
       {/* About Us Section */}
-      <Container className="py-5">
+      <Container className="py-5" style={{ marginBottom: "1rem" }}>
         <Row className="justify-content-center text-center">
           <Col lg={8} style={{ lineHeight: "1.8" }}>
             <h2 style={{ color: "#23B540", fontWeight: "bold" }}>ABOUT US</h2>
@@ -51,7 +55,10 @@ const About = () => {
       </Container>
 
       {/* Experience Section */}
-      <Container className="py-5" style={{ maxWidth: "1000px" }}>
+      <Container
+        className="py-5"
+        style={{ maxWidth: "1000px", marginBottom: "1rem" }}
+      >
         <Row className="align-items-center">
           {/* Left: Features */}
           <Col md={4} className="mb-8">
@@ -154,7 +161,10 @@ const About = () => {
       </Container>
 
       {/* History Section */}
-      <Container className="py-5" style={{ maxWidth: "1000px" }}>
+      <Container
+        className="py-5"
+        style={{ maxWidth: "1000px", marginBottom: "4rem" }}
+      >
         <Row className="align-items-center">
           {/* Left: Images */}
           <Col md={8}>
@@ -233,7 +243,7 @@ const About = () => {
           flexDirection: "column",
           justifyContent: "center",
           textAlign: "center",
-          marginBottom: "2rem",
+          marginBottom: "6rem",
         }}
         className="py-5"
       >
@@ -362,6 +372,86 @@ const About = () => {
             </div>
           </Col>
         </Row>
+      </Container>
+
+      {/* Feedback Section */}
+      <Container
+        className="py-5 text-center mx-auto "
+        style={{
+          maxWidth: "1000px",
+          borderRadius: "10px",
+          border: "2px solid #164C0D",
+          minHeight: "50vh",
+          marginBottom: "2rem",
+        }}
+      >
+        <h2
+          style={{ color: "#23B540", fontWeight: "bold", marginBottom: "2rem" }}
+        >
+          WHAT IS OUR CLIENT SAYS?
+        </h2>
+        <Carousel indicators={false} controls={true} interval={3000} fade>
+          {/* Feedback 1 */}
+          <Carousel.Item>
+            <div>
+              <Image
+                src="https://randomuser.me/api/portraits/women/1.jpg"
+                rounded
+                width="80"
+                height="80"
+                alt="Client 1"
+                className="mx-auto d-block"
+                style={{ objectFit: "cover", borderRadius: "8px" }}
+              />
+              <h5 className="mt-3">Emali Jems</h5>
+              <p className="mx-auto" style={{ maxWidth: "600px" }}>
+                "Absolutely beautiful flowers! I ordered a bouquet for my mom’s
+                birthday, and she loved it. Fresh, vibrant, and delivered right
+                on time."
+              </p>
+            </div>
+          </Carousel.Item>
+
+          {/* Feedback 2 */}
+          <Carousel.Item>
+            <div>
+              <Image
+                src="https://randomuser.me/api/portraits/men/2.jpg"
+                rounded
+                width="80"
+                height="80"
+                alt="Client 2"
+                className="mx-auto d-block"
+                style={{ objectFit: "cover", borderRadius: "8px" }}
+              />
+              <h5 className="mt-3">John Doe</h5>
+              <p className="mx-auto" style={{ maxWidth: "600px" }}>
+                "The service was outstanding. The flowers were fresh and
+                beautifully arranged. Will definitely order again!"
+              </p>
+            </div>
+          </Carousel.Item>
+
+          {/* Feedback 3 */}
+          <Carousel.Item>
+            <div>
+              <Image
+                src="https://randomuser.me/api/portraits/women/3.jpg"
+                rounded
+                width="80"
+                height="80"
+                alt="Client 3"
+                className="mx-auto d-block"
+                style={{ objectFit: "cover", borderRadius: "8px" }}
+              />
+              <h5 className="mt-3">Sophia Brown</h5>
+              <p className="mx-auto" style={{ maxWidth: "600px" }}>
+                "Highly recommended! Fast delivery and the arrangement exceeded
+                my expectations. Thank you so much."
+              </p>
+            </div>
+          </Carousel.Item>
+        </Carousel>
       </Container>
 
       <Footer />
