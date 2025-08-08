@@ -61,7 +61,7 @@ const About = () => {
                 fontWeight: "bold",
                 display: "flex",
                 justifyContent: "center",
-                marginBottom: "1.5rem",
+                marginTop: '150px'
               }}
             >
               23 Years Of Experience
@@ -148,6 +148,70 @@ const About = () => {
                   />
                 </Col>
               ))}
+            </Row>
+          </Col>
+        </Row>
+      </Container>
+
+      {/* History Section */}
+      <Container className="py-5" style={{ maxWidth: "1000px" }}>
+        <Row className="align-items-center">
+        {/* Left: Images */}
+          <Col md={8}>
+            <Row className="g-4">
+              {[1, 4, 3, 2].map((num, idx) => (
+                <Col
+                  md={6}
+                  key={idx}
+                  style={{
+                    display: "flex",
+                    flexDirection: "column",
+                    justifyContent:
+                      idx === 0 || idx === 4 ? "flex-end" : "flex-start",
+                  }}
+                >
+                  <Image
+                    src={`src/assets/images/about_experience_pic (${num}).png`}
+                    alt={`Experience ${idx + 1}`}
+                    style={{
+                      width: "100%",
+                      height: idx === 0 || idx === 3 ? "180px" : "250px",
+                      objectFit: "cover",
+                      transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                      cursor: "pointer",
+                    }}
+                  />
+                </Col>
+              ))}
+            </Row>
+          </Col>
+
+          {/* Right: Features */}
+          <Col md={4} className="mb-8">
+            <h2
+              style={{
+                color: "#23B540",
+                fontWeight: "bold",
+                display: "flex",
+                justifyContent: "center",
+                marginTop: '80px'
+              }}
+            >
+              OUR HISTORY
+            </h2>
+            <Row className="justify-content-center text-center">
+              <Col lg={8} style={{ lineHeight: "1.8" }}>
+                <p style={{ color: "#A6A3A3", lineHeight: '1.5'}}>
+                  From timeless floral beauty to modern plant care — we’ve got
+                  it all in one place. Whether you’re styling your home, garden,
+                  or office, our shop offers a carefully selected range of
+                  flowers, potted plants, natural decor pieces, and fertilizers
+                  for all plant types.Inspired by nature and ancient traditions,
+                  we also celebrate the use of natural materials like wood,
+                  stone, and moss — transforming any space into a green,
+                  peaceful retreat.
+                </p>
+              </Col>
             </Row>
           </Col>
         </Row>
