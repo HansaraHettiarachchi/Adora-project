@@ -1,9 +1,22 @@
 import React from 'react';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Container, Row, Col,Carousel } from 'react-bootstrap';
+import { Container, Row, Col, Carousel, Image } from 'react-bootstrap';
+import { BsCheck2 } from "react-icons/bs";
 
 const About = () => {
+    const featuresLeft = [
+        "Natural Materials",
+        "5 Days Refund",
+        "Good Woods"
+    ];
+
+    const featuresRight = [
+        "Free Shipping",
+        "Best Fabrics",
+        "Friendly Support"
+    ];
+
     return (
         <>
             <Header />
@@ -51,6 +64,23 @@ const About = () => {
                     />
                 </Carousel.Item>
             </Carousel>
+
+            {/* About Us Section */}
+            <Container className="py-5">
+                <Row className="justify-content-center text-center">
+                    <Col lg={8} style={{ lineHeight: "1.8" }}>
+                        <h2 style={{ color: "#23B540", fontWeight: "bold" }}>ABOUT US</h2>
+                        <p style={{ color: "#888787ff", marginTop: "20px" }}>WHO WE ARE?</p>
+                        <p style={{ color: "#A6A3A3", marginTop: "20px" }}>
+                            Welcome to our floral design and boutique – where nature’s finest creations meet your moments of celebration. 
+                            We are passionate about creating stunning floral arrangements that bring joy and beauty to any occasion. 
+                            From lush bouquets to charming potted plants and elegant décor pieces, our designs capture the art of floral beauty.
+                            Freshness isn’t just our promise – it’s our guarantee. Whether it’s a gift for a loved one or décor for your home, 
+                            we’re here to help you choose something meaningful for every moment.
+                        </p>
+                    </Col>
+                </Row>
+            </Container>
             <Footer />
         </>
     );
