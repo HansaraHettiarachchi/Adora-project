@@ -2,7 +2,9 @@ import React from 'react'
 import Header from '../components/Header'
 import Footer from '../components/Footer'
 import { Container, Row, Col, Form} from 'react-bootstrap';
-
+import { FaRegEnvelope } from 'react-icons/fa';
+import { FaPhoneVolume } from "react-icons/fa6";
+import { FaLocationDot } from "react-icons/fa6";
 const Contact = () => {
     return (
         <>
@@ -10,21 +12,23 @@ const Contact = () => {
 
             <Container className='d-flex justify-content-center'>
                 <Container className='py-5'>
+
                     {/*Icons Section*/}
-                    <Row className="text-center mb-5">
+                    <Row className="text-center mb-5" style={{marginTop:"100px"}}>
                         <Col md={4}>
                         <div style={{
                             backgroundColor:"#23B540",
                             width:"100px",
                             height:"100px",
+                            display:"flex",
                             alignItems:"center",
                             justifyContent:"center",
                             margin:"0 auto"
                         }}>
-                        <i className="bi bi-envelope-fill" style={{fontSize:'32px', color:'white'}}></i>
+                        <FaRegEnvelope size={"48px"} style={{color:"white"}} />
                         </div>
-                        <h5>Email</h5>
-                        <p>adoraflower@gmail.com</p>
+                        <h5 style={{marginTop:"20px", fontFamily:"Poppins"}}>Email</h5>
+                        <p style={{fontFamily:"Familjen Grotesk"}}>adoraflower@gmail.com</p>
                         </Col>
 
                         <Col md={4}>
@@ -32,14 +36,15 @@ const Contact = () => {
                             backgroundColor:"#23B540",
                             width:"100px",
                             height:"100px",
+                            display:"flex",
                             alignItems:"center",
                             justifyContent:"center",
                             margin:"0 auto"
                         }}>
-                        <i className="bi bi-telephone-fill" style={{fontSize:'32px', color:'white'}}></i>
+                        <FaPhoneVolume size={"48px"} style={{color:"white"}} />
                         </div>
-                        <h5>Phone</h5>
-                        <p>+94 761 234 567</p>
+                        <h5 style={{marginTop:"20px", fontFamily:"Poppins"}}>Phone</h5>
+                        <p style={{fontFamily:"Familjen Grotesk"}}>+94 761 234 567</p>
                         <h5></h5>
                         </Col>
 
@@ -48,18 +53,25 @@ const Contact = () => {
                             backgroundColor:"#23B540",
                             width:"100px",
                             height:"100px",
+                            display:"flex",
                             alignItems:"center",
                             justifyContent:"center",
                             margin:"0 auto"
                         }}>
-                        <i className="bi bi-geo-alt-fill" style={{fontSize:'32px', color:'white'}}></i>
+                        <FaLocationDot size={"48px"} style={{color:"white"}}/>
                         </div>
-                        <h5>Address</h5>
-                        <p> No. 45, Flower Garden Road,<br></br>Colombo 07,<br></br>Sri Lanka.</p>
+                        <h5 style={{marginTop:"20px", fontFamily:"Poppins"}}>Address</h5>
+                        <p style={{fontFamily:"Familjen Grotesk"}}> No. 45, Flower Garden Road,<br></br>Colombo 07,<br></br>Sri Lanka.</p>
                         </Col>
                     </Row>
 
                     {/*Map Section*/}
+                    <div  style={{
+                        position:"relative", 
+                        display:"flex", 
+                        justifyContent:"center", 
+                        flexDirection:"column", 
+                        alignItems:"center"}}>
                     <Row className="mb-5 justify-content-center">
                         <Col md={12}>
                         <div
@@ -67,7 +79,6 @@ const Contact = () => {
                             position:"relative",
                             height:"500px",
                             width:"1000px",
-                            right:"100px",
                             opacity:1,
                             overflow:"hidden"
                         }}>
@@ -83,8 +94,16 @@ const Contact = () => {
                     </Row>
 
                     {/*Contact Form*/}
+                    <div style={{
+                        position:"absolute",
+                        bottom:"-300px",
+                        background:"white",
+                        boxShadow:"0px 4px 6.1px 0px #00000040",
+                        padding:"30px",
+                        maxWidth:"90%"
+                    }}>
                     <Row className="justify-content-center">
-                        <Col md={6} className="p-4 shadow" 
+                        <Col md={6} 
                         style={{
                             width: "678px",
                             height: "446",
@@ -92,7 +111,14 @@ const Contact = () => {
                             left: "381px",
                             opacity: "1"
                         }}>
-                        <h5 className="text-center mb-4" style={{color:"#39A108", fontSize:"32px", fontWeight:"700"}}>Contact Us</h5>
+                        <h5 className="text-center mb-4" 
+                        style={{
+                            fontFamily:"Poppins",
+                            color:"#39A108", 
+                            fontSize:"32px", 
+                            fontWeight:"700"
+                            }}>
+                                Contact Us</h5>
                         <Form>
                             <Row>
                                 <Col md={6}>
@@ -124,6 +150,7 @@ const Contact = () => {
                             <div className="text-center">
                                 <button type="submit" className="btn btn-success" 
                                 style={{
+                                    fontFamily:"Poppins",
                                     border:"4px solid #39A108",
                                     borderRadius:"50px", 
                                     height:"47px",
@@ -138,8 +165,12 @@ const Contact = () => {
                                 }}>SUBMIT</button>
                             </div>
                         </Form>
+                        
                         </Col>
                     </Row>
+                    </div>
+                    </div>
+                    <div style={{height:"400px"}}></div>
                 </Container>
             </Container>
 
