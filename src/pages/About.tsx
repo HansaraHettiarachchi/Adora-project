@@ -181,7 +181,7 @@ const About = () => {
                   }}
                 >
                   <Image
-                    src={`src/assets/images/about_experience_pic (${num}).png`}
+                    src={`src/assets/images/about_history (${num}).png`}
                     alt={`Experience ${idx + 1}`}
                     style={{
                       width: "100%",
