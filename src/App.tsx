@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import User from './pages/User';
 import { Shop } from './pages/Shop';
 import About from './pages/About';
+import Login from './pages/Login';
 
 const App: React.FC = () => {
   return (
@@ -18,6 +19,7 @@ const App: React.FC = () => {
         <Route path="/user" element={<User />} />
         <Route path="/about" element={<About />} />
         <Route path="/contact" element={<Contact />} />
+        <Route path="/login" element={<Login />} />
       </Routes>
     </Router>
   );
