@@ -34,7 +34,7 @@ const About = () => {
       </Carousel>
 
       {/* About Us Section */}
-      <Container className="py-5" style={{ marginBottom: "1rem" }}>
+      <Container className="py-5" style={{ marginBottom: "1rem" }} fluid>
         <Row className="justify-content-center text-center">
           <Col lg={8} style={{ lineHeight: "1.8" }}>
             <h2 style={{ color: "#23B540", fontWeight: "bold" }}>ABOUT US</h2>
@@ -269,7 +269,7 @@ const About = () => {
                   height: "100px",
                 }}
               >
-                55<h3>+</h3>
+                55<b>+</b>
               </h3>
               <p
                 style={{
@@ -299,7 +299,7 @@ const About = () => {
                   height: "100px",
                 }}
               >
-                25<h3>k</h3>
+                25<b>k</b>
               </h3>
               <p
                 style={{
@@ -329,7 +329,7 @@ const About = () => {
                   height: "100px",
                 }}
               >
-                15<h3>+</h3>
+                15<b>+</b>
               </h3>
               <p
                 style={{
@@ -359,7 +359,7 @@ const About = () => {
                   height: "100px",
                 }}
               >
-                45<h3>+</h3>
+                45<b>+</b>
               </h3>
               <p
                 style={{
