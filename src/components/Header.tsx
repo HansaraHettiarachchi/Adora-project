@@ -9,7 +9,7 @@ const Header: React.FC = () => {
 
   return (
     <Navbar bg="light" expand="lg" className="py-3 border-bottom shadow-sm">
-      <Container>
+      <Container fluid="sm">
         <Navbar.Brand href="/">
           <img src={logo} alt="Adora Logo" style={{ height: 48, objectFit: 'contain' }} />
         </Navbar.Brand>
