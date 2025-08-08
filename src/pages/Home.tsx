@@ -13,9 +13,9 @@ const Home: React.FC = () => {
     <>
       <Header />
       <HeroSection />
+      <TopSellingFlowers />
       <Container className='d-flex justify-content-center'>
         <Container >
-          <TopSellingFlowers />
           <GiftOfferSection />
           <PopularCategories />
           <HowItWorksSection />

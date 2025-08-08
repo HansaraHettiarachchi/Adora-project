@@ -3,6 +3,7 @@ import home1 from '../../assets/images/home-img1.jpeg';
 import home2 from '../../assets/images/home-img2.jpeg';
 import home3 from '../../assets/images/home-img3.jpeg';
 import home4 from '../../assets/images/home-img4.jpg';
+import './TopSellingFlowers.css';
 
 const flowerData = [
   { img: home1, alt: 'Home Flower', name: 'Featured Flower', price: '' },
@@ -11,40 +12,33 @@ const flowerData = [
   { img: home4, alt: 'Homalomena', name: 'Homalomena', price: '$19' },
 ];
 
-const imageStyle: React.CSSProperties = {
-  width: '180px',
-  height: '180px',
-  objectFit: 'cover',
-  display: 'block',
-  margin: '0 auto 10px auto',
-};
-
 const TopSellingFlowers: React.FC = () => {
   return (
-    <div className="text-center mb-5 mt-5">
-      <h2>Top Selling Flowers</h2>
-      <div className="flowers-container py-3 px-2" style={{ background: '#f8f9fa', borderRadius: '12px' }}>
-        <div className="row">
+    <div className="text-center my-5 px-2">
+      <h2 className="mb-4 fw-bold" style={{ fontFamily: 'Segoe UI' }}>Top Selling Flowers</h2>
+      <div className="flowers-container py-5 px-4">
+        <div className="row g-4">
           {flowerData.map((flower, idx) => (
-            <div className="col-md-3 d-flex flex-column align-items-center" key={idx}>
-              <img
-                src={flower.img}
-                alt={flower.alt}
-                style={imageStyle}
-                className="mb-2"
-              />
-              <p>
-                {flower.name}
-                {flower.price && ` - ${flower.price}`}
-              </p>
-              <div className="w-100 d-flex justify-content-center">
-                <button className="btn btn-success btn-sm">Add to Cart</button>
+            <div className="col-12 col-sm-6 col-md-3" key={idx}>
+              <div className="card border-0 shadow h-100 flower-card p-3 rounded-4">
+                <div className="flower-image-wrapper">
+                  <img
+                    src={flower.img}
+                    alt={flower.alt}
+                    className="card-img-top flower-image"
+                  />
+                </div>
+                <div className="card-body d-flex flex-column justify-content-between mt-3">
+                  <h5 className="card-title fw-semibold">{flower.name}</h5>
+                  <p className="card-text text-muted">{flower.price || 'Best Seller'}</p>
+                  <button className="custom-cart-btn mt-auto">Add to Cart</button>
+                </div>
               </div>
             </div>
           ))}
         </div>
+        <button className="custom-outline-btn mt-5 px-4 py-2">View More</button>
       </div>
-      <button className="btn btn-outline-success mt-3">View More</button>
     </div>
   );
 };
