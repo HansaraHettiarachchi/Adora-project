@@ -56,6 +56,7 @@ const About = () => {
 
       {/* Experience Section */}
       <Container
+        fluid
         className="py-5"
         style={{ maxWidth: "1000px", marginBottom: "1rem" }}
       >
@@ -162,6 +163,7 @@ const About = () => {
 
       {/* History Section */}
       <Container
+        fluid
         className="py-5"
         style={{ maxWidth: "1000px", marginBottom: "4rem" }}
       >
@@ -265,8 +267,8 @@ const About = () => {
                   display: "inline-block",
                   padding: "10px 20px",
                   borderRadius: "10px",
-                  width: "80px",
-                  height: "100px",
+                  width: "100px",
+                  height: "80px",
                 }}
               >
                 55<b>+</b>
@@ -295,8 +297,8 @@ const About = () => {
                   display: "inline-block",
                   padding: "10px 20px",
                   borderRadius: "10px",
-                  width: "80px",
-                  height: "100px",
+                  width: "100px",
+                  height: "80px",
                 }}
               >
                 25<b>k</b>
@@ -325,8 +327,8 @@ const About = () => {
                   display: "inline-block",
                   padding: "10px 20px",
                   borderRadius: "10px",
-                  width: "80px",
-                  height: "100px",
+                  width: "100px",
+                  height: "80px",
                 }}
               >
                 15<b>+</b>
@@ -355,8 +357,8 @@ const About = () => {
                   display: "inline-block",
                   padding: "10px 20px",
                   borderRadius: "10px",
-                  width: "80px",
-                  height: "100px",
+                  width: "100px",
+                  height: "80px",
                 }}
               >
                 45<b>+</b>
@@ -376,6 +378,7 @@ const About = () => {
 
       {/* Feedback Section */}
       <Container
+        fluid
         className="py-5 text-center mx-auto "
         style={{
           maxWidth: "1000px",
