@@ -13,20 +13,47 @@ const Contact = () => {
                     {/*Icons Section*/}
                     <Row className="text-center mb-5">
                         <Col md={4}>
-                        <i className="bi bi-envelope-fill" style={{fontSize:'32px', color:'green'}}></i>
+                        <div style={{
+                            backgroundColor:"#23B540",
+                            width:"100px",
+                            height:"100px",
+                            alignItems:"center",
+                            justifyContent:"center",
+                            margin:"0 auto"
+                        }}>
+                        <i className="bi bi-envelope-fill" style={{fontSize:'32px', color:'white'}}></i>
+                        </div>
                         <h5>Email</h5>
                         <p>adoraflower@gmail.com</p>
                         </Col>
 
                         <Col md={4}>
-                        <i className="bi bi-telephone-fill" style={{fontSize:'32px', color:'green'}}></i>
+                         <div style={{
+                            backgroundColor:"#23B540",
+                            width:"100px",
+                            height:"100px",
+                            alignItems:"center",
+                            justifyContent:"center",
+                            margin:"0 auto"
+                        }}>
+                        <i className="bi bi-telephone-fill" style={{fontSize:'32px', color:'white'}}></i>
+                        </div>
                         <h5>Phone</h5>
                         <p>+94 761 234 567</p>
                         <h5></h5>
                         </Col>
 
                         <Col md={4}>
-                        <i className="bi bi-geo-alt-fill" style={{fontSize:'32px', color:'green'}}></i>
+                         <div style={{
+                            backgroundColor:"#23B540",
+                            width:"100px",
+                            height:"100px",
+                            alignItems:"center",
+                            justifyContent:"center",
+                            margin:"0 auto"
+                        }}>
+                        <i className="bi bi-geo-alt-fill" style={{fontSize:'32px', color:'white'}}></i>
+                        </div>
                         <h5>Address</h5>
                         <p> No. 45, Flower Garden Road,<br></br>Colombo 07,<br></br>Sri Lanka.</p>
                         </Col>
