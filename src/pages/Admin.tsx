@@ -1,20 +1,26 @@
-import React from 'react'
-import Header from '../components/admin/Header'
-import { Container, Row } from 'react-bootstrap'
-import SideBar from '../components/admin/SideBar'
-import AdminBody from '../components/admin/AdminBody'
+ import React from 'react'
+ //import { Container, Row } from 'react-bootstrap'
+ import AdminBody from '../components/admin/AdminBody'
 
-export default function Admin() {
-    return (
-        <>
-            <Header />
+// export default function Admin() {
+//     return (
+//         <>
+//             <Header />
 
-            <Container fluid="sm">
-                <Row>
-                    <SideBar />
-                    {/* <AdminBody /> */}
-                </Row>
-            </Container>
-        </>
-    )
-}
+//             <Container fluid="sm">
+//                 <Row>
+//                     <SideBar />
+//                     <AdminBody />
+//                 </Row>
+//             </Container>
+//         </>
+//     )
+// }
+
+
+const Admin: React.FC = () => {
+  return <AdminBody />;
+};
+
+export default Admin;
+
