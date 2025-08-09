@@ -57,13 +57,13 @@ const UserProfile: React.FC = () => {
       <div className="text-center mb-4">
         <h2
           className="fw-bold"
-          style={{ color: "#28a745", fontFamily: "Poppins", fontWeight: "800" }}
+          style={{ color: "#39A108", fontFamily: "Poppins", fontWeight: "800" }}
         >
           MY <span style={{ color: "#000" }}>PROFILE</span>
         </h2>
       </div>
 
-      {/* Avatar & Info */}
+      {/* Profile Image & Info */}
       <div className="d-flex align-items-center mb-4">
         <div style={{ marginRight: "20px" }}>
           <img
@@ -79,7 +79,7 @@ const UserProfile: React.FC = () => {
         </div>
         <div>
           <div className="d-flex align-items-center justify-content-between" style={{ gap: "180px" }}>
-            <h4 style={{ color: "#28a745", fontWeight: 700 }}>
+            <h4 style={{ color: "#39A108", fontWeight: 700 }}>
               MOHAMED <span style={{ color: "#000" }}>MUKARRAM</span>
             </h4>
             <div className="ms-auto">
@@ -90,7 +90,7 @@ const UserProfile: React.FC = () => {
           </div>
           <div className="d-flex">
             <div style={{ marginRight: "150px" }}>
-              <p className="mb-1" style={{ color: "#28a745" }}>
+              <p className="mb-1" style={{ color: "#39A108" }}>
                 <strong>
                   USER <span style={{ color: "#000" }}>ID</span>
                 </strong>
@@ -98,7 +98,7 @@ const UserProfile: React.FC = () => {
               <p className="text-muted">mohamed123</p>
             </div>
             <div>
-              <p className="mb-1" style={{ color: "#28a745" }}>
+              <p className="mb-1" style={{ color: "#39A108" }}>
                 <strong>
                   EMAIL <span style={{ color: "#000" }}>ID</span>
                 </strong>
@@ -117,7 +117,7 @@ const UserProfile: React.FC = () => {
 
       {/* Bio */}
       <div className="mb-5 ps-4">
-        <h5 className="fw-bold" style={{ color: "#28a745" }}>
+        <h5 className="fw-bold" style={{ color: "#39A108" }}>
           BIO
         </h5>
         <p className="text-muted mb-0" style={{ fontSize: "0.95rem" }}>
@@ -132,7 +132,7 @@ const UserProfile: React.FC = () => {
       {/* Address & Phone */}
       <div className="row mb-5 ps-4">
         <div className="col-md-6">
-          <h5 className="fw-bold" style={{ color: "#28a745" }}>
+          <h5 className="fw-bold" style={{ color: "#39A108" }}>
             SHIPPING ADDRESS
           </h5>
           <p>
@@ -144,7 +144,7 @@ const UserProfile: React.FC = () => {
           </p>
         </div>
         <div className="col-md-6">
-          <h5 className="fw-bold" style={{ color: "#28a745" }}>
+          <h5 className="fw-bold" style={{ color: "#39A108" }}>
             PHONE
           </h5>
           <p>+94 76 123 4567</p>
@@ -154,7 +154,7 @@ const UserProfile: React.FC = () => {
 
       {/* Payment Methods */}
       <div>
-        <h5 className="fw-bold ps-4" style={{ color: "#28a745" }}>
+        <h5 className="fw-bold ps-4" style={{ color: "#39A108" }}>
           PAYMENT METHOD
         </h5>
         <div className="d-flex flex-wrap gap-3 mb-3 ps-4">

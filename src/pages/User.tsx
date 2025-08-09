@@ -12,7 +12,6 @@ const User: React.FC = () => {
       <UserHeader />
       <Container>
         <UserProfile />
-        <UserEdit />
       </Container>
 
     </>
