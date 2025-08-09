@@ -10,8 +10,8 @@ const User: React.FC = () => {
   return (
     <>
       <UserHeader />
-      <Container fluid='sm'>
-        {/* <UserProfile /> */}
+      <Container>
+        <UserProfile />
         <UserEdit />
       </Container>
 
