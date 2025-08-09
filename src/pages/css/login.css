@@ -1,0 +1,10 @@
+.login-background {
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-image: url('../../assets/images/banner2.png');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: cover;
+}
