@@ -9,7 +9,17 @@ import { Shop } from './pages/Shop';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import About from './pages/About';
+import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
+import AdminBody from './components/admin/AdminBody';
+import Dashboard from './pages/Admin/Dashboard';
+import Orders from './pages/Admin/Orders';
+import Products from './pages/Admin/Products';
+import Customers from './pages/Admin/Customers';
+import Comments from './pages/Admin/Comments';
+import ResetPasswords from './pages/Admin/ResetPasswords';
+
+
 
 const App: React.FC = () => {
   return (
@@ -19,11 +29,26 @@ const App: React.FC = () => {
         <Route path="/home" element={<Home />} />
         <Route path="/shop" element={<Shop />} />
         <Route path="/user" element={<User />} />
+        <Route path="/about" element={<About />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Signup />} />
         <Route path="/checkout-details" element={<Checkout />} />
+
+         {/* Admin section nested routing */}
+        <Route path="/admin" element={<AdminBody />}>
+          {/* <Route index element={<Navigate to="dashboard" replace />} />  */}
+          <Route path="dashboard" element={<Dashboard />} />
+          <Route path="orders" element={<Orders />} />
+          <Route path="products" element={<Products />} />
+          <Route path="customers" element={<Customers />} />
+          <Route path="comments" element={<Comments />} />
+          <Route path="reset-passwords" element={<ResetPasswords />} />
+
+        </Route>
+        
       </Routes>
     </Router>
   );

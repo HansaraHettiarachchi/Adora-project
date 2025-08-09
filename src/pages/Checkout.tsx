@@ -1,7 +1,7 @@
 import { Container } from 'react-bootstrap';
-import CheckoutHeader from '../components/Checkout/CheckoutHeader';
+import CheckoutHeader from '../components/checkout/CheckoutHeader';
 import Header from '../components/Header';
-import CheckoutDetails from '../components/Checkout/CheckoutDetails';
+import CheckoutDetails from '../components/checkout/CheckoutDetails';
 
 export default function Checkout() {
 
