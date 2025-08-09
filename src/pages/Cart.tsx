@@ -9,6 +9,8 @@ import { IoIosArrowRoundForward } from "react-icons/io";
 import { FaTrash } from "react-icons/fa";
 
 const CartPage = () => {
+  const isMobile = window.innerWidth <= 576;
+
   const cartItems = [
     {
       id: 1,
@@ -33,12 +35,23 @@ const CartPage = () => {
     },
   ];
 
+  const shippingFee = 200;
+  const subtotal = cartItems.reduce(
+    (acc, item) => acc + item.price * item.qty,
+    0
+  );
+  const total = subtotal + shippingFee;
+
   return (
     <>
       <Header />
 
       {/* Cart Section */}
-      <section style={{ padding: "2rem" }}>
+      <section
+        style={{
+          padding: isMobile ? "1rem" : "2rem",
+        }}
+      >
         <Container fluid>
           <Row className="mb-4">
             <Col>
@@ -47,9 +60,11 @@ const CartPage = () => {
                   fontWeight: "400",
                   display: "flex",
                   justifyContent: "center",
-                  marginTop: "2rem",
-                  marginBottom: "2rem",
-                  gap: "1rem",
+                  marginTop: isMobile ? "1rem" : "2rem",
+                  marginBottom: isMobile ? "1rem" : "2rem",
+                  gap: isMobile ? "0.5rem" : "1rem",
+                  fontSize: isMobile ? "1rem" : "1.25rem",
+                  flexWrap: "wrap",
                 }}
               >
                 <span
@@ -57,12 +72,10 @@ const CartPage = () => {
                     color: "#23B540",
                     display: "flex",
                     alignItems: "center",
-                    gap: "1rem",
+                    gap: isMobile ? "0.5rem" : "1rem",
                   }}
                 >
-                  <span>
-                    <PiNumberCircleOneLight />
-                  </span>{" "}
+                  <PiNumberCircleOneLight />
                   Shopping Cart
                 </span>
                 <span
@@ -73,17 +86,17 @@ const CartPage = () => {
                   }}
                 >
                   <IoIosArrowRoundForward />
-                </span>{" "}
+                </span>
                 <span
                   style={{
                     color: "#A6A3A3",
                     display: "flex",
                     alignItems: "center",
-                    gap: "1rem",
+                    gap: isMobile ? "0.5rem" : "1rem",
                   }}
                 >
                   <PiNumberCircleTwoLight /> Checkout Details
-                </span>{" "}
+                </span>
                 <span
                   style={{
                     color: "#A6A3A3",
@@ -92,34 +105,39 @@ const CartPage = () => {
                   }}
                 >
                   <IoIosArrowRoundForward />
-                </span>{" "}
+                </span>
                 <span
                   style={{
                     color: "#A6A3A3",
                     display: "flex",
                     alignItems: "center",
-                    gap: "1rem",
+                    gap: isMobile ? "0.5rem" : "1rem",
                   }}
                 >
                   <PiNumberCircleThreeLight /> Order Complete
-                </span>{" "}
+                </span>
               </h5>
             </Col>
           </Row>
 
           <Row>
             {/* Table */}
-            <Col lg={8} xs={12} className="mb-4" style={{}}>
+            <Col lg={8} xs={12} className="mb-4" style={{ overflowX: "auto" }}>
               <Table
                 bordered
                 hover
                 responsive
-                style={{ width: "100%", margin: "0 auto" }}
+                style={{
+                  width: "100%",
+                  margin: "0 auto",
+                  minWidth: isMobile ? "600px" : "100%",
+                  fontSize: isMobile ? "0.85rem" : "1rem",
+                }}
               >
                 <thead
                   style={{
                     textAlign: "center",
-                    height: "5rem",
+                    height: isMobile ? "3rem" : "5rem",
                     verticalAlign: "middle",
                     border: "1px solid #B8B4B4",
                   }}
@@ -151,10 +169,10 @@ const CartPage = () => {
                           src={item.img}
                           alt={item.name}
                           style={{
-                            width: "60px",
-                            height: "60px",
+                            width: isMobile ? "40px" : "60px",
+                            height: isMobile ? "40px" : "60px",
                             objectFit: "cover",
-                            marginRight: "10px",
+                            marginRight: isMobile ? "5px" : "10px",
                             borderRadius: "5px",
                           }}
                         />
@@ -168,6 +186,8 @@ const CartPage = () => {
                             boxShadow: "none",
                             textAlign: "center",
                             backgroundColor: "transparent",
+                            fontSize: isMobile ? "0.85rem" : "1rem",
+                            padding: isMobile ? "2px 6px" : "6px 12px",
                           }}
                           defaultValue={item.qty}
                         >
@@ -180,14 +200,101 @@ const CartPage = () => {
                       </td>
                       <td>${item.price * item.qty}</td>
                       <td>
-                        <Button variant="outline-none" size="sm">
-                          <FaTrash style={{ color: "#164C0D" }} />
+                        <Button variant="outline-none" size={isMobile ? "sm" : "lg"}>
+                          <FaTrash style={{ color: "#164C0D", fontSize: isMobile ? "14px" : "18px" }} />
                         </Button>
                       </td>
                     </tr>
                   ))}
                 </tbody>
               </Table>
+            </Col>
+
+            {/* Cart Summary */}
+            <Col lg={4} xs={12}>
+              <div
+                style={{
+                  backgroundColor: "#EFECEC",
+                  padding: isMobile ? "1rem" : "2rem",
+                  borderRadius: "10px",
+                  display: "grid",
+                  justifyContent: "center",
+                }}
+              >
+                <h4
+                  className="mb-3"
+                  style={{ textAlign: "center", color: "#23B540", fontSize: isMobile ? "1.25rem" : "1.5rem" }}
+                >
+                  Cart Total
+                </h4>
+                <p
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    fontSize: isMobile ? "0.9rem" : "1rem",
+                  }}
+                >
+                  Shipping Fee: <span>${shippingFee}</span>
+                </p>
+                <h6
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    fontSize: isMobile ? "1rem" : "1.25rem",
+                  }}
+                >
+                  Total: <strong>${total}</strong>
+                </h6>
+
+                <Form className="mt-3" style={{ fontSize: isMobile ? "0.9rem" : "1rem" }}>
+                  <Form.Check
+                    type="radio"
+                    label="Cash On Delivery"
+                    name="payment"
+                    className="mb-2"
+                  />
+                  <Form.Check
+                    type="radio"
+                    label="Online Payment"
+                    name="payment"
+                    className="mb-3"
+                  />
+                </Form>
+
+                <Button
+                  variant="success"
+                  className="w-100 mb-2"
+                  style={{
+                    backgroundColor: "transparent",
+                    color: "#164C0D",
+                    border: "2px solid #164C0D",
+                    fontWeight: "500",
+                    fontSize: isMobile ? "0.9rem" : "1rem",
+                  }}
+                >
+                  Check Out
+                </Button>
+                <Button
+                  variant="outline-success"
+                  className="w-100 mb-2"
+                  style={{
+                    color: "white",
+                    backgroundColor: "#164C0D",
+                    border: "2px solid #164C0D",
+                    fontWeight: "500",
+                    fontSize: isMobile ? "0.9rem" : "1rem",
+                  }}
+                >
+                  Continue Shopping
+                </Button>
+                <Button
+                  variant="outline-none"
+                  className="w-100"
+                  style={{ color: "#23B540", fontWeight: "500", fontSize: isMobile ? "0.9rem" : "1rem" }}
+                >
+                  Empty Cart
+                </Button>
+              </div>
             </Col>
           </Row>
         </Container>
