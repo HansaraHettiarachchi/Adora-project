@@ -7,6 +7,7 @@ import Home from './pages/Home';
 import User from './pages/User';
 import { Shop } from './pages/Shop';
 import About from './pages/About';
+import Cart from './pages/Cart';
 import Checkout from './pages/Checkout';
 
 const App: React.FC = () => {
@@ -18,6 +19,7 @@ const App: React.FC = () => {
         <Route path="/shop" element={<Shop />} />
         <Route path="/user" element={<User />} />
         <Route path="/about" element={<About />} />
+        <Route path="/cart" element={<Cart />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/checkout-details" element={<Checkout />} />
       </Routes>
