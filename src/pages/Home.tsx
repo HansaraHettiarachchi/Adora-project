@@ -1,9 +1,9 @@
 import React from 'react';
-import HeroSection from '../components/Home/HeroSection';
-import TopSellingFlowers from '../components/Home/TopSellingFlowers';
-import GiftOfferSection from '../components/Home/GiftOfferSection';
-import PopularCategories from '../components/Home/PopularCategories';
-import HowItWorksSection from '../components/Home/HowItWorksSection';
+import HeroSection from '../components/home/HeroSection';
+import TopSellingFlowers from '../components/home/TopSellingFlowers';
+import GiftOfferSection from '../components/home/GiftOfferSection';
+import PopularCategories from '../components/home/PopularCategories';
+import HowItWorksSection from '../components/home/HowItWorksSection';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
 import { Container } from 'react-bootstrap';
