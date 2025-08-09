@@ -50,7 +50,7 @@ const UserProfile: React.FC = () => {
       </div>
       <div>
         <h4 className="text-success">PAYMENT METHOD</h4>
-        <div className="d-flex align-items-center mb-2">
+        <div className="d-flex align-items-center justify-content-between mb-2">
           <div className="me-3">
             <img src="https://via.placeholder.com/50" alt="Visa" style={{ width: 50, height: 30 }} />
             <span>VISA ....... 8596 <small>Expire 06/26</small></span>
