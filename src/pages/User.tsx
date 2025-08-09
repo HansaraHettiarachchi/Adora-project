@@ -10,14 +10,11 @@ const User: React.FC = () => {
   return (
     <>
       <UserHeader />
-      <Container className='d-flex justify-content-center'>
-        <Container className='bg-black' style={{ width: "100%", height: "100%" }}>
-                // Create Your design here
-
-          <UserProfile />
-
-        </Container>
+      <Container fluid='sm'>
+        {/* <UserProfile /> */}
+        <UserEdit />
       </Container>
+
     </>
   );
 };

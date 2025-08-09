@@ -154,58 +154,11 @@ const UserProfile: React.FC = () => {
 
       {/* Payment Methods */}
       <div>
-        <h5 className="fw-bold ps-4" style={{ color: "#28a745" }}>
-          PAYMENT METHOD
-        </h5>
-        <div className="d-flex flex-wrap gap-3 mb-3 ps-4">
-          {/* Visa Card */}
-          <div
-            className="d-flex align-items-center p-3 rounded"
-            style={{ background: "#f8f9fa", width: "300px", height: "50px", position: "relative" }}
-          >
-            <img
-              src="../../src/assets/images/User-Images/visacard.png"
-              alt="Visa"
-              style={{ width: 50, height: 30, marginRight: "10px" }}
-            />
-            <div>
-              <strong>VISA</strong> ....8596
-              <br />
-              <small className="text-muted">Expire 06/26</small>
-            </div>
-            <button
-              type="button"
-              className="btn ms-auto p-0"
-              aria-label="Delete Visa payment method"
-              style={{ background: "none", border: "none", cursor: "pointer", color: "red" }}
-            >
-              <BsTrash size={20} />
-            </button>
-          </div>
-
-          {/* Master Card */}
-          <div
-            className="d-flex align-items-center p-3 rounded"
-            style={{ background: "#f8f9fa", width: "300px", height: "50px", position: "relative" }}
-          >
-            <img
-              src="../../src/assets/images/User-Images/mastercard.png"
-              alt="Master"
-              style={{ width: 50, height: 30, marginRight: "10px" }}
-            />
-            <div>
-              <strong>MAST</strong> ....8596
-              <br />
-              <small className="text-muted">Expire 06/26</small>
-            </div>
-            <button
-              type="button"
-              className="btn ms-auto p-0"
-              aria-label="Delete Master payment method"
-              style={{ background: "none", border: "none", cursor: "pointer", color: "red" }}
-            >
-              <BsTrash size={20} />
-            </button>
+        <h4 className="text-success">PAYMENT METHOD</h4>
+        <div className="d-flex align-items-center mb-2">
+          <div className="me-3">
+            <img src="https://via.placeholder.com/50" alt="Visa" style={{ width: 50, height: 30 }} />
+            <span>VISA ....... 8596 <small>Expire 06/26</small></span>
           </div>
 
           {/* Add Payment Button */}
