@@ -1,22 +1,34 @@
-import { Container } from "react-bootstrap";
-import Footer from "../comp/Footer";
-import Header from "../comp/Header";
-import 'bootstrap/dist/css/bootstrap.min.css';
+import React from 'react';
+import HeroSection from '../components/Home/HeroSection';
+import TopSellingFlowers from '../components/Home/TopSellingFlowers';
+import GiftOfferSection from '../components/Home/GiftOfferSection';
+import PopularCategories from '../components/Home/PopularCategories';
+import HowItWorksSection from '../components/Home/HowItWorksSection';
+import Header from '../components/Header';
+import Footer from '../components/Footer';
+import { Container } from 'react-bootstrap';
 
-const Home = () => {
+const Home: React.FC = () => {
+  return (
+    <>
+      <Header />
+      <HeroSection />
+      <Container className='d-flex justify-content-center'>
+        <Container >
+                // Create Your design here
+          <TopSellingFlowers />
+          <GiftOfferSection />
 
-    return (
-        <>
-            <Header />
+          <PopularCategories />
+          <HowItWorksSection />
 
-            <Container className="my-5">
-                <h1 className="text-success">Welcome to Adora Flower Shop</h1>
-                <p>Explore our collection of beautiful flowers for any occasion.</p>
-            </Container>
 
-            <Footer />
-        </>
-    );
-}
+        </Container>
+      </Container>
+
+      <Footer />
+    </>
+  );
+};
 
 export default Home;
