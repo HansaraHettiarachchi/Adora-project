@@ -1,12 +1,9 @@
-import React from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import { Container, Row, Col, Table, Button, Form } from "react-bootstrap";
-import { PiNumberCircleOneLight } from "react-icons/pi";
-import { PiNumberCircleTwoLight } from "react-icons/pi";
-import { PiNumberCircleThreeLight } from "react-icons/pi";
-import { IoIosArrowRoundForward } from "react-icons/io";
+import { Button, Col, Container, Form, Row, Table } from "react-bootstrap";
 import { FaTrash } from "react-icons/fa";
+import { IoIosArrowRoundForward } from "react-icons/io";
+import { PiNumberCircleOneLight, PiNumberCircleThreeLight, PiNumberCircleTwoLight } from "react-icons/pi";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 const CartPage = () => {
   const isMobile = window.innerWidth <= 576;
