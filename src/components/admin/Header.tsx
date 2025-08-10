@@ -1,7 +1,17 @@
-import React from 'react'
+import React from "react";
+import { Navbar, Container, Button } from "react-bootstrap";
 
-export default function Header() {
+const Header: React.FC = () => {
   return (
-      <div>Header</div>
-  )
-}
+    <Navbar bg="light" className="shadow-sm border-bottom" sticky="top"  style={{ paddingTop: "1.5rem", paddingBottom: "1.5rem" }}>
+      <Container fluid className="d-flex justify-content-between align-items-center">
+        <h5 className="m-0 fw-bold text-success">Admin Panel</h5>
+        <div>
+          <span className="fw-semibold me-3">Welcome, Admin!</span>
+        </div>
+      </Container>
+    </Navbar>
+  );
+};
+
+export default Header;
