@@ -5,7 +5,7 @@ import logo from '../assets/images/logo.png';
 
 const UserHeader: React.FC = () => (
   <Navbar bg="light" expand="lg" className="py-3 border-bottom shadow-sm">
-    <Container className="d-flex justify-content-between align-items-center">
+    <Container fluid='sm' className="d-flex justify-content-between align-items-center">
       {/* Left: Home Link */}
       <Nav className="me-auto">
         <Nav.Link href="/" className="text-success d-flex align-items-center">
