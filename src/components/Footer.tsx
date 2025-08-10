@@ -59,6 +59,7 @@ const Footer: React.FC = () => (
           <p>
             <FaPhone className="me-2" />+94 76 123 4567
           </p>
+          <br />
         </Col>
         <Col md={2} className="mb-4 mb-md-0">
           <h5 className="text-success fw-bold mb-3">Social Media</h5>

@@ -1,6 +1,6 @@
 import React from 'react';
 import banner from '../../assets/images/banner1.webp';
-import logo from '../../assets/images/logo.png';
+import logo from '../../assets/images/logo-white.png';
 
 const HeroSection: React.FC = () => (
   <section
@@ -32,22 +32,20 @@ const HeroSection: React.FC = () => (
     <footer
       className="w-100 position-absolute bottom-0 d-flex align-items-center justify-content-center px- py-4"
       style={{
-      backgroundColor: 'rgba(57, 61, 36, 0.95)',
-      color: '#fff',
-      fontSize: '0.95rem',
-      zIndex: 2,
-      minHeight: '70px',
+        backgroundColor: 'rgba(57, 61, 36, 0.95)',
+        color: '#fff',
+        fontSize: '0.95rem',
+        zIndex: 2,
+        minHeight: '70px',
       }}
     >
       <img
-      src={logo}
-      alt="Hales Logo"
-      style={{ maxWidth: '40px', marginRight: '10px', verticalAlign: 'middle' }}
+        src={logo}
+        alt="Hales Logo"
+        style={{ maxWidth: '90px', marginRight: '20px', marginLeft: '30px', verticalAlign: 'middle' }}
       />
-      <span>
-        Here at Hales, we work with a small list of carefully chosen producers, source the freshest
-        hothouse blooms, wildflowers and seasonal greenery, and display them in custom pottery and
-        glassware.
+      <span style={{ fontSize: '1.15rem' }}>
+        At Adora, every bloom tells a story , handpicked from trusted growers, arranged with love, and styled in timeless pottery and glassware.
       </span>
     </footer>
 

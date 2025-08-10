@@ -1,12 +1,18 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Container, Row, Col, Carousel, Image } from "react-bootstrap";
 import { BsCheck2 } from "react-icons/bs";
 
+const initialcarddata = {
+  name: " ",
+  card_number: " ",
+  card_dfgfd: " ",
+  card_dfgfdsfdsfs: " ",
+}
+
 const About = () => {
   const featuresLeft = ["Natural Materials", "5 Days Refund", "Good Woods"];
-
   const featuresRight = ["Free Shipping", "Best Fabrics", "Friendly Support"];
 
   return (
@@ -24,9 +30,8 @@ const About = () => {
                 objectFit: "cover",
                 marginBottom: "1rem",
               }}
-              src={`src/assets/images/about_slide (${num}).${
-                num === 1 ? "png" : "jpg"
-              }`}
+              src={`src/assets/images/about_slide (${num}).${num === 1 ? "png" : "jpg"
+                }`}
               alt={`Slide ${num}`}
             />
           </Carousel.Item>
