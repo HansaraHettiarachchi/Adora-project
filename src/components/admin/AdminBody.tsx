@@ -2,15 +2,20 @@ import React from 'react';
 import { Outlet } from 'react-router-dom';
 import Header from './Header';
 import SideBar from './SideBar';
+import AddProduct from './AddProduct';
 
 
 const AdminBody: React.FC = () => {
   return (
-    <div style={{ display: 'flex', minHeight: '100vh' }}>
+    <div className="d-flex min-vh-100">
       <SideBar />
-      <div style={{ flex: 1, display: 'flex', flexDirection: 'column' }}>
+      <div className="flex-grow-1 d-flex flex-column">
         <Header />
-        <main style={{ flex: 1, padding: 20, background: '#f7f9f7' }}>
+
+        {/* Schani Develepment */}
+        <AddProduct show={true} handleClose={() => { }} />
+
+        <main className="flex-grow-1 p-4" style={{ background: '#f7f9f7' }}>
           <Outlet />
         </main>
       </div>
