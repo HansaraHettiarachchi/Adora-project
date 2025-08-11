@@ -36,6 +36,7 @@ const App: React.FC = () => {
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Signup />} />
         <Route path="/checkout-details" element={<Checkout />} />
+        <Route path="/checkout" element={<Checkout />} />
 
          {/* Admin section nested routing */}
         <Route path="/admin" element={<AdminBody />}>
