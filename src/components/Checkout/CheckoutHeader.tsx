@@ -8,7 +8,7 @@ export default function CheckoutHeader() {
             <div className="d-flex justify-content-between">
                 <p style={{ color: "#13af6eff" }}><Bs1Circle size={28} color='#13af6eff' className='me-2' /> Shipping Cart</p>
                 <p><MdOutlineArrowRightAlt /></p>
-                <p><Bs2Circle /> Checkout Details</p>
+                <p style={{ color: "#13af6eff" }}><Bs2Circle size={28} color='#13af6eff' className='me-2' /> Checkout Details</p>
                 <p><MdOutlineArrowRightAlt /></p>
                 <p> <Bs3Circle /> Order Complete</p>
             </div>
