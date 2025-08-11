@@ -37,7 +37,7 @@ const App: React.FC = () => {
         <Route path="/register" element={<Signup />} />
         <Route path="/checkout-details" element={<Checkout />} />
 
-         {/* Admin section nested routing */}
+        {/* Admin section nested routing */}
         <Route path="/admin" element={<AdminBody />}>
           {/* <Route index element={<Navigate to="dashboard" replace />} />  */}
           <Route path="dashboard" element={<Dashboard />} />
@@ -48,7 +48,7 @@ const App: React.FC = () => {
           <Route path="reset-passwords" element={<ResetPasswords />} />
 
         </Route>
-        
+
       </Routes>
     </Router>
   );
