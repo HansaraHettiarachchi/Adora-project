@@ -2,18 +2,5 @@
 @import url('https://fonts.googleapis.com/css2?family=Familjen+Grotesk:wght@400;500;700&display=swap');
 
 
-/* Checkout Page Checkout Form CSS */
-.checkout-form ::placeholder {
-  color: #E9E4E4; 
-  opacity: 1;
-}
 
-.checkout-form .form-control {
-  border: none;
-  border-radius: 5px;
-}
-
-.checkout-form .form-control:focus {
-  box-shadow: none;
-}
 

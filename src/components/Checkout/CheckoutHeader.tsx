@@ -10,7 +10,7 @@ export default function CheckoutHeader() {
           <Bs1Circle size={20} color="#164C0D" className="me-2" /> Shipping Cart
         </p>
         <p>
-          <MdOutlineArrowRightAlt style={{ color: "#164C0D" }} />
+          <MdOutlineArrowRightAlt style={{ color: "" }} />
         </p>
         <p style={{ color: "#23B540" }}>
           <Bs2Circle size={20} color="#164C0D" className="me-2" /> Checkout

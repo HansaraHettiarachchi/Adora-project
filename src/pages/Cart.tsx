@@ -78,7 +78,7 @@ const CartPage = () => {
                 >
                   <PiNumberCircleOneLight
                     style={{
-                      color: "#164C0D",
+                      color: "#164C0D"
                     }}
                   />
                   Shopping Cart
