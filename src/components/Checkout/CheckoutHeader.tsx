@@ -7,13 +7,13 @@ export default function CheckoutHeader() {
     <>
       <div className="d-flex flex-column flex-md-row justify-content-between align-items-center text-center my-5">
         <p style={{ color: "#23B540" }}>
-          <Bs1Circle size={20} color="#23B540" className="me-2" /> Shipping Cart
+          <Bs1Circle size={20} color="#164C0D" className="me-2" /> Shipping Cart
         </p>
         <p>
-          <MdOutlineArrowRightAlt style={{ color: "#23B540" }} />
+          <MdOutlineArrowRightAlt style={{ color: "#164C0D" }} />
         </p>
         <p style={{ color: "#23B540" }}>
-          <Bs2Circle size={20} color="#23B540" className="me-2" /> Checkout
+          <Bs2Circle size={20} color="#164C0D" className="me-2" /> Checkout
           Details
         </p>
         <p>
