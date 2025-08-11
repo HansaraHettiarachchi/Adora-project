@@ -12,7 +12,7 @@ export default function CheckoutHeader() {
         <p>
           <MdOutlineArrowRightAlt
             style={{
-              color: "#A6A3A3",
+              color: "#23B540",
             }}
           />
         </p>
