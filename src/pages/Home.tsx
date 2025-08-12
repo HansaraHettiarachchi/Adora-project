@@ -6,7 +6,6 @@ import PopularCategories from '../components/Home/PopularCategories';
 import HowItWorksSection from '../components/Home/HowItWorksSection';
 import Header from '../components/Header';
 import Footer from '../components/Footer';
-import { Container } from 'react-bootstrap';
 
 const Home: React.FC = () => {
   return (
@@ -16,11 +15,7 @@ const Home: React.FC = () => {
       <TopSellingFlowers />
       <GiftOfferSection />
       <PopularCategories />
-      <Container className='d-flex justify-content-center'>
-        <Container >
-          <HowItWorksSection />
-        </Container>
-      </Container>
+      <HowItWorksSection />
       <Footer />
     </>
   );

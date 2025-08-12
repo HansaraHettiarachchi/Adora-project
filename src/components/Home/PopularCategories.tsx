@@ -6,22 +6,20 @@ import "./PopularCategories.css";
 
 const PopularCategories: React.FC = () => {
   return (
-<div className="container-lg my-5 popular-categories-container">
-  <h2 className="text-center text-success fw-bold mb-4">MOST POPULAR</h2>
-
+    <div className="container-lg my-5 popular-categories-container">
+      <h2 className="text-center text-success fw-bold mb-4">MOST POPULAR</h2>
 
       {/* Valentine */}
       <div className="row align-items-center bg-light rounded-4 overflow-hidden mb-4">
         <div className="col-md-6 p-0">
-          <img src={valentineImg} alt="Valentine" className="img-fluid w-100 h-100 object-fit-cover" />
+          <img src={valentineImg} alt="Valentine" className="popular-image" />
         </div>
-        <div className="col-md-6 p-4">
-          <h3 className="fw-bold text-success">Valentine</h3>
-          <p>
+        <div className="col-md-5 p-4 popular-text-section">
+          <h3 className="text-success">Valentine</h3>
+          <p className="mt-4 mb-5">
             Dorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a,
             mattis tellus. Sed dignissim, metus nec fringilla accumsan, risus sem sollicitudin lacus, ut
-            interdum tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus.
-            Class aptent taciti
+            interdum tellus elit sed risus.
           </p>
           <button className="btn btn-outline-success rounded-pill px-4">Checkout</button>
         </div>
@@ -30,14 +28,13 @@ const PopularCategories: React.FC = () => {
       {/* Wedding */}
       <div className="row align-items-center bg-light rounded-4 overflow-hidden mb-4 flex-md-row-reverse">
         <div className="col-md-6 p-0">
-          <img src={weddingImg} alt="Wedding" className="img-fluid w-100 h-100 object-fit-cover" />
+          <img src={weddingImg} alt="Wedding" className="popular-image" />
         </div>
-        <div className="col-md-6 p-4">
-          <h3 className="fw-bold text-success">Wedding</h3>
-          <p>
+        <div className="col-md-5 p-4 popular-text-section reverse">
+          <h3 className="text-success">Wedding</h3>
+          <p className="mt-4 mb-5">
             Dorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis n lacus, ut interdum
             tellus elit sed risus. Maecenas eget condimentum velit, sit amet feugiat lectus.
-            Class aptent taciti
           </p>
           <button className="btn btn-outline-success rounded-pill px-4">Checkout</button>
         </div>
@@ -46,14 +43,14 @@ const PopularCategories: React.FC = () => {
       {/* House Plants */}
       <div className="row align-items-center bg-light rounded-4 overflow-hidden">
         <div className="col-md-6 p-0">
-          <img src={housePlantsImg} alt="House Plants" className="img-fluid w-100 h-100 object-fit-cover" />
+          <img src={housePlantsImg} alt="House Plants" className="popular-image" />
         </div>
-        <div className="col-md-6 p-4">
-          <h3 className="fw-bold text-success">House Plants</h3>
-          <p>
+        <div className="col-md-5 p-4 popular-text-section">
+          <h3 className="text-success">House Plants</h3>
+          <p className="mt-4 mb-5"> 
             Dorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a,
             mattis tellus. fringilla accumsan, risus sem sollicitudin lacus, ut interdum tellus elit sed
-            risus. Maecenas eget condimentum velit, sit amet feugiat lectus. Class aptent taciti
+            risus.
           </p>
           <button className="btn btn-outline-success rounded-pill px-4">Checkout</button>
         </div>
