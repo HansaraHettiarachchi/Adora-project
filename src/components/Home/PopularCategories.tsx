@@ -7,7 +7,7 @@ import "./PopularCategories.css";
 const PopularCategories: React.FC = () => {
   return (
     <div className="container-lg my-5 popular-categories-container">
-      <h2 className="text-center text-success fw-bold mb-4">MOST POPULAR</h2>
+      <h2 className="text-center text-success fw-bold mb-4">MOST POPULAR CATEGORIES</h2>
 
       {/* Valentine */}
       <div className="row align-items-center bg-light rounded-4 overflow-hidden mb-4">
