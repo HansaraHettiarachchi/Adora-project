@@ -15,7 +15,9 @@ const flowerData = [
 const TopSellingFlowers: React.FC = () => {
   return (
     <div className="text-center my-5 px-2">
-      <h2 className="mb-4 fw-bold" style={{ fontFamily: 'Poppins' }}>Top Selling Flowers</h2>
+      <h2 className="text-center text-success fw-bold mb-4" style={{ fontFamily: "'Poppins', sans-serif" }}>
+        TOP SELLING FLOWERS
+      </h2>
       <div className="flowers-container py-5 px-4">
         <div className="row g-4">
           {flowerData.map((flower, idx) => (
