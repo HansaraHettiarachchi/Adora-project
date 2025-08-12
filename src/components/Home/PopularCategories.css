@@ -1,0 +1,17 @@
+.object-fit-cover {
+  object-fit: cover;
+}
+
+.popular-section {
+  background-color: #fff; /* you can change this if needed */
+  padding-left: 0;
+  padding-right: 0;
+}
+
+.bg-light {
+  background-color: #f4f4f4 !important;
+}
+
+.popular-categories-container {
+  max-width: 1200px; /* Wider than Bootstrap's default 1140px */
+}

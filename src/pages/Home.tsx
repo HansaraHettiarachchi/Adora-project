@@ -14,10 +14,10 @@ const Home: React.FC = () => {
       <Header />
       <HeroSection />
       <TopSellingFlowers />
-          <GiftOfferSection />
+      <GiftOfferSection />
+      <PopularCategories />
       <Container className='d-flex justify-content-center'>
         <Container >
-          <PopularCategories />
           <HowItWorksSection />
         </Container>
       </Container>
