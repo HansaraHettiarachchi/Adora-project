@@ -13,17 +13,13 @@
 
 /* Container wider than default bootstrap */
 .popular-categories-container {
-  font-family: "Poppins", sans-serif;
+  font-family: 'Poppins', sans-serif;
   max-width: 1250px;
 }
 
 /* Text section background - glassmorphism feel */
 .popular-text-section {
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.9),
-    rgba(240, 255, 240, 0.85)
-  );
+  background: linear-gradient(135deg, rgba(255, 255, 255, 0.9), rgba(240, 255, 240, 0.85));
   backdrop-filter: blur(6px);
   -webkit-backdrop-filter: blur(6px);
   box-shadow: 0 6px 25px rgba(0, 0, 0, 0.05);
@@ -72,3 +68,4 @@
   transform: translateY(-2px) scale(1.03);
   box-shadow: 0 4px 15px rgba(25, 135, 84, 0.3);
 }
+
