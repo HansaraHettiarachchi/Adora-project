@@ -1,7 +1,9 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
 
 export default function UserEdit() {
+  const [discardHover, setDiscardHover] = useState(false);
+
   return (
     <Container
       fluid
@@ -16,7 +18,7 @@ export default function UserEdit() {
     >
       {/* Header */}
       <div className="text-center mb-4">
-        <h4 className="fw-bold" style={{ color: "#39A108", fontWeight: "800"}}>
+        <h4 className="fw-bold" style={{ color: "#39A108", fontWeight: "800" }}>
           EDIT <span style={{ color: "#000" }}>PROFILE</span>
         </h4>
       </div>
@@ -30,7 +32,6 @@ export default function UserEdit() {
           </div>
 
           <Form>
-            {/* User ID */}
             <Form.Group className="mb-3">
               <Form.Label style={{ color: "#39A108", fontWeight: "800" }}>
                 USER <span style={{ color: "#000" }}>ID</span>
@@ -38,7 +39,12 @@ export default function UserEdit() {
               <Form.Control
                 type="text"
                 value="mohamed123"
-                style={{ background: "#F2F2F2", border: "none", borderRadius:"15px", width: "221px", height: "30px"}}
+                style={{
+                  background: "#F2F2F2",
+                  border: "none",
+                  borderRadius: "15px",
+                  width: "140px",
+                }}
                 readOnly
               />
             </Form.Group>
@@ -50,7 +56,7 @@ export default function UserEdit() {
               <Form.Control
                 type="email"
                 value="mohamed123@gmail.com"
-                style={{ background: "#fff", border: "none" }}
+                style={{ background: "none" }}
                 readOnly
               />
             </Form.Group>
@@ -63,7 +69,11 @@ export default function UserEdit() {
                 as="textarea"
                 rows={3}
                 value="Dorem ipsum dolor sit amet, consectetur adipiscing elit. Etiam eu turpis molestie, dictum est a, mattis tellus..."
-                style={{ background: "#F2F2F2", border: "none" }}
+                style={{
+                  background: "#F2F2F2",
+                  border: "none",
+                  borderRadius: "15px",
+                }}
               />
             </Form.Group>
 
@@ -75,7 +85,11 @@ export default function UserEdit() {
                 as="textarea"
                 rows={2}
                 value="48, SRI WAIJIRAGANA MAWATHA, DEMATAGOA ROAD..."
-                style={{ background: "#F2F2F2", border: "none" }}
+                style={{
+                  background: "#F2F2F2",
+                  border: "none",
+                  borderRadius: "15px",
+                }}
               />
             </Form.Group>
 
@@ -86,7 +100,12 @@ export default function UserEdit() {
               <Form.Control
                 type="text"
                 value="+94 76 123 4567"
-                style={{ background: "#F2F2F2", border: "none" }}
+                style={{
+                  background: "#F2F2F2",
+                  border: "none",
+                  borderRadius: "15px",
+                  width: "150px",
+                }}
               />
             </Form.Group>
           </Form>
@@ -131,8 +150,14 @@ export default function UserEdit() {
             fontWeight: "700",
             borderRadius: "8px",
             padding: "6px 20px",
-            width:"250px"
+            width: "250px",
+            color: discardHover ? "white" : undefined,
+            borderColor: discardHover ? "#39A108" : undefined,
+            backgroundColor: discardHover ? "#39A108" : "transparent",
+            transition: "all 0.3s ease",
           }}
+          onMouseEnter={() => setDiscardHover(true)}
+          onMouseLeave={() => setDiscardHover(false)}
         >
           DISCARD
         </Button>
@@ -142,7 +167,7 @@ export default function UserEdit() {
             fontWeight: "700",
             borderRadius: "8px",
             padding: "6px 20px",
-            width:"250px"
+            width: "250px",
           }}
         >
           KEEP CHANGES
