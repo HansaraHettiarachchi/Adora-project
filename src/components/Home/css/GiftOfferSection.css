@@ -1,0 +1,71 @@
+.gift-offer-wrapper {
+  position: relative;
+  width: 100%;
+  max-width: 950px;
+  margin: 0 auto;
+  border-radius: 8px;
+  overflow: hidden;
+}
+
+.gift-offer-image {
+  width: 100%;
+  height: auto;
+  display: block;
+  object-fit: cover;
+}
+
+.gift-text-box {
+  position: absolute;
+  top: 50%;
+  left: 10%;
+  transform: translateY(-50%);
+  color: white;
+  background-color: rgba(0, 0, 0, 0.5); /* semi-transparent dark background */
+  padding: 20px;
+  border-radius: 8px;
+  max-width: 45%;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+  font-family: 'Poppins', sans-serif;
+}
+
+.gift-text-box h2 {
+  margin-bottom: 1.5rem;
+}
+
+.gift-text-box p {
+  font-size: 1.1rem;
+  line-height: 1.6;
+  color: white;
+  font-weight: 400;
+}
+
+@media (max-width: 600px) {
+  .gift-offer-wrapper {
+    max-width: 100%;
+    border-radius: 0;
+  }
+
+  .gift-text-box {
+    position: absolute;
+    top: 50%;        /* lower it a bit for better visibility */
+    left: 5%;        /* smaller left padding */
+    transform: translateY(-50%);
+    max-width: 90%;  /* use more width */
+    padding: 12px 15px;
+    font-size: 0.9rem;
+    background-color: rgba(0, 0, 0, 0.6);
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.4);
+    border-radius: 6px;
+  }
+
+  .gift-text-box h2 {
+    font-size: 1.3rem;
+    margin-bottom: 1rem;
+  }
+
+  .gift-text-box p {
+    font-size: 1rem;
+    line-height: 1.4;
+  }
+}
+
