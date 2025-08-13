@@ -1,8 +1,9 @@
 import React from "react";
+import { Col, Row } from "react-bootstrap";
 import { Bs1Circle, Bs2Circle, Bs3Circle } from "react-icons/bs";
 import { MdOutlineArrowRightAlt } from "react-icons/md";
 
-export default function CheckoutHeader() {
+export default function OrderCompleteHeader() {
   return (
     <>
       <div className="d-flex flex-column flex-md-row justify-content-between align-items-center text-center my-5">
@@ -17,10 +18,10 @@ export default function CheckoutHeader() {
           Details
         </p>
         <p>
-          <MdOutlineArrowRightAlt style={{ color: "#A6A3A3" }} />
+          <MdOutlineArrowRightAlt style={{ color: "#164C0D" }} />
         </p>
-        <p style={{ color: "#A6A3A3" }}>
-          <Bs3Circle size={20} color="#A6A3A3" className="me-2" /> Order
+        <p style={{ color: "#23B540" }}>
+          <Bs3Circle size={20} color="#164C0D" className="me-2" /> Order
           Complete
         </p>
       </div>

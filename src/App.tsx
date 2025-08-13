@@ -19,6 +19,7 @@ import Comments from './pages/Admin/Comments';
 import ResetPasswords from './pages/Admin/ResetPasswords';
 import Wishlist from './pages/Wishlist';
 import Shop from './pages/Shop';
+import OrderComplete from './pages/OrderComplete';
 
 const App: React.FC = () => {
   return (
@@ -36,7 +37,10 @@ const App: React.FC = () => {
         <Route path="/register" element={<Signup />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/checkout-details" element={<Checkout />} />
+        <Route path="/checkout" element={<Checkout />} />
+        <Route path="/OrderComplete" element={<OrderComplete />} />
 
+        {/* Admin section nested routing */}
         {/* Admin section nested routing */}
         <Route path="/admin" element={<AdminBody />}>
           {/* <Route index element={<Navigate to="dashboard" replace />} />  */}
@@ -46,7 +50,6 @@ const App: React.FC = () => {
           <Route path="customers" element={<Customers />} />
           <Route path="comments" element={<Comments />} />
           <Route path="reset-passwords" element={<ResetPasswords />} />
-
         </Route>
 
       </Routes>
