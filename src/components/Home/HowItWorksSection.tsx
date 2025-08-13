@@ -1,6 +1,6 @@
 import React from 'react';
 import sampleVideo from '../../assets/videos/sample.mp4'; // your video path
-import './HowItWorksSection.css';
+import './css/HowItWorksSection.css';
 
 const HowItWorksSection: React.FC = () => {
   return (

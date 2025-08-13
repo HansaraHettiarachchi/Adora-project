@@ -3,7 +3,7 @@ import home1 from '../../assets/images/home-img1.jpeg';
 import home2 from '../../assets/images/home-img2.jpeg';
 import home3 from '../../assets/images/home-img3.jpeg';
 import home4 from '../../assets/images/home-img4.jpg';
-import './TopSellingFlowers.css';
+import './css/TopSellingFlowers.css';
 
 const flowerData = [
   { img: home1, alt: 'Home Flower', name: 'Featured Flower', price: '' },

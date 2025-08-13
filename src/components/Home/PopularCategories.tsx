@@ -2,7 +2,7 @@ import React from "react";
 import valentineImg from "../../assets/images/valentine.jpg";
 import weddingImg from "../../assets/images/wedding.png";
 import housePlantsImg from "../../assets/images/house-plants.jpg";
-import "./PopularCategories.css";
+import "./css/PopularCategories.css";
 
 const PopularCategories: React.FC = () => {
   return (

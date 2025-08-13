@@ -1,6 +1,6 @@
 import React from 'react';
 import flowerImage from '../../assets/images/flower.jpg'; // Adjust path accordingly
-import './GiftOfferSection.css';
+import './css/GiftOfferSection.css';
 
 const GiftOfferSection: React.FC = () => {
   return (
