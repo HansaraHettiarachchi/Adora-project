@@ -1,7 +1,8 @@
 import { Container } from 'react-bootstrap';
-import CheckoutHeader from '../components/checkout/CheckoutHeader';
+import CheckoutHeader from '../components/Checkout/CheckoutHeader';
 import Header from '../components/Header';
-import CheckoutDetails from '../components/checkout/CheckoutDetails';
+import Footer from "../components/Footer";
+import CheckoutDetails from '../components/Checkout/CheckoutDetails';
 
 export default function Checkout() {
 
@@ -9,11 +10,13 @@ export default function Checkout() {
     <>
       <Header />
 
-      <Container className='mt-3'>
+      <Container className='my-5'>
         <CheckoutHeader />
         <CheckoutDetails />
-
+      
       </Container>
+
+      <Footer />
     </>
   )
 }
