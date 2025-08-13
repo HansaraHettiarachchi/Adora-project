@@ -99,13 +99,13 @@ export default function Wishlist() {
       <Container fluid="sm" className="py-4">
         <div className="row g-4">
           {/* Cart Section */}
-          <div className="col-lg-8">
-            <h5
+          <h5
               className="mb-3 fw-bold  pb-2"
               style={{ borderBottom: "1px solid #164C0D" }}
             >
-              CART
+              WISHLIST
             </h5>
+          <div className="col-lg-8">
             {products.length > 0 ? (
               products.map((p) => (
                 <div
@@ -213,7 +213,7 @@ export default function Wishlist() {
                           border: "none",
                         }}
                       >
-                        CHECK OUT
+                        ADD TO CART
                       </Button>
                     </div>
                   </div>
@@ -234,7 +234,7 @@ export default function Wishlist() {
                 className="d-flex justify-content-center"
                 style={{ borderBottom: "1px solid #164C0D", color: "#164C0D" }}
               >
-                SUMMARY
+                WISHLIST
               </h5>
               <div
                 className="d-flex justify-content-between"
@@ -272,7 +272,7 @@ export default function Wishlist() {
                 <span>${estimatedTotal}</span>
               </div>
               <Button
-                className="w-50 mt-3 fw-bold mx-auto d-block"
+                className="w-100 mt-3 fw-bold mx-auto d-block"
                 style={{
                   background: "#164C0D",
                   borderRadius: "10px",
@@ -280,7 +280,7 @@ export default function Wishlist() {
                   border: "none",
                 }}
               >
-                CHECK OUT
+                CONTINUE SHOPPING
               </Button>
             </div>
 
