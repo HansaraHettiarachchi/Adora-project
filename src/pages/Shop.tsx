@@ -1,11 +1,10 @@
-import React from 'react'
-import Header from '../components/Header'
 import { Button, Col, Container, Form, Image, InputGroup, Row } from 'react-bootstrap'
-import Footer from '../components/Footer'
-import { FaCartPlus, FaDochub } from 'react-icons/fa'
-import p_image from '../assets/images/Product/image.png';
+import { FaCartPlus } from 'react-icons/fa'
 import { IoMdSearch } from 'react-icons/io'
-import { IoMicOutline } from "react-icons/io5";
+import { IoMicOutline } from "react-icons/io5"
+import p_image from '../assets/images/Product/image.png'
+import Footer from '../components/Footer'
+import Header from '../components/Header'
 
 const Shop = () => {
     return (

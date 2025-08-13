@@ -40,10 +40,7 @@ const App: React.FC = () => {
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/OrderComplete" element={<OrderComplete />} />
 
-        {/* Admin section nested routing */}
-        {/* Admin section nested routing */}
         <Route path="/admin" element={<AdminBody />}>
-          {/* <Route index element={<Navigate to="dashboard" replace />} />  */}
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="orders" element={<Orders />} />
           <Route path="products" element={<Products />} />
