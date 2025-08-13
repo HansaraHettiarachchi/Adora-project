@@ -1,19 +1,20 @@
 import React from 'react';
-import UserProfile from '../components/User/UserProfile';
+import UserProfile from '../components/user/UserProfile';
 import './css/user.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import UserHeader from '../components/UserHeader';
 import { Container } from 'react-bootstrap';
+import UserEdit from '../components/user/UserEdit';
 
 const User: React.FC = () => {
   return (
     <>
       <UserHeader />
-      <Container className='d-flex justify-content-center'>
-        <Container className='bg-white' style={{ width: "100%", height: "100%" }}>
-          <UserProfile />
-        </Container>
+      <Container>
+        <UserProfile />
+        <UserEdit />
       </Container>
+
     </>
   );
 };

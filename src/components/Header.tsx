@@ -9,7 +9,7 @@ const Header: React.FC = () => {
 
   return (
     <Navbar bg="light" expand="lg" className="py-3 border-bottom shadow-sm">
-      <Container>
+      <Container fluid="sm">
         <Navbar.Brand href="/">
           <img src={logo} alt="Adora Logo" style={{ height: 48, objectFit: 'contain' }} />
         </Navbar.Brand>
@@ -24,6 +24,7 @@ const Header: React.FC = () => {
           </Nav>
           <div className="d-flex align-items-center gap-3 text-success fs-5">
             <Nav.Link href="/search" className="p-0 text-success"><FaSearch /></Nav.Link>
+            <Nav.Link href="/wishlist" className="p-0 text-success"><FaShoppingCart />dfd</Nav.Link>
             <Nav.Link href="/cart" className="p-0 text-success"><FaShoppingCart /></Nav.Link>
             <Nav.Link
               href="/user"
