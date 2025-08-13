@@ -1,12 +1,13 @@
-import React from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import { Container, Row, Col, Table, Button, Form } from "react-bootstrap";
-import { PiNumberCircleOneLight } from "react-icons/pi";
-import { PiNumberCircleTwoLight } from "react-icons/pi";
-import { PiNumberCircleThreeLight } from "react-icons/pi";
-import { IoIosArrowRoundForward } from "react-icons/io";
+import { Button, Col, Container, Form, Row, Table } from "react-bootstrap";
 import { FaTrash } from "react-icons/fa";
+import { IoIosArrowRoundForward } from "react-icons/io";
+import {
+  PiNumberCircleOneLight,
+  PiNumberCircleThreeLight,
+  PiNumberCircleTwoLight,
+} from "react-icons/pi";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 const CartPage = () => {
   const isMobile = window.innerWidth <= 576;
@@ -75,7 +76,11 @@ const CartPage = () => {
                     gap: isMobile ? "0.5rem" : "1rem",
                   }}
                 >
-                  <PiNumberCircleOneLight />
+                  <PiNumberCircleOneLight
+                    style={{
+                      color: "#164C0D"
+                    }}
+                  />
                   Shopping Cart
                 </span>
                 <span
@@ -200,8 +205,16 @@ const CartPage = () => {
                       </td>
                       <td>${item.price * item.qty}</td>
                       <td>
-                        <Button variant="outline-none" size={isMobile ? "sm" : "lg"}>
-                          <FaTrash style={{ color: "#164C0D", fontSize: isMobile ? "14px" : "18px" }} />
+                        <Button
+                          variant="outline-none"
+                          size={isMobile ? "sm" : "lg"}
+                        >
+                          <FaTrash
+                            style={{
+                              color: "#164C0D",
+                              fontSize: isMobile ? "14px" : "18px",
+                            }}
+                          />
                         </Button>
                       </td>
                     </tr>
@@ -223,7 +236,11 @@ const CartPage = () => {
               >
                 <h4
                   className="mb-3"
-                  style={{ textAlign: "center", color: "#23B540", fontSize: isMobile ? "1.25rem" : "1.5rem" }}
+                  style={{
+                    textAlign: "center",
+                    color: "#23B540",
+                    fontSize: isMobile ? "1.25rem" : "1.5rem",
+                  }}
                 >
                   Cart Total
                 </h4>
@@ -246,7 +263,10 @@ const CartPage = () => {
                   Total: <strong>${total}</strong>
                 </h6>
 
-                <Form className="mt-3" style={{ fontSize: isMobile ? "0.9rem" : "1rem" }}>
+                <Form
+                  className="mt-3"
+                  style={{ fontSize: isMobile ? "0.9rem" : "1rem" }}
+                >
                   <Form.Check
                     type="radio"
                     label="Cash On Delivery"
@@ -290,7 +310,11 @@ const CartPage = () => {
                 <Button
                   variant="outline-none"
                   className="w-100"
-                  style={{ color: "#23B540", fontWeight: "500", fontSize: isMobile ? "0.9rem" : "1rem" }}
+                  style={{
+                    color: "#23B540",
+                    fontWeight: "500",
+                    fontSize: isMobile ? "0.9rem" : "1rem",
+                  }}
                 >
                   Empty Cart
                 </Button>
