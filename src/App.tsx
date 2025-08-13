@@ -5,7 +5,6 @@ import './App.css';
 import Contact from './pages/Contact';
 import Home from './pages/Home';
 import User from './pages/User';
-import { Shop } from './pages/Shop';
 import Login from './pages/Login';
 import Signup from './pages/Signup';
 import About from './pages/About';
@@ -19,8 +18,7 @@ import Customers from './pages/Admin/Customers';
 import Comments from './pages/Admin/Comments';
 import ResetPasswords from './pages/Admin/ResetPasswords';
 import Wishlist from './pages/Wishlist';
-
-
+import Shop from './pages/Shop';
 
 const App: React.FC = () => {
   return (
