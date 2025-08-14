@@ -11,7 +11,7 @@ const Shop = () => {
     return (
         <>
             <Header />
-            <BreadcrumbBar currentPage="Shop"/>
+            <BreadcrumbBar />
 
             <Container fluid='sm' >
 

@@ -5,14 +5,10 @@ import { Container, Row, Col, Form } from 'react-bootstrap';
 import { FaRegEnvelope } from 'react-icons/fa';
 import { FaPhoneVolume } from "react-icons/fa6";
 import { FaLocationDot } from "react-icons/fa6";
-import BreadcrumbBar from '../components/BreadcrumbBar'
-
 const Contact = () => {
     return (
         <>
             <Header />
-
-            <BreadcrumbBar currentPage="Contact"/>
 
             <Container fluid="sm" className='d-flex justify-content-center'>
                 <Container className='py-5'>
