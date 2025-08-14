@@ -228,7 +228,7 @@ export default function Wishlist() {
           <div className="col-lg-4">
             <div
               className="p-3 mb-3"
-              style={{ background: "#d0f0ceff", borderRadius: "10px" }}
+              style={{ background: "#51984A", borderRadius: "10px" }}
             >
               <h5
                 className="d-flex justify-content-center"
