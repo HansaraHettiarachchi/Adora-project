@@ -8,6 +8,8 @@ import {
 } from "react-icons/pi";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import BreadcrumbBar from '../components/BreadcrumbBar'
+
 
 const CartPage = () => {
   const isMobile = window.innerWidth <= 576;
@@ -46,6 +48,8 @@ const CartPage = () => {
   return (
     <>
       <Header />
+
+      <BreadcrumbBar currentPage="Cart"/>
 
       {/* Cart Section */}
       <section
