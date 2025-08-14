@@ -196,7 +196,12 @@ const OrdersList = () => {
               <Button
                 variant="outline-danger"
                 size="sm"
-                style={{ fontWeight: 600, height: "30px", fontSize: "13px" }}
+                style={{
+                  fontWeight: 600,
+                  height: "30px",
+                  fontSize: "13px",
+                  width: "100px",
+                }}
               >
                 Cancel
               </Button>
@@ -204,10 +209,14 @@ const OrdersList = () => {
                 variant={order.status === "Done" ? "success" : "warning"}
                 size="sm"
                 style={{
-                  fontWeight: 600,
+                  fontWeight: "600",
                   height: "30px",
                   fontSize: "13px",
                   color: "#fff",
+                  width: "100px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
                 }}
               >
                 {order.status === "Done" ? (
