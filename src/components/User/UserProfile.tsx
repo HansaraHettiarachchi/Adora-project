@@ -3,6 +3,7 @@ import { Button, Form } from "react-bootstrap";
 import { BsTrash } from "react-icons/bs";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
+import { FiLogOut } from "react-icons/fi";
 
 // Popup Component
 type PopupProps = {
@@ -592,10 +593,42 @@ const UserProfile = () => {
             <h4 style={{ color: "#39A108", fontWeight: 700 }}>
               MOHAMED <span style={{ color: "#000" }}>MUKARRAM</span>
             </h4>
-            <Button variant="success" style={{ borderRadius: "10px" }}>
-              EDIT PROFILE
-            </Button>
+
+            <div
+              style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+            >
+              <Button variant="success" style={{ borderRadius: "10px" }}>
+                EDIT PROFILE
+              </Button>
+
+              <Button
+                style={{
+                  borderRadius: "10px",
+                  backgroundColor: "transparent",
+                  color: "#000",
+                  border: "1px solid #000",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "5px",
+                }}
+                onMouseEnter={(e) => {
+                  const button = e.target as HTMLButtonElement;
+                  button.style.backgroundColor = "#39A108";
+                  button.style.color = "#fff";
+                  button.style.border = "1px solid #215609ff";
+                }}
+                onMouseLeave={(e) => {
+                  const button = e.target as HTMLButtonElement;
+                  button.style.backgroundColor = "transparent";
+                  button.style.color = "#000";
+                  button.style.border = "1px solid #000";
+                }}
+              >
+                <FiLogOut /> LOGOUT
+              </Button>
+            </div>
           </div>
+
           <div style={{ display: "flex" }}>
             <div style={{ marginRight: "150px" }}>
               <p style={{ marginBottom: "4px", color: "#39A108" }}>
