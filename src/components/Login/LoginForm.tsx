@@ -13,7 +13,7 @@ const LoginForm: React.FC = () => {
     e.preventDefault();
 
     if (username === 'admin' && password === 'admin') {
-      navigate('/admin/dashboard'); // Redirect to admin dashboard
+      navigate('/admin/dashboard');
     } else {
       alert('Invalid username or password!');
     }
