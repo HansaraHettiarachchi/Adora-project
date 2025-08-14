@@ -1,12 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 import InputField from './InputField';
 import AuthFooter from './AuthFooter';
 import AuthTitle from './AuthTitle';
 
 const LoginForm: React.FC = () => {
+  const navigate = useNavigate();
+  const [username, setUsername] = useState('');
+  const [password, setPassword] = useState('');
+
   const handleLogin = (e: React.FormEvent) => {
     e.preventDefault();
-    // Handle login logic
+
+    if (username === 'admin' && password === 'admin') {
+      navigate('/admin/dashboard'); // Redirect to admin dashboard
+    } else {
+      alert('Invalid username or password!');
+    }
   };
 
   return (
@@ -14,8 +24,20 @@ const LoginForm: React.FC = () => {
       <AuthTitle />
 
       <form onSubmit={handleLogin}>
-        <InputField type="text" name="username" placeholder="Username or Email Address" />
-        <InputField type="password" name="password" placeholder="Password" />
+        <InputField
+          type="text"
+          name="username"
+          placeholder="Username or Email Address"
+          value={username}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setUsername(e.target.value)}
+        />
+        <InputField
+          type="password"
+          name="password"
+          placeholder="Password"
+          value={password}
+          onChange={(e: React.ChangeEvent<HTMLInputElement>) => setPassword(e.target.value)}
+        />
 
         <div className="mb-3 text-end">
           <a href="/forgot-password" className="small text-decoration-none text-primary">
