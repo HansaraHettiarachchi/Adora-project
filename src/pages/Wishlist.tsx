@@ -6,6 +6,8 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import YouMayAlsoLike from "../components/Wishlist/YouMayAlsoLike";
 import type { Product } from "../types/EntitiesTypes";
+import BreadcrumbBar from '../components/BreadcrumbBar'
+
 
 const initialProducts: Product[] = [
   {
@@ -48,6 +50,8 @@ export default function Wishlist() {
   return (
     <>
       <Header />
+
+      <BreadcrumbBar currentPage="Wishlist"/>
 
       <Container fluid="sm" className="py-4">
 
