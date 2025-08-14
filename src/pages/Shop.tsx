@@ -45,7 +45,7 @@ const Shop = () => {
                                     <h6 className='fw-bolder'>$335</h6>
                                 </Container>
                                 <Container fluid className='d-flex justify-content-center mt-3'>
-                                    <Button className='text-uppercase px-5 fw-bold rounded-4' style={{ backgroundColor: "#164C0D" }}>Add To Cart <FaCartPlus className='ms-2' /> </Button>
+                                    <Button className='text-uppercase px-5 fw-bold rounded-4 border-0' style={{ backgroundColor: "#164C0D" }}>Add To Cart <FaCartPlus className='ms-2' /> </Button>
                                 </Container>
                             </Container>
                         </Col>
@@ -54,7 +54,7 @@ const Shop = () => {
                 </Row>
 
 
-                <Container fluid>
+                <Container fluid className='p-0'>
                     <Row className='my-4'>
                         <Col>
                             <Row>
@@ -70,7 +70,7 @@ const Shop = () => {
                                                 <h6 className='fw-bolder'>$335</h6>
                                             </Container>
                                             <Container fluid className='d-flex justify-content-center mt-3'>
-                                                <Button className='text-uppercase px-5 fw-bold rounded-4' style={{ backgroundColor: "#164C0D" }}>Add To Cart <FaCartPlus className='ms-2' /> </Button>
+                                                <Button className='text-uppercase px-5 fw-bold rounded-4 border-0' style={{ backgroundColor: "#164C0D" }}>Add To Cart <FaCartPlus className='ms-2' /> </Button>
                                             </Container>
                                         </Container>
                                     </Col>
@@ -79,10 +79,10 @@ const Shop = () => {
 
                         </Col>
 
-                        <Col className='mt-2' style={{ maxWidth: "300px" }}>
+                        <Col className='mt-2 mx-auto' style={{ maxWidth: "300px" }}>
                             <Container className='rounded-4 p-3' style={{ backgroundColor: "#D9D9D9" }}>
                                 <Container fluid className='d-flex justify-content-center mb-3'>
-                                    <Button className='' style={{ backgroundColor: '#23B540' }}>Ohter Products</Button>
+                                    <Button className='border-0' style={{ backgroundColor: '#23B540' }}>Ohter Products</Button>
                                 </Container>
 
                                 {Array.from({ length: 7 }).map((_, idx) => (

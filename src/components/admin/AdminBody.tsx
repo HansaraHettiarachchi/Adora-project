@@ -13,7 +13,7 @@ const AdminBody: React.FC = () => {
         <Header />
 
         {/* Schani Develepment */}
-        <AddProduct show={true} handleClose={() => { }} />
+        <AddProduct show={false} handleClose={() => { }} />
 
         <main className="flex-grow-1 p-4" style={{ background: '#f7f9f7' }}>
           <Outlet />
