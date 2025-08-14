@@ -5,11 +5,13 @@ import { IoMicOutline, IoStarSharp } from "react-icons/io5"
 import p_image from '../assets/images/Product/image.png'
 import Footer from '../components/Footer'
 import Header from '../components/Header'
+import BreadcrumbBar from '../components/BreadcrumbBar'
 
 const Shop = () => {
     return (
         <>
             <Header />
+            <BreadcrumbBar />
 
             <Container fluid='sm' >
 

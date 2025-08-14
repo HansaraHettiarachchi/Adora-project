@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Card, Form, Button, Table, Spinner, Alert, Image, Badge } from "react-bootstrap";
 import { FaEdit } from "react-icons/fa";
+import AddProduct from "../../components/admin/AddProduct";
 
 interface Product {
   id: string;
@@ -15,6 +16,7 @@ const Products: React.FC = () => {
   const [search, setSearch] = useState("");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [showAddProduct, setShowProduct] = useState<boolean>(false);
 
   useEffect(() => {
     async function fetchProducts() {
@@ -44,6 +46,8 @@ const Products: React.FC = () => {
 
   return (
     <div>
+
+      <AddProduct show={showAddProduct} handleClose={() => setShowProduct(!showAddProduct)} />
       <Card
         className="shadow-sm p-3"
         style={{ borderRadius: "10px", border: "1px solid #5EAE69" }}
@@ -85,6 +89,8 @@ const Products: React.FC = () => {
                   e.currentTarget.style.backgroundColor = "transparent";
                   e.currentTarget.style.color = "#51984A";
                 }}
+
+                onClick={() => setShowProduct(!showAddProduct)}
               >
                 Add New Product +
               </Button>
@@ -112,11 +118,11 @@ const Products: React.FC = () => {
               >
                 <thead>
                   <tr>
-                    <th style={{ color: "#095C1F", borderBottom: "1px solid #2BED45", padding: "8px", textAlign: "center"}}>Product ID</th>
+                    <th style={{ color: "#095C1F", borderBottom: "1px solid #2BED45", padding: "8px", textAlign: "center" }}>Product ID</th>
                     <th style={{ color: "#095C1F", borderBottom: "1px solid #2BED45", padding: "8px", textAlign: "center" }}>Plant Name</th>
-                    <th style={{ color: "#095C1F", borderBottom: "1px solid #2BED45", padding: "8px" , textAlign: "center"}}>Stock</th>
+                    <th style={{ color: "#095C1F", borderBottom: "1px solid #2BED45", padding: "8px", textAlign: "center" }}>Stock</th>
                     <th style={{ color: "#095C1F", borderBottom: "1px solid #2BED45", padding: "8px", textAlign: "center" }}>Price</th>
-                    <th style={{ color: "#095C1F", borderBottom: "1px solid #2BED45", padding: "8px" ,textAlign: "center"}}>Edit</th>
+                    <th style={{ color: "#095C1F", borderBottom: "1px solid #2BED45", padding: "8px", textAlign: "center" }}>Edit</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -127,18 +133,18 @@ const Products: React.FC = () => {
                   ) : (
                     filteredProducts.map((product) => (
                       <tr key={product.id}>
-                        <td style={{ fontWeight: "bold", borderBottom: "1px solid black", padding: "8px" , textAlign: "center" }}>{product.id}</td>
-                        <td style={{ borderBottom: "1px solid black", padding: "8px", display: "flex", alignItems: "center", justifyContent:"center" }}>
+                        <td style={{ fontWeight: "bold", borderBottom: "1px solid black", padding: "8px", textAlign: "center" }}>{product.id}</td>
+                        <td style={{ borderBottom: "1px solid black", padding: "8px", display: "flex", alignItems: "center", justifyContent: "center" }}>
                           <Image src={product.image} rounded style={{ width: "50px", height: "50px", objectFit: "cover", marginRight: "10px" }} />
                           {product.name}
                         </td>
                         <td style={{ borderBottom: "1px solid black", padding: "10px", textAlign: "center" }}>
                           {product.stock > 0 ? <Badge bg="success">Available</Badge> : <Badge bg="danger">Not Available</Badge>}
                         </td>
-                        <td style={{ borderBottom: "1px solid black", padding: "8px", textAlign: "center"}}>
+                        <td style={{ borderBottom: "1px solid black", padding: "8px", textAlign: "center" }}>
                           ${product.price}
                         </td>
-                        <td style={{ borderBottom: "1px solid black", padding: "8px", textAlign: "center"}}>
+                        <td style={{ borderBottom: "1px solid black", padding: "8px", textAlign: "center" }}>
                           <FaEdit style={{ cursor: "pointer", color: "#28a745", fontSize: "18px" }} />
                         </td>
                       </tr>
@@ -150,34 +156,34 @@ const Products: React.FC = () => {
           )}
 
           <div className="p-2 d-flex flex-column flex-sm-row justify-content-center align-items-center mt-3 gap-2"
-                        style={{
-                          border: "1px solid #51984A",
-                          borderRadius: "20px",
-                          width: "100%",
-                          maxWidth: "400px",
-                          margin: "0 auto",
-                        }}
-                      >
-                      <Button
-                        variant="outline-none"
-                        size="sm"
-                        className="fw-bold"
-                        style={{ color: "#51984A" }}
-                      >
-                        Previous
-                      </Button>
-                      <span className="fw-bold" style={{ color: "#51984A" }}>
-                        | 1 | 2 | 3 | 4 | 5 |...
-                      </span>
-                      <Button
-                        variant="outline-none"
-                        size="sm"
-                        className="fw-bold"
-                        style={{ color: "#51984A" }}
-                      >
-                        Next
-                      </Button>
-                    </div>
+            style={{
+              border: "1px solid #51984A",
+              borderRadius: "20px",
+              width: "100%",
+              maxWidth: "400px",
+              margin: "0 auto",
+            }}
+          >
+            <Button
+              variant="outline-none"
+              size="sm"
+              className="fw-bold"
+              style={{ color: "#51984A" }}
+            >
+              Previous
+            </Button>
+            <span className="fw-bold" style={{ color: "#51984A" }}>
+              | 1 | 2 | 3 | 4 | 5 |...
+            </span>
+            <Button
+              variant="outline-none"
+              size="sm"
+              className="fw-bold"
+              style={{ color: "#51984A" }}
+            >
+              Next
+            </Button>
+          </div>
         </Card.Body>
       </Card>
     </div>

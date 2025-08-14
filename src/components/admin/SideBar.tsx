@@ -1,5 +1,5 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import '../../index.css';
 
@@ -7,6 +7,8 @@ const SideBar: React.FC = () => {
   // Helper to combine classes for NavLink
   const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
     "nav-link" + (isActive ? " active fw-bold text-success" : "");
+
+  const navigate = useNavigate();
 
   return (
     <div
@@ -25,12 +27,12 @@ const SideBar: React.FC = () => {
           onClick={() => (window.location.href = "/admin/dashboard")}
         />
       </div>
-      <h4 style={{ marginTop: 8, color: "#198754", fontWeight: "bold", textAlign: "center" , marginBottom: "30px"}}> ADORA </h4>
+      <h4 style={{ marginTop: 8, color: "#198754", fontWeight: "bold", textAlign: "center", marginBottom: "30px" }}> ADORA </h4>
       <nav className="nav flex-column gap-2 justify-content-center align-items-center">
-        <NavLink to="dashboard" className={getNavLinkClass}  style={{ color: 'green' }} end>
+        <NavLink to="dashboard" className={getNavLinkClass} style={{ color: 'green' }} end>
           Dashboard
         </NavLink>
-        <NavLink to="orders" className={getNavLinkClass}  style={{ color: 'green' }}>
+        <NavLink to="orders" className={getNavLinkClass} style={{ color: 'green' }}>
           Orders
         </NavLink>
         <NavLink to="products" className={getNavLinkClass} style={{ color: 'green' }}>
@@ -45,7 +47,7 @@ const SideBar: React.FC = () => {
         <NavLink to="reset-passwords" className={getNavLinkClass} style={{ color: 'green' }}>
           Reset Password
         </NavLink>
-        <a href="#" className="nav-link text-danger">
+        <a onClick={() => navigate("/")} className="nav-link text-danger">
           Logout
         </a>
       </nav>
