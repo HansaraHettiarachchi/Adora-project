@@ -134,7 +134,7 @@ const UserProfile = () => {
 
       {/* Profile Info */}
       <div
-        style={{ display: "flex", alignItems: "center", marginBottom: "16px" }}
+        style={{ display: "flex", alignItems: "center", marginBottom: "16px",  flexWrap: "wrap"}}
       >
         <div style={{ marginRight: "20px" }}>
           <img
