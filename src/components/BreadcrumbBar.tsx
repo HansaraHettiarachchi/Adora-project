@@ -7,11 +7,11 @@ import { IoHomeOutline } from "react-icons/io5";
 export default function BreadcrumbBar({ currentPage = "" }) {
   return (
     <>
-      <Container fluid className=' py-1' style={{ backgroundColor: "#238f39ff" }}>
+      <Container fluid className=' py-1' style={{ backgroundColor: "#238f39ff" ,  height: "50px"}}>
         <Container
         fluid="sm"
         className="d-flex align-items-center"
-        style={{ gap: "8px" }}
+        style={{ gap: "8px" , minHeight: "40px"}}
       >
         {/* Home Icon */}
         <IoHomeOutline size={22} color="#000" style={{ cursor: "pointer" }} />
