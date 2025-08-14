@@ -1,4 +1,4 @@
-import { Button } from 'react-bootstrap';
+import { Button, Col, Row } from 'react-bootstrap';
 import type { Product } from '../../types/EntitiesTypes';
 
 const recommendations: Product[] = [
@@ -36,7 +36,6 @@ const recommendations: Product[] = [
     },
 ];
 
-
 export default function YouMayAlsoLike() {
     return (
         <div className="mt-5">
@@ -46,11 +45,12 @@ export default function YouMayAlsoLike() {
                 </span>{" "}
                 ALSO LIKE
             </h6>
-            <div className="row g-4 mt-3">
+
+            <Row className="g-4 mt-3">
                 {recommendations.map((item) => (
-                    <div key={item.id} className="col-6 col-md-3">
+                    <Col key={item.id} xs={12} sm={6} lg={3}>
                         <div
-                            className="p-3 border rounded p-2 text-center"
+                            className="p-3 border rounded text-center"
                             style={{ background: "#D9D9D9" }}
                         >
                             <img
@@ -64,13 +64,13 @@ export default function YouMayAlsoLike() {
                                 <span>{item.name}</span>
                                 <span>${item.price}</span>
                             </div>
-                            <small className="d-flex justify-content-flex-start text-muted">
+                            <small className="d-flex justify-content-start text-muted">
                                 {item.type}
                             </small>
 
                             <Button
                                 size="sm"
-                                className="mt-2  w-100 fw-bold mx-auto d-block"
+                                className="mt-2 w-100 fw-bold"
                                 style={{
                                     background: "#164C0D",
                                     borderRadius: "10px",
@@ -81,9 +81,9 @@ export default function YouMayAlsoLike() {
                                 ADD TO CART
                             </Button>
                         </div>
-                    </div>
+                    </Col>
                 ))}
-            </div>
+            </Row>
         </div>
-    )
+    );
 }
