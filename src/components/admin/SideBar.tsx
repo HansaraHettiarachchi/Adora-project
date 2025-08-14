@@ -11,7 +11,6 @@ const SideBar: React.FC = () => {
 
   const handleLogout = (e: React.MouseEvent) => {
     e.preventDefault();
-    alert("You have been logged out!");
     navigate("/login");
   };
 
