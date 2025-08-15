@@ -1,3 +1,4 @@
+import { useState } from "react";
 import { Button, Col, Container, Form, Row, Table } from "react-bootstrap";
 import { FaTrash } from "react-icons/fa";
 import { IoIosArrowRoundForward } from "react-icons/io";
@@ -13,6 +14,9 @@ import { useNavigate } from "react-router-dom";
 const CartPage = () => {
   const isMobile = window.innerWidth <= 576;
   const navigate = useNavigate();
+
+  /* Track selected payment method */
+  const [paymentMethod, setPaymentMethod] = useState("");
 
   const cartItems = [
     {
@@ -45,16 +49,22 @@ const CartPage = () => {
   );
   const total = subtotal + shippingFee;
 
+  /* Handle checkout click */
+  const handleCheckout = () => {
+    if (paymentMethod === "cod") {
+      navigate("/checkout");
+    } else if (paymentMethod === "online") {
+      navigate("/payment-details");
+    } else {
+      alert("Please select a payment method before proceeding.");
+    }
+  };
+
   return (
     <>
       <Header />
 
-      {/* Cart Section */}
-      <section
-        style={{
-          padding: isMobile ? "1rem" : "2rem",
-        }}
-      >
+      <section style={{ padding: isMobile ? "1rem" : "2rem" }}>
         <Container fluid>
           <Row className="mb-4">
             <Col>
@@ -78,11 +88,7 @@ const CartPage = () => {
                     gap: isMobile ? "0.5rem" : "1rem",
                   }}
                 >
-                  <PiNumberCircleOneLight
-                    style={{
-                      color: "#164C0D",
-                    }}
-                  />
+                  <PiNumberCircleOneLight style={{ color: "#164C0D" }} />
                   Shopping Cart
                 </span>
                 <span
@@ -265,6 +271,7 @@ const CartPage = () => {
                   Total: <strong>${total}</strong>
                 </h6>
 
+                {/* Payment method selection */}
                 <Form
                   className="mt-3"
                   style={{ fontSize: isMobile ? "0.9rem" : "1rem" }}
@@ -273,16 +280,23 @@ const CartPage = () => {
                     type="radio"
                     label="Cash On Delivery"
                     name="payment"
+                    value="cod"
+                    checked={paymentMethod === "cod"}
+                    onChange={(e) => setPaymentMethod(e.target.value)}
                     className="mb-2"
                   />
                   <Form.Check
                     type="radio"
                     label="Online Payment"
                     name="payment"
+                    value="online"
+                    checked={paymentMethod === "online"}
+                    onChange={(e) => setPaymentMethod(e.target.value)}
                     className="mb-3"
                   />
                 </Form>
 
+                {/* Checkout button */}
                 <Button
                   variant="success"
                   className="w-100 mb-2"
@@ -293,7 +307,7 @@ const CartPage = () => {
                     fontWeight: "500",
                     fontSize: isMobile ? "0.9rem" : "1rem",
                   }}
-                  onClick={() => navigate("/checkout")}
+                  onClick={handleCheckout}
                 >
                   Check Out
                 </Button>
