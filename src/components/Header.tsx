@@ -34,6 +34,8 @@ const Header: React.FC = () => {
             <Nav.Link onClick={() => navigate("/contact")}>Contact</Nav.Link>
           </Nav>
           
+        {/* Adding search bar */}
+    
           {/* Search and Icons Container */}
           <div className="d-flex align-items-center gap-3 text-success fs-5 position-relative">
             {/* Search Input */}
