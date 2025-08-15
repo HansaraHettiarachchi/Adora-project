@@ -9,6 +9,7 @@ import Popup from "./Popup";
 import OrdersList from "./OrdersList";
 import PaymentsList from "./PaymentsList";
 import PaymentForm from "./PaymentForm";
+import { useNavigate } from "react-router-dom";
 
 // Popup Component
 interface PopupProps {
@@ -28,6 +29,8 @@ const UserProfile: React.FC = () => {
   const paymentRef = useRef<HTMLDivElement>(null);
 
   const handleAddPaymentClick = () => setShowPaymentForm(true);
+
+  const navigate = useNavigate();
 
   const closeAllPopups = () => {
     setShowOrders(false);
@@ -140,6 +143,8 @@ const UserProfile: React.FC = () => {
                   button.style.color = "#000";
                   button.style.border = "1px solid #000";
                 }}
+
+                onClick={() => navigate("/login")}
               >
                 <FiLogOut /> LOGOUT
               </Button>
