@@ -20,6 +20,7 @@ import ResetPasswords from './pages/Admin/ResetPasswords';
 import Shop from './pages/Shop';
 import OrderComplete from './pages/OrderComplete';
 import Wishlist from './pages/Wishlist';
+import ProductAdjustmentPage from './pages/ProductAdjustmentPage';
 
 const App: React.FC = () => {
   return (
@@ -39,6 +40,7 @@ const App: React.FC = () => {
         <Route path="/checkout-details" element={<Checkout />} />
         <Route path="/checkout" element={<Checkout />} />
         <Route path="/OrderComplete" element={<OrderComplete />} />
+        <Route path="/ProductAdjustmentPage" element={<ProductAdjustmentPage />} />
 
         <Route path="/admin" element={<AdminBody />}>
           <Route path="" element={<Dashboard />} />
