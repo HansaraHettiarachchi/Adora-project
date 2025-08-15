@@ -89,7 +89,7 @@ const Header: React.FC = () => {
               }}
             >
               <FaSearch />
-            </NavLink>
+            </Nav.Link>
             <NavLink to="/cart" className={iconClass}>
               <FaShoppingCart />
             </NavLink>
