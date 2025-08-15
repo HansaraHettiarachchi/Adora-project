@@ -8,9 +8,11 @@ import {
 } from "react-icons/pi";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
+import { useNavigate } from "react-router-dom";
 
 const CartPage = () => {
   const isMobile = window.innerWidth <= 576;
+  const navigate = useNavigate();
 
   const cartItems = [
     {
@@ -78,7 +80,7 @@ const CartPage = () => {
                 >
                   <PiNumberCircleOneLight
                     style={{
-                      color: "#164C0D"
+                      color: "#164C0D",
                     }}
                   />
                   Shopping Cart
@@ -291,9 +293,11 @@ const CartPage = () => {
                     fontWeight: "500",
                     fontSize: isMobile ? "0.9rem" : "1rem",
                   }}
+                  onClick={() => navigate("/checkout")}
                 >
                   Check Out
                 </Button>
+
                 <Button
                   variant="outline-success"
                   className="w-100 mb-2"
