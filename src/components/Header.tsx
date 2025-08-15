@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import { FaSearch, FaShoppingCart, FaHeart, FaUser } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
