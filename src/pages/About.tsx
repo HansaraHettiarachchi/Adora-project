@@ -3,6 +3,8 @@ import Header from "../components/Header";
 import Footer from "../components/Footer";
 import { Container, Row, Col, Carousel, Image } from "react-bootstrap";
 import { BsCheck2 } from "react-icons/bs";
+import BreadcrumbBar from '../components/BreadcrumbBar'
+
 
 const initialcarddata = {
   name: " ",
@@ -18,6 +20,8 @@ const About = () => {
   return (
     <>
       <Header />
+
+      <BreadcrumbBar currentPage="About"/>
 
       {/* Top Carousel */}
       <Carousel fade interval={3000}>

@@ -1,12 +1,18 @@
 import React from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import logo from "../../assets/images/logo.png";
 import '../../index.css';
 
 const SideBar: React.FC = () => {
-  // Helper to combine classes for NavLink
+  const navigate = useNavigate();
+
   const getNavLinkClass = ({ isActive }: { isActive: boolean }) =>
     "nav-link" + (isActive ? " active fw-bold text-success" : "");
+
+  const handleLogout = (e: React.MouseEvent) => {
+    e.preventDefault();
+    navigate("/login");
+  };
 
   return (
     <div
@@ -22,15 +28,25 @@ const SideBar: React.FC = () => {
           src={logo}
           alt="Adora Logo"
           style={{ height: 100, objectFit: "contain", cursor: "pointer" }}
-          onClick={() => (window.location.href = "/admin/dashboard")}
+          onClick={() => navigate("/admin/dashboard")}
         />
       </div>
-      <h4 style={{ marginTop: 8, color: "#198754", fontWeight: "bold", textAlign: "center" , marginBottom: "30px"}}> ADORA </h4>
+      <h4
+        style={{
+          marginTop: 8,
+          color: "#198754",
+          fontWeight: "bold",
+          textAlign: "center",
+          marginBottom: "30px",
+        }}
+      >
+        ADORA
+      </h4>
       <nav className="nav flex-column gap-2 justify-content-center align-items-center">
-        <NavLink to="dashboard" className={getNavLinkClass}  style={{ color: 'green' }} end>
+        <NavLink to="dashboard" className={getNavLinkClass} style={{ color: 'green' }} end>
           Dashboard
         </NavLink>
-        <NavLink to="orders" className={getNavLinkClass}  style={{ color: 'green' }}>
+        <NavLink to="orders" className={getNavLinkClass} style={{ color: 'green' }}>
           Orders
         </NavLink>
         <NavLink to="products" className={getNavLinkClass} style={{ color: 'green' }}>
@@ -45,7 +61,7 @@ const SideBar: React.FC = () => {
         <NavLink to="reset-passwords" className={getNavLinkClass} style={{ color: 'green' }}>
           Reset Password
         </NavLink>
-        <a href="#" className="nav-link text-danger">
+        <a href="#" onClick={handleLogout} className="nav-link text-danger">
           Logout
         </a>
       </nav>

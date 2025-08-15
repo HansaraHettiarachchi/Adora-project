@@ -1,41 +1,65 @@
-import React from 'react';
-import { Container, Navbar, Nav } from 'react-bootstrap';
-import { FaSearch, FaShoppingCart, FaUser } from 'react-icons/fa';
-import { useNavigate } from 'react-router-dom'; // Import useNavigate
-import logo from '../assets/images/logo.png';
+import React from "react";
+import { Container, Navbar, Nav } from "react-bootstrap";
+import { FaSearch, FaShoppingCart, FaHeart, FaUser } from "react-icons/fa";
+import { NavLink } from "react-router-dom";
+import logo from "../assets/images/logo.png";
 
 const Header: React.FC = () => {
-  const navigate = useNavigate(); // Hook for navigation
+  // Helper for active link styling
+  const linkClass = ({ isActive }: { isActive: boolean }) =>
+    `nav-link ${isActive ? "text-success fw-bold" : ""}`;
+
+  const iconClass = ({ isActive }: { isActive: boolean }) =>
+    `p-0 nav-link ${isActive ? "text-success" : ""}`;
 
   return (
     <Navbar bg="light" expand="lg" className="py-3 border-bottom shadow-sm">
       <Container fluid="sm">
-        <Navbar.Brand href="/">
-          <img src={logo} alt="Adora Logo" style={{ height: 48, objectFit: 'contain' }} />
+        {/* Logo */}
+        <Navbar.Brand as={NavLink} to="/" className="p-0">
+          <img
+            src={logo}
+            alt="Adora Logo"
+            style={{ height: 69, objectFit: "contain" }}
+          />
         </Navbar.Brand>
+
         <Navbar.Toggle aria-controls="adora-navbar" />
         <Navbar.Collapse id="adora-navbar">
+          {/* Main Navigation */}
           <Nav className="mx-auto fw-semibold text-uppercase">
-            <Nav.Link onClick={() => navigate("/home")} className="text-success">Home</Nav.Link>
-            <Nav.Link onClick={() => navigate("/shop")}>Shop</Nav.Link>
-            <Nav.Link onClick={() => navigate("/home")}>Category</Nav.Link>
-            <Nav.Link onClick={() => navigate("/about")}>About</Nav.Link>
-            <Nav.Link onClick={() => navigate("/contact")}>Contact</Nav.Link>
+            <NavLink to="/home" className={linkClass}>
+              Home
+            </NavLink>
+            <NavLink to="/shop" className={linkClass}>
+              Shop
+            </NavLink>
+            {/* <NavLink to="/category" className={linkClass}>
+              Category
+            </NavLink> */}
+            <NavLink to="/about" className={linkClass}>
+              About
+            </NavLink>
+            <NavLink to="/contact" className={linkClass}>
+              Contact
+            </NavLink>
           </Nav>
-          <div className="d-flex align-items-center gap-3 text-success fs-5">
-            <Nav.Link href="/search" className="p-0 text-success"><FaSearch /></Nav.Link>
-            <Nav.Link href="/wishlist" className="p-0 text-success"><FaShoppingCart />dfd</Nav.Link>
-            <Nav.Link href="/cart" className="p-0 text-success"><FaShoppingCart /></Nav.Link>
-            <Nav.Link
-              href="/user"
-              className="p-0 text-success"
-              onClick={(e) => {
-                e.preventDefault();
-                navigate('/user');
-              }}
-            >
+
+          {/* Icons */}
+          <div className="d-flex align-items-center gap-3 fs-5">
+            <NavLink to="/#" className={iconClass}>
+              <FaSearch />
+            </NavLink>
+            <NavLink to="/cart" className={iconClass}>
+              <FaShoppingCart />
+            </NavLink>
+            {/* Wishlist Icon */}
+            <NavLink to="/wishlist" className={iconClass}>
+              <FaHeart />
+            </NavLink>
+            <NavLink to="/user" className={iconClass}>
               <FaUser />
-            </Nav.Link>
+            </NavLink>
           </div>
         </Navbar.Collapse>
       </Container>
