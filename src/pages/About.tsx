@@ -1,9 +1,8 @@
-import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import { Container, Row, Col, Carousel, Image } from "react-bootstrap";
+import { Carousel, Col, Container, Image, Row } from "react-bootstrap";
 import { BsCheck2 } from "react-icons/bs";
-import BreadcrumbBar from '../components/BreadcrumbBar'
+import BreadcrumbBar from '../components/BreadcrumbBar';
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 
 
 const initialcarddata = {
