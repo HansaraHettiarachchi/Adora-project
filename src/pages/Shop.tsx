@@ -16,15 +16,35 @@ const Shop = () => {
             <Container fluid='sm' >
 
                 <Container>
-                    <InputGroup className="mt-5 ">
-                        <InputGroup.Text id="basic-addon1" className='bg-transparent border-end border-end-0 rounded-start-5 p-3'> <IoMdSearch size={30} className='ms-2' /> </InputGroup.Text>
+                    <InputGroup className="mt-5" style={{ boxShadow: 'none' }}>
+                        <InputGroup.Text
+                            id="basic-addon1"
+                            className='bg-transparent border-end border-end-0 rounded-start-5 p-3'
+                            style={{ boxShadow: 'none' }}
+                        >
+                            <IoMdSearch size={30} className='ms-2' />
+                        </InputGroup.Text>
                         <Form.Control
-                            className='border-start border-start-0 border-end border-end-0 fs-5'
+                            className='border-start border-start-0 border-end border-end-0 fs-5 custom-search-input'
                             placeholder="Search"
                             aria-label="Search"
                             aria-describedby="basic-addon1"
+                            style={{
+                                boxShadow: 'none',
+                                outline: 'none',
+                                borderColor: '#D9D9D9',
+                                backgroundColor: 'white',
+                                borderRadius: '0',
+                            }}
+                            onFocus={e => e.target.style.boxShadow = 'none'}
                         />
-                        <InputGroup.Text id="basic-addon1" className='bg-transparent border-start border-start-0 rounded-end-5 p-3'> <IoMicOutline size={30} className='me-2' /> </InputGroup.Text>
+                        <InputGroup.Text
+                            id="basic-addon1"
+                            className='bg-transparent border-start border-start-0 rounded-end-5 p-3'
+                            style={{ boxShadow: 'none' }}
+                        >
+                            <IoMicOutline size={30} className='me-2' />
+                        </InputGroup.Text>
                     </InputGroup>
 
                     <Row className='g-3 mx-5 mt-1'>

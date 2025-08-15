@@ -15,7 +15,7 @@ const LoginForm: React.FC = () => {
     if (username === 'admin' && password === 'admin') {
       navigate('/admin/dashboard');
     } else {
-      alert('Invalid username or password!');
+      navigate('/home');
     }
   };
 

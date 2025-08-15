@@ -47,7 +47,7 @@ const Header: React.FC = () => {
 
           {/* Icons */}
           <div className="d-flex align-items-center gap-3 fs-5">
-            <NavLink to="/search" className={iconClass}>
+            <NavLink to="/#" className={iconClass}>
               <FaSearch />
             </NavLink>
             <NavLink to="/cart" className={iconClass}>
