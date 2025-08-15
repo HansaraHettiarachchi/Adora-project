@@ -54,7 +54,7 @@ const CartPage = () => {
     if (paymentMethod === "cod") {
       navigate("/checkout");
     } else if (paymentMethod === "online") {
-      navigate("/payment-details");
+      navigate("/checkout");
     } else {
       alert("Please select a payment method before proceeding.");
     }

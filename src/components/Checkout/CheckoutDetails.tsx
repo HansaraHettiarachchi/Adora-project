@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Form, Row, Col, Button, Card } from "react-bootstrap";
+import { useNavigate } from "react-router-dom";
 import "/src/pages/css/CheckoutDetails.css";
 
 interface CheckoutDetailsProps {
@@ -9,6 +10,8 @@ interface CheckoutDetailsProps {
 export default function CheckoutDetails({
   onValidationChange,
 }: CheckoutDetailsProps) {
+  const navigate = useNavigate();
+
   const [formData, setFormData] = useState({
     firstName: "",
     lastName: "",
@@ -20,6 +23,8 @@ export default function CheckoutDetails({
     email: "",
   });
 
+  const [isFormValid, setIsFormValid] = useState(false);
+
   const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { name, value } = e.target;
     const updatedForm = { ...formData, [name]: value };
@@ -30,12 +35,20 @@ export default function CheckoutDetails({
       ([key, val]) => key === "street2" || val.trim() !== ""
     );
     const validEmail = /\S+@\S+\.\S+/.test(updatedForm.email);
-    onValidationChange(allFilled && validEmail);
+    const formValid = allFilled && validEmail;
+
+    setIsFormValid(formValid);
+    onValidationChange(formValid);
   };
 
   const handleSubmit = (e: React.FormEvent) => {
     e.preventDefault();
-    // Form submit logic
+
+    if (isFormValid) {
+      navigate("/ordercomplete");
+    } else {
+      alert("Please fill all fields correctly before ordering.");
+    }
   };
 
   return (
