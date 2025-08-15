@@ -4,6 +4,11 @@ import { BsTrash } from "react-icons/bs";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 import { FiLogOut } from "react-icons/fi";
+import Image from "react-bootstrap/Image";
+import u_image from "../../assets/images/User-Images/user-avatar.png";
+import s_image from "../../assets/images/User-Images/snakeplant.png";
+import v_image from "../../assets/images/User-Images/visacard.png";
+import m_image from "../../assets/images/User-Images/mastercard.png";
 
 // Popup Component
 interface PopupProps {
@@ -70,7 +75,7 @@ const OrdersList = () => {
       date: "15 Aug 2025",
       orderNo: "#26953",
       paymentAddress: "48, SRI WAIJIRAGANA MAWATHA, DEMATAGOYA ROAD, MARADANA.",
-      image: "../../src/assets/images/User-Images/snakeplant.png",
+      image: s_image,
     },
     {
       id: 2,
@@ -81,7 +86,7 @@ const OrdersList = () => {
       date: "14 Aug 2025",
       orderNo: "#26954",
       paymentAddress: "48, SRI WAIJIRAGANA MAWATHA, DEMATAGOYA ROAD, MARADANA.",
-      image: "../../src/assets/images/User-Images/snakeplant.png",
+      image: s_image,
     },
     {
       id: 3,
@@ -92,7 +97,7 @@ const OrdersList = () => {
       date: "13 Aug 2025",
       orderNo: "#26955",
       paymentAddress: "48, SRI WAIJIRAGANA MAWATHA, DEMATAGOYA ROAD, MARADANA.",
-      image: "../../src/assets/images/User-Images/snakeplant.png",
+      image: s_image,
     },
     {
       id: 4,
@@ -103,7 +108,7 @@ const OrdersList = () => {
       date: "12 Aug 2025",
       orderNo: "#26956",
       paymentAddress: "48, SRI WAIJIRAGANA MAWATHA, DEMATAGOYA ROAD, MARADANA.",
-      image: "../../src/assets/images/User-Images/snakeplant.png",
+      image: s_image,
     },
     {
       id: 5,
@@ -114,7 +119,7 @@ const OrdersList = () => {
       date: "11 Aug 2025",
       orderNo: "#26957",
       paymentAddress: "48, SRI WAIJIRAGANA MAWATHA, DEMATAGOYA ROAD, MARADANA.",
-      image: "../../src/assets/images/User-Images/snakeplant.png",
+      image: s_image,
     },
     {
       id: 6,
@@ -125,7 +130,7 @@ const OrdersList = () => {
       date: "10 Aug 2025",
       orderNo: "#26958",
       paymentAddress: "48, SRI WAIJIRAGANA MAWATHA, DEMATAGOYA ROAD, MARADANA.",
-      image: "../../src/assets/images/User-Images/snakeplant.png",
+      image: s_image,
     },
   ];
 
@@ -296,7 +301,7 @@ const PaymentsList = () => {
       date: "14-Aug-2025",
       time: "18:30",
       amount: 129,
-      image: "../../src/assets/images/User-Images/snakeplant.png",
+      image: s_image,
     },
     {
       id: 2,
@@ -305,7 +310,7 @@ const PaymentsList = () => {
       date: "13-Aug-2025",
       time: "15:00",
       amount: 149,
-      image: "../../src/assets/images/User-Images/snakeplant.png",
+      image: s_image,
     },
     {
       id: 3,
@@ -314,7 +319,7 @@ const PaymentsList = () => {
       date: "12-Aug-2025",
       time: "12:30",
       amount: 99,
-      image: "../../src/assets/images/User-Images/snakeplant.png",
+      image: s_image,
     },
     {
       id: 4,
@@ -323,7 +328,7 @@ const PaymentsList = () => {
       date: "11-Aug-2025",
       time: "10:00",
       amount: 79,
-      image: "../../src/assets/images/User-Images/snakeplant.png",
+      image: s_image,
     },
     {
       id: 5,
@@ -332,7 +337,7 @@ const PaymentsList = () => {
       date: "10-Aug-2025",
       time: "09:30",
       amount: 199,
-      image: "../../src/assets/images/User-Images/snakeplant.png",
+      image: s_image,
     },
     {
       id: 6,
@@ -341,7 +346,7 @@ const PaymentsList = () => {
       date: "09-Aug-2025",
       time: "14:00",
       amount: 149,
-      image: "../../src/assets/images/User-Images/snakeplant.png",
+      image: s_image,
     },
   ];
 
@@ -570,9 +575,9 @@ const UserProfile = () => {
         }}
       >
         <div style={{ marginRight: "20px" }}>
-          <img
-            src="../../src/assets/images/User-Images/user-avatar.png"
-            alt="User Avatar"
+          <Image
+            src={u_image}
+            alt="Profile"
             style={{
               width: "120px",
               height: "120px",
@@ -729,7 +734,7 @@ const UserProfile = () => {
             }}
           >
             <img
-              src="../../src/assets/images/User-Images/visacard.png"
+              src={v_image}
               alt="Visa"
               style={{ width: "50px", height: "30px", marginRight: "10px" }}
             />
@@ -764,7 +769,7 @@ const UserProfile = () => {
             }}
           >
             <img
-              src="../../src/assets/images/User-Images/mastercard.png"
+              src={m_image}
               alt="MasterCard"
               style={{ width: "50px", height: "30px", marginRight: "10px" }}
             />
