@@ -1,4 +1,4 @@
-import { Button, Col, Container, Form, Image, InputGroup, Modal, Row } from 'react-bootstrap'
+import { Button, Col, Container, Form, InputGroup, Modal, Row } from 'react-bootstrap';
 import { RiImageAddFill } from "react-icons/ri";
 
 interface Props {
