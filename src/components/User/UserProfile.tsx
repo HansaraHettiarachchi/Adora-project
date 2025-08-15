@@ -6,11 +6,11 @@ import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
 import { FiLogOut } from "react-icons/fi";
 
 // Popup Component
-type PopupProps = {
+interface PopupProps {
   title?: React.ReactNode;
   children: React.ReactNode;
   onClose: () => void;
-};
+}
 
 const Popup: React.FC<PopupProps> = ({ children, onClose }) => (
   <div
