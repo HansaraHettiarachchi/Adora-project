@@ -25,7 +25,7 @@ import ProductAdjustmentPage from "./pages/ProductAdjustmentPage";
 
 const App: React.FC = () => {
   return (
-    <Router>
+    <Router basename="/F5-ecommece-pure-p-1">
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/home" element={<Home />} />
@@ -34,7 +34,6 @@ const App: React.FC = () => {
         <Route path="/about" element={<About />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/contact" element={<Contact />} />
-        <Route path="/about" element={<About />} />
         <Route path="/login" element={<Login />} />
         <Route path="/register" element={<Signup />} />
         <Route path="/wishlist" element={<Wishlist />} />
