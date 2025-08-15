@@ -11,6 +11,11 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 
+/* Import images */
+import cartItem1 from "../assets/images/cart_item (1).png";
+import cartItem2 from "../assets/images/cart_item (2).png";
+import cartItem3 from "../assets/images/cart_item (3).png";
+
 const CartPage = () => {
   const isMobile = window.innerWidth <= 576;
   const navigate = useNavigate();
@@ -24,21 +29,21 @@ const CartPage = () => {
       name: "Homalomena",
       price: 200,
       qty: 1,
-      img: "src/assets/images/cart_item (1).png",
+      img: cartItem1,
     },
     {
       id: 2,
       name: "Alovera",
       price: 250,
       qty: 1,
-      img: "src/assets/images/cart_item (2).png",
+      img: cartItem2,
     },
     {
       id: 3,
       name: "Rose",
       price: 350,
       qty: 1,
-      img: "src/assets/images/cart_item (3).png",
+      img: cartItem3,
     },
   ];
 
