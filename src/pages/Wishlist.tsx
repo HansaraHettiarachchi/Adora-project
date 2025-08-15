@@ -2,11 +2,11 @@ import { useState } from "react";
 import { Button, Col, Container, Image, Row } from "react-bootstrap";
 import { BsCashStack, BsFillCartPlusFill, BsFillCreditCard2FrontFill } from "react-icons/bs";
 import { FaMinus, FaPlus } from "react-icons/fa";
+import BreadcrumbBar from '../components/BreadcrumbBar';
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import YouMayAlsoLike from "../components/Wishlist/YouMayAlsoLike";
 import type { Product } from "../types/EntitiesTypes";
-import BreadcrumbBar from '../components/BreadcrumbBar'
 
 
 const initialProducts: Product[] = [
