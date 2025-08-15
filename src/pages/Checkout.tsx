@@ -1,9 +1,9 @@
+import { useState } from "react";
 import { Container } from "react-bootstrap";
-import CheckoutHeader from "../components/Checkout/CheckoutHeader";
-import Header from "../components/Header";
+import CheckoutDetails from "../components/checkout/CheckoutDetails";
+import CheckoutHeader from "../components/checkout/CheckoutHeader";
 import Footer from "../components/Footer";
-import CheckoutDetails from "../components/Checkout/CheckoutDetails";
-import React, { useState } from "react";
+import Header from "../components/Header";
 
 export default function Checkout() {
   const [isStep2Complete, setIsStep2Complete] = useState(false);

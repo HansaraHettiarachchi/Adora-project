@@ -1,0 +1,51 @@
+.feedback-card {
+  border: 2px solid #51984A;
+  border-radius: 8px;
+  background: #fff;
+  overflow: hidden;
+}
+
+.feedback-header {
+  font-weight: bold;
+  font-size: 18px;
+  padding: 10px 15px;
+  color: #51984A;
+  border-bottom: 2px solid #51984A;
+  background: #fff;
+}
+
+.feedback-table {
+  width: 100%;
+  border-collapse: collapse;
+}
+
+.feedback-table th,
+.feedback-table td {
+  border: 1px solid #51984A;
+  padding: 8px;
+  text-align: center;
+}
+
+.feedback-table th {
+  color: #51984A;
+  font-weight: bold;
+  background: #fff;
+}
+
+.feedback-empty {
+  text-align: center;
+  padding: 10px;
+  font-style: italic;
+  color: #555;
+}
+
+.feedback-loading {
+  text-align: center;
+  padding: 10px;
+}
+
+.feedback-error {
+  text-align: center;
+  padding: 10px;
+  color: red;
+}
