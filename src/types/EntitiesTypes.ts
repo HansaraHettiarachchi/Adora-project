@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 
 export type Product = {
   id: number;
@@ -16,4 +17,8 @@ export interface DecodedUserData {
   username: string;
   status: number;
   exp?: number;
+}
+
+export interface AuthProps {
+  children?: ReactNode;
 }
