@@ -17,9 +17,9 @@ import Products from './pages/Admin/Products';
 import Customers from './pages/Admin/Customers';
 import Comments from './pages/Admin/Comments';
 import ResetPasswords from './pages/Admin/ResetPasswords';
-import Wishlist from './pages/Wishlist';
 import Shop from './pages/Shop';
 import OrderComplete from './pages/OrderComplete';
+import Wishlist from './pages/Wishlist';
 
 const App: React.FC = () => {
   return (
