@@ -1,23 +1,23 @@
 import React, { useState, useRef, useEffect } from "react";
 import { Button, Form } from "react-bootstrap";
 import { BsTrash } from "react-icons/bs";
-import { BsCircle } from "react-icons/bs";
 import { AiOutlineLoading3Quarters } from "react-icons/ai";
 import { IoCheckmarkDoneCircleOutline } from "react-icons/io5";
+import { FiLogOut } from "react-icons/fi";
 
 // Popup Component
 type PopupProps = {
-  title: React.ReactNode;
+  title?: React.ReactNode;
   children: React.ReactNode;
   onClose: () => void;
 };
 
-const Popup: React.FC<PopupProps> = ({ title, children, onClose }) => (
+const Popup: React.FC<PopupProps> = ({ children, onClose }) => (
   <div
     style={{
       position: "fixed",
-      top: "0px",
-      left: "0px",
+      top: 0,
+      left: 0,
       width: "100vw",
       height: "100vh",
       backgroundColor: "rgba(0,0,0,0.3)",
@@ -30,10 +30,12 @@ const Popup: React.FC<PopupProps> = ({ title, children, onClose }) => (
     <div
       style={{
         background: "#fff",
-        padding: "20px",
+        padding: "0",
         borderRadius: "10px",
-        minWidth: "500px",
+        minWidth: "800px",
+        maxWidth: "95%",
         position: "relative",
+        overflow: "hidden",
       }}
     >
       <button
@@ -46,15 +48,445 @@ const Popup: React.FC<PopupProps> = ({ title, children, onClose }) => (
           border: "none",
           fontSize: "20px",
           cursor: "pointer",
+          zIndex: 10,
         }}
       >
         ✕
       </button>
-      <h4 style={{ textAlign: "center", marginBottom: "16px" }}>{title}</h4>
       {children}
     </div>
   </div>
 );
+
+// Orders List Component
+const OrdersList = () => {
+  const orders = [
+    {
+      id: 1,
+      name: "SNAKE PLANT",
+      category: "Cactus",
+      price: 149,
+      status: "Done",
+      date: "15 Aug 2025",
+      orderNo: "#26953",
+      paymentAddress: "48, SRI WAIJIRAGANA MAWATHA, DEMATAGOYA ROAD, MARADANA.",
+      image: "../../src/assets/images/User-Images/snakeplant.png",
+    },
+    {
+      id: 2,
+      name: "PEACE LILY",
+      category: "Flower",
+      price: 129,
+      status: "Processing",
+      date: "14 Aug 2025",
+      orderNo: "#26954",
+      paymentAddress: "48, SRI WAIJIRAGANA MAWATHA, DEMATAGOYA ROAD, MARADANA.",
+      image: "../../src/assets/images/User-Images/snakeplant.png",
+    },
+    {
+      id: 3,
+      name: "ALOE VERA",
+      category: "Succulent",
+      price: 79,
+      status: "Done",
+      date: "13 Aug 2025",
+      orderNo: "#26955",
+      paymentAddress: "48, SRI WAIJIRAGANA MAWATHA, DEMATAGOYA ROAD, MARADANA.",
+      image: "../../src/assets/images/User-Images/snakeplant.png",
+    },
+    {
+      id: 4,
+      name: "MONSTERA",
+      category: "Tropical",
+      price: 199,
+      status: "Processing",
+      date: "12 Aug 2025",
+      orderNo: "#26956",
+      paymentAddress: "48, SRI WAIJIRAGANA MAWATHA, DEMATAGOYA ROAD, MARADANA.",
+      image: "../../src/assets/images/User-Images/snakeplant.png",
+    },
+    {
+      id: 5,
+      name: "FIDDLE LEAF",
+      category: "Tropical",
+      price: 179,
+      status: "Done",
+      date: "11 Aug 2025",
+      orderNo: "#26957",
+      paymentAddress: "48, SRI WAIJIRAGANA MAWATHA, DEMATAGOYA ROAD, MARADANA.",
+      image: "../../src/assets/images/User-Images/snakeplant.png",
+    },
+    {
+      id: 6,
+      name: "GOLDEN POTHOS",
+      category: "Vine",
+      price: 129,
+      status: "Processing",
+      date: "10 Aug 2025",
+      orderNo: "#26958",
+      paymentAddress: "48, SRI WAIJIRAGANA MAWATHA, DEMATAGOYA ROAD, MARADANA.",
+      image: "../../src/assets/images/User-Images/snakeplant.png",
+    },
+  ];
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4;
+  const totalPages = Math.ceil(orders.length / itemsPerPage);
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentOrders = orders.slice(indexOfFirstItem, indexOfLastItem);
+
+  const handlePrev = () => currentPage > 1 && setCurrentPage(currentPage - 1);
+  const handleNext = () =>
+    currentPage < totalPages && setCurrentPage(currentPage + 1);
+
+  return (
+    <div
+      style={{
+        padding: "20px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "15px",
+        maxHeight: "70vh",
+        overflowY: "auto",
+      }}
+    >
+      {currentOrders.map((order) => (
+        <div
+          key={order.id}
+          style={{
+            display: "flex",
+            alignItems: "flex-start",
+            background: "#E8F5E9",
+            borderRadius: "10px",
+            padding: "10px",
+            gap: "15px",
+            border: "1px solid #d0e6d0",
+            flexWrap: "wrap",
+          }}
+        >
+          <img
+            src={order.image}
+            alt={order.name}
+            style={{
+              width: "80px",
+              height: "80px",
+              objectFit: "cover",
+              borderRadius: "8px",
+            }}
+          />
+          <div style={{ flex: 1 }}>
+            <h5 style={{ margin: 0, fontWeight: 700 }}>{order.name}</h5>
+            <p style={{ margin: "0 0 4px 0", fontSize: "14px", color: "#555" }}>
+              {order.category}
+            </p>
+            <p style={{ fontWeight: 700, margin: "0 0 8px 0" }}>
+              ${order.price}
+            </p>
+          </div>
+          <div style={{ display: "flex", flexDirection: "column", gap: "8px" }}>
+            <div
+              style={{
+                display: "flex",
+                flexDirection: "row",
+                gap: "6px",
+                justifyContent: "flex-end",
+              }}
+            >
+              <Button
+                variant="outline-danger"
+                size="sm"
+                style={{
+                  fontWeight: 600,
+                  height: "30px",
+                  fontSize: "13px",
+                  width: "100px",
+                }}
+              >
+                Cancel
+              </Button>
+              <Button
+                variant={order.status === "Done" ? "success" : "warning"}
+                size="sm"
+                style={{
+                  fontWeight: "600",
+                  height: "30px",
+                  fontSize: "13px",
+                  color: "#fff",
+                  width: "100px",
+                  display: "flex",
+                  alignItems: "center",
+                  justifyContent: "center",
+                }}
+              >
+                {order.status === "Done" ? (
+                  <>
+                    Done{" "}
+                    <IoCheckmarkDoneCircleOutline
+                      style={{ marginLeft: "5px" }}
+                    />
+                  </>
+                ) : (
+                  <>
+                    Processing{" "}
+                    <AiOutlineLoading3Quarters
+                      style={{
+                        marginLeft: "5px",
+                        animation: "spin 1s linear infinite",
+                      }}
+                    />
+                  </>
+                )}
+              </Button>
+            </div>
+            <div style={{ marginTop: "4px" }}>
+              <p style={{ margin: 0, fontSize: "13px" }}>
+                <strong>Order Date:</strong> {order.date} |{" "}
+                <strong>Order No.:</strong> {order.orderNo}
+              </p>
+              <p style={{ margin: 0, fontSize: "12px", color: "#555" }}>
+                <strong>Payment Address:</strong> {order.paymentAddress}
+              </p>
+            </div>
+          </div>
+        </div>
+      ))}
+
+      {/* Pagination Controls */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "10px",
+          marginTop: "10px",
+        }}
+      >
+        <Button
+          variant="secondary"
+          size="sm"
+          disabled={currentPage === 1}
+          onClick={handlePrev}
+        >
+          Prev
+        </Button>
+        <span style={{ alignSelf: "center" }}>
+          Page {currentPage} of {totalPages}
+        </span>
+        <Button
+          variant="secondary"
+          size="sm"
+          disabled={currentPage === totalPages}
+          onClick={handleNext}
+        >
+          Next
+        </Button>
+      </div>
+    </div>
+  );
+};
+
+// Payments List Component
+const PaymentsList = () => {
+  const payments = [
+    {
+      id: 1,
+      name: "Golden Pothos",
+      method: "Visa",
+      date: "14-Aug-2025",
+      time: "18:30",
+      amount: 129,
+      image: "../../src/assets/images/User-Images/snakeplant.png",
+    },
+    {
+      id: 2,
+      name: "Snake Plant",
+      method: "MasterCard",
+      date: "13-Aug-2025",
+      time: "15:00",
+      amount: 149,
+      image: "../../src/assets/images/User-Images/snakeplant.png",
+    },
+    {
+      id: 3,
+      name: "Peace Lily",
+      method: "Visa",
+      date: "12-Aug-2025",
+      time: "12:30",
+      amount: 99,
+      image: "../../src/assets/images/User-Images/snakeplant.png",
+    },
+    {
+      id: 4,
+      name: "Aloe Vera",
+      method: "MasterCard",
+      date: "11-Aug-2025",
+      time: "10:00",
+      amount: 79,
+      image: "../../src/assets/images/User-Images/snakeplant.png",
+    },
+    {
+      id: 5,
+      name: "Fiddle Leaf",
+      method: "Visa",
+      date: "10-Aug-2025",
+      time: "09:30",
+      amount: 199,
+      image: "../../src/assets/images/User-Images/snakeplant.png",
+    },
+    {
+      id: 6,
+      name: "Monstera",
+      method: "MasterCard",
+      date: "09-Aug-2025",
+      time: "14:00",
+      amount: 149,
+      image: "../../src/assets/images/User-Images/snakeplant.png",
+    },
+  ];
+
+  const [currentPage, setCurrentPage] = useState(1);
+  const itemsPerPage = 4;
+  const totalPages = Math.ceil(payments.length / itemsPerPage);
+
+  const indexOfLastItem = currentPage * itemsPerPage;
+  const indexOfFirstItem = indexOfLastItem - itemsPerPage;
+  const currentPayments = payments.slice(indexOfFirstItem, indexOfLastItem);
+
+  const handlePrev = () => currentPage > 1 && setCurrentPage(currentPage - 1);
+  const handleNext = () =>
+    currentPage < totalPages && setCurrentPage(currentPage + 1);
+
+  return (
+    <div
+      style={{
+        padding: "20px",
+        display: "flex",
+        flexDirection: "column",
+        gap: "15px",
+        maxHeight: "70vh",
+        overflowY: "auto",
+      }}
+    >
+      {currentPayments.map((payment) => (
+        <div
+          key={payment.id}
+          style={{
+            display: "flex",
+            flexDirection: "row",
+            alignItems: "flex-start",
+            background: "#E8F5E9",
+            borderRadius: "10px",
+            padding: "10px",
+            gap: "15px",
+            border: "1px solid #d0e6d0",
+            flexWrap: "wrap",
+          }}
+        >
+          <img
+            src={payment.image}
+            alt={payment.name}
+            style={{
+              width: "80px",
+              height: "80px",
+              objectFit: "cover",
+              borderRadius: "8px",
+              flexShrink: 0,
+            }}
+          />
+          <div style={{ flex: 1, minWidth: "150px" }}>
+            <h5 style={{ margin: "0", fontWeight: "700", fontSize: "16px" }}>
+              {payment.name}
+            </h5>
+            <p style={{ margin: "0 0 4px 0", fontSize: "14px", color: "#555" }}>
+              Payment Via: {payment.method}
+            </p>
+            <p style={{ margin: "0 0 4px 0", fontSize: "14px", color: "#555" }}>
+              Date: {payment.date}
+            </p>
+            <p style={{ margin: "0 0 8px 0", fontSize: "14px", color: "#555" }}>
+              Time: {payment.time}
+            </p>
+            <p
+              style={{
+                fontWeight: "700",
+                margin: "0 0 8px 0",
+                fontSize: "16px",
+              }}
+            >
+              ${payment.amount}
+            </p>
+          </div>
+          <div
+            style={{
+              display: "flex",
+              flexDirection: "row",
+              gap: "8px",
+              flexWrap: "wrap",
+              justifyContent: "flex-end",
+            }}
+          >
+            <Button
+              variant="outline-success"
+              size="sm"
+              style={{
+                fontWeight: "600",
+                height: "30px",
+                fontSize: "13px",
+                flex: "1 0 48%",
+              }}
+            >
+              VIEW
+            </Button>
+            <Button
+              variant="success"
+              size="sm"
+              style={{
+                fontWeight: "600",
+                height: "30px",
+                fontSize: "13px",
+                color: "#fff",
+                flex: "1 0 48%",
+              }}
+            >
+              DOWNLOAD
+            </Button>
+          </div>
+        </div>
+      ))}
+
+      {/* Pagination Controls */}
+      <div
+        style={{
+          display: "flex",
+          justifyContent: "center",
+          gap: "10px",
+          marginTop: "10px",
+        }}
+      >
+        <Button
+          variant="secondary"
+          size="sm"
+          disabled={currentPage === 1}
+          onClick={handlePrev}
+        >
+          Prev
+        </Button>
+        <span style={{ alignSelf: "center" }}>
+          Page {currentPage} of {totalPages}
+        </span>
+        <Button
+          variant="secondary"
+          size="sm"
+          disabled={currentPage === totalPages}
+          onClick={handleNext}
+        >
+          Next
+        </Button>
+      </div>
+    </div>
+  );
+};
 
 const UserProfile = () => {
   const [showPaymentForm, setShowPaymentForm] = useState(false);
@@ -122,11 +554,7 @@ const UserProfile = () => {
       {/* Header */}
       <div style={{ textAlign: "center", marginBottom: "16px" }}>
         <h2
-          style={{
-            color: "#39A108",
-            fontFamily: "Poppins",
-            fontWeight: 800,
-          }}
+          style={{ color: "#39A108", fontFamily: "Poppins", fontWeight: 800 }}
         >
           MY <span style={{ color: "#000" }}>PROFILE</span>
         </h2>
@@ -134,7 +562,12 @@ const UserProfile = () => {
 
       {/* Profile Info */}
       <div
-        style={{ display: "flex", alignItems: "center", marginBottom: "16px",  flexWrap: "wrap"}}
+        style={{
+          display: "flex",
+          alignItems: "center",
+          marginBottom: "16px",
+          flexWrap: "wrap",
+        }}
       >
         <div style={{ marginRight: "20px" }}>
           <img
@@ -160,10 +593,42 @@ const UserProfile = () => {
             <h4 style={{ color: "#39A108", fontWeight: 700 }}>
               MOHAMED <span style={{ color: "#000" }}>MUKARRAM</span>
             </h4>
-            <Button variant="success" style={{ borderRadius: "10px" }}>
-              EDIT PROFILE
-            </Button>
+
+            <div
+              style={{ display: "flex", flexDirection: "column", gap: "10px" }}
+            >
+              <Button variant="success" style={{ borderRadius: "10px" }}>
+                EDIT PROFILE
+              </Button>
+
+              <Button
+                style={{
+                  borderRadius: "10px",
+                  backgroundColor: "transparent",
+                  color: "#000",
+                  border: "1px solid #000",
+                  display: "flex",
+                  alignItems: "center",
+                  gap: "5px",
+                }}
+                onMouseEnter={(e) => {
+                  const button = e.target as HTMLButtonElement;
+                  button.style.backgroundColor = "#39A108";
+                  button.style.color = "#fff";
+                  button.style.border = "1px solid #215609ff";
+                }}
+                onMouseLeave={(e) => {
+                  const button = e.target as HTMLButtonElement;
+                  button.style.backgroundColor = "transparent";
+                  button.style.color = "#000";
+                  button.style.border = "1px solid #000";
+                }}
+              >
+                <FiLogOut /> LOGOUT
+              </Button>
+            </div>
           </div>
+
           <div style={{ display: "flex" }}>
             <div style={{ marginRight: "150px" }}>
               <p style={{ marginBottom: "4px", color: "#39A108" }}>
@@ -204,6 +669,7 @@ const UserProfile = () => {
         </div>
       </div>
 
+      {/* BIO */}
       <div style={{ marginBottom: "40px", paddingLeft: "20px" }}>
         <h5 style={{ fontWeight: "bold", color: "#39A108" }}>BIO</h5>
         <p style={{ color: "#6c757d", marginBottom: "0px", fontSize: "15px" }}>
@@ -212,6 +678,7 @@ const UserProfile = () => {
         </p>
       </div>
 
+      {/* Shipping & Phone */}
       <div
         style={{ display: "flex", marginBottom: "40px", paddingLeft: "20px" }}
       >
@@ -284,7 +751,7 @@ const UserProfile = () => {
             </Button>
           </div>
 
-          {/* Master Card */}
+          {/* MasterCard */}
           <div
             style={{
               display: "flex",
@@ -298,13 +765,13 @@ const UserProfile = () => {
           >
             <img
               src="../../src/assets/images/User-Images/mastercard.png"
-              alt="Master"
+              alt="MasterCard"
               style={{ width: "50px", height: "30px", marginRight: "10px" }}
             />
             <div>
-              <strong>MAST</strong> ....8596
+              <strong>MASTERCARD</strong> ....1234
               <br />
-              <small style={{ color: "#6c757d" }}>Expire 06/26</small>
+              <small style={{ color: "#6c757d" }}>Expire 12/25</small>
             </div>
             <Button
               type="button"
@@ -342,188 +809,45 @@ const UserProfile = () => {
         </div>
       </div>
 
+      {/* Orders Popup */}
       {showOrders && (
-        <Popup title="My Orders" onClose={closeAllPopups}>
-          <div
-            style={{
-              backgroundColor: "white",
-              width: "700px",
-              height: "500px",
-              padding: "30px",
-              overflow: "hidden",
-              boxSizing: "border-box",
-              display: "flex",
-              justifyContent: "center",
-            }}
-          >
-            <div
+        <Popup onClose={closeAllPopups}>
+          <div style={{ display: "flex", borderBottom: "1px solid #ddd" }}>
+            <button
               style={{
-                display: "flex",
-                flexDirection: "column",
-                gap: "20px",
-                height: "100%",
-                width: "700px",
-                overflowY: "auto",
-                paddingRight: "10px",
-                boxSizing: "border-box",
-                alignItems: "center",
+                flex: 1,
+                padding: "8px 0",
+                background: "#39A108",
+                color: "white",
+                fontWeight: "600",
+                border: "none",
               }}
             >
-              {[1, 2, 3].map((i) => (
-                <div
-                  key={i}
-                  style={{
-                    position: "relative",
-                    display: "flex",
-                    alignItems: "center",
-                    background: "#D9D9D9",
-                    padding: "15px 20px 15px 15px",
-                    borderRadius: "12px",
-                    height: "150px",
-                    width: "550px",
-                    boxSizing: "border-box",
-                    boxShadow: "0 3px 6px rgba(0,0,0,0.1)",
-                  }}
-                >
-                  <div
-                    style={{
-                      position: "absolute",
-                      top: "10px",
-                      right: "15px",
-                      cursor: "pointer",
-                    }}
-                  >
-                    <BsCircle size={18} color="black" />
-                  </div>
-
-                  <img
-                    src="../../src/assets/images/User-Images/snakeplant.png"
-                    alt="Snake Plant"
-                    style={{
-                      width: "150px",
-                      height: "120px",
-                      marginRight: "30px",
-                      borderRadius: "10px",
-                      objectFit: "cover",
-                    }}
-                  />
-
-                  <div
-                    style={{
-                      flex: 1,
-                      display: "flex",
-                      flexDirection: "column",
-                      justifyContent: "center",
-                    }}
-                  >
-                    <h4
-                      style={{
-                        margin: "0 0 3px 0",
-                        fontWeight: "700",
-                        fontSize: "18px",
-                        color: "#222",
-                      }}
-                    >
-                      SNAKE PLANT
-                    </h4>
-                    <small
-                      style={{
-                        fontSize: "13px",
-                        color: "#555",
-                        marginBottom: "8px",
-                        display: "block",
-                      }}
-                    >
-                      Cactus
-                    </small>
-
-                    <p
-                      style={{
-                        margin: 0,
-                        fontWeight: "700",
-                        fontSize: "16px",
-                        color: "#111",
-                        marginTop: "20px",
-                      }}
-                    >
-                      $149
-                    </p>
-                  </div>
-
-                  <div
-                    style={{
-                      display: "flex",
-                      flexDirection: "column",
-                      gap: "8px",
-                      alignItems: "center",
-                      marginLeft: "15px",
-                      minWidth: "100px",
-                    }}
-                  >
-                    <Button
-                      variant="outline-danger"
-                      size="sm"
-                      style={{
-                        width: "100px",
-                        height: "30px",
-                        fontSize: "13px",
-                        fontWeight: "600",
-                        backgroundColor: "white",
-                        borderColor: "red",
-                        color: "red",
-                        marginTop: "50px",
-                      }}
-                    >
-                      Cancel
-                    </Button>
-
-                    <Button
-                      variant={i === 2 ? "success" : "warning"}
-                      size="sm"
-                      className="d-flex align-items-center justify-content-center"
-                      style={{
-                        width: "100px",
-                        height: "30px",
-                        fontSize: "13px",
-                        fontWeight: "600",
-                      }}
-                    >
-                      {i === 2 ? (
-                        <>
-                          Done
-                          <IoCheckmarkDoneCircleOutline
-                            style={{ marginLeft: "20px", fontSize: "16px" }}
-                          />
-                        </>
-                      ) : (
-                        <>
-                          Processing
-                          <AiOutlineLoading3Quarters
-                            style={{
-                              marginLeft: "5px",
-                              animation: "spin 1s linear infinite",
-                            }}
-                          />
-                        </>
-                      )}
-                    </Button>
-                  </div>
-                </div>
-              ))}
-            </div>
+              My Orders
+            </button>
           </div>
+          <OrdersList />
         </Popup>
       )}
 
-      {showCoupons && (
-        <Popup title="My Coupons" onClose={closeAllPopups}>
-          <p>No coupons available right now.</p>
-        </Popup>
-      )}
-
+      {/* Payments Popup */}
       {showPayments && (
-        <Popup title="My Payments" onClose={closeAllPopups}>
-          <p>Payment history will appear here.</p>
+        <Popup onClose={closeAllPopups}>
+          <div style={{ display: "flex", borderBottom: "1px solid #ddd" }}>
+            <button
+              style={{
+                flex: 1,
+                padding: "8px 0",
+                background: "#39A108",
+                color: "white",
+                fontWeight: "600",
+                border: "none",
+              }}
+            >
+              My Payments
+            </button>
+          </div>
+          <PaymentsList />
         </Popup>
       )}
 
@@ -532,8 +856,8 @@ const UserProfile = () => {
         <div
           style={{
             position: "fixed",
-            top: "0px",
-            left: "0px",
+            top: 0,
+            left: 0,
             width: "100vw",
             height: "100vh",
             backgroundColor: "rgba(0,0,0,0.3)",
