@@ -1,26 +1,24 @@
-import { Container } from 'react-bootstrap';
-import CheckoutHeader from '../components/Checkout/CheckoutHeader';
-import Header from '../components/Header';
+import { useState } from "react";
+import { Container } from "react-bootstrap";
+import CheckoutDetails from "../components/checkout/CheckoutDetails";
+import CheckoutHeader from "../components/checkout/CheckoutHeader";
 import Footer from "../components/Footer";
-import CheckoutDetails from '../components/Checkout/CheckoutDetails';
-import BreadcrumbBar from '../components/BreadcrumbBar'
-
+import Header from "../components/Header";
 
 export default function Checkout() {
+  const [isStep2Complete, setIsStep2Complete] = useState(false);
 
   return (
     <>
       <Header />
 
-      <BreadcrumbBar currentPage="Checkout"/>
+      <Container className="my-5">
+        <CheckoutHeader isStep2Complete={isStep2Complete} />
 
-      <Container className='my-5'>
-        <CheckoutHeader />
-        <CheckoutDetails />
-      
+        <CheckoutDetails onValidationChange={setIsStep2Complete} />
       </Container>
 
       <Footer />
     </>
-  )
+  );
 }
