@@ -7,7 +7,7 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import YouMayAlsoLike from "../components/Wishlist/YouMayAlsoLike";
 import type { Product } from "../types/EntitiesTypes";
-
+import p_image from '../assets/images/Product/image.png'
 
 const initialProducts: Product[] = [
   {
@@ -16,7 +16,7 @@ const initialProducts: Product[] = [
     type: "Cactus",
     price: 149,
     quantity: 2,
-    image: "src/assets/images/wishlist_cart_pic (5).png",
+    image: p_image,
   },
   {
     id: 2,
@@ -24,7 +24,7 @@ const initialProducts: Product[] = [
     type: "Aloe Vera",
     price: 149,
     quantity: 1,
-    image: "src/assets/images/wishlist_cart_pic (1).png",
+    image: p_image,
   },
   {
     id: 3,
@@ -32,7 +32,7 @@ const initialProducts: Product[] = [
     type: "Pothos",
     price: 69,
     quantity: 3,
-    image: "src/assets/images/wishlist_cart_pic (3).png",
+    image: p_image,
   },
   {
     id: 4,
@@ -40,7 +40,7 @@ const initialProducts: Product[] = [
     type: "Bonsai",
     price: 119,
     quantity: 5,
-    image: "src/assets/images/wishlist_cart_pic (4).png",
+    image: p_image,
   },
 ];
 
