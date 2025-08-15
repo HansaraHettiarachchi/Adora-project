@@ -1,26 +1,27 @@
-import 'bootstrap/dist/css/bootstrap.min.css';
-import React from 'react';
-import { Route, BrowserRouter as Router, Routes } from 'react-router-dom';
-import './App.css';
-import Contact from './pages/Contact';
-import Home from './pages/Home';
-import User from './pages/User';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-import About from './pages/About';
-import Cart from './pages/Cart';
-import Checkout from './pages/Checkout';
-import AdminBody from './components/admin/AdminBody';
-import Dashboard from './pages/Admin/Dashboard';
-import Orders from './pages/Admin/Orders';
-import Products from './pages/Admin/Products';
-import Customers from './pages/Admin/Customers';
-import Comments from './pages/Admin/Comments';
-import ResetPasswords from './pages/Admin/ResetPasswords';
-import Shop from './pages/Shop';
-import OrderComplete from './pages/OrderComplete';
-import Wishlist from './pages/Wishlist';
-import ProductAdjustmentPage from './pages/ProductAdjustmentPage';
+import "bootstrap/dist/css/bootstrap.min.css";
+import React from "react";
+import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import "./App.css";
+import Contact from "./pages/Contact";
+import Home from "./pages/Home";
+import User from "./pages/User";
+import Login from "./pages/Login";
+import Signup from "./pages/Signup";
+import About from "./pages/About";
+import Cart from "./pages/Cart";
+import Checkout from "./pages/Checkout";
+import AdminBody from "./components/admin/AdminBody";
+import Dashboard from "./pages/Admin/Dashboard";
+import Orders from "./pages/Admin/Orders";
+import Products from "./pages/Admin/Products";
+import Customers from "./pages/Admin/Customers";
+import Comments from "./pages/Admin/Comments";
+import ResetPasswords from "./pages/Admin/ResetPasswords";
+import Wishlist from "./pages/Wishlist";
+import Shop from "./pages/Shop";
+import Payment from "./pages/Payment";
+import OrderComplete from "./pages/OrderComplete";
+import ProductAdjustmentPage from "./pages/ProductAdjustmentPage";
 
 const App: React.FC = () => {
   return (
@@ -39,8 +40,12 @@ const App: React.FC = () => {
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/checkout-details" element={<Checkout />} />
         <Route path="/checkout" element={<Checkout />} />
+        <Route path="/Payment" element={<Payment />} />
         <Route path="/OrderComplete" element={<OrderComplete />} />
-        <Route path="/ProductAdjustmentPage" element={<ProductAdjustmentPage />} />
+        <Route
+          path="/ProductAdjustmentPage"
+          element={<ProductAdjustmentPage />}
+        />
 
         <Route path="/admin" element={<AdminBody />}>
           <Route path="" element={<Dashboard />} />
@@ -51,7 +56,6 @@ const App: React.FC = () => {
           <Route path="comments" element={<Comments />} />
           <Route path="reset-passwords" element={<ResetPasswords />} />
         </Route>
-
       </Routes>
     </Router>
   );
