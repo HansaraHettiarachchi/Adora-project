@@ -20,13 +20,14 @@ export const authenticate = async (req: Request, res: Response, next: NextFuncti
     }
 
     const authHeader = req.headers.authorization;
+
     const token = authHeader && authHeader.split(' ')[1];
     if (!token) {
         return res.status(401).json({ error: 'No token provided' });
     }
     try {
-        const decoded = jwt.verify(token, SECRET) as { userId: number };
-        const user = await prisma.users.findUnique({ where: { id: decoded.userId } });
+        const decoded = jwt.verify(token, SECRET) as { id: number };
+        const user = await prisma.users.findUnique({ where: { id: decoded.id } });
         if (!user) {
             return res.status(401).json({ error: 'User not found' });
         }
