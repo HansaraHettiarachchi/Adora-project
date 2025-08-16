@@ -1,0 +1,213 @@
+generator client {
+  provider = "prisma-client-js"
+  output   = "../src/generated/prisma"
+}
+
+datasource db {
+  provider = "mysql"
+  url      = env("DATABASE_URL")
+}
+
+model batch {
+  id         Int     @id @default(autoincrement())
+  qty        Int
+  price      Float
+  cost       Float
+  desc       String? @db.Text
+  product_id Int
+  size_id    Int
+  code       String  @db.VarChar(30)
+
+  @@index([product_id], map: "fk_batch_product1_idx")
+  @@index([size_id], map: "fk_batch_size1_idx")
+}
+
+model card_details {
+  id                Int @id @default(autoincrement())
+  card_no           Int
+  payment_method_id Int
+
+  @@index([payment_method_id], map: "fk_card_details_payment_method1_idx")
+}
+
+model category {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(45)
+}
+
+model city {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(45)
+}
+
+model gender {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(10)
+}
+
+model grn {
+  id          Int      @id @default(autoincrement())
+  date        DateTime @db.DateTime(0)
+  total       Float
+  total_qty   Int
+  supplier_id Int
+  users_id    Int
+
+  @@index([supplier_id], map: "fk_grn_supplier1_idx")
+  @@index([users_id], map: "fk_grn_users1_idx")
+}
+
+model grn_items {
+  id              Int     @id @default(autoincrement())
+  price           Float
+  cost            Float
+  product_id      Int
+  qty             Int
+  size_id         Int
+  desc            String? @db.Text
+  product_type_id Int
+  grn_id          Int
+
+  @@index([grn_id], map: "fk_grn_items_grn1_idx")
+  @@index([product_type_id], map: "fk_grn_items_product_type1_idx")
+}
+
+model invoice {
+  id                Int      @id @default(autoincrement())
+  total             Float
+  qty               Float
+  datetime          DateTime @db.DateTime(0)
+  discount          Float
+  payment_method_id Int
+  users_id          Int
+
+  @@index([payment_method_id], map: "fk_invoice_payment_method1_idx")
+  @@index([users_id], map: "fk_invoice_users1_idx")
+}
+
+model invoice_items {
+  id              Int   @id @default(autoincrement())
+  price           Float
+  cost            Float
+  product_id      Int
+  qty             Int
+  batch_id        Int
+  invoice_id      Int
+  product_type_id Int
+
+  @@index([invoice_id], map: "fk_grn_items_copy1_invoice1_idx")
+  @@index([product_type_id], map: "fk_grn_items_product_type1_idx")
+}
+
+model mother_plant_type {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(45)
+}
+
+model payment_method {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(20)
+}
+
+model pot {
+  id    Int    @id @default(autoincrement())
+  name  String @db.VarChar(45)
+  price Float
+  desc  String @db.Text
+}
+
+model pot_batch {
+  id          Int     @id @default(autoincrement())
+  qty         Int
+  price       Float
+  cost        Float
+  desc        String? @db.Text
+  pot_id      Int
+  pot_size_id Int
+  code        String  @db.VarChar(30)
+
+  @@index([pot_id], map: "fk_pot_batch_pot1_idx")
+  @@index([pot_size_id], map: "fk_pot_batch_pot_size1_idx")
+}
+
+model pot_size {
+  id        Int    @id @default(autoincrement())
+  size      String @db.VarChar(100)
+  short_key String @db.VarChar(20)
+}
+
+model product {
+  id                   Int     @id @default(autoincrement())
+  name                 String  @db.VarChar(70)
+  desc                 String? @db.Text
+  mother_plant_type_id Int
+  category_id          Int
+  isActive             Boolean @default(dbgenerated("b'0'")) @db.Bit(1)
+
+  @@index([category_id], map: "fk_product_category1_idx")
+  @@index([mother_plant_type_id], map: "fk_product_mother_plant_type1_idx")
+}
+
+model product_type {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(20)
+}
+
+model size {
+  id        Int    @id @default(autoincrement())
+  size      String @db.VarChar(100)
+  short_key String @db.VarChar(20)
+}
+
+model status {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(10)
+}
+
+model supplier {
+  id        Int     @id @default(autoincrement())
+  fullname  String  @db.VarChar(100)
+  company   String  @db.VarChar(100)
+  address   String  @db.VarChar(100)
+  mobile    String  @db.VarChar(20)
+  email     String  @db.VarChar(100)
+  isActive  Boolean @db.Bit(1)
+  status_id Int
+  gender_id Int
+  city_id   Int
+
+  @@index([city_id], map: "fk_supplier_city1_idx")
+  @@index([gender_id], map: "fk_supplier_gender1_idx")
+  @@index([status_id], map: "fk_supplier_status1_idx")
+}
+
+model user {
+  id    Int    @id @default(autoincrement())
+  name  String
+  email String @unique(map: "User_email_key")
+}
+
+model user_role {
+  id   Int    @id @default(autoincrement())
+  name String @db.VarChar(20)
+}
+
+model users {
+  id           Int    @id @default(autoincrement())
+  fname        String @db.VarChar(45)
+  lname        String @db.VarChar(45)
+  address      String @db.VarChar(100)
+  nic          String @db.VarChar(20)
+  email        String @db.VarChar(100)
+  password     String @db.VarChar(100)
+  mobile       String @db.VarChar(20)
+  user_role_id Int
+  gender_id    Int
+  city_id      Int
+  status_id    Int
+
+  @@index([city_id], map: "fk_users_city1_idx")
+  @@index([gender_id], map: "fk_users_gender1_idx")
+  @@index([status_id], map: "fk_users_status1_idx")
+  @@index([user_role_id], map: "fk_users_user_role_idx")
+}
