@@ -11,4 +11,5 @@ export type User = {
     gender_id: number;
     city_id: number;
     status_id: number;
+    p_img?: string;
 };

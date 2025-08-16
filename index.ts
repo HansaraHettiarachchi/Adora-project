@@ -9,7 +9,7 @@ app.get('/', (req, res) => {
     res.send('Hello from Express hi it hansra!');
 });
 
-app.use('/users', userRouter);
+app.use('/api/v1/users', userRouter);
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);
