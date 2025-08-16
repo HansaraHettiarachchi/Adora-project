@@ -118,6 +118,16 @@ export type user_role = $Result.DefaultSelection<Prisma.$user_rolePayload>
  * 
  */
 export type users = $Result.DefaultSelection<Prisma.$usersPayload>
+/**
+ * Model pot_images
+ * 
+ */
+export type pot_images = $Result.DefaultSelection<Prisma.$pot_imagesPayload>
+/**
+ * Model product_images
+ * 
+ */
+export type product_images = $Result.DefaultSelection<Prisma.$product_imagesPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -446,6 +456,26 @@ export class PrismaClient<
     * ```
     */
   get users(): Prisma.usersDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.pot_images`: Exposes CRUD operations for the **pot_images** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Pot_images
+    * const pot_images = await prisma.pot_images.findMany()
+    * ```
+    */
+  get pot_images(): Prisma.pot_imagesDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.product_images`: Exposes CRUD operations for the **product_images** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Product_images
+    * const product_images = await prisma.product_images.findMany()
+    * ```
+    */
+  get product_images(): Prisma.product_imagesDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -906,7 +936,9 @@ export namespace Prisma {
     status: 'status',
     supplier: 'supplier',
     user_role: 'user_role',
-    users: 'users'
+    users: 'users',
+    pot_images: 'pot_images',
+    product_images: 'product_images'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -925,7 +957,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "batch" | "card_details" | "category" | "city" | "gender" | "grn" | "grn_items" | "invoice" | "invoice_items" | "mother_plant_type" | "payment_method" | "pot" | "pot_batch" | "pot_size" | "product" | "product_type" | "size" | "status" | "supplier" | "user_role" | "users"
+      modelProps: "batch" | "card_details" | "category" | "city" | "gender" | "grn" | "grn_items" | "invoice" | "invoice_items" | "mother_plant_type" | "payment_method" | "pot" | "pot_batch" | "pot_size" | "product" | "product_type" | "size" | "status" | "supplier" | "user_role" | "users" | "pot_images" | "product_images"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2315,6 +2347,138 @@ export namespace Prisma {
           }
         }
       }
+      pot_images: {
+        payload: Prisma.$pot_imagesPayload<ExtArgs>
+        fields: Prisma.pot_imagesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.pot_imagesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.pot_imagesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload>
+          }
+          findFirst: {
+            args: Prisma.pot_imagesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.pot_imagesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload>
+          }
+          findMany: {
+            args: Prisma.pot_imagesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload>[]
+          }
+          create: {
+            args: Prisma.pot_imagesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload>
+          }
+          createMany: {
+            args: Prisma.pot_imagesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.pot_imagesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload>
+          }
+          update: {
+            args: Prisma.pot_imagesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload>
+          }
+          deleteMany: {
+            args: Prisma.pot_imagesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.pot_imagesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.pot_imagesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload>
+          }
+          aggregate: {
+            args: Prisma.Pot_imagesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePot_images>
+          }
+          groupBy: {
+            args: Prisma.pot_imagesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Pot_imagesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.pot_imagesCountArgs<ExtArgs>
+            result: $Utils.Optional<Pot_imagesCountAggregateOutputType> | number
+          }
+        }
+      }
+      product_images: {
+        payload: Prisma.$product_imagesPayload<ExtArgs>
+        fields: Prisma.product_imagesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.product_imagesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.product_imagesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload>
+          }
+          findFirst: {
+            args: Prisma.product_imagesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.product_imagesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload>
+          }
+          findMany: {
+            args: Prisma.product_imagesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload>[]
+          }
+          create: {
+            args: Prisma.product_imagesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload>
+          }
+          createMany: {
+            args: Prisma.product_imagesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.product_imagesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload>
+          }
+          update: {
+            args: Prisma.product_imagesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload>
+          }
+          deleteMany: {
+            args: Prisma.product_imagesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.product_imagesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.product_imagesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload>
+          }
+          aggregate: {
+            args: Prisma.Product_imagesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProduct_images>
+          }
+          groupBy: {
+            args: Prisma.product_imagesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Product_imagesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.product_imagesCountArgs<ExtArgs>
+            result: $Utils.Optional<Product_imagesCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2428,6 +2592,8 @@ export namespace Prisma {
     supplier?: supplierOmit
     user_role?: user_roleOmit
     users?: usersOmit
+    pot_images?: pot_imagesOmit
+    product_images?: product_imagesOmit
   }
 
   /* Types for Logging */
@@ -20930,6 +21096,7 @@ export namespace Prisma {
     email: string | null
     password: string | null
     mobile: string | null
+    p_img: string | null
     user_role_id: number | null
     gender_id: number | null
     city_id: number | null
@@ -20945,6 +21112,7 @@ export namespace Prisma {
     email: string | null
     password: string | null
     mobile: string | null
+    p_img: string | null
     user_role_id: number | null
     gender_id: number | null
     city_id: number | null
@@ -20960,6 +21128,7 @@ export namespace Prisma {
     email: number
     password: number
     mobile: number
+    p_img: number
     user_role_id: number
     gender_id: number
     city_id: number
@@ -20993,6 +21162,7 @@ export namespace Prisma {
     email?: true
     password?: true
     mobile?: true
+    p_img?: true
     user_role_id?: true
     gender_id?: true
     city_id?: true
@@ -21008,6 +21178,7 @@ export namespace Prisma {
     email?: true
     password?: true
     mobile?: true
+    p_img?: true
     user_role_id?: true
     gender_id?: true
     city_id?: true
@@ -21023,6 +21194,7 @@ export namespace Prisma {
     email?: true
     password?: true
     mobile?: true
+    p_img?: true
     user_role_id?: true
     gender_id?: true
     city_id?: true
@@ -21125,6 +21297,7 @@ export namespace Prisma {
     email: string
     password: string
     mobile: string
+    p_img: string | null
     user_role_id: number
     gender_id: number
     city_id: number
@@ -21159,6 +21332,7 @@ export namespace Prisma {
     email?: boolean
     password?: boolean
     mobile?: boolean
+    p_img?: boolean
     user_role_id?: boolean
     gender_id?: boolean
     city_id?: boolean
@@ -21176,13 +21350,14 @@ export namespace Prisma {
     email?: boolean
     password?: boolean
     mobile?: boolean
+    p_img?: boolean
     user_role_id?: boolean
     gender_id?: boolean
     city_id?: boolean
     status_id?: boolean
   }
 
-  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fname" | "lname" | "address" | "nic" | "email" | "password" | "mobile" | "user_role_id" | "gender_id" | "city_id" | "status_id", ExtArgs["result"]["users"]>
+  export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fname" | "lname" | "address" | "nic" | "email" | "password" | "mobile" | "p_img" | "user_role_id" | "gender_id" | "city_id" | "status_id", ExtArgs["result"]["users"]>
 
   export type $usersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "users"
@@ -21196,6 +21371,7 @@ export namespace Prisma {
       email: string
       password: string
       mobile: string
+      p_img: string | null
       user_role_id: number
       gender_id: number
       city_id: number
@@ -21577,6 +21753,7 @@ export namespace Prisma {
     readonly email: FieldRef<"users", 'String'>
     readonly password: FieldRef<"users", 'String'>
     readonly mobile: FieldRef<"users", 'String'>
+    readonly p_img: FieldRef<"users", 'String'>
     readonly user_role_id: FieldRef<"users", 'Int'>
     readonly gender_id: FieldRef<"users", 'Int'>
     readonly city_id: FieldRef<"users", 'Int'>
@@ -21903,6 +22080,1802 @@ export namespace Prisma {
 
 
   /**
+   * Model pot_images
+   */
+
+  export type AggregatePot_images = {
+    _count: Pot_imagesCountAggregateOutputType | null
+    _avg: Pot_imagesAvgAggregateOutputType | null
+    _sum: Pot_imagesSumAggregateOutputType | null
+    _min: Pot_imagesMinAggregateOutputType | null
+    _max: Pot_imagesMaxAggregateOutputType | null
+  }
+
+  export type Pot_imagesAvgAggregateOutputType = {
+    id: number | null
+    pot_batch_id: number | null
+  }
+
+  export type Pot_imagesSumAggregateOutputType = {
+    id: number | null
+    pot_batch_id: number | null
+  }
+
+  export type Pot_imagesMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    pot_batch_id: number | null
+  }
+
+  export type Pot_imagesMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    pot_batch_id: number | null
+  }
+
+  export type Pot_imagesCountAggregateOutputType = {
+    id: number
+    name: number
+    pot_batch_id: number
+    _all: number
+  }
+
+
+  export type Pot_imagesAvgAggregateInputType = {
+    id?: true
+    pot_batch_id?: true
+  }
+
+  export type Pot_imagesSumAggregateInputType = {
+    id?: true
+    pot_batch_id?: true
+  }
+
+  export type Pot_imagesMinAggregateInputType = {
+    id?: true
+    name?: true
+    pot_batch_id?: true
+  }
+
+  export type Pot_imagesMaxAggregateInputType = {
+    id?: true
+    name?: true
+    pot_batch_id?: true
+  }
+
+  export type Pot_imagesCountAggregateInputType = {
+    id?: true
+    name?: true
+    pot_batch_id?: true
+    _all?: true
+  }
+
+  export type Pot_imagesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which pot_images to aggregate.
+     */
+    where?: pot_imagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of pot_images to fetch.
+     */
+    orderBy?: pot_imagesOrderByWithRelationInput | pot_imagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: pot_imagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` pot_images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` pot_images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned pot_images
+    **/
+    _count?: true | Pot_imagesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Pot_imagesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Pot_imagesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Pot_imagesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Pot_imagesMaxAggregateInputType
+  }
+
+  export type GetPot_imagesAggregateType<T extends Pot_imagesAggregateArgs> = {
+        [P in keyof T & keyof AggregatePot_images]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePot_images[P]>
+      : GetScalarType<T[P], AggregatePot_images[P]>
+  }
+
+
+
+
+  export type pot_imagesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: pot_imagesWhereInput
+    orderBy?: pot_imagesOrderByWithAggregationInput | pot_imagesOrderByWithAggregationInput[]
+    by: Pot_imagesScalarFieldEnum[] | Pot_imagesScalarFieldEnum
+    having?: pot_imagesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Pot_imagesCountAggregateInputType | true
+    _avg?: Pot_imagesAvgAggregateInputType
+    _sum?: Pot_imagesSumAggregateInputType
+    _min?: Pot_imagesMinAggregateInputType
+    _max?: Pot_imagesMaxAggregateInputType
+  }
+
+  export type Pot_imagesGroupByOutputType = {
+    id: number
+    name: string
+    pot_batch_id: number
+    _count: Pot_imagesCountAggregateOutputType | null
+    _avg: Pot_imagesAvgAggregateOutputType | null
+    _sum: Pot_imagesSumAggregateOutputType | null
+    _min: Pot_imagesMinAggregateOutputType | null
+    _max: Pot_imagesMaxAggregateOutputType | null
+  }
+
+  type GetPot_imagesGroupByPayload<T extends pot_imagesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Pot_imagesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Pot_imagesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Pot_imagesGroupByOutputType[P]>
+            : GetScalarType<T[P], Pot_imagesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type pot_imagesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    pot_batch_id?: boolean
+  }, ExtArgs["result"]["pot_images"]>
+
+
+
+  export type pot_imagesSelectScalar = {
+    id?: boolean
+    name?: boolean
+    pot_batch_id?: boolean
+  }
+
+  export type pot_imagesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "pot_batch_id", ExtArgs["result"]["pot_images"]>
+
+  export type $pot_imagesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "pot_images"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      pot_batch_id: number
+    }, ExtArgs["result"]["pot_images"]>
+    composites: {}
+  }
+
+  type pot_imagesGetPayload<S extends boolean | null | undefined | pot_imagesDefaultArgs> = $Result.GetResult<Prisma.$pot_imagesPayload, S>
+
+  type pot_imagesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<pot_imagesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Pot_imagesCountAggregateInputType | true
+    }
+
+  export interface pot_imagesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['pot_images'], meta: { name: 'pot_images' } }
+    /**
+     * Find zero or one Pot_images that matches the filter.
+     * @param {pot_imagesFindUniqueArgs} args - Arguments to find a Pot_images
+     * @example
+     * // Get one Pot_images
+     * const pot_images = await prisma.pot_images.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends pot_imagesFindUniqueArgs>(args: SelectSubset<T, pot_imagesFindUniqueArgs<ExtArgs>>): Prisma__pot_imagesClient<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Pot_images that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {pot_imagesFindUniqueOrThrowArgs} args - Arguments to find a Pot_images
+     * @example
+     * // Get one Pot_images
+     * const pot_images = await prisma.pot_images.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends pot_imagesFindUniqueOrThrowArgs>(args: SelectSubset<T, pot_imagesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__pot_imagesClient<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Pot_images that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pot_imagesFindFirstArgs} args - Arguments to find a Pot_images
+     * @example
+     * // Get one Pot_images
+     * const pot_images = await prisma.pot_images.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends pot_imagesFindFirstArgs>(args?: SelectSubset<T, pot_imagesFindFirstArgs<ExtArgs>>): Prisma__pot_imagesClient<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Pot_images that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pot_imagesFindFirstOrThrowArgs} args - Arguments to find a Pot_images
+     * @example
+     * // Get one Pot_images
+     * const pot_images = await prisma.pot_images.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends pot_imagesFindFirstOrThrowArgs>(args?: SelectSubset<T, pot_imagesFindFirstOrThrowArgs<ExtArgs>>): Prisma__pot_imagesClient<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Pot_images that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pot_imagesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Pot_images
+     * const pot_images = await prisma.pot_images.findMany()
+     * 
+     * // Get first 10 Pot_images
+     * const pot_images = await prisma.pot_images.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const pot_imagesWithIdOnly = await prisma.pot_images.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends pot_imagesFindManyArgs>(args?: SelectSubset<T, pot_imagesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Pot_images.
+     * @param {pot_imagesCreateArgs} args - Arguments to create a Pot_images.
+     * @example
+     * // Create one Pot_images
+     * const Pot_images = await prisma.pot_images.create({
+     *   data: {
+     *     // ... data to create a Pot_images
+     *   }
+     * })
+     * 
+     */
+    create<T extends pot_imagesCreateArgs>(args: SelectSubset<T, pot_imagesCreateArgs<ExtArgs>>): Prisma__pot_imagesClient<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Pot_images.
+     * @param {pot_imagesCreateManyArgs} args - Arguments to create many Pot_images.
+     * @example
+     * // Create many Pot_images
+     * const pot_images = await prisma.pot_images.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends pot_imagesCreateManyArgs>(args?: SelectSubset<T, pot_imagesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Pot_images.
+     * @param {pot_imagesDeleteArgs} args - Arguments to delete one Pot_images.
+     * @example
+     * // Delete one Pot_images
+     * const Pot_images = await prisma.pot_images.delete({
+     *   where: {
+     *     // ... filter to delete one Pot_images
+     *   }
+     * })
+     * 
+     */
+    delete<T extends pot_imagesDeleteArgs>(args: SelectSubset<T, pot_imagesDeleteArgs<ExtArgs>>): Prisma__pot_imagesClient<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Pot_images.
+     * @param {pot_imagesUpdateArgs} args - Arguments to update one Pot_images.
+     * @example
+     * // Update one Pot_images
+     * const pot_images = await prisma.pot_images.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends pot_imagesUpdateArgs>(args: SelectSubset<T, pot_imagesUpdateArgs<ExtArgs>>): Prisma__pot_imagesClient<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Pot_images.
+     * @param {pot_imagesDeleteManyArgs} args - Arguments to filter Pot_images to delete.
+     * @example
+     * // Delete a few Pot_images
+     * const { count } = await prisma.pot_images.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends pot_imagesDeleteManyArgs>(args?: SelectSubset<T, pot_imagesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Pot_images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pot_imagesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Pot_images
+     * const pot_images = await prisma.pot_images.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends pot_imagesUpdateManyArgs>(args: SelectSubset<T, pot_imagesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Pot_images.
+     * @param {pot_imagesUpsertArgs} args - Arguments to update or create a Pot_images.
+     * @example
+     * // Update or create a Pot_images
+     * const pot_images = await prisma.pot_images.upsert({
+     *   create: {
+     *     // ... data to create a Pot_images
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Pot_images we want to update
+     *   }
+     * })
+     */
+    upsert<T extends pot_imagesUpsertArgs>(args: SelectSubset<T, pot_imagesUpsertArgs<ExtArgs>>): Prisma__pot_imagesClient<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Pot_images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pot_imagesCountArgs} args - Arguments to filter Pot_images to count.
+     * @example
+     * // Count the number of Pot_images
+     * const count = await prisma.pot_images.count({
+     *   where: {
+     *     // ... the filter for the Pot_images we want to count
+     *   }
+     * })
+    **/
+    count<T extends pot_imagesCountArgs>(
+      args?: Subset<T, pot_imagesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Pot_imagesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Pot_images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Pot_imagesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Pot_imagesAggregateArgs>(args: Subset<T, Pot_imagesAggregateArgs>): Prisma.PrismaPromise<GetPot_imagesAggregateType<T>>
+
+    /**
+     * Group by Pot_images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pot_imagesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends pot_imagesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: pot_imagesGroupByArgs['orderBy'] }
+        : { orderBy?: pot_imagesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, pot_imagesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPot_imagesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the pot_images model
+   */
+  readonly fields: pot_imagesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for pot_images.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__pot_imagesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the pot_images model
+   */
+  interface pot_imagesFieldRefs {
+    readonly id: FieldRef<"pot_images", 'Int'>
+    readonly name: FieldRef<"pot_images", 'String'>
+    readonly pot_batch_id: FieldRef<"pot_images", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * pot_images findUnique
+   */
+  export type pot_imagesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pot_images
+     */
+    select?: pot_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pot_images
+     */
+    omit?: pot_imagesOmit<ExtArgs> | null
+    /**
+     * Filter, which pot_images to fetch.
+     */
+    where: pot_imagesWhereUniqueInput
+  }
+
+  /**
+   * pot_images findUniqueOrThrow
+   */
+  export type pot_imagesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pot_images
+     */
+    select?: pot_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pot_images
+     */
+    omit?: pot_imagesOmit<ExtArgs> | null
+    /**
+     * Filter, which pot_images to fetch.
+     */
+    where: pot_imagesWhereUniqueInput
+  }
+
+  /**
+   * pot_images findFirst
+   */
+  export type pot_imagesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pot_images
+     */
+    select?: pot_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pot_images
+     */
+    omit?: pot_imagesOmit<ExtArgs> | null
+    /**
+     * Filter, which pot_images to fetch.
+     */
+    where?: pot_imagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of pot_images to fetch.
+     */
+    orderBy?: pot_imagesOrderByWithRelationInput | pot_imagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for pot_images.
+     */
+    cursor?: pot_imagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` pot_images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` pot_images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of pot_images.
+     */
+    distinct?: Pot_imagesScalarFieldEnum | Pot_imagesScalarFieldEnum[]
+  }
+
+  /**
+   * pot_images findFirstOrThrow
+   */
+  export type pot_imagesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pot_images
+     */
+    select?: pot_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pot_images
+     */
+    omit?: pot_imagesOmit<ExtArgs> | null
+    /**
+     * Filter, which pot_images to fetch.
+     */
+    where?: pot_imagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of pot_images to fetch.
+     */
+    orderBy?: pot_imagesOrderByWithRelationInput | pot_imagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for pot_images.
+     */
+    cursor?: pot_imagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` pot_images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` pot_images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of pot_images.
+     */
+    distinct?: Pot_imagesScalarFieldEnum | Pot_imagesScalarFieldEnum[]
+  }
+
+  /**
+   * pot_images findMany
+   */
+  export type pot_imagesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pot_images
+     */
+    select?: pot_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pot_images
+     */
+    omit?: pot_imagesOmit<ExtArgs> | null
+    /**
+     * Filter, which pot_images to fetch.
+     */
+    where?: pot_imagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of pot_images to fetch.
+     */
+    orderBy?: pot_imagesOrderByWithRelationInput | pot_imagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing pot_images.
+     */
+    cursor?: pot_imagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` pot_images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` pot_images.
+     */
+    skip?: number
+    distinct?: Pot_imagesScalarFieldEnum | Pot_imagesScalarFieldEnum[]
+  }
+
+  /**
+   * pot_images create
+   */
+  export type pot_imagesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pot_images
+     */
+    select?: pot_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pot_images
+     */
+    omit?: pot_imagesOmit<ExtArgs> | null
+    /**
+     * The data needed to create a pot_images.
+     */
+    data: XOR<pot_imagesCreateInput, pot_imagesUncheckedCreateInput>
+  }
+
+  /**
+   * pot_images createMany
+   */
+  export type pot_imagesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many pot_images.
+     */
+    data: pot_imagesCreateManyInput | pot_imagesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * pot_images update
+   */
+  export type pot_imagesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pot_images
+     */
+    select?: pot_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pot_images
+     */
+    omit?: pot_imagesOmit<ExtArgs> | null
+    /**
+     * The data needed to update a pot_images.
+     */
+    data: XOR<pot_imagesUpdateInput, pot_imagesUncheckedUpdateInput>
+    /**
+     * Choose, which pot_images to update.
+     */
+    where: pot_imagesWhereUniqueInput
+  }
+
+  /**
+   * pot_images updateMany
+   */
+  export type pot_imagesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update pot_images.
+     */
+    data: XOR<pot_imagesUpdateManyMutationInput, pot_imagesUncheckedUpdateManyInput>
+    /**
+     * Filter which pot_images to update
+     */
+    where?: pot_imagesWhereInput
+    /**
+     * Limit how many pot_images to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * pot_images upsert
+   */
+  export type pot_imagesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pot_images
+     */
+    select?: pot_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pot_images
+     */
+    omit?: pot_imagesOmit<ExtArgs> | null
+    /**
+     * The filter to search for the pot_images to update in case it exists.
+     */
+    where: pot_imagesWhereUniqueInput
+    /**
+     * In case the pot_images found by the `where` argument doesn't exist, create a new pot_images with this data.
+     */
+    create: XOR<pot_imagesCreateInput, pot_imagesUncheckedCreateInput>
+    /**
+     * In case the pot_images was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<pot_imagesUpdateInput, pot_imagesUncheckedUpdateInput>
+  }
+
+  /**
+   * pot_images delete
+   */
+  export type pot_imagesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pot_images
+     */
+    select?: pot_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pot_images
+     */
+    omit?: pot_imagesOmit<ExtArgs> | null
+    /**
+     * Filter which pot_images to delete.
+     */
+    where: pot_imagesWhereUniqueInput
+  }
+
+  /**
+   * pot_images deleteMany
+   */
+  export type pot_imagesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which pot_images to delete
+     */
+    where?: pot_imagesWhereInput
+    /**
+     * Limit how many pot_images to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * pot_images without action
+   */
+  export type pot_imagesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pot_images
+     */
+    select?: pot_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pot_images
+     */
+    omit?: pot_imagesOmit<ExtArgs> | null
+  }
+
+
+  /**
+   * Model product_images
+   */
+
+  export type AggregateProduct_images = {
+    _count: Product_imagesCountAggregateOutputType | null
+    _avg: Product_imagesAvgAggregateOutputType | null
+    _sum: Product_imagesSumAggregateOutputType | null
+    _min: Product_imagesMinAggregateOutputType | null
+    _max: Product_imagesMaxAggregateOutputType | null
+  }
+
+  export type Product_imagesAvgAggregateOutputType = {
+    id: number | null
+    batch_id: number | null
+  }
+
+  export type Product_imagesSumAggregateOutputType = {
+    id: number | null
+    batch_id: number | null
+  }
+
+  export type Product_imagesMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    batch_id: number | null
+  }
+
+  export type Product_imagesMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    batch_id: number | null
+  }
+
+  export type Product_imagesCountAggregateOutputType = {
+    id: number
+    name: number
+    batch_id: number
+    _all: number
+  }
+
+
+  export type Product_imagesAvgAggregateInputType = {
+    id?: true
+    batch_id?: true
+  }
+
+  export type Product_imagesSumAggregateInputType = {
+    id?: true
+    batch_id?: true
+  }
+
+  export type Product_imagesMinAggregateInputType = {
+    id?: true
+    name?: true
+    batch_id?: true
+  }
+
+  export type Product_imagesMaxAggregateInputType = {
+    id?: true
+    name?: true
+    batch_id?: true
+  }
+
+  export type Product_imagesCountAggregateInputType = {
+    id?: true
+    name?: true
+    batch_id?: true
+    _all?: true
+  }
+
+  export type Product_imagesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which product_images to aggregate.
+     */
+    where?: product_imagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of product_images to fetch.
+     */
+    orderBy?: product_imagesOrderByWithRelationInput | product_imagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: product_imagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` product_images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` product_images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned product_images
+    **/
+    _count?: true | Product_imagesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Product_imagesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Product_imagesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Product_imagesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Product_imagesMaxAggregateInputType
+  }
+
+  export type GetProduct_imagesAggregateType<T extends Product_imagesAggregateArgs> = {
+        [P in keyof T & keyof AggregateProduct_images]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProduct_images[P]>
+      : GetScalarType<T[P], AggregateProduct_images[P]>
+  }
+
+
+
+
+  export type product_imagesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: product_imagesWhereInput
+    orderBy?: product_imagesOrderByWithAggregationInput | product_imagesOrderByWithAggregationInput[]
+    by: Product_imagesScalarFieldEnum[] | Product_imagesScalarFieldEnum
+    having?: product_imagesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Product_imagesCountAggregateInputType | true
+    _avg?: Product_imagesAvgAggregateInputType
+    _sum?: Product_imagesSumAggregateInputType
+    _min?: Product_imagesMinAggregateInputType
+    _max?: Product_imagesMaxAggregateInputType
+  }
+
+  export type Product_imagesGroupByOutputType = {
+    id: number
+    name: string
+    batch_id: number
+    _count: Product_imagesCountAggregateOutputType | null
+    _avg: Product_imagesAvgAggregateOutputType | null
+    _sum: Product_imagesSumAggregateOutputType | null
+    _min: Product_imagesMinAggregateOutputType | null
+    _max: Product_imagesMaxAggregateOutputType | null
+  }
+
+  type GetProduct_imagesGroupByPayload<T extends product_imagesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Product_imagesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Product_imagesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Product_imagesGroupByOutputType[P]>
+            : GetScalarType<T[P], Product_imagesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type product_imagesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    batch_id?: boolean
+  }, ExtArgs["result"]["product_images"]>
+
+
+
+  export type product_imagesSelectScalar = {
+    id?: boolean
+    name?: boolean
+    batch_id?: boolean
+  }
+
+  export type product_imagesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "batch_id", ExtArgs["result"]["product_images"]>
+
+  export type $product_imagesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "product_images"
+    objects: {}
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      batch_id: number
+    }, ExtArgs["result"]["product_images"]>
+    composites: {}
+  }
+
+  type product_imagesGetPayload<S extends boolean | null | undefined | product_imagesDefaultArgs> = $Result.GetResult<Prisma.$product_imagesPayload, S>
+
+  type product_imagesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<product_imagesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Product_imagesCountAggregateInputType | true
+    }
+
+  export interface product_imagesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['product_images'], meta: { name: 'product_images' } }
+    /**
+     * Find zero or one Product_images that matches the filter.
+     * @param {product_imagesFindUniqueArgs} args - Arguments to find a Product_images
+     * @example
+     * // Get one Product_images
+     * const product_images = await prisma.product_images.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends product_imagesFindUniqueArgs>(args: SelectSubset<T, product_imagesFindUniqueArgs<ExtArgs>>): Prisma__product_imagesClient<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Product_images that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {product_imagesFindUniqueOrThrowArgs} args - Arguments to find a Product_images
+     * @example
+     * // Get one Product_images
+     * const product_images = await prisma.product_images.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends product_imagesFindUniqueOrThrowArgs>(args: SelectSubset<T, product_imagesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__product_imagesClient<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Product_images that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {product_imagesFindFirstArgs} args - Arguments to find a Product_images
+     * @example
+     * // Get one Product_images
+     * const product_images = await prisma.product_images.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends product_imagesFindFirstArgs>(args?: SelectSubset<T, product_imagesFindFirstArgs<ExtArgs>>): Prisma__product_imagesClient<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Product_images that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {product_imagesFindFirstOrThrowArgs} args - Arguments to find a Product_images
+     * @example
+     * // Get one Product_images
+     * const product_images = await prisma.product_images.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends product_imagesFindFirstOrThrowArgs>(args?: SelectSubset<T, product_imagesFindFirstOrThrowArgs<ExtArgs>>): Prisma__product_imagesClient<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Product_images that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {product_imagesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Product_images
+     * const product_images = await prisma.product_images.findMany()
+     * 
+     * // Get first 10 Product_images
+     * const product_images = await prisma.product_images.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const product_imagesWithIdOnly = await prisma.product_images.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends product_imagesFindManyArgs>(args?: SelectSubset<T, product_imagesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Product_images.
+     * @param {product_imagesCreateArgs} args - Arguments to create a Product_images.
+     * @example
+     * // Create one Product_images
+     * const Product_images = await prisma.product_images.create({
+     *   data: {
+     *     // ... data to create a Product_images
+     *   }
+     * })
+     * 
+     */
+    create<T extends product_imagesCreateArgs>(args: SelectSubset<T, product_imagesCreateArgs<ExtArgs>>): Prisma__product_imagesClient<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Product_images.
+     * @param {product_imagesCreateManyArgs} args - Arguments to create many Product_images.
+     * @example
+     * // Create many Product_images
+     * const product_images = await prisma.product_images.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends product_imagesCreateManyArgs>(args?: SelectSubset<T, product_imagesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Product_images.
+     * @param {product_imagesDeleteArgs} args - Arguments to delete one Product_images.
+     * @example
+     * // Delete one Product_images
+     * const Product_images = await prisma.product_images.delete({
+     *   where: {
+     *     // ... filter to delete one Product_images
+     *   }
+     * })
+     * 
+     */
+    delete<T extends product_imagesDeleteArgs>(args: SelectSubset<T, product_imagesDeleteArgs<ExtArgs>>): Prisma__product_imagesClient<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Product_images.
+     * @param {product_imagesUpdateArgs} args - Arguments to update one Product_images.
+     * @example
+     * // Update one Product_images
+     * const product_images = await prisma.product_images.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends product_imagesUpdateArgs>(args: SelectSubset<T, product_imagesUpdateArgs<ExtArgs>>): Prisma__product_imagesClient<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Product_images.
+     * @param {product_imagesDeleteManyArgs} args - Arguments to filter Product_images to delete.
+     * @example
+     * // Delete a few Product_images
+     * const { count } = await prisma.product_images.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends product_imagesDeleteManyArgs>(args?: SelectSubset<T, product_imagesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Product_images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {product_imagesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Product_images
+     * const product_images = await prisma.product_images.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends product_imagesUpdateManyArgs>(args: SelectSubset<T, product_imagesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Product_images.
+     * @param {product_imagesUpsertArgs} args - Arguments to update or create a Product_images.
+     * @example
+     * // Update or create a Product_images
+     * const product_images = await prisma.product_images.upsert({
+     *   create: {
+     *     // ... data to create a Product_images
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Product_images we want to update
+     *   }
+     * })
+     */
+    upsert<T extends product_imagesUpsertArgs>(args: SelectSubset<T, product_imagesUpsertArgs<ExtArgs>>): Prisma__product_imagesClient<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Product_images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {product_imagesCountArgs} args - Arguments to filter Product_images to count.
+     * @example
+     * // Count the number of Product_images
+     * const count = await prisma.product_images.count({
+     *   where: {
+     *     // ... the filter for the Product_images we want to count
+     *   }
+     * })
+    **/
+    count<T extends product_imagesCountArgs>(
+      args?: Subset<T, product_imagesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Product_imagesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Product_images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Product_imagesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Product_imagesAggregateArgs>(args: Subset<T, Product_imagesAggregateArgs>): Prisma.PrismaPromise<GetProduct_imagesAggregateType<T>>
+
+    /**
+     * Group by Product_images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {product_imagesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends product_imagesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: product_imagesGroupByArgs['orderBy'] }
+        : { orderBy?: product_imagesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, product_imagesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProduct_imagesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the product_images model
+   */
+  readonly fields: product_imagesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for product_images.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__product_imagesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the product_images model
+   */
+  interface product_imagesFieldRefs {
+    readonly id: FieldRef<"product_images", 'Int'>
+    readonly name: FieldRef<"product_images", 'String'>
+    readonly batch_id: FieldRef<"product_images", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * product_images findUnique
+   */
+  export type product_imagesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_images
+     */
+    select?: product_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_images
+     */
+    omit?: product_imagesOmit<ExtArgs> | null
+    /**
+     * Filter, which product_images to fetch.
+     */
+    where: product_imagesWhereUniqueInput
+  }
+
+  /**
+   * product_images findUniqueOrThrow
+   */
+  export type product_imagesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_images
+     */
+    select?: product_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_images
+     */
+    omit?: product_imagesOmit<ExtArgs> | null
+    /**
+     * Filter, which product_images to fetch.
+     */
+    where: product_imagesWhereUniqueInput
+  }
+
+  /**
+   * product_images findFirst
+   */
+  export type product_imagesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_images
+     */
+    select?: product_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_images
+     */
+    omit?: product_imagesOmit<ExtArgs> | null
+    /**
+     * Filter, which product_images to fetch.
+     */
+    where?: product_imagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of product_images to fetch.
+     */
+    orderBy?: product_imagesOrderByWithRelationInput | product_imagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for product_images.
+     */
+    cursor?: product_imagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` product_images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` product_images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of product_images.
+     */
+    distinct?: Product_imagesScalarFieldEnum | Product_imagesScalarFieldEnum[]
+  }
+
+  /**
+   * product_images findFirstOrThrow
+   */
+  export type product_imagesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_images
+     */
+    select?: product_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_images
+     */
+    omit?: product_imagesOmit<ExtArgs> | null
+    /**
+     * Filter, which product_images to fetch.
+     */
+    where?: product_imagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of product_images to fetch.
+     */
+    orderBy?: product_imagesOrderByWithRelationInput | product_imagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for product_images.
+     */
+    cursor?: product_imagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` product_images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` product_images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of product_images.
+     */
+    distinct?: Product_imagesScalarFieldEnum | Product_imagesScalarFieldEnum[]
+  }
+
+  /**
+   * product_images findMany
+   */
+  export type product_imagesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_images
+     */
+    select?: product_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_images
+     */
+    omit?: product_imagesOmit<ExtArgs> | null
+    /**
+     * Filter, which product_images to fetch.
+     */
+    where?: product_imagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of product_images to fetch.
+     */
+    orderBy?: product_imagesOrderByWithRelationInput | product_imagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing product_images.
+     */
+    cursor?: product_imagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` product_images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` product_images.
+     */
+    skip?: number
+    distinct?: Product_imagesScalarFieldEnum | Product_imagesScalarFieldEnum[]
+  }
+
+  /**
+   * product_images create
+   */
+  export type product_imagesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_images
+     */
+    select?: product_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_images
+     */
+    omit?: product_imagesOmit<ExtArgs> | null
+    /**
+     * The data needed to create a product_images.
+     */
+    data: XOR<product_imagesCreateInput, product_imagesUncheckedCreateInput>
+  }
+
+  /**
+   * product_images createMany
+   */
+  export type product_imagesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many product_images.
+     */
+    data: product_imagesCreateManyInput | product_imagesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * product_images update
+   */
+  export type product_imagesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_images
+     */
+    select?: product_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_images
+     */
+    omit?: product_imagesOmit<ExtArgs> | null
+    /**
+     * The data needed to update a product_images.
+     */
+    data: XOR<product_imagesUpdateInput, product_imagesUncheckedUpdateInput>
+    /**
+     * Choose, which product_images to update.
+     */
+    where: product_imagesWhereUniqueInput
+  }
+
+  /**
+   * product_images updateMany
+   */
+  export type product_imagesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update product_images.
+     */
+    data: XOR<product_imagesUpdateManyMutationInput, product_imagesUncheckedUpdateManyInput>
+    /**
+     * Filter which product_images to update
+     */
+    where?: product_imagesWhereInput
+    /**
+     * Limit how many product_images to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * product_images upsert
+   */
+  export type product_imagesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_images
+     */
+    select?: product_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_images
+     */
+    omit?: product_imagesOmit<ExtArgs> | null
+    /**
+     * The filter to search for the product_images to update in case it exists.
+     */
+    where: product_imagesWhereUniqueInput
+    /**
+     * In case the product_images found by the `where` argument doesn't exist, create a new product_images with this data.
+     */
+    create: XOR<product_imagesCreateInput, product_imagesUncheckedCreateInput>
+    /**
+     * In case the product_images was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<product_imagesUpdateInput, product_imagesUncheckedUpdateInput>
+  }
+
+  /**
+   * product_images delete
+   */
+  export type product_imagesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_images
+     */
+    select?: product_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_images
+     */
+    omit?: product_imagesOmit<ExtArgs> | null
+    /**
+     * Filter which product_images to delete.
+     */
+    where: product_imagesWhereUniqueInput
+  }
+
+  /**
+   * product_images deleteMany
+   */
+  export type product_imagesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which product_images to delete
+     */
+    where?: product_imagesWhereInput
+    /**
+     * Limit how many product_images to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * product_images without action
+   */
+  export type product_imagesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_images
+     */
+    select?: product_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_images
+     */
+    omit?: product_imagesOmit<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -22136,6 +24109,7 @@ export namespace Prisma {
     email: 'email',
     password: 'password',
     mobile: 'mobile',
+    p_img: 'p_img',
     user_role_id: 'user_role_id',
     gender_id: 'gender_id',
     city_id: 'city_id',
@@ -22143,6 +24117,24 @@ export namespace Prisma {
   };
 
   export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
+
+
+  export const Pot_imagesScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    pot_batch_id: 'pot_batch_id'
+  };
+
+  export type Pot_imagesScalarFieldEnum = (typeof Pot_imagesScalarFieldEnum)[keyof typeof Pot_imagesScalarFieldEnum]
+
+
+  export const Product_imagesScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    batch_id: 'batch_id'
+  };
+
+  export type Product_imagesScalarFieldEnum = (typeof Product_imagesScalarFieldEnum)[keyof typeof Product_imagesScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -22290,10 +24282,25 @@ export namespace Prisma {
     nic: 'nic',
     email: 'email',
     password: 'password',
-    mobile: 'mobile'
+    mobile: 'mobile',
+    p_img: 'p_img'
   };
 
   export type usersOrderByRelevanceFieldEnum = (typeof usersOrderByRelevanceFieldEnum)[keyof typeof usersOrderByRelevanceFieldEnum]
+
+
+  export const pot_imagesOrderByRelevanceFieldEnum: {
+    name: 'name'
+  };
+
+  export type pot_imagesOrderByRelevanceFieldEnum = (typeof pot_imagesOrderByRelevanceFieldEnum)[keyof typeof pot_imagesOrderByRelevanceFieldEnum]
+
+
+  export const product_imagesOrderByRelevanceFieldEnum: {
+    name: 'name'
+  };
+
+  export type product_imagesOrderByRelevanceFieldEnum = (typeof product_imagesOrderByRelevanceFieldEnum)[keyof typeof product_imagesOrderByRelevanceFieldEnum]
 
 
   /**
@@ -23402,6 +25409,7 @@ export namespace Prisma {
     email?: StringFilter<"users"> | string
     password?: StringFilter<"users"> | string
     mobile?: StringFilter<"users"> | string
+    p_img?: StringNullableFilter<"users"> | string | null
     user_role_id?: IntFilter<"users"> | number
     gender_id?: IntFilter<"users"> | number
     city_id?: IntFilter<"users"> | number
@@ -23417,6 +25425,7 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     mobile?: SortOrder
+    p_img?: SortOrderInput | SortOrder
     user_role_id?: SortOrder
     gender_id?: SortOrder
     city_id?: SortOrder
@@ -23436,6 +25445,7 @@ export namespace Prisma {
     email?: StringFilter<"users"> | string
     password?: StringFilter<"users"> | string
     mobile?: StringFilter<"users"> | string
+    p_img?: StringNullableFilter<"users"> | string | null
     user_role_id?: IntFilter<"users"> | number
     gender_id?: IntFilter<"users"> | number
     city_id?: IntFilter<"users"> | number
@@ -23451,6 +25461,7 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     mobile?: SortOrder
+    p_img?: SortOrderInput | SortOrder
     user_role_id?: SortOrder
     gender_id?: SortOrder
     city_id?: SortOrder
@@ -23474,10 +25485,101 @@ export namespace Prisma {
     email?: StringWithAggregatesFilter<"users"> | string
     password?: StringWithAggregatesFilter<"users"> | string
     mobile?: StringWithAggregatesFilter<"users"> | string
+    p_img?: StringNullableWithAggregatesFilter<"users"> | string | null
     user_role_id?: IntWithAggregatesFilter<"users"> | number
     gender_id?: IntWithAggregatesFilter<"users"> | number
     city_id?: IntWithAggregatesFilter<"users"> | number
     status_id?: IntWithAggregatesFilter<"users"> | number
+  }
+
+  export type pot_imagesWhereInput = {
+    AND?: pot_imagesWhereInput | pot_imagesWhereInput[]
+    OR?: pot_imagesWhereInput[]
+    NOT?: pot_imagesWhereInput | pot_imagesWhereInput[]
+    id?: IntFilter<"pot_images"> | number
+    name?: StringFilter<"pot_images"> | string
+    pot_batch_id?: IntFilter<"pot_images"> | number
+  }
+
+  export type pot_imagesOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    pot_batch_id?: SortOrder
+    _relevance?: pot_imagesOrderByRelevanceInput
+  }
+
+  export type pot_imagesWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: pot_imagesWhereInput | pot_imagesWhereInput[]
+    OR?: pot_imagesWhereInput[]
+    NOT?: pot_imagesWhereInput | pot_imagesWhereInput[]
+    name?: StringFilter<"pot_images"> | string
+    pot_batch_id?: IntFilter<"pot_images"> | number
+  }, "id">
+
+  export type pot_imagesOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    pot_batch_id?: SortOrder
+    _count?: pot_imagesCountOrderByAggregateInput
+    _avg?: pot_imagesAvgOrderByAggregateInput
+    _max?: pot_imagesMaxOrderByAggregateInput
+    _min?: pot_imagesMinOrderByAggregateInput
+    _sum?: pot_imagesSumOrderByAggregateInput
+  }
+
+  export type pot_imagesScalarWhereWithAggregatesInput = {
+    AND?: pot_imagesScalarWhereWithAggregatesInput | pot_imagesScalarWhereWithAggregatesInput[]
+    OR?: pot_imagesScalarWhereWithAggregatesInput[]
+    NOT?: pot_imagesScalarWhereWithAggregatesInput | pot_imagesScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"pot_images"> | number
+    name?: StringWithAggregatesFilter<"pot_images"> | string
+    pot_batch_id?: IntWithAggregatesFilter<"pot_images"> | number
+  }
+
+  export type product_imagesWhereInput = {
+    AND?: product_imagesWhereInput | product_imagesWhereInput[]
+    OR?: product_imagesWhereInput[]
+    NOT?: product_imagesWhereInput | product_imagesWhereInput[]
+    id?: IntFilter<"product_images"> | number
+    name?: StringFilter<"product_images"> | string
+    batch_id?: IntFilter<"product_images"> | number
+  }
+
+  export type product_imagesOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    batch_id?: SortOrder
+    _relevance?: product_imagesOrderByRelevanceInput
+  }
+
+  export type product_imagesWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: product_imagesWhereInput | product_imagesWhereInput[]
+    OR?: product_imagesWhereInput[]
+    NOT?: product_imagesWhereInput | product_imagesWhereInput[]
+    name?: StringFilter<"product_images"> | string
+    batch_id?: IntFilter<"product_images"> | number
+  }, "id">
+
+  export type product_imagesOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    batch_id?: SortOrder
+    _count?: product_imagesCountOrderByAggregateInput
+    _avg?: product_imagesAvgOrderByAggregateInput
+    _max?: product_imagesMaxOrderByAggregateInput
+    _min?: product_imagesMinOrderByAggregateInput
+    _sum?: product_imagesSumOrderByAggregateInput
+  }
+
+  export type product_imagesScalarWhereWithAggregatesInput = {
+    AND?: product_imagesScalarWhereWithAggregatesInput | product_imagesScalarWhereWithAggregatesInput[]
+    OR?: product_imagesScalarWhereWithAggregatesInput[]
+    NOT?: product_imagesScalarWhereWithAggregatesInput | product_imagesScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"product_images"> | number
+    name?: StringWithAggregatesFilter<"product_images"> | string
+    batch_id?: IntWithAggregatesFilter<"product_images"> | number
   }
 
   export type batchCreateInput = {
@@ -24485,6 +26587,7 @@ export namespace Prisma {
     email: string
     password: string
     mobile: string
+    p_img?: string | null
     user_role_id: number
     gender_id: number
     city_id: number
@@ -24500,6 +26603,7 @@ export namespace Prisma {
     email: string
     password: string
     mobile: string
+    p_img?: string | null
     user_role_id: number
     gender_id: number
     city_id: number
@@ -24514,6 +26618,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
+    p_img?: NullableStringFieldUpdateOperationsInput | string | null
     user_role_id?: IntFieldUpdateOperationsInput | number
     gender_id?: IntFieldUpdateOperationsInput | number
     city_id?: IntFieldUpdateOperationsInput | number
@@ -24529,6 +26634,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
+    p_img?: NullableStringFieldUpdateOperationsInput | string | null
     user_role_id?: IntFieldUpdateOperationsInput | number
     gender_id?: IntFieldUpdateOperationsInput | number
     city_id?: IntFieldUpdateOperationsInput | number
@@ -24544,6 +26650,7 @@ export namespace Prisma {
     email: string
     password: string
     mobile: string
+    p_img?: string | null
     user_role_id: number
     gender_id: number
     city_id: number
@@ -24558,6 +26665,7 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
+    p_img?: NullableStringFieldUpdateOperationsInput | string | null
     user_role_id?: IntFieldUpdateOperationsInput | number
     gender_id?: IntFieldUpdateOperationsInput | number
     city_id?: IntFieldUpdateOperationsInput | number
@@ -24573,10 +26681,89 @@ export namespace Prisma {
     email?: StringFieldUpdateOperationsInput | string
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
+    p_img?: NullableStringFieldUpdateOperationsInput | string | null
     user_role_id?: IntFieldUpdateOperationsInput | number
     gender_id?: IntFieldUpdateOperationsInput | number
     city_id?: IntFieldUpdateOperationsInput | number
     status_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type pot_imagesCreateInput = {
+    name: string
+    pot_batch_id: number
+  }
+
+  export type pot_imagesUncheckedCreateInput = {
+    id?: number
+    name: string
+    pot_batch_id: number
+  }
+
+  export type pot_imagesUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    pot_batch_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type pot_imagesUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    pot_batch_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type pot_imagesCreateManyInput = {
+    id?: number
+    name: string
+    pot_batch_id: number
+  }
+
+  export type pot_imagesUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    pot_batch_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type pot_imagesUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    pot_batch_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type product_imagesCreateInput = {
+    name: string
+    batch_id: number
+  }
+
+  export type product_imagesUncheckedCreateInput = {
+    id?: number
+    name: string
+    batch_id: number
+  }
+
+  export type product_imagesUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    batch_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type product_imagesUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    batch_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type product_imagesCreateManyInput = {
+    id?: number
+    name: string
+    batch_id: number
+  }
+
+  export type product_imagesUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    batch_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type product_imagesUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    batch_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -25548,6 +27735,7 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     mobile?: SortOrder
+    p_img?: SortOrder
     user_role_id?: SortOrder
     gender_id?: SortOrder
     city_id?: SortOrder
@@ -25571,6 +27759,7 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     mobile?: SortOrder
+    p_img?: SortOrder
     user_role_id?: SortOrder
     gender_id?: SortOrder
     city_id?: SortOrder
@@ -25586,6 +27775,7 @@ export namespace Prisma {
     email?: SortOrder
     password?: SortOrder
     mobile?: SortOrder
+    p_img?: SortOrder
     user_role_id?: SortOrder
     gender_id?: SortOrder
     city_id?: SortOrder
@@ -25598,6 +27788,74 @@ export namespace Prisma {
     gender_id?: SortOrder
     city_id?: SortOrder
     status_id?: SortOrder
+  }
+
+  export type pot_imagesOrderByRelevanceInput = {
+    fields: pot_imagesOrderByRelevanceFieldEnum | pot_imagesOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type pot_imagesCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    pot_batch_id?: SortOrder
+  }
+
+  export type pot_imagesAvgOrderByAggregateInput = {
+    id?: SortOrder
+    pot_batch_id?: SortOrder
+  }
+
+  export type pot_imagesMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    pot_batch_id?: SortOrder
+  }
+
+  export type pot_imagesMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    pot_batch_id?: SortOrder
+  }
+
+  export type pot_imagesSumOrderByAggregateInput = {
+    id?: SortOrder
+    pot_batch_id?: SortOrder
+  }
+
+  export type product_imagesOrderByRelevanceInput = {
+    fields: product_imagesOrderByRelevanceFieldEnum | product_imagesOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type product_imagesCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    batch_id?: SortOrder
+  }
+
+  export type product_imagesAvgOrderByAggregateInput = {
+    id?: SortOrder
+    batch_id?: SortOrder
+  }
+
+  export type product_imagesMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    batch_id?: SortOrder
+  }
+
+  export type product_imagesMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    batch_id?: SortOrder
+  }
+
+  export type product_imagesSumOrderByAggregateInput = {
+    id?: SortOrder
+    batch_id?: SortOrder
   }
 
   export type IntFieldUpdateOperationsInput = {
