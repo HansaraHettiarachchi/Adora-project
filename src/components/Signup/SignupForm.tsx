@@ -1,7 +1,7 @@
 import React from 'react';
 import InputField from '../Login/InputField';
 import AuthFooter from '../Signup/AuthFooter';
-import AuthTitle from '../Login/AuthTitle';
+import AuthTitle from '../Signup/AuthTitle';
 
 const SignupForm: React.FC = () => {
   const handleSignup = (e: React.FormEvent) => {
