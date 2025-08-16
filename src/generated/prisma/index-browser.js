@@ -280,10 +280,23 @@ exports.Prisma.UsersScalarFieldEnum = {
   email: 'email',
   password: 'password',
   mobile: 'mobile',
+  p_img: 'p_img',
   user_role_id: 'user_role_id',
   gender_id: 'gender_id',
   city_id: 'city_id',
   status_id: 'status_id'
+};
+
+exports.Prisma.Pot_imagesScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  pot_batch_id: 'pot_batch_id'
+};
+
+exports.Prisma.Product_imagesScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  batch_id: 'batch_id'
 };
 
 exports.Prisma.SortOrder = {
@@ -377,7 +390,16 @@ exports.Prisma.usersOrderByRelevanceFieldEnum = {
   nic: 'nic',
   email: 'email',
   password: 'password',
-  mobile: 'mobile'
+  mobile: 'mobile',
+  p_img: 'p_img'
+};
+
+exports.Prisma.pot_imagesOrderByRelevanceFieldEnum = {
+  name: 'name'
+};
+
+exports.Prisma.product_imagesOrderByRelevanceFieldEnum = {
+  name: 'name'
 };
 
 
@@ -402,7 +424,9 @@ exports.Prisma.ModelName = {
   status: 'status',
   supplier: 'supplier',
   user_role: 'user_role',
-  users: 'users'
+  users: 'users',
+  pot_images: 'pot_images',
+  product_images: 'product_images'
 };
 
 /**

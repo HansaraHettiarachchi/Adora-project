@@ -187,14 +187,15 @@ model user_role {
 }
 
 model users {
-  id           Int    @id @default(autoincrement())
-  fname        String @db.VarChar(45)
-  lname        String @db.VarChar(45)
-  address      String @db.VarChar(100)
-  nic          String @db.VarChar(20)
-  email        String @db.VarChar(100)
-  password     String @db.VarChar(100)
-  mobile       String @db.VarChar(20)
+  id           Int     @id @default(autoincrement())
+  fname        String  @db.VarChar(45)
+  lname        String  @db.VarChar(45)
+  address      String  @db.VarChar(100)
+  nic          String  @db.VarChar(20)
+  email        String  @db.VarChar(100)
+  password     String  @db.VarChar(100)
+  mobile       String  @db.VarChar(20)
+  p_img        String? @db.Text
   user_role_id Int
   gender_id    Int
   city_id      Int
@@ -204,4 +205,20 @@ model users {
   @@index([gender_id], map: "fk_users_gender1_idx")
   @@index([status_id], map: "fk_users_status1_idx")
   @@index([user_role_id], map: "fk_users_user_role_idx")
+}
+
+model pot_images {
+  id           Int    @id @default(autoincrement())
+  name         String @db.Text
+  pot_batch_id Int
+
+  @@index([pot_batch_id], map: "fk_pot_image_pot_batch1_idx")
+}
+
+model product_images {
+  id       Int    @id @default(autoincrement())
+  name     String @db.Text
+  batch_id Int
+
+  @@index([batch_id], map: "fk_product_image_batch1_idx")
 }
