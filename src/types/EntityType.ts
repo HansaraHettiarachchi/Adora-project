@@ -37,18 +37,5 @@ export type City = {
 export type Response = {
     status: number;
     message: string;
-    data: any;
-};
-
-export type Supplier = {
-    id: number;
-    fullname: string;
-    company: string;
-    address: string;
-    mobile: string;
-    email: string;
-    isActive: boolean;
-    status_id: number;
-    gender_id: number;
-    city_id: number;
-};
+    data: any;
+}
