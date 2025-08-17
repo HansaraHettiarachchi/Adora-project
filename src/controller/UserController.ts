@@ -2,6 +2,7 @@ import { UserService } from "../service/UserService.js";
 import type { User } from "../types/EntityType.js";
 
 export class UserController {
+
 	async login(email: string, password: string) {
 		return this.userService.login(email, password);
 	}

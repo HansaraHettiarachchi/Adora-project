@@ -412,7 +412,7 @@ const config = {
       "value": "prisma-client-js"
     },
     "output": {
-      "value": "D:\\My Projects\\F5\\backend\\src\\generated\\prisma",
+      "value": "C:\\Users\\Himal\\Downloads\\F5-ecommece-pure-p-1\\src\\generated\\prisma",
       "fromEnvVar": null
     },
     "config": {
@@ -426,7 +426,7 @@ const config = {
       }
     ],
     "previewFeatures": [],
-    "sourceFilePath": "D:\\My Projects\\F5\\backend\\prisma\\schema.prisma",
+    "sourceFilePath": "C:\\Users\\Himal\\Downloads\\F5-ecommece-pure-p-1\\prisma\\schema.prisma",
     "isCustomOutput": true
   },
   "relativeEnvPaths": {
@@ -440,7 +440,6 @@ const config = {
     "db"
   ],
   "activeProvider": "mysql",
-  "postinstall": false,
   "inlineDatasources": {
     "db": {
       "url": {
