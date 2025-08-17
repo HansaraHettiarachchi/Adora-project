@@ -67,3 +67,12 @@ export type Product = {
     category_id: number;
     isActive: boolean;
 };
+
+// Product creation type for validation
+export type ProductCreate = {
+    name: string;
+    desc?: string | null;
+    mother_plant_type_id: number;
+    category_id: number;
+    isActive?: boolean;
+};
