@@ -1,13 +1,11 @@
-import type { Category, Response } from '../types/EntityType.js';
-import type { CategoryErr } from '../types/ErrorType.js';
-import { PrismaClient } from '@prisma/client';
+import { PrismaClient } from '../generated/prisma/index.js';
+import type { Category, Response, Product, ProductCreate } from '../types/EntityType.js';
 
 const prisma = new PrismaClient();
 
 export class ProductService {
     // Product endpoints
-    async createProduct(product: import('../types/EntityType.js').ProductCreate): Promise<Response> {
-        // Database validation: check for duplicate product name with same mother_plant_type_id and category_id
+    async createProduct(product: ProductCreate): Promise<Response> {
         const existing = await prisma.product.findFirst({
             where: {
                 name: product.name,
@@ -31,8 +29,7 @@ export class ProductService {
                 isActive: product.isActive ?? true
             }
         });
-        // Ensure returned data matches Product type
-        const productData: import('../types/EntityType.js').Product = {
+        const productData: Product = {
             id: newProduct.id,
             name: newProduct.name,
             desc: newProduct.desc,
@@ -49,8 +46,7 @@ export class ProductService {
 
     async getAllProducts(): Promise<Response> {
         const products = await prisma.product.findMany();
-        // Ensure all returned items match Product type
-        const productList: import('../types/EntityType.js').Product[] = products.map((p: any) => ({
+        const productList: Product[] = products.map((p: any) => ({
             id: p.id,
             name: p.name,
             desc: p.desc,
@@ -74,7 +70,7 @@ export class ProductService {
                 data: null
             };
         }
-        const productData: import('../types/EntityType.js').Product = {
+        const productData: Product = {
             id: product.id,
             name: product.name,
             desc: product.desc,
@@ -98,7 +94,7 @@ export class ProductService {
                 data: null
             };
         } catch (error: any) {
-            if (error.code === 'P2003') {
+            if (error?.code === 'P2003') {
                 return {
                     status: 409,
                     message: 'Cannot delete product due to foreign key constraint',
@@ -108,14 +104,14 @@ export class ProductService {
             return {
                 status: 500,
                 message: 'Internal server error',
-                data: error.message
+                data: error?.message ?? 'Unknown error'
             };
         }
     }
 
     async setCategory(name: string): Promise<Response> {
-        // Check if category already exists
-        const existing = await prisma.category.findUnique({ where: { name } });
+        // Use findFirst if name is not unique
+        const existing = await prisma.category.findFirst({ where: { name } });
         if (existing) {
             return { status: 409, message: 'Category already exists', data: { name: 'Category already exists' } };
         }
@@ -141,16 +137,17 @@ export class ProductService {
             await prisma.category.delete({ where: { id } });
             return { status: 200, message: 'Category deleted successfully', data: null };
         } catch (error: any) {
-            if (error.code === 'P2003') { // Prisma foreign key constraint error
+            if (error?.code === 'P2003') {
                 return { status: 409, message: 'Cannot delete category due to foreign key constraint', data: null };
             }
-            return { status: 500, message: 'Internal server error', data: error.message };
+            return { status: 500, message: 'Internal server error', data: error?.message ?? 'Unknown error' };
         }
     }
 
     // MotherPlantType endpoints
     async setMotherPlantType(name: string): Promise<Response> {
-        const existing = await prisma.mother_plant_type.findUnique({ where: { name } });
+        // Use findFirst if name is not unique
+        const existing = await prisma.mother_plant_type.findFirst({ where: { name } });
         if (existing) {
             return { status: 409, message: 'Mother plant type already exists', data: { name: 'Mother plant type already exists' } };
         }
@@ -176,10 +173,10 @@ export class ProductService {
             await prisma.mother_plant_type.delete({ where: { id } });
             return { status: 200, message: 'Mother plant type deleted successfully', data: null };
         } catch (error: any) {
-            if (error.code === 'P2003') {
+            if (error?.code === 'P2003') {
                 return { status: 409, message: 'Cannot delete mother plant type due to foreign key constraint', data: null };
             }
-            return { status: 500, message: 'Internal server error', data: error.message };
+            return { status: 500, message: 'Internal server error', data: error?.message ?? 'Unknown error' };
         }
     }
 
@@ -211,10 +208,10 @@ export class ProductService {
             await prisma.size.delete({ where: { id } });
             return { status: 200, message: 'Size deleted successfully', data: null };
         } catch (error: any) {
-            if (error.code === 'P2003') {
+            if (error?.code === 'P2003') {
                 return { status: 409, message: 'Cannot delete size due to foreign key constraint', data: null };
             }
-            return { status: 500, message: 'Internal server error', data: error.message };
+            return { status: 500, message: 'Internal server error', data: error?.message ?? 'Unknown error' };
         }
     }
 }
