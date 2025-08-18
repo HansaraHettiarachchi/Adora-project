@@ -89,3 +89,8 @@ export type Supplier = {
     gender_id: number;
     city_id: number;
 };
+
+export type PaymentMethod = {
+    id: number;
+    name: string;
+};

@@ -56,3 +56,9 @@ export type SupplierErr = {
     gender_id?: string;
     city_id?: string;
 };
+
+// PaymentMethod error type
+export type PaymentMethodErr = {
+    id?: string;
+    name?: string;
+};
