@@ -17,6 +17,7 @@ import Products from './pages/Admin/Products';
 import Customers from './pages/Admin/Customers';
 import Comments from './pages/Admin/Comments';
 import ResetPasswords from './pages/Admin/ResetPasswords';
+import Stocks from './pages/Admin/Stocks';
 import Wishlist from './pages/Wishlist';
 import Shop from './pages/Shop';
 import OrderComplete from './pages/OrderComplete';
@@ -47,6 +48,7 @@ const App: React.FC = () => {
           <Route path="products" element={<Products />} />
           <Route path="customers" element={<Customers />} />
           <Route path="comments" element={<Comments />} />
+          <Route path="stocks" element= {<Stocks />} /> 
           <Route path="reset-passwords" element={<ResetPasswords />} />
         </Route>
 

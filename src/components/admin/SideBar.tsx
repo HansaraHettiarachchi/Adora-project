@@ -44,6 +44,9 @@ const SideBar: React.FC = () => {
         <NavLink to="comments" className={getNavLinkClass} style={{ color: 'green' }}>
           Comments
         </NavLink>
+         <NavLink to="stocks" className={getNavLinkClass} style={{ color: 'green' }}>
+          Stocks
+        </NavLink>
         <NavLink to="reset-passwords" className={getNavLinkClass} style={{ color: 'green' }}>
           Reset Password
         </NavLink>
