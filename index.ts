@@ -5,7 +5,7 @@ import { fileURLToPath } from 'url';
 import productRoutes from './src/routes/ProductRoutes.js';
 import { stockRoutes } from './src/routes/StockRoutes.js';
 import { authenticate } from './src/middleware/auth.js';
-import paymentRoutes from './src/routes/PaymentRoute.js';
+import paymentRoutes from './src/routes/PaymentRoutes.js';
 import supplierRoutes from './src/routes/SuplierRoute.js';
 
 const app = express();

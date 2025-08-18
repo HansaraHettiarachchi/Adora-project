@@ -7,7 +7,7 @@ const paymentRoutes = Router();
 const paymentController = new PaymentController();
 
 
-paymentRoutes.get("/", async (_req, res) => {
+paymentRoutes.get("/", async (req, res) => {
   res.send('hello himal in testing');
 });
 
