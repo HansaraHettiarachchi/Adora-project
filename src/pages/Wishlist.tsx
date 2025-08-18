@@ -1,16 +1,11 @@
 import { useState } from "react";
-import Header from "../components/Header";
+import { Button, Col, Container, Image, Row } from "react-bootstrap";
+import { BsCashStack, BsFillCartPlusFill, BsFillCreditCard2FrontFill } from "react-icons/bs";
+import { FaMinus, FaPlus } from "react-icons/fa";
 import Footer from "../components/Footer";
-import { Container, Button } from "react-bootstrap";
-
-type Product = {
-  id: number;
-  name: string;
-  type: string;
-  price: number;
-  quantity: number;
-  image: string;
-};
+import Header from "../components/Header";
+import YouMayAlsoLike from "../components/Wishlist/YouMayAlsoLike";
+import type { Product } from "../types/EntitiesTypes";
 
 const initialProducts: Product[] = [
   {
@@ -47,310 +42,186 @@ const initialProducts: Product[] = [
   },
 ];
 
-const recommendations: Product[] = [
-  {
-    id: 9,
-    name: "SNAKE PLANT",
-    type: "Cactus",
-    price: 149,
-    quantity: 1,
-    image: "src/assets/images/wishlist_cart_pic (1).png",
-  },
-  {
-    id: 10,
-    name: "CANDELABRA ALOE",
-    type: "Aloe Vera",
-    price: 149,
-    quantity: 1,
-    image: "src/assets/images/wishlist_cart_pic (5).png",
-  },
-  {
-    id: 11,
-    name: "GOLDEN POTHOS",
-    type: "Pothos",
-    price: 69,
-    quantity: 1,
-    image: "src/assets/images/wishlist_cart_pic (1).png",
-  },
-  {
-    id: 12,
-    name: "HOMALOMENA",
-    type: "Bonsai",
-    price: 119,
-    quantity: 1,
-    image: "src/assets/images/wishlist_cart_pic (4).png",
-  },
-];
-
 export default function Wishlist() {
   const [products, setProducts] = useState<Product[]>(initialProducts);
-
-  const totalPrice = products.reduce(
-    (total, p) => total + p.price * p.quantity,
-    0
-  );
-  const shippingCost = products.length > 0 ? 5 : 0;
-  const estimatedTotal = totalPrice + shippingCost;
 
   return (
     <>
       <Header />
 
       <Container fluid="sm" className="py-4">
-        <div className="row g-4">
-          {/* Cart Section */}
-          <h5
-              className="mb-3 fw-bold  pb-2"
-              style={{ borderBottom: "1px solid #164C0D" }}
-            >
-              WISHLIST
-            </h5>
-          <div className="col-lg-8">
-            {products.length > 0 ? (
-              products.map((p) => (
-                <div
-                  key={p.id}
-                  className="position-relative border rounded p-3 mb-3"
-                  style={{ background: "#D9D9D9" }}
-                >
-                  {/* Radio button */}
-                  <input
-                    type="radio"
-                    name="selectedProduct"
-                    className="position-absolute"
-                    style={{ top: "10px", right: "10px" }}
-                  />
 
-                  <div className="d-flex align-items-center">
-                    <img
-                      src={p.image}
-                      alt={p.name}
-                      width="100"
-                      height="100"
-                      className="me-3 rounded"
+        <h4
+          className="m-0 pb-2 w-50"
+          style={{
+            color: "#164C0D",
+            borderBottom: "3px solid #164C0D"
+          }}
+        >
+          Wishlist
+        </h4>
+
+        <Row>
+          <Col xs={12} lg={8}>
+            {products.map((product) => (
+              <Container
+                key={product.id}
+                className="my-3 rounded-3 p-3"
+                style={{ backgroundColor: "#D9D9D9" }}
+              >
+                <Row className="ms-2">
+                  <Col xs={12} md={4} className="mb-3 mb-md-0 d-flex justify-content-center">
+                    <Image
+                      src={product.image}
+                      alt={product.name}
+                      style={{ maxWidth: "200px", borderRadius: "20px" }}
+                      fluid
                     />
-                    <div className="flex-grow-1">
-                      <h6 className="mb-1 fw-bold">{p.name}</h6>
-                      <small className="text-muted">{p.type}</small>
-
-                      {/* Qty */}
-                      <div className="d-flex align-items-center mt-2">
-                        <div className="me-3 fw-bold">
-                          ${p.price * p.quantity}
+                  </Col>
+                  <Col xs={12} md={8}>
+                    <Row>
+                      <Col xs={12} className="d-flex justify-content-between align-items-start">
+                        <div>
+                          <h6 className="fw-bold fs-5 mt-2 mb-0">{product.name}</h6>
+                          <h6 className="small fw-normal">{product.type}</h6>
                         </div>
-                        <Button
-                          size="sm"
-                          variant="outline-dark"
-                          className="me-2 fw-bold py-0 px-1"
-                          onClick={() =>
-                            setProducts(
-                              products.map((item) =>
-                                item.id === p.id && item.quantity > 1
-                                  ? { ...item, quantity: item.quantity - 1 }
-                                  : item
-                              )
-                            )
-                          }
-                          style={{ background: "#000000ff", color: "white" }}
-                        >
-                          -
-                        </Button>
+                      </Col>
+                    </Row>
 
-                        <Button
-                          size="sm"
-                          variant="outline-dark"
-                          className="me-2 fw-bold py-0 px-2"
-                          style={{ background: "#164C0D", color: "white" }}
-                        >
-                          {p.quantity}
-                        </Button>
-                        <Button
-                          size="sm"
-                          variant="outline-dark"
-                          className="me-2 fw-bold py-0 px-1"
-                          onClick={() =>
-                            setProducts(
-                              products.map((item) =>
-                                item.id === p.id
-                                  ? { ...item, quantity: item.quantity + 1 }
-                                  : item
-                              )
-                            )
-                          }
-                          style={{ background: "#000000ff", color: "white" }}
-                        >
-                          +
-                        </Button>
-                      </div>
-                    </div>
-
-                    {/* Remove and checkout buttons */}
-                    <div className="text-end ms-3 d-flex flex-column">
+                    <Container className="d-flex justify-content-end mb-1 mt-4">
                       <Button
                         size="sm"
-                        className="p-0 mb-2"
-                        onClick={() =>
-                          setProducts(
-                            products.filter((item) => item.id !== p.id)
-                          )
-                        }
-                        style={{
-                          background: "transparent",
-                          color: "#164C0D",
-                          border: "2px solid #164C0D",
-                          boxShadow: "0 4px 8px rgba(66, 243, 50, 0.1)",
-                        }}
+                        className="fw-bold py-0 "
+                        variant="outline-success"
+                        style={{ borderColor: '#164C0D', color: "#164C0D" }}
                       >
                         Remove
                       </Button>
-                      <Button
-                        size="sm"
-                        className="p-2 mb-2 fw-bold"
-                        style={{
-                          background: "#164C0D",
-                          borderRadius: "10px",
-                          color: "white",
-                          border: "none",
-                        }}
-                      >
-                        ADD TO CART
-                      </Button>
-                    </div>
-                  </div>
-                </div>
-              ))
-            ) : (
-              <p>Your cart is empty.</p>
-            )}
-          </div>
+                    </Container>
 
-          {/* Summary Section */}
-          <div className="col-lg-4">
-            <div
-              className="p-3 mb-3"
-              style={{ background: "#d0f0ceff", borderRadius: "10px" }}
-            >
-              <h5
-                className="d-flex justify-content-center"
-                style={{ borderBottom: "1px solid #164C0D", color: "#164C0D" }}
-              >
-                WISHLIST
+
+                    <Row className="justify-content-between align-items-center">
+                      <Col xs={12} md={6}>
+                        <Row className="align-items-center justify-content-between">
+                          <Col xs="auto">
+                            <h6 className="fw-bold mb-3 mb-md-0">${product.price}</h6>
+                          </Col>
+                          <Col xs="auto">
+                            <Row className="align-items-center me-1">
+                              <Button
+                                className="rounded-2 ms-1 me-1 d-flex justify-content-center align-items-center"
+                                size="sm"
+                                variant="dark"
+                                style={{ height: "24px", width: "24px", padding: 0 }}
+                              >
+                                <FaMinus className="text-white m-auto" size={12} />
+                              </Button>
+                              <Button
+                                className="rounded-2 border-0 me-1 d-flex justify-content-center align-items-center"
+                                size="sm"
+                                style={{
+                                  height: "24px",
+                                  width: "24px",
+                                  padding: 0,
+                                  fontSize: "12px",
+                                  backgroundColor: "#164C0D",
+                                }}
+                              >
+                                {product.quantity}
+                              </Button>
+                              <Button
+                                className="rounded-2 me-1 d-flex justify-content-center align-items-center"
+                                size="sm"
+                                variant="dark"
+                                style={{ height: "24px", width: "24px", padding: 0 }}
+                              >
+                                <FaPlus className="text-white m-auto" size={12} />
+                              </Button>
+                            </Row>
+                          </Col>
+                        </Row>
+                      </Col>
+                      <Col xs={12} md={6} className="mt-3 mt-md-0">
+                        <Button
+                          className="float-md-end mx-auto mx-md-0 border-0 d-flex justify-content-center align-items-center fw-bold px-4"
+                          style={{ backgroundColor: "#164C0D" }}
+                          size="sm"
+                        >
+                          Add To Cart
+                          <BsFillCartPlusFill className="ms-2 border-0" size={20} />
+                        </Button>
+                      </Col>
+                    </Row>
+                  </Col>
+                </Row>
+              </Container>
+            ))}
+          </Col>
+          <Col xs={12} lg={4}>
+            <Container className="rounded-3 p-4 mb-4 mt-3" style={{ backgroundColor: "#B7D7B0" }}>
+              <h5 className="fw-bold text-center mb-2" style={{ borderBottom: "2px solid #164C0D", paddingBottom: "8px" }}>
+                SUMMARY
               </h5>
-              <div
-                className="d-flex justify-content-between"
-                style={{ color: "#164C0D" }}
-              >
-                <span>Items Total</span>
-                <span>${totalPrice}</span>
+              <div className="d-flex justify-content-center mb-3">
+                <Image
+                  src="src/assets/images/wishlist_cart_pic (3).png"
+                  alt="Summary Plant"
+                  style={{ width: "100px", height: "100px", borderRadius: "12px", boxShadow: "0 2px 8px rgba(0,0,0,0.08)" }}
+                />
               </div>
-              <div
-                className="d-flex justify-content-between  mb-4"
-                style={{ color: "#164C0D" }}
-              >
-                <span>Items Discount</span>
-                <span>$0</span>
+              <div className="mb-2">
+                <div className="d-flex justify-content-between">
+                  <span>Items Total</span>
+                  <span>$ {products.reduce((sum, p) => sum + p.price * p.quantity, 0)}</span>
+                </div>
+                <div className="d-flex justify-content-between">
+                  <span>Items Discount</span>
+                  <span>$ 0</span>
+                </div>
+                <div className="d-flex justify-content-between fw-bold mt-2">
+                  <span>Sub Total</span>
+                  <span>$ 0</span>
+                </div>
+                <div className="d-flex justify-content-between fw-bold">
+                  <span>Shipping Cost</span>
+                  <span>$ 5</span>
+                </div>
+                <div className="d-flex justify-content-between fw-bold mt-3">
+                  <span>Estimated Total</span>
+                  <span>$ {products.reduce((sum, p) => sum + p.price * p.quantity, 0) + 5}</span>
+                </div>
               </div>
-              <div
-                className="d-flex justify-content-between fw-bold"
-                style={{ color: "#164C0D" }}
-              >
-                <span>Sub Total</span>
-                <span>${totalPrice}</span>
+              {/* <div className="text-center mt-3">
+                    <Button
+                      className="fw-bold px-4 d-flex align-items-center justify-content-center"
+                      style={{ backgroundColor: "#164C0D", border: "none" }}
+                    >
+                      CHECK OUT <BsFillCartPlusFill className="ms-2" size={20} />
+                    </Button>
+                  </div> */}
+            </Container>
+            <Container className="rounded-3 p-4" style={{ backgroundColor: "#B7D7B0" }}>
+              <h6 className="fw-bold mb-3">PAY WITH</h6>
+              <div className="mb-3 d-flex gap-3">
+                <span style={{ fontSize: "1.5rem" }}>
+                  <BsFillCreditCard2FrontFill />
+                </span>
+                <span style={{ fontSize: "1.5rem" }}>
+                  <BsCashStack />
+                </span>
               </div>
-              <div
-                className="d-flex justify-content-between fw-bold  mb-4"
-                style={{ color: "#164C0D" }}
-              >
-                <span>Shipping Cost</span>
-                <span>${shippingCost}</span>
-              </div>
-              <div
-                className="d-flex justify-content-between fw-bold"
-                style={{ color: "#164C0D" }}
-              >
-                <span>Estimated Total</span>
-                <span>${estimatedTotal}</span>
-              </div>
-              <Button
-                className="w-100 mt-3 fw-bold mx-auto d-block"
-                style={{
-                  background: "#164C0D",
-                  borderRadius: "10px",
-                  color: "white",
-                  border: "none",
-                }}
-              >
-                CONTINUE SHOPPING
-              </Button>
-            </div>
-
-            <div
-              className="p-3 my-3"
-              style={{ background: "#d0f0ceff", borderRadius: "10px" }}
-            >
-              <h6 className="mt-3 fw-bold" style={{ color: "#164C0D" }}>
-                PAY WITH
-              </h6>
-              <p className="mb-0">💳 🏦</p>
-              <h6 className="mt-3 fw-bold" style={{ color: "#164C0D" }}>
-                BUYER PROTECTION
-              </h6>
-              <small style={{ color: "#164C0D" }}>
-                Get a full refund if the item is not as described or not
-                delivered.
-              </small>
-            </div>
-          </div>
-        </div>
+              <h6 className="fw-bold mb-1">BUYER PROTECTION</h6>
+              <p className="mb-0" style={{ fontSize: "0.95rem" }}>
+                Get a full refund if the item is not as described or not delivered.
+              </p>
+            </Container>
+          </Col>
+        </Row>
 
         {/* Recommendations */}
-        <div className="mt-5">
-          <h6 className="text-center fw-bold fs-4">
-            <span className="fw-bold" style={{ color: "#39A108" }}>
-              YOU MAY
-            </span>{" "}
-            ALSO LIKE
-          </h6>
-          <div className="row g-4 mt-3">
-            {recommendations.map((item) => (
-              <div key={item.id} className="col-6 col-md-3">
-                <div
-                  className="p-3 border rounded p-2 text-center"
-                  style={{ background: "#D9D9D9" }}
-                >
-                  <img
-                    src={item.image}
-                    alt={item.name}
-                    width="150"
-                    height="150"
-                    className="rounded img-fluid mb-2"
-                  />
-                  <div className="d-flex justify-content-between fw-bold">
-                    <span>{item.name}</span>
-                    <span>${item.price}</span>
-                  </div>
-                  <small className="d-flex justify-content-flex-start text-muted">
-                    {item.type}
-                  </small>
+        <YouMayAlsoLike />
 
-                  <Button
-                    size="sm"
-                    className="mt-2  w-100 fw-bold mx-auto d-block"
-                    style={{
-                      background: "#164C0D",
-                      borderRadius: "10px",
-                      color: "white",
-                      border: "none",
-                    }}
-                  >
-                    ADD TO CART
-                  </Button>
-                </div>
-              </div>
-            ))}
-          </div>
-        </div>
-      </Container>
+      </Container >
 
       <Footer />
     </>

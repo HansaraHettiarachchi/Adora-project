@@ -1,11 +1,14 @@
 import React from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import { FaSearch, FaShoppingCart, FaUser } from "react-icons/fa";
-import { useNavigate } from "react-router-dom"; // Import useNavigate
+import { useLocation, useNavigate } from "react-router-dom"; // Import useNavigate
 import logo from "../assets/images/logo.png";
 
 const Header: React.FC = () => {
-  const navigate = useNavigate(); // Hook for navigation
+  const navigate = useNavigate();
+  const location = useLocation();
+  
+
 
   return (
     <Navbar bg="light" expand="lg" className="py-3 border-bottom shadow-sm">
@@ -21,6 +24,7 @@ const Header: React.FC = () => {
         <Navbar.Collapse id="adora-navbar">
           <Nav className="mx-auto fw-semibold text-uppercase">
             <Nav.Link
+            
               onClick={() => navigate("/home")}
               className="text-success"
             >
