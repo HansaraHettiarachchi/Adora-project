@@ -59,12 +59,9 @@ userRoutes.post('/update-user', authenticate, upload.single('image'), async (req
             return res.status(400).json({ error: 'data needs to be provided according to the User format' });
         }
 
-        if (!imageFile) {
-            return res.status(400).json({ error: 'No image file provided' });
-        }
         const data: User = JSON.parse(req.body.data);
 
-        const result = await usercontroller.updateUser(imageFile, data);
+        const result = await usercontroller.updateUser((imageFile || null), data);
 
         res.status(201).json(result);
     } catch (error) {

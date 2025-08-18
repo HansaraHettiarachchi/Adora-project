@@ -6,14 +6,9 @@ import { FileUploader } from "../util/FileUploader.js";
 export class UserController {
 	private userService: UserService = new UserService();
 
-	async updateUser(imageFile: Express.Multer.File, data: User): Promise<Response> {
-		const ext = path.extname(imageFile.originalname);
-		const uniqueName = `users/${Date.now()}_${Math.round(Math.random() * 1e9)}${ext}`;
+	async updateUser(imageFile: Express.Multer.File | null, data: User): Promise<Response> {
 
-		const imageUrl = await FileUploader.uploadFile(imageFile, uniqueName);
-
-		data.p_img = imageUrl;
-		const results = this.userService.updateUser(data);
+		const results = this.userService.updateUser(data, (imageFile || null));
 		return results;
 	}
 	// sdfdsdsfdfdsfdsf

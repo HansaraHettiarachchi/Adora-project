@@ -43,22 +43,14 @@ export type ProductErr = {
     isActive?: string;
 };
 
-// Supplier error type
-export type SupplierErr = {
-    id?: string;
-    fullname?: string;
-    company?: string;
-    address?: string;
-    mobile?: string;
-    email?: string;
-    isActive?: boolean;
-    status_id?: string;
-    gender_id?: string;
-    city_id?: string;
-};
-
-// PaymentMethod error type
-export type PaymentMethodErr = {
-    id?: string;
-    name?: string;
+// Stock error type
+export type StockErr = {
+    batch_id?: string;
+    product_id?: string;
+    qty?: string;
+    cost?: string;
+    price?: string;
+    size_id?: string;
+    code?: string;
+    images?: string;
 };
