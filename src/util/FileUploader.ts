@@ -1,12 +1,12 @@
-    import multer from 'multer';
-    import fs from 'fs';
-    import path from 'path';
-    import { fileURLToPath } from 'url';
+import multer from 'multer';
+import fs from 'fs';
+import path from 'path';
+import { fileURLToPath } from 'url';
 
-    const __filename = fileURLToPath(import.meta.url);
-    const __dirname = path.dirname(__filename);
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
-    export class FileUploader {
+export class FileUploader {
     private static baseDir = path.join(__dirname, '../../static/uploads');
 
     static async uploadFile(file: Express.Multer.File, filename: string): Promise<string> {

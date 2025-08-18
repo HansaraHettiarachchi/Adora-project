@@ -12,7 +12,7 @@ export class StockController {
 
         if (!data.product_id) errors.product_id = "Product ID is required";
         if (!data.qty || data.qty <= 0) errors.qty = "Quantity must be greater than 0";
-        if (!data.batch_id && (!data.size_id || !data.code)) {
+        if (!data.id && (!data.size_id || !data.code)) {
             errors.size_id = "Size ID is required for new batch";
             errors.code = "Code is required for new batch";
         }

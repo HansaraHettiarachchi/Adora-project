@@ -15,11 +15,26 @@ export class StockService {
             await FileUploader.deleteFile(filename);
         }
     }
+
+    // Helper to generate a unique batch code
+    private async generateUniqueCode(baseCode: string): Promise<string> {
+        let code = baseCode;
+        let exists = true;
+        let attempt = 0;
+        while (exists) {
+            exists = await prisma.batch.findFirst({ where: { code } }) !== null;
+            if (exists) {
+                attempt++;
+                code = `${baseCode}_${attempt}`;
+            }
+        }
+        return code;
+    }
+
     async setStock(data: Stock, imageFiles: Express.Multer.File[] | null): Promise<Response> {
-        // Validate batch existence
         let batch;
-        if (!data.batch_id || data.batch_id === 0) {
-            // Create new batch
+        if (!data.id || data.id === 0) {
+            // Create new batch with unique code
             if (typeof data.size_id !== 'number' || !data.code) {
                 return {
                     status: 400,
@@ -27,6 +42,7 @@ export class StockService {
                     data: null
                 };
             }
+            const uniqueCode = await this.generateUniqueCode(data.code);
             batch = await prisma.batch.create({
                 data: {
                     product_id: data.product_id,
@@ -34,12 +50,13 @@ export class StockService {
                     cost: data.cost ?? 0,
                     price: data.price ?? 0,
                     size_id: data.size_id,
-                    code: data.code,
+                    code: uniqueCode,
                     desc: ''
                 }
             });
         } else {
-            batch = await prisma.batch.findUnique({ where: { id: data.batch_id } });
+            // Only update existing batch, never create new
+            batch = await prisma.batch.findUnique({ where: { id: data.id } });
             if (!batch) {
                 return {
                     status: 404,
@@ -47,25 +64,31 @@ export class StockService {
                     data: null
                 };
             }
-            // Only update qty, not cost/price
-            await prisma.batch.update({
-                where: { id: data.batch_id },
+            batch = await prisma.batch.update({
+                where: { id: data.id },
                 data: { qty: { increment: data.qty } }
             });
         }
-        // Handle images
+
+        // If images are uploading, delete existing images first (override)
         if (imageFiles && imageFiles.length > 0) {
+            await this.deleteBatchImages(batch.id);
+            await prisma.product_images.deleteMany({ where: { batch_id: batch.id } });
             for (const file of imageFiles) {
                 const imageName = `${Date.now()}_${file.originalname}`;
-                const imageUrl = await FileUploader.uploadFile(file, path.join('uploads', 'batch', String(batch.id), imageName));
+                const imageUrl = await FileUploader.uploadFile(
+                    file,
+                    path.join('batch', String(batch.id), imageName)
+                );
                 await prisma.product_images.create({
                     data: {
                         batch_id: batch.id,
-                        name: imageUrl
+                        name: path.join('batch', String(batch.id), imageName).replace(/\\/g, '/')
                     }
                 });
             }
         }
+
         return {
             status: 201,
             message: 'Stock processed successfully',
@@ -84,9 +107,9 @@ export class StockService {
                 data: null
             };
         }
-    await this.deleteBatchImages(batch_id);
-    await prisma.product_images.deleteMany({ where: { batch_id } });
-    await prisma.batch.delete({ where: { id: batch_id } });
+        await this.deleteBatchImages(batch_id);
+        await prisma.product_images.deleteMany({ where: { batch_id } });
+        await prisma.batch.delete({ where: { id: batch_id } });
         return {
             status: 200,
             message: 'Batch deleted successfully',

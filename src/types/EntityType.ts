@@ -77,14 +77,13 @@ export type ProductCreate = {
     isActive?: boolean;
 };
 
-// Stock type for batch/stock endpoints
 export type Stock = {
-    batch_id?: number;
+    id: number;
     product_id: number;
     qty: number;
     cost?: number;
     price?: number;
     size_id?: number;
     code?: string;
+    
 };
-

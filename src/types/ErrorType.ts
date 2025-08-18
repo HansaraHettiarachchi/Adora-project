@@ -45,7 +45,7 @@ export type ProductErr = {
 
 // Stock error type
 export type StockErr = {
-    batch_id?: string;
+    id?: string;
     product_id?: string;
     qty?: string;
     cost?: string;
