@@ -87,8 +87,7 @@ export type Stock = {
     size_id?: number;
     code?: string;
 };
-
-
+// Supplier type for supplier endpoints
 export type Supplier = {
     id: number;
     fullname: string;
@@ -102,6 +101,7 @@ export type Supplier = {
     city_id: number;
 };
 
+// PaymentMethod type for payment method endpoints
 export type PaymentMethod = {
     id: number;
     name: string;
