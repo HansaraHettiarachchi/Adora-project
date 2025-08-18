@@ -79,6 +79,11 @@ export type pot = $Result.DefaultSelection<Prisma.$potPayload>
  */
 export type pot_batch = $Result.DefaultSelection<Prisma.$pot_batchPayload>
 /**
+ * Model pot_images
+ * 
+ */
+export type pot_images = $Result.DefaultSelection<Prisma.$pot_imagesPayload>
+/**
  * Model pot_size
  * 
  */
@@ -88,6 +93,11 @@ export type pot_size = $Result.DefaultSelection<Prisma.$pot_sizePayload>
  * 
  */
 export type product = $Result.DefaultSelection<Prisma.$productPayload>
+/**
+ * Model product_images
+ * 
+ */
+export type product_images = $Result.DefaultSelection<Prisma.$product_imagesPayload>
 /**
  * Model product_type
  * 
@@ -118,16 +128,6 @@ export type user_role = $Result.DefaultSelection<Prisma.$user_rolePayload>
  * 
  */
 export type users = $Result.DefaultSelection<Prisma.$usersPayload>
-/**
- * Model pot_images
- * 
- */
-export type pot_images = $Result.DefaultSelection<Prisma.$pot_imagesPayload>
-/**
- * Model product_images
- * 
- */
-export type product_images = $Result.DefaultSelection<Prisma.$product_imagesPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -378,6 +378,16 @@ export class PrismaClient<
   get pot_batch(): Prisma.pot_batchDelegate<ExtArgs, ClientOptions>;
 
   /**
+   * `prisma.pot_images`: Exposes CRUD operations for the **pot_images** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Pot_images
+    * const pot_images = await prisma.pot_images.findMany()
+    * ```
+    */
+  get pot_images(): Prisma.pot_imagesDelegate<ExtArgs, ClientOptions>;
+
+  /**
    * `prisma.pot_size`: Exposes CRUD operations for the **pot_size** model.
     * Example usage:
     * ```ts
@@ -396,6 +406,16 @@ export class PrismaClient<
     * ```
     */
   get product(): Prisma.productDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.product_images`: Exposes CRUD operations for the **product_images** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Product_images
+    * const product_images = await prisma.product_images.findMany()
+    * ```
+    */
+  get product_images(): Prisma.product_imagesDelegate<ExtArgs, ClientOptions>;
 
   /**
    * `prisma.product_type`: Exposes CRUD operations for the **product_type** model.
@@ -456,26 +476,6 @@ export class PrismaClient<
     * ```
     */
   get users(): Prisma.usersDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.pot_images`: Exposes CRUD operations for the **pot_images** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Pot_images
-    * const pot_images = await prisma.pot_images.findMany()
-    * ```
-    */
-  get pot_images(): Prisma.pot_imagesDelegate<ExtArgs, ClientOptions>;
-
-  /**
-   * `prisma.product_images`: Exposes CRUD operations for the **product_images** model.
-    * Example usage:
-    * ```ts
-    * // Fetch zero or more Product_images
-    * const product_images = await prisma.product_images.findMany()
-    * ```
-    */
-  get product_images(): Prisma.product_imagesDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -929,16 +929,16 @@ export namespace Prisma {
     payment_method: 'payment_method',
     pot: 'pot',
     pot_batch: 'pot_batch',
+    pot_images: 'pot_images',
     pot_size: 'pot_size',
     product: 'product',
+    product_images: 'product_images',
     product_type: 'product_type',
     size: 'size',
     status: 'status',
     supplier: 'supplier',
     user_role: 'user_role',
-    users: 'users',
-    pot_images: 'pot_images',
-    product_images: 'product_images'
+    users: 'users'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -957,7 +957,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "batch" | "card_details" | "category" | "city" | "gender" | "grn" | "grn_items" | "invoice" | "invoice_items" | "mother_plant_type" | "payment_method" | "pot" | "pot_batch" | "pot_size" | "product" | "product_type" | "size" | "status" | "supplier" | "user_role" | "users" | "pot_images" | "product_images"
+      modelProps: "batch" | "card_details" | "category" | "city" | "gender" | "grn" | "grn_items" | "invoice" | "invoice_items" | "mother_plant_type" | "payment_method" | "pot" | "pot_batch" | "pot_images" | "pot_size" | "product" | "product_images" | "product_type" | "size" | "status" | "supplier" | "user_role" | "users"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -1819,6 +1819,72 @@ export namespace Prisma {
           }
         }
       }
+      pot_images: {
+        payload: Prisma.$pot_imagesPayload<ExtArgs>
+        fields: Prisma.pot_imagesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.pot_imagesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.pot_imagesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload>
+          }
+          findFirst: {
+            args: Prisma.pot_imagesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.pot_imagesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload>
+          }
+          findMany: {
+            args: Prisma.pot_imagesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload>[]
+          }
+          create: {
+            args: Prisma.pot_imagesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload>
+          }
+          createMany: {
+            args: Prisma.pot_imagesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.pot_imagesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload>
+          }
+          update: {
+            args: Prisma.pot_imagesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload>
+          }
+          deleteMany: {
+            args: Prisma.pot_imagesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.pot_imagesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.pot_imagesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload>
+          }
+          aggregate: {
+            args: Prisma.Pot_imagesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregatePot_images>
+          }
+          groupBy: {
+            args: Prisma.pot_imagesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Pot_imagesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.pot_imagesCountArgs<ExtArgs>
+            result: $Utils.Optional<Pot_imagesCountAggregateOutputType> | number
+          }
+        }
+      }
       pot_size: {
         payload: Prisma.$pot_sizePayload<ExtArgs>
         fields: Prisma.pot_sizeFieldRefs
@@ -1948,6 +2014,72 @@ export namespace Prisma {
           count: {
             args: Prisma.productCountArgs<ExtArgs>
             result: $Utils.Optional<ProductCountAggregateOutputType> | number
+          }
+        }
+      }
+      product_images: {
+        payload: Prisma.$product_imagesPayload<ExtArgs>
+        fields: Prisma.product_imagesFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.product_imagesFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.product_imagesFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload>
+          }
+          findFirst: {
+            args: Prisma.product_imagesFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.product_imagesFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload>
+          }
+          findMany: {
+            args: Prisma.product_imagesFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload>[]
+          }
+          create: {
+            args: Prisma.product_imagesCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload>
+          }
+          createMany: {
+            args: Prisma.product_imagesCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.product_imagesDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload>
+          }
+          update: {
+            args: Prisma.product_imagesUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload>
+          }
+          deleteMany: {
+            args: Prisma.product_imagesDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.product_imagesUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.product_imagesUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload>
+          }
+          aggregate: {
+            args: Prisma.Product_imagesAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateProduct_images>
+          }
+          groupBy: {
+            args: Prisma.product_imagesGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Product_imagesGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.product_imagesCountArgs<ExtArgs>
+            result: $Utils.Optional<Product_imagesCountAggregateOutputType> | number
           }
         }
       }
@@ -2347,138 +2479,6 @@ export namespace Prisma {
           }
         }
       }
-      pot_images: {
-        payload: Prisma.$pot_imagesPayload<ExtArgs>
-        fields: Prisma.pot_imagesFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.pot_imagesFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.pot_imagesFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload>
-          }
-          findFirst: {
-            args: Prisma.pot_imagesFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.pot_imagesFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload>
-          }
-          findMany: {
-            args: Prisma.pot_imagesFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload>[]
-          }
-          create: {
-            args: Prisma.pot_imagesCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload>
-          }
-          createMany: {
-            args: Prisma.pot_imagesCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          delete: {
-            args: Prisma.pot_imagesDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload>
-          }
-          update: {
-            args: Prisma.pot_imagesUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload>
-          }
-          deleteMany: {
-            args: Prisma.pot_imagesDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.pot_imagesUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          upsert: {
-            args: Prisma.pot_imagesUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$pot_imagesPayload>
-          }
-          aggregate: {
-            args: Prisma.Pot_imagesAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregatePot_images>
-          }
-          groupBy: {
-            args: Prisma.pot_imagesGroupByArgs<ExtArgs>
-            result: $Utils.Optional<Pot_imagesGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.pot_imagesCountArgs<ExtArgs>
-            result: $Utils.Optional<Pot_imagesCountAggregateOutputType> | number
-          }
-        }
-      }
-      product_images: {
-        payload: Prisma.$product_imagesPayload<ExtArgs>
-        fields: Prisma.product_imagesFieldRefs
-        operations: {
-          findUnique: {
-            args: Prisma.product_imagesFindUniqueArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload> | null
-          }
-          findUniqueOrThrow: {
-            args: Prisma.product_imagesFindUniqueOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload>
-          }
-          findFirst: {
-            args: Prisma.product_imagesFindFirstArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload> | null
-          }
-          findFirstOrThrow: {
-            args: Prisma.product_imagesFindFirstOrThrowArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload>
-          }
-          findMany: {
-            args: Prisma.product_imagesFindManyArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload>[]
-          }
-          create: {
-            args: Prisma.product_imagesCreateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload>
-          }
-          createMany: {
-            args: Prisma.product_imagesCreateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          delete: {
-            args: Prisma.product_imagesDeleteArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload>
-          }
-          update: {
-            args: Prisma.product_imagesUpdateArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload>
-          }
-          deleteMany: {
-            args: Prisma.product_imagesDeleteManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          updateMany: {
-            args: Prisma.product_imagesUpdateManyArgs<ExtArgs>
-            result: BatchPayload
-          }
-          upsert: {
-            args: Prisma.product_imagesUpsertArgs<ExtArgs>
-            result: $Utils.PayloadToResult<Prisma.$product_imagesPayload>
-          }
-          aggregate: {
-            args: Prisma.Product_imagesAggregateArgs<ExtArgs>
-            result: $Utils.Optional<AggregateProduct_images>
-          }
-          groupBy: {
-            args: Prisma.product_imagesGroupByArgs<ExtArgs>
-            result: $Utils.Optional<Product_imagesGroupByOutputType>[]
-          }
-          count: {
-            args: Prisma.product_imagesCountArgs<ExtArgs>
-            result: $Utils.Optional<Product_imagesCountAggregateOutputType> | number
-          }
-        }
-      }
     }
   } & {
     other: {
@@ -2584,16 +2584,16 @@ export namespace Prisma {
     payment_method?: payment_methodOmit
     pot?: potOmit
     pot_batch?: pot_batchOmit
+    pot_images?: pot_imagesOmit
     pot_size?: pot_sizeOmit
     product?: productOmit
+    product_images?: product_imagesOmit
     product_type?: product_typeOmit
     size?: sizeOmit
     status?: statusOmit
     supplier?: supplierOmit
     user_role?: user_roleOmit
     users?: usersOmit
-    pot_images?: pot_imagesOmit
-    product_images?: product_imagesOmit
   }
 
   /* Types for Logging */
@@ -2668,6 +2668,626 @@ export namespace Prisma {
    * Count Types
    */
 
+
+  /**
+   * Count Type BatchCountOutputType
+   */
+
+  export type BatchCountOutputType = {
+    product_images: number
+  }
+
+  export type BatchCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product_images?: boolean | BatchCountOutputTypeCountProduct_imagesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * BatchCountOutputType without action
+   */
+  export type BatchCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the BatchCountOutputType
+     */
+    select?: BatchCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * BatchCountOutputType without action
+   */
+  export type BatchCountOutputTypeCountProduct_imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: product_imagesWhereInput
+  }
+
+
+  /**
+   * Count Type CategoryCountOutputType
+   */
+
+  export type CategoryCountOutputType = {
+    product: number
+  }
+
+  export type CategoryCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | CategoryCountOutputTypeCountProductArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CategoryCountOutputType without action
+   */
+  export type CategoryCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CategoryCountOutputType
+     */
+    select?: CategoryCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CategoryCountOutputType without action
+   */
+  export type CategoryCountOutputTypeCountProductArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: productWhereInput
+  }
+
+
+  /**
+   * Count Type CityCountOutputType
+   */
+
+  export type CityCountOutputType = {
+    supplier: number
+    users: number
+  }
+
+  export type CityCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    supplier?: boolean | CityCountOutputTypeCountSupplierArgs
+    users?: boolean | CityCountOutputTypeCountUsersArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * CityCountOutputType without action
+   */
+  export type CityCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the CityCountOutputType
+     */
+    select?: CityCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * CityCountOutputType without action
+   */
+  export type CityCountOutputTypeCountSupplierArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: supplierWhereInput
+  }
+
+  /**
+   * CityCountOutputType without action
+   */
+  export type CityCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: usersWhereInput
+  }
+
+
+  /**
+   * Count Type GenderCountOutputType
+   */
+
+  export type GenderCountOutputType = {
+    supplier: number
+    users: number
+  }
+
+  export type GenderCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    supplier?: boolean | GenderCountOutputTypeCountSupplierArgs
+    users?: boolean | GenderCountOutputTypeCountUsersArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * GenderCountOutputType without action
+   */
+  export type GenderCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GenderCountOutputType
+     */
+    select?: GenderCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * GenderCountOutputType without action
+   */
+  export type GenderCountOutputTypeCountSupplierArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: supplierWhereInput
+  }
+
+  /**
+   * GenderCountOutputType without action
+   */
+  export type GenderCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: usersWhereInput
+  }
+
+
+  /**
+   * Count Type GrnCountOutputType
+   */
+
+  export type GrnCountOutputType = {
+    grn_items: number
+  }
+
+  export type GrnCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    grn_items?: boolean | GrnCountOutputTypeCountGrn_itemsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * GrnCountOutputType without action
+   */
+  export type GrnCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the GrnCountOutputType
+     */
+    select?: GrnCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * GrnCountOutputType without action
+   */
+  export type GrnCountOutputTypeCountGrn_itemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: grn_itemsWhereInput
+  }
+
+
+  /**
+   * Count Type InvoiceCountOutputType
+   */
+
+  export type InvoiceCountOutputType = {
+    invoice_items: number
+  }
+
+  export type InvoiceCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    invoice_items?: boolean | InvoiceCountOutputTypeCountInvoice_itemsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * InvoiceCountOutputType without action
+   */
+  export type InvoiceCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the InvoiceCountOutputType
+     */
+    select?: InvoiceCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * InvoiceCountOutputType without action
+   */
+  export type InvoiceCountOutputTypeCountInvoice_itemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: invoice_itemsWhereInput
+  }
+
+
+  /**
+   * Count Type Mother_plant_typeCountOutputType
+   */
+
+  export type Mother_plant_typeCountOutputType = {
+    product: number
+  }
+
+  export type Mother_plant_typeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | Mother_plant_typeCountOutputTypeCountProductArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * Mother_plant_typeCountOutputType without action
+   */
+  export type Mother_plant_typeCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Mother_plant_typeCountOutputType
+     */
+    select?: Mother_plant_typeCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * Mother_plant_typeCountOutputType without action
+   */
+  export type Mother_plant_typeCountOutputTypeCountProductArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: productWhereInput
+  }
+
+
+  /**
+   * Count Type Payment_methodCountOutputType
+   */
+
+  export type Payment_methodCountOutputType = {
+    card_details: number
+    invoice: number
+  }
+
+  export type Payment_methodCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    card_details?: boolean | Payment_methodCountOutputTypeCountCard_detailsArgs
+    invoice?: boolean | Payment_methodCountOutputTypeCountInvoiceArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * Payment_methodCountOutputType without action
+   */
+  export type Payment_methodCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Payment_methodCountOutputType
+     */
+    select?: Payment_methodCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * Payment_methodCountOutputType without action
+   */
+  export type Payment_methodCountOutputTypeCountCard_detailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: card_detailsWhereInput
+  }
+
+  /**
+   * Payment_methodCountOutputType without action
+   */
+  export type Payment_methodCountOutputTypeCountInvoiceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: invoiceWhereInput
+  }
+
+
+  /**
+   * Count Type PotCountOutputType
+   */
+
+  export type PotCountOutputType = {
+    pot_batch: number
+  }
+
+  export type PotCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    pot_batch?: boolean | PotCountOutputTypeCountPot_batchArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * PotCountOutputType without action
+   */
+  export type PotCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the PotCountOutputType
+     */
+    select?: PotCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * PotCountOutputType without action
+   */
+  export type PotCountOutputTypeCountPot_batchArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: pot_batchWhereInput
+  }
+
+
+  /**
+   * Count Type Pot_batchCountOutputType
+   */
+
+  export type Pot_batchCountOutputType = {
+    pot_images: number
+  }
+
+  export type Pot_batchCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    pot_images?: boolean | Pot_batchCountOutputTypeCountPot_imagesArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * Pot_batchCountOutputType without action
+   */
+  export type Pot_batchCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Pot_batchCountOutputType
+     */
+    select?: Pot_batchCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * Pot_batchCountOutputType without action
+   */
+  export type Pot_batchCountOutputTypeCountPot_imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: pot_imagesWhereInput
+  }
+
+
+  /**
+   * Count Type Pot_sizeCountOutputType
+   */
+
+  export type Pot_sizeCountOutputType = {
+    pot_batch: number
+  }
+
+  export type Pot_sizeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    pot_batch?: boolean | Pot_sizeCountOutputTypeCountPot_batchArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * Pot_sizeCountOutputType without action
+   */
+  export type Pot_sizeCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Pot_sizeCountOutputType
+     */
+    select?: Pot_sizeCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * Pot_sizeCountOutputType without action
+   */
+  export type Pot_sizeCountOutputTypeCountPot_batchArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: pot_batchWhereInput
+  }
+
+
+  /**
+   * Count Type ProductCountOutputType
+   */
+
+  export type ProductCountOutputType = {
+    batch: number
+  }
+
+  export type ProductCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    batch?: boolean | ProductCountOutputTypeCountBatchArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * ProductCountOutputType without action
+   */
+  export type ProductCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the ProductCountOutputType
+     */
+    select?: ProductCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * ProductCountOutputType without action
+   */
+  export type ProductCountOutputTypeCountBatchArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: batchWhereInput
+  }
+
+
+  /**
+   * Count Type Product_typeCountOutputType
+   */
+
+  export type Product_typeCountOutputType = {
+    grn_items: number
+    invoice_items: number
+  }
+
+  export type Product_typeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    grn_items?: boolean | Product_typeCountOutputTypeCountGrn_itemsArgs
+    invoice_items?: boolean | Product_typeCountOutputTypeCountInvoice_itemsArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * Product_typeCountOutputType without action
+   */
+  export type Product_typeCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Product_typeCountOutputType
+     */
+    select?: Product_typeCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * Product_typeCountOutputType without action
+   */
+  export type Product_typeCountOutputTypeCountGrn_itemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: grn_itemsWhereInput
+  }
+
+  /**
+   * Product_typeCountOutputType without action
+   */
+  export type Product_typeCountOutputTypeCountInvoice_itemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: invoice_itemsWhereInput
+  }
+
+
+  /**
+   * Count Type SizeCountOutputType
+   */
+
+  export type SizeCountOutputType = {
+    batch: number
+  }
+
+  export type SizeCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    batch?: boolean | SizeCountOutputTypeCountBatchArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * SizeCountOutputType without action
+   */
+  export type SizeCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SizeCountOutputType
+     */
+    select?: SizeCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * SizeCountOutputType without action
+   */
+  export type SizeCountOutputTypeCountBatchArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: batchWhereInput
+  }
+
+
+  /**
+   * Count Type StatusCountOutputType
+   */
+
+  export type StatusCountOutputType = {
+    supplier: number
+    users: number
+  }
+
+  export type StatusCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    supplier?: boolean | StatusCountOutputTypeCountSupplierArgs
+    users?: boolean | StatusCountOutputTypeCountUsersArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * StatusCountOutputType without action
+   */
+  export type StatusCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the StatusCountOutputType
+     */
+    select?: StatusCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * StatusCountOutputType without action
+   */
+  export type StatusCountOutputTypeCountSupplierArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: supplierWhereInput
+  }
+
+  /**
+   * StatusCountOutputType without action
+   */
+  export type StatusCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: usersWhereInput
+  }
+
+
+  /**
+   * Count Type SupplierCountOutputType
+   */
+
+  export type SupplierCountOutputType = {
+    grn: number
+  }
+
+  export type SupplierCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    grn?: boolean | SupplierCountOutputTypeCountGrnArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * SupplierCountOutputType without action
+   */
+  export type SupplierCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the SupplierCountOutputType
+     */
+    select?: SupplierCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * SupplierCountOutputType without action
+   */
+  export type SupplierCountOutputTypeCountGrnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: grnWhereInput
+  }
+
+
+  /**
+   * Count Type User_roleCountOutputType
+   */
+
+  export type User_roleCountOutputType = {
+    users: number
+  }
+
+  export type User_roleCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    users?: boolean | User_roleCountOutputTypeCountUsersArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * User_roleCountOutputType without action
+   */
+  export type User_roleCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the User_roleCountOutputType
+     */
+    select?: User_roleCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * User_roleCountOutputType without action
+   */
+  export type User_roleCountOutputTypeCountUsersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: usersWhereInput
+  }
+
+
+  /**
+   * Count Type UsersCountOutputType
+   */
+
+  export type UsersCountOutputType = {
+    card_details: number
+    grn: number
+    invoice: number
+  }
+
+  export type UsersCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    card_details?: boolean | UsersCountOutputTypeCountCard_detailsArgs
+    grn?: boolean | UsersCountOutputTypeCountGrnArgs
+    invoice?: boolean | UsersCountOutputTypeCountInvoiceArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the UsersCountOutputType
+     */
+    select?: UsersCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountCard_detailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: card_detailsWhereInput
+  }
+
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountGrnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: grnWhereInput
+  }
+
+  /**
+   * UsersCountOutputType without action
+   */
+  export type UsersCountOutputTypeCountInvoiceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: invoiceWhereInput
+  }
 
 
   /**
@@ -2916,6 +3536,10 @@ export namespace Prisma {
     product_id?: boolean
     size_id?: boolean
     code?: boolean
+    product?: boolean | productDefaultArgs<ExtArgs>
+    size?: boolean | sizeDefaultArgs<ExtArgs>
+    product_images?: boolean | batch$product_imagesArgs<ExtArgs>
+    _count?: boolean | BatchCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["batch"]>
 
 
@@ -2932,10 +3556,20 @@ export namespace Prisma {
   }
 
   export type batchOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "qty" | "price" | "cost" | "desc" | "product_id" | "size_id" | "code", ExtArgs["result"]["batch"]>
+  export type batchInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | productDefaultArgs<ExtArgs>
+    size?: boolean | sizeDefaultArgs<ExtArgs>
+    product_images?: boolean | batch$product_imagesArgs<ExtArgs>
+    _count?: boolean | BatchCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $batchPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "batch"
-    objects: {}
+    objects: {
+      product: Prisma.$productPayload<ExtArgs>
+      size: Prisma.$sizePayload<ExtArgs>
+      product_images: Prisma.$product_imagesPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       qty: number
@@ -3285,6 +3919,9 @@ export namespace Prisma {
    */
   export interface Prisma__batchClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    product<T extends productDefaultArgs<ExtArgs> = {}>(args?: Subset<T, productDefaultArgs<ExtArgs>>): Prisma__productClient<$Result.GetResult<Prisma.$productPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    size<T extends sizeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, sizeDefaultArgs<ExtArgs>>): Prisma__sizeClient<$Result.GetResult<Prisma.$sizePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    product_images<T extends batch$product_imagesArgs<ExtArgs> = {}>(args?: Subset<T, batch$product_imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -3339,6 +3976,10 @@ export namespace Prisma {
      */
     omit?: batchOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: batchInclude<ExtArgs> | null
+    /**
      * Filter, which batch to fetch.
      */
     where: batchWhereUniqueInput
@@ -3357,6 +3998,10 @@ export namespace Prisma {
      */
     omit?: batchOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: batchInclude<ExtArgs> | null
+    /**
      * Filter, which batch to fetch.
      */
     where: batchWhereUniqueInput
@@ -3374,6 +4019,10 @@ export namespace Prisma {
      * Omit specific fields from the batch
      */
     omit?: batchOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: batchInclude<ExtArgs> | null
     /**
      * Filter, which batch to fetch.
      */
@@ -3423,6 +4072,10 @@ export namespace Prisma {
      */
     omit?: batchOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: batchInclude<ExtArgs> | null
+    /**
      * Filter, which batch to fetch.
      */
     where?: batchWhereInput
@@ -3471,6 +4124,10 @@ export namespace Prisma {
      */
     omit?: batchOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: batchInclude<ExtArgs> | null
+    /**
      * Filter, which batches to fetch.
      */
     where?: batchWhereInput
@@ -3514,6 +4171,10 @@ export namespace Prisma {
      */
     omit?: batchOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: batchInclude<ExtArgs> | null
+    /**
      * The data needed to create a batch.
      */
     data: XOR<batchCreateInput, batchUncheckedCreateInput>
@@ -3542,6 +4203,10 @@ export namespace Prisma {
      * Omit specific fields from the batch
      */
     omit?: batchOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: batchInclude<ExtArgs> | null
     /**
      * The data needed to update a batch.
      */
@@ -3583,6 +4248,10 @@ export namespace Prisma {
      */
     omit?: batchOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: batchInclude<ExtArgs> | null
+    /**
      * The filter to search for the batch to update in case it exists.
      */
     where: batchWhereUniqueInput
@@ -3609,6 +4278,10 @@ export namespace Prisma {
      */
     omit?: batchOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: batchInclude<ExtArgs> | null
+    /**
      * Filter which batch to delete.
      */
     where: batchWhereUniqueInput
@@ -3629,6 +4302,30 @@ export namespace Prisma {
   }
 
   /**
+   * batch.product_images
+   */
+  export type batch$product_imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_images
+     */
+    select?: product_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_images
+     */
+    omit?: product_imagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_imagesInclude<ExtArgs> | null
+    where?: product_imagesWhereInput
+    orderBy?: product_imagesOrderByWithRelationInput | product_imagesOrderByWithRelationInput[]
+    cursor?: product_imagesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Product_imagesScalarFieldEnum | Product_imagesScalarFieldEnum[]
+  }
+
+  /**
    * batch without action
    */
   export type batchDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -3640,6 +4337,10 @@ export namespace Prisma {
      * Omit specific fields from the batch
      */
     omit?: batchOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: batchInclude<ExtArgs> | null
   }
 
 
@@ -3660,6 +4361,7 @@ export namespace Prisma {
     card_no: number | null
     payment_method_id: number | null
     cvv: number | null
+    users_id: number | null
   }
 
   export type Card_detailsSumAggregateOutputType = {
@@ -3667,6 +4369,7 @@ export namespace Prisma {
     card_no: number | null
     payment_method_id: number | null
     cvv: number | null
+    users_id: number | null
   }
 
   export type Card_detailsMinAggregateOutputType = {
@@ -3675,6 +4378,7 @@ export namespace Prisma {
     payment_method_id: number | null
     cvv: number | null
     exp: string | null
+    users_id: number | null
   }
 
   export type Card_detailsMaxAggregateOutputType = {
@@ -3683,6 +4387,7 @@ export namespace Prisma {
     payment_method_id: number | null
     cvv: number | null
     exp: string | null
+    users_id: number | null
   }
 
   export type Card_detailsCountAggregateOutputType = {
@@ -3691,6 +4396,7 @@ export namespace Prisma {
     payment_method_id: number
     cvv: number
     exp: number
+    users_id: number
     _all: number
   }
 
@@ -3700,6 +4406,7 @@ export namespace Prisma {
     card_no?: true
     payment_method_id?: true
     cvv?: true
+    users_id?: true
   }
 
   export type Card_detailsSumAggregateInputType = {
@@ -3707,6 +4414,7 @@ export namespace Prisma {
     card_no?: true
     payment_method_id?: true
     cvv?: true
+    users_id?: true
   }
 
   export type Card_detailsMinAggregateInputType = {
@@ -3715,6 +4423,7 @@ export namespace Prisma {
     payment_method_id?: true
     cvv?: true
     exp?: true
+    users_id?: true
   }
 
   export type Card_detailsMaxAggregateInputType = {
@@ -3723,6 +4432,7 @@ export namespace Prisma {
     payment_method_id?: true
     cvv?: true
     exp?: true
+    users_id?: true
   }
 
   export type Card_detailsCountAggregateInputType = {
@@ -3731,6 +4441,7 @@ export namespace Prisma {
     payment_method_id?: true
     cvv?: true
     exp?: true
+    users_id?: true
     _all?: true
   }
 
@@ -3826,6 +4537,7 @@ export namespace Prisma {
     payment_method_id: number
     cvv: number | null
     exp: string | null
+    users_id: number
     _count: Card_detailsCountAggregateOutputType | null
     _avg: Card_detailsAvgAggregateOutputType | null
     _sum: Card_detailsSumAggregateOutputType | null
@@ -3853,6 +4565,9 @@ export namespace Prisma {
     payment_method_id?: boolean
     cvv?: boolean
     exp?: boolean
+    users_id?: boolean
+    payment_method?: boolean | payment_methodDefaultArgs<ExtArgs>
+    users?: boolean | usersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["card_details"]>
 
 
@@ -3863,19 +4578,28 @@ export namespace Prisma {
     payment_method_id?: boolean
     cvv?: boolean
     exp?: boolean
+    users_id?: boolean
   }
 
-  export type card_detailsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "card_no" | "payment_method_id" | "cvv" | "exp", ExtArgs["result"]["card_details"]>
+  export type card_detailsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "card_no" | "payment_method_id" | "cvv" | "exp" | "users_id", ExtArgs["result"]["card_details"]>
+  export type card_detailsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    payment_method?: boolean | payment_methodDefaultArgs<ExtArgs>
+    users?: boolean | usersDefaultArgs<ExtArgs>
+  }
 
   export type $card_detailsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "card_details"
-    objects: {}
+    objects: {
+      payment_method: Prisma.$payment_methodPayload<ExtArgs>
+      users: Prisma.$usersPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       card_no: number
       payment_method_id: number
       cvv: number | null
       exp: string | null
+      users_id: number
     }, ExtArgs["result"]["card_details"]>
     composites: {}
   }
@@ -4216,6 +4940,8 @@ export namespace Prisma {
    */
   export interface Prisma__card_detailsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    payment_method<T extends payment_methodDefaultArgs<ExtArgs> = {}>(args?: Subset<T, payment_methodDefaultArgs<ExtArgs>>): Prisma__payment_methodClient<$Result.GetResult<Prisma.$payment_methodPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    users<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -4250,6 +4976,7 @@ export namespace Prisma {
     readonly payment_method_id: FieldRef<"card_details", 'Int'>
     readonly cvv: FieldRef<"card_details", 'Int'>
     readonly exp: FieldRef<"card_details", 'String'>
+    readonly users_id: FieldRef<"card_details", 'Int'>
   }
     
 
@@ -4266,6 +4993,10 @@ export namespace Prisma {
      * Omit specific fields from the card_details
      */
     omit?: card_detailsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: card_detailsInclude<ExtArgs> | null
     /**
      * Filter, which card_details to fetch.
      */
@@ -4285,6 +5016,10 @@ export namespace Prisma {
      */
     omit?: card_detailsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: card_detailsInclude<ExtArgs> | null
+    /**
      * Filter, which card_details to fetch.
      */
     where: card_detailsWhereUniqueInput
@@ -4302,6 +5037,10 @@ export namespace Prisma {
      * Omit specific fields from the card_details
      */
     omit?: card_detailsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: card_detailsInclude<ExtArgs> | null
     /**
      * Filter, which card_details to fetch.
      */
@@ -4351,6 +5090,10 @@ export namespace Prisma {
      */
     omit?: card_detailsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: card_detailsInclude<ExtArgs> | null
+    /**
      * Filter, which card_details to fetch.
      */
     where?: card_detailsWhereInput
@@ -4399,6 +5142,10 @@ export namespace Prisma {
      */
     omit?: card_detailsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: card_detailsInclude<ExtArgs> | null
+    /**
      * Filter, which card_details to fetch.
      */
     where?: card_detailsWhereInput
@@ -4442,6 +5189,10 @@ export namespace Prisma {
      */
     omit?: card_detailsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: card_detailsInclude<ExtArgs> | null
+    /**
      * The data needed to create a card_details.
      */
     data: XOR<card_detailsCreateInput, card_detailsUncheckedCreateInput>
@@ -4470,6 +5221,10 @@ export namespace Prisma {
      * Omit specific fields from the card_details
      */
     omit?: card_detailsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: card_detailsInclude<ExtArgs> | null
     /**
      * The data needed to update a card_details.
      */
@@ -4511,6 +5266,10 @@ export namespace Prisma {
      */
     omit?: card_detailsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: card_detailsInclude<ExtArgs> | null
+    /**
      * The filter to search for the card_details to update in case it exists.
      */
     where: card_detailsWhereUniqueInput
@@ -4536,6 +5295,10 @@ export namespace Prisma {
      * Omit specific fields from the card_details
      */
     omit?: card_detailsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: card_detailsInclude<ExtArgs> | null
     /**
      * Filter which card_details to delete.
      */
@@ -4568,6 +5331,10 @@ export namespace Prisma {
      * Omit specific fields from the card_details
      */
     omit?: card_detailsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: card_detailsInclude<ExtArgs> | null
   }
 
 
@@ -4745,6 +5512,8 @@ export namespace Prisma {
   export type categorySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    product?: boolean | category$productArgs<ExtArgs>
+    _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["category"]>
 
 
@@ -4755,10 +5524,16 @@ export namespace Prisma {
   }
 
   export type categoryOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["category"]>
+  export type categoryInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | category$productArgs<ExtArgs>
+    _count?: boolean | CategoryCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $categoryPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "category"
-    objects: {}
+    objects: {
+      product: Prisma.$productPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
@@ -5102,6 +5877,7 @@ export namespace Prisma {
    */
   export interface Prisma__categoryClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    product<T extends category$productArgs<ExtArgs> = {}>(args?: Subset<T, category$productArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$productPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -5150,6 +5926,10 @@ export namespace Prisma {
      */
     omit?: categoryOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: categoryInclude<ExtArgs> | null
+    /**
      * Filter, which category to fetch.
      */
     where: categoryWhereUniqueInput
@@ -5168,6 +5948,10 @@ export namespace Prisma {
      */
     omit?: categoryOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: categoryInclude<ExtArgs> | null
+    /**
      * Filter, which category to fetch.
      */
     where: categoryWhereUniqueInput
@@ -5185,6 +5969,10 @@ export namespace Prisma {
      * Omit specific fields from the category
      */
     omit?: categoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: categoryInclude<ExtArgs> | null
     /**
      * Filter, which category to fetch.
      */
@@ -5234,6 +6022,10 @@ export namespace Prisma {
      */
     omit?: categoryOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: categoryInclude<ExtArgs> | null
+    /**
      * Filter, which category to fetch.
      */
     where?: categoryWhereInput
@@ -5282,6 +6074,10 @@ export namespace Prisma {
      */
     omit?: categoryOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: categoryInclude<ExtArgs> | null
+    /**
      * Filter, which categories to fetch.
      */
     where?: categoryWhereInput
@@ -5325,6 +6121,10 @@ export namespace Prisma {
      */
     omit?: categoryOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: categoryInclude<ExtArgs> | null
+    /**
      * The data needed to create a category.
      */
     data: XOR<categoryCreateInput, categoryUncheckedCreateInput>
@@ -5353,6 +6153,10 @@ export namespace Prisma {
      * Omit specific fields from the category
      */
     omit?: categoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: categoryInclude<ExtArgs> | null
     /**
      * The data needed to update a category.
      */
@@ -5394,6 +6198,10 @@ export namespace Prisma {
      */
     omit?: categoryOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: categoryInclude<ExtArgs> | null
+    /**
      * The filter to search for the category to update in case it exists.
      */
     where: categoryWhereUniqueInput
@@ -5420,6 +6228,10 @@ export namespace Prisma {
      */
     omit?: categoryOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: categoryInclude<ExtArgs> | null
+    /**
      * Filter which category to delete.
      */
     where: categoryWhereUniqueInput
@@ -5440,6 +6252,30 @@ export namespace Prisma {
   }
 
   /**
+   * category.product
+   */
+  export type category$productArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product
+     */
+    select?: productSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product
+     */
+    omit?: productOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productInclude<ExtArgs> | null
+    where?: productWhereInput
+    orderBy?: productOrderByWithRelationInput | productOrderByWithRelationInput[]
+    cursor?: productWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProductScalarFieldEnum | ProductScalarFieldEnum[]
+  }
+
+  /**
    * category without action
    */
   export type categoryDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -5451,6 +6287,10 @@ export namespace Prisma {
      * Omit specific fields from the category
      */
     omit?: categoryOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: categoryInclude<ExtArgs> | null
   }
 
 
@@ -5628,6 +6468,9 @@ export namespace Prisma {
   export type citySelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    supplier?: boolean | city$supplierArgs<ExtArgs>
+    users?: boolean | city$usersArgs<ExtArgs>
+    _count?: boolean | CityCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["city"]>
 
 
@@ -5638,10 +6481,18 @@ export namespace Prisma {
   }
 
   export type cityOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["city"]>
+  export type cityInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    supplier?: boolean | city$supplierArgs<ExtArgs>
+    users?: boolean | city$usersArgs<ExtArgs>
+    _count?: boolean | CityCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $cityPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "city"
-    objects: {}
+    objects: {
+      supplier: Prisma.$supplierPayload<ExtArgs>[]
+      users: Prisma.$usersPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
@@ -5985,6 +6836,8 @@ export namespace Prisma {
    */
   export interface Prisma__cityClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    supplier<T extends city$supplierArgs<ExtArgs> = {}>(args?: Subset<T, city$supplierArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$supplierPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    users<T extends city$usersArgs<ExtArgs> = {}>(args?: Subset<T, city$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6033,6 +6886,10 @@ export namespace Prisma {
      */
     omit?: cityOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: cityInclude<ExtArgs> | null
+    /**
      * Filter, which city to fetch.
      */
     where: cityWhereUniqueInput
@@ -6051,6 +6908,10 @@ export namespace Prisma {
      */
     omit?: cityOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: cityInclude<ExtArgs> | null
+    /**
      * Filter, which city to fetch.
      */
     where: cityWhereUniqueInput
@@ -6068,6 +6929,10 @@ export namespace Prisma {
      * Omit specific fields from the city
      */
     omit?: cityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: cityInclude<ExtArgs> | null
     /**
      * Filter, which city to fetch.
      */
@@ -6117,6 +6982,10 @@ export namespace Prisma {
      */
     omit?: cityOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: cityInclude<ExtArgs> | null
+    /**
      * Filter, which city to fetch.
      */
     where?: cityWhereInput
@@ -6165,6 +7034,10 @@ export namespace Prisma {
      */
     omit?: cityOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: cityInclude<ExtArgs> | null
+    /**
      * Filter, which cities to fetch.
      */
     where?: cityWhereInput
@@ -6208,6 +7081,10 @@ export namespace Prisma {
      */
     omit?: cityOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: cityInclude<ExtArgs> | null
+    /**
      * The data needed to create a city.
      */
     data: XOR<cityCreateInput, cityUncheckedCreateInput>
@@ -6236,6 +7113,10 @@ export namespace Prisma {
      * Omit specific fields from the city
      */
     omit?: cityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: cityInclude<ExtArgs> | null
     /**
      * The data needed to update a city.
      */
@@ -6277,6 +7158,10 @@ export namespace Prisma {
      */
     omit?: cityOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: cityInclude<ExtArgs> | null
+    /**
      * The filter to search for the city to update in case it exists.
      */
     where: cityWhereUniqueInput
@@ -6303,6 +7188,10 @@ export namespace Prisma {
      */
     omit?: cityOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: cityInclude<ExtArgs> | null
+    /**
      * Filter which city to delete.
      */
     where: cityWhereUniqueInput
@@ -6323,6 +7212,54 @@ export namespace Prisma {
   }
 
   /**
+   * city.supplier
+   */
+  export type city$supplierArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the supplier
+     */
+    select?: supplierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the supplier
+     */
+    omit?: supplierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: supplierInclude<ExtArgs> | null
+    where?: supplierWhereInput
+    orderBy?: supplierOrderByWithRelationInput | supplierOrderByWithRelationInput[]
+    cursor?: supplierWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SupplierScalarFieldEnum | SupplierScalarFieldEnum[]
+  }
+
+  /**
+   * city.users
+   */
+  export type city$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
+    where?: usersWhereInput
+    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
+    cursor?: usersWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
+  }
+
+  /**
    * city without action
    */
   export type cityDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -6334,6 +7271,10 @@ export namespace Prisma {
      * Omit specific fields from the city
      */
     omit?: cityOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: cityInclude<ExtArgs> | null
   }
 
 
@@ -6511,6 +7452,9 @@ export namespace Prisma {
   export type genderSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    supplier?: boolean | gender$supplierArgs<ExtArgs>
+    users?: boolean | gender$usersArgs<ExtArgs>
+    _count?: boolean | GenderCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["gender"]>
 
 
@@ -6521,10 +7465,18 @@ export namespace Prisma {
   }
 
   export type genderOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["gender"]>
+  export type genderInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    supplier?: boolean | gender$supplierArgs<ExtArgs>
+    users?: boolean | gender$usersArgs<ExtArgs>
+    _count?: boolean | GenderCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $genderPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "gender"
-    objects: {}
+    objects: {
+      supplier: Prisma.$supplierPayload<ExtArgs>[]
+      users: Prisma.$usersPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
@@ -6868,6 +7820,8 @@ export namespace Prisma {
    */
   export interface Prisma__genderClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    supplier<T extends gender$supplierArgs<ExtArgs> = {}>(args?: Subset<T, gender$supplierArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$supplierPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    users<T extends gender$usersArgs<ExtArgs> = {}>(args?: Subset<T, gender$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -6916,6 +7870,10 @@ export namespace Prisma {
      */
     omit?: genderOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: genderInclude<ExtArgs> | null
+    /**
      * Filter, which gender to fetch.
      */
     where: genderWhereUniqueInput
@@ -6934,6 +7892,10 @@ export namespace Prisma {
      */
     omit?: genderOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: genderInclude<ExtArgs> | null
+    /**
      * Filter, which gender to fetch.
      */
     where: genderWhereUniqueInput
@@ -6951,6 +7913,10 @@ export namespace Prisma {
      * Omit specific fields from the gender
      */
     omit?: genderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: genderInclude<ExtArgs> | null
     /**
      * Filter, which gender to fetch.
      */
@@ -7000,6 +7966,10 @@ export namespace Prisma {
      */
     omit?: genderOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: genderInclude<ExtArgs> | null
+    /**
      * Filter, which gender to fetch.
      */
     where?: genderWhereInput
@@ -7048,6 +8018,10 @@ export namespace Prisma {
      */
     omit?: genderOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: genderInclude<ExtArgs> | null
+    /**
      * Filter, which genders to fetch.
      */
     where?: genderWhereInput
@@ -7091,6 +8065,10 @@ export namespace Prisma {
      */
     omit?: genderOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: genderInclude<ExtArgs> | null
+    /**
      * The data needed to create a gender.
      */
     data: XOR<genderCreateInput, genderUncheckedCreateInput>
@@ -7119,6 +8097,10 @@ export namespace Prisma {
      * Omit specific fields from the gender
      */
     omit?: genderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: genderInclude<ExtArgs> | null
     /**
      * The data needed to update a gender.
      */
@@ -7160,6 +8142,10 @@ export namespace Prisma {
      */
     omit?: genderOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: genderInclude<ExtArgs> | null
+    /**
      * The filter to search for the gender to update in case it exists.
      */
     where: genderWhereUniqueInput
@@ -7186,6 +8172,10 @@ export namespace Prisma {
      */
     omit?: genderOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: genderInclude<ExtArgs> | null
+    /**
      * Filter which gender to delete.
      */
     where: genderWhereUniqueInput
@@ -7206,6 +8196,54 @@ export namespace Prisma {
   }
 
   /**
+   * gender.supplier
+   */
+  export type gender$supplierArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the supplier
+     */
+    select?: supplierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the supplier
+     */
+    omit?: supplierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: supplierInclude<ExtArgs> | null
+    where?: supplierWhereInput
+    orderBy?: supplierOrderByWithRelationInput | supplierOrderByWithRelationInput[]
+    cursor?: supplierWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SupplierScalarFieldEnum | SupplierScalarFieldEnum[]
+  }
+
+  /**
+   * gender.users
+   */
+  export type gender$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
+    where?: usersWhereInput
+    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
+    cursor?: usersWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
+  }
+
+  /**
    * gender without action
    */
   export type genderDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -7217,6 +8255,10 @@ export namespace Prisma {
      * Omit specific fields from the gender
      */
     omit?: genderOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: genderInclude<ExtArgs> | null
   }
 
 
@@ -7442,6 +8484,10 @@ export namespace Prisma {
     total_qty?: boolean
     supplier_id?: boolean
     users_id?: boolean
+    supplier?: boolean | supplierDefaultArgs<ExtArgs>
+    users?: boolean | usersDefaultArgs<ExtArgs>
+    grn_items?: boolean | grn$grn_itemsArgs<ExtArgs>
+    _count?: boolean | GrnCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["grn"]>
 
 
@@ -7456,10 +8502,20 @@ export namespace Prisma {
   }
 
   export type grnOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "date" | "total" | "total_qty" | "supplier_id" | "users_id", ExtArgs["result"]["grn"]>
+  export type grnInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    supplier?: boolean | supplierDefaultArgs<ExtArgs>
+    users?: boolean | usersDefaultArgs<ExtArgs>
+    grn_items?: boolean | grn$grn_itemsArgs<ExtArgs>
+    _count?: boolean | GrnCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $grnPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "grn"
-    objects: {}
+    objects: {
+      supplier: Prisma.$supplierPayload<ExtArgs>
+      users: Prisma.$usersPayload<ExtArgs>
+      grn_items: Prisma.$grn_itemsPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       date: Date
@@ -7807,6 +8863,9 @@ export namespace Prisma {
    */
   export interface Prisma__grnClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    supplier<T extends supplierDefaultArgs<ExtArgs> = {}>(args?: Subset<T, supplierDefaultArgs<ExtArgs>>): Prisma__supplierClient<$Result.GetResult<Prisma.$supplierPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    users<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    grn_items<T extends grn$grn_itemsArgs<ExtArgs> = {}>(args?: Subset<T, grn$grn_itemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$grn_itemsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -7859,6 +8918,10 @@ export namespace Prisma {
      */
     omit?: grnOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: grnInclude<ExtArgs> | null
+    /**
      * Filter, which grn to fetch.
      */
     where: grnWhereUniqueInput
@@ -7877,6 +8940,10 @@ export namespace Prisma {
      */
     omit?: grnOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: grnInclude<ExtArgs> | null
+    /**
      * Filter, which grn to fetch.
      */
     where: grnWhereUniqueInput
@@ -7894,6 +8961,10 @@ export namespace Prisma {
      * Omit specific fields from the grn
      */
     omit?: grnOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: grnInclude<ExtArgs> | null
     /**
      * Filter, which grn to fetch.
      */
@@ -7943,6 +9014,10 @@ export namespace Prisma {
      */
     omit?: grnOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: grnInclude<ExtArgs> | null
+    /**
      * Filter, which grn to fetch.
      */
     where?: grnWhereInput
@@ -7991,6 +9066,10 @@ export namespace Prisma {
      */
     omit?: grnOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: grnInclude<ExtArgs> | null
+    /**
      * Filter, which grns to fetch.
      */
     where?: grnWhereInput
@@ -8034,6 +9113,10 @@ export namespace Prisma {
      */
     omit?: grnOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: grnInclude<ExtArgs> | null
+    /**
      * The data needed to create a grn.
      */
     data: XOR<grnCreateInput, grnUncheckedCreateInput>
@@ -8062,6 +9145,10 @@ export namespace Prisma {
      * Omit specific fields from the grn
      */
     omit?: grnOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: grnInclude<ExtArgs> | null
     /**
      * The data needed to update a grn.
      */
@@ -8103,6 +9190,10 @@ export namespace Prisma {
      */
     omit?: grnOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: grnInclude<ExtArgs> | null
+    /**
      * The filter to search for the grn to update in case it exists.
      */
     where: grnWhereUniqueInput
@@ -8129,6 +9220,10 @@ export namespace Prisma {
      */
     omit?: grnOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: grnInclude<ExtArgs> | null
+    /**
      * Filter which grn to delete.
      */
     where: grnWhereUniqueInput
@@ -8149,6 +9244,30 @@ export namespace Prisma {
   }
 
   /**
+   * grn.grn_items
+   */
+  export type grn$grn_itemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the grn_items
+     */
+    select?: grn_itemsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the grn_items
+     */
+    omit?: grn_itemsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: grn_itemsInclude<ExtArgs> | null
+    where?: grn_itemsWhereInput
+    orderBy?: grn_itemsOrderByWithRelationInput | grn_itemsOrderByWithRelationInput[]
+    cursor?: grn_itemsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Grn_itemsScalarFieldEnum | Grn_itemsScalarFieldEnum[]
+  }
+
+  /**
    * grn without action
    */
   export type grnDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -8160,6 +9279,10 @@ export namespace Prisma {
      * Omit specific fields from the grn
      */
     omit?: grnOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: grnInclude<ExtArgs> | null
   }
 
 
@@ -8421,6 +9544,8 @@ export namespace Prisma {
     desc?: boolean
     product_type_id?: boolean
     grn_id?: boolean
+    grn?: boolean | grnDefaultArgs<ExtArgs>
+    product_type?: boolean | product_typeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["grn_items"]>
 
 
@@ -8438,10 +9563,17 @@ export namespace Prisma {
   }
 
   export type grn_itemsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "price" | "cost" | "product_id" | "qty" | "size_id" | "desc" | "product_type_id" | "grn_id", ExtArgs["result"]["grn_items"]>
+  export type grn_itemsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    grn?: boolean | grnDefaultArgs<ExtArgs>
+    product_type?: boolean | product_typeDefaultArgs<ExtArgs>
+  }
 
   export type $grn_itemsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "grn_items"
-    objects: {}
+    objects: {
+      grn: Prisma.$grnPayload<ExtArgs>
+      product_type: Prisma.$product_typePayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       price: number
@@ -8792,6 +9924,8 @@ export namespace Prisma {
    */
   export interface Prisma__grn_itemsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    grn<T extends grnDefaultArgs<ExtArgs> = {}>(args?: Subset<T, grnDefaultArgs<ExtArgs>>): Prisma__grnClient<$Result.GetResult<Prisma.$grnPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    product_type<T extends product_typeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, product_typeDefaultArgs<ExtArgs>>): Prisma__product_typeClient<$Result.GetResult<Prisma.$product_typePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -8847,6 +9981,10 @@ export namespace Prisma {
      */
     omit?: grn_itemsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: grn_itemsInclude<ExtArgs> | null
+    /**
      * Filter, which grn_items to fetch.
      */
     where: grn_itemsWhereUniqueInput
@@ -8865,6 +10003,10 @@ export namespace Prisma {
      */
     omit?: grn_itemsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: grn_itemsInclude<ExtArgs> | null
+    /**
      * Filter, which grn_items to fetch.
      */
     where: grn_itemsWhereUniqueInput
@@ -8882,6 +10024,10 @@ export namespace Prisma {
      * Omit specific fields from the grn_items
      */
     omit?: grn_itemsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: grn_itemsInclude<ExtArgs> | null
     /**
      * Filter, which grn_items to fetch.
      */
@@ -8931,6 +10077,10 @@ export namespace Prisma {
      */
     omit?: grn_itemsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: grn_itemsInclude<ExtArgs> | null
+    /**
      * Filter, which grn_items to fetch.
      */
     where?: grn_itemsWhereInput
@@ -8979,6 +10129,10 @@ export namespace Prisma {
      */
     omit?: grn_itemsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: grn_itemsInclude<ExtArgs> | null
+    /**
      * Filter, which grn_items to fetch.
      */
     where?: grn_itemsWhereInput
@@ -9022,6 +10176,10 @@ export namespace Prisma {
      */
     omit?: grn_itemsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: grn_itemsInclude<ExtArgs> | null
+    /**
      * The data needed to create a grn_items.
      */
     data: XOR<grn_itemsCreateInput, grn_itemsUncheckedCreateInput>
@@ -9050,6 +10208,10 @@ export namespace Prisma {
      * Omit specific fields from the grn_items
      */
     omit?: grn_itemsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: grn_itemsInclude<ExtArgs> | null
     /**
      * The data needed to update a grn_items.
      */
@@ -9091,6 +10253,10 @@ export namespace Prisma {
      */
     omit?: grn_itemsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: grn_itemsInclude<ExtArgs> | null
+    /**
      * The filter to search for the grn_items to update in case it exists.
      */
     where: grn_itemsWhereUniqueInput
@@ -9116,6 +10282,10 @@ export namespace Prisma {
      * Omit specific fields from the grn_items
      */
     omit?: grn_itemsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: grn_itemsInclude<ExtArgs> | null
     /**
      * Filter which grn_items to delete.
      */
@@ -9148,6 +10318,10 @@ export namespace Prisma {
      * Omit specific fields from the grn_items
      */
     omit?: grn_itemsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: grn_itemsInclude<ExtArgs> | null
   }
 
 
@@ -9385,6 +10559,10 @@ export namespace Prisma {
     discount?: boolean
     payment_method_id?: boolean
     users_id?: boolean
+    payment_method?: boolean | payment_methodDefaultArgs<ExtArgs>
+    users?: boolean | usersDefaultArgs<ExtArgs>
+    invoice_items?: boolean | invoice$invoice_itemsArgs<ExtArgs>
+    _count?: boolean | InvoiceCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["invoice"]>
 
 
@@ -9400,10 +10578,20 @@ export namespace Prisma {
   }
 
   export type invoiceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "total" | "qty" | "datetime" | "discount" | "payment_method_id" | "users_id", ExtArgs["result"]["invoice"]>
+  export type invoiceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    payment_method?: boolean | payment_methodDefaultArgs<ExtArgs>
+    users?: boolean | usersDefaultArgs<ExtArgs>
+    invoice_items?: boolean | invoice$invoice_itemsArgs<ExtArgs>
+    _count?: boolean | InvoiceCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $invoicePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "invoice"
-    objects: {}
+    objects: {
+      payment_method: Prisma.$payment_methodPayload<ExtArgs>
+      users: Prisma.$usersPayload<ExtArgs>
+      invoice_items: Prisma.$invoice_itemsPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       total: number
@@ -9752,6 +10940,9 @@ export namespace Prisma {
    */
   export interface Prisma__invoiceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    payment_method<T extends payment_methodDefaultArgs<ExtArgs> = {}>(args?: Subset<T, payment_methodDefaultArgs<ExtArgs>>): Prisma__payment_methodClient<$Result.GetResult<Prisma.$payment_methodPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    users<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    invoice_items<T extends invoice$invoice_itemsArgs<ExtArgs> = {}>(args?: Subset<T, invoice$invoice_itemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$invoice_itemsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -9805,6 +10996,10 @@ export namespace Prisma {
      */
     omit?: invoiceOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoiceInclude<ExtArgs> | null
+    /**
      * Filter, which invoice to fetch.
      */
     where: invoiceWhereUniqueInput
@@ -9823,6 +11018,10 @@ export namespace Prisma {
      */
     omit?: invoiceOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoiceInclude<ExtArgs> | null
+    /**
      * Filter, which invoice to fetch.
      */
     where: invoiceWhereUniqueInput
@@ -9840,6 +11039,10 @@ export namespace Prisma {
      * Omit specific fields from the invoice
      */
     omit?: invoiceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoiceInclude<ExtArgs> | null
     /**
      * Filter, which invoice to fetch.
      */
@@ -9889,6 +11092,10 @@ export namespace Prisma {
      */
     omit?: invoiceOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoiceInclude<ExtArgs> | null
+    /**
      * Filter, which invoice to fetch.
      */
     where?: invoiceWhereInput
@@ -9937,6 +11144,10 @@ export namespace Prisma {
      */
     omit?: invoiceOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoiceInclude<ExtArgs> | null
+    /**
      * Filter, which invoices to fetch.
      */
     where?: invoiceWhereInput
@@ -9980,6 +11191,10 @@ export namespace Prisma {
      */
     omit?: invoiceOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoiceInclude<ExtArgs> | null
+    /**
      * The data needed to create a invoice.
      */
     data: XOR<invoiceCreateInput, invoiceUncheckedCreateInput>
@@ -10008,6 +11223,10 @@ export namespace Prisma {
      * Omit specific fields from the invoice
      */
     omit?: invoiceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoiceInclude<ExtArgs> | null
     /**
      * The data needed to update a invoice.
      */
@@ -10049,6 +11268,10 @@ export namespace Prisma {
      */
     omit?: invoiceOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoiceInclude<ExtArgs> | null
+    /**
      * The filter to search for the invoice to update in case it exists.
      */
     where: invoiceWhereUniqueInput
@@ -10075,6 +11298,10 @@ export namespace Prisma {
      */
     omit?: invoiceOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoiceInclude<ExtArgs> | null
+    /**
      * Filter which invoice to delete.
      */
     where: invoiceWhereUniqueInput
@@ -10095,6 +11322,30 @@ export namespace Prisma {
   }
 
   /**
+   * invoice.invoice_items
+   */
+  export type invoice$invoice_itemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the invoice_items
+     */
+    select?: invoice_itemsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the invoice_items
+     */
+    omit?: invoice_itemsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoice_itemsInclude<ExtArgs> | null
+    where?: invoice_itemsWhereInput
+    orderBy?: invoice_itemsOrderByWithRelationInput | invoice_itemsOrderByWithRelationInput[]
+    cursor?: invoice_itemsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Invoice_itemsScalarFieldEnum | Invoice_itemsScalarFieldEnum[]
+  }
+
+  /**
    * invoice without action
    */
   export type invoiceDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -10106,6 +11357,10 @@ export namespace Prisma {
      * Omit specific fields from the invoice
      */
     omit?: invoiceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoiceInclude<ExtArgs> | null
   }
 
 
@@ -10359,6 +11614,8 @@ export namespace Prisma {
     batch_id?: boolean
     invoice_id?: boolean
     product_type_id?: boolean
+    invoice?: boolean | invoiceDefaultArgs<ExtArgs>
+    product_type?: boolean | product_typeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["invoice_items"]>
 
 
@@ -10375,10 +11632,17 @@ export namespace Prisma {
   }
 
   export type invoice_itemsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "price" | "cost" | "product_id" | "qty" | "batch_id" | "invoice_id" | "product_type_id", ExtArgs["result"]["invoice_items"]>
+  export type invoice_itemsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    invoice?: boolean | invoiceDefaultArgs<ExtArgs>
+    product_type?: boolean | product_typeDefaultArgs<ExtArgs>
+  }
 
   export type $invoice_itemsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "invoice_items"
-    objects: {}
+    objects: {
+      invoice: Prisma.$invoicePayload<ExtArgs>
+      product_type: Prisma.$product_typePayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       price: number
@@ -10728,6 +11992,8 @@ export namespace Prisma {
    */
   export interface Prisma__invoice_itemsClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    invoice<T extends invoiceDefaultArgs<ExtArgs> = {}>(args?: Subset<T, invoiceDefaultArgs<ExtArgs>>): Prisma__invoiceClient<$Result.GetResult<Prisma.$invoicePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    product_type<T extends product_typeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, product_typeDefaultArgs<ExtArgs>>): Prisma__product_typeClient<$Result.GetResult<Prisma.$product_typePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -10782,6 +12048,10 @@ export namespace Prisma {
      */
     omit?: invoice_itemsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoice_itemsInclude<ExtArgs> | null
+    /**
      * Filter, which invoice_items to fetch.
      */
     where: invoice_itemsWhereUniqueInput
@@ -10800,6 +12070,10 @@ export namespace Prisma {
      */
     omit?: invoice_itemsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoice_itemsInclude<ExtArgs> | null
+    /**
      * Filter, which invoice_items to fetch.
      */
     where: invoice_itemsWhereUniqueInput
@@ -10817,6 +12091,10 @@ export namespace Prisma {
      * Omit specific fields from the invoice_items
      */
     omit?: invoice_itemsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoice_itemsInclude<ExtArgs> | null
     /**
      * Filter, which invoice_items to fetch.
      */
@@ -10866,6 +12144,10 @@ export namespace Prisma {
      */
     omit?: invoice_itemsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoice_itemsInclude<ExtArgs> | null
+    /**
      * Filter, which invoice_items to fetch.
      */
     where?: invoice_itemsWhereInput
@@ -10914,6 +12196,10 @@ export namespace Prisma {
      */
     omit?: invoice_itemsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoice_itemsInclude<ExtArgs> | null
+    /**
      * Filter, which invoice_items to fetch.
      */
     where?: invoice_itemsWhereInput
@@ -10957,6 +12243,10 @@ export namespace Prisma {
      */
     omit?: invoice_itemsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoice_itemsInclude<ExtArgs> | null
+    /**
      * The data needed to create a invoice_items.
      */
     data: XOR<invoice_itemsCreateInput, invoice_itemsUncheckedCreateInput>
@@ -10985,6 +12275,10 @@ export namespace Prisma {
      * Omit specific fields from the invoice_items
      */
     omit?: invoice_itemsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoice_itemsInclude<ExtArgs> | null
     /**
      * The data needed to update a invoice_items.
      */
@@ -11026,6 +12320,10 @@ export namespace Prisma {
      */
     omit?: invoice_itemsOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoice_itemsInclude<ExtArgs> | null
+    /**
      * The filter to search for the invoice_items to update in case it exists.
      */
     where: invoice_itemsWhereUniqueInput
@@ -11051,6 +12349,10 @@ export namespace Prisma {
      * Omit specific fields from the invoice_items
      */
     omit?: invoice_itemsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoice_itemsInclude<ExtArgs> | null
     /**
      * Filter which invoice_items to delete.
      */
@@ -11083,6 +12385,10 @@ export namespace Prisma {
      * Omit specific fields from the invoice_items
      */
     omit?: invoice_itemsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoice_itemsInclude<ExtArgs> | null
   }
 
 
@@ -11260,6 +12566,8 @@ export namespace Prisma {
   export type mother_plant_typeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    product?: boolean | mother_plant_type$productArgs<ExtArgs>
+    _count?: boolean | Mother_plant_typeCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["mother_plant_type"]>
 
 
@@ -11270,10 +12578,16 @@ export namespace Prisma {
   }
 
   export type mother_plant_typeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["mother_plant_type"]>
+  export type mother_plant_typeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    product?: boolean | mother_plant_type$productArgs<ExtArgs>
+    _count?: boolean | Mother_plant_typeCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $mother_plant_typePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "mother_plant_type"
-    objects: {}
+    objects: {
+      product: Prisma.$productPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
@@ -11617,6 +12931,7 @@ export namespace Prisma {
    */
   export interface Prisma__mother_plant_typeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    product<T extends mother_plant_type$productArgs<ExtArgs> = {}>(args?: Subset<T, mother_plant_type$productArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$productPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -11665,6 +12980,10 @@ export namespace Prisma {
      */
     omit?: mother_plant_typeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mother_plant_typeInclude<ExtArgs> | null
+    /**
      * Filter, which mother_plant_type to fetch.
      */
     where: mother_plant_typeWhereUniqueInput
@@ -11683,6 +13002,10 @@ export namespace Prisma {
      */
     omit?: mother_plant_typeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mother_plant_typeInclude<ExtArgs> | null
+    /**
      * Filter, which mother_plant_type to fetch.
      */
     where: mother_plant_typeWhereUniqueInput
@@ -11700,6 +13023,10 @@ export namespace Prisma {
      * Omit specific fields from the mother_plant_type
      */
     omit?: mother_plant_typeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mother_plant_typeInclude<ExtArgs> | null
     /**
      * Filter, which mother_plant_type to fetch.
      */
@@ -11749,6 +13076,10 @@ export namespace Prisma {
      */
     omit?: mother_plant_typeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mother_plant_typeInclude<ExtArgs> | null
+    /**
      * Filter, which mother_plant_type to fetch.
      */
     where?: mother_plant_typeWhereInput
@@ -11797,6 +13128,10 @@ export namespace Prisma {
      */
     omit?: mother_plant_typeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mother_plant_typeInclude<ExtArgs> | null
+    /**
      * Filter, which mother_plant_types to fetch.
      */
     where?: mother_plant_typeWhereInput
@@ -11840,6 +13175,10 @@ export namespace Prisma {
      */
     omit?: mother_plant_typeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mother_plant_typeInclude<ExtArgs> | null
+    /**
      * The data needed to create a mother_plant_type.
      */
     data: XOR<mother_plant_typeCreateInput, mother_plant_typeUncheckedCreateInput>
@@ -11868,6 +13207,10 @@ export namespace Prisma {
      * Omit specific fields from the mother_plant_type
      */
     omit?: mother_plant_typeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mother_plant_typeInclude<ExtArgs> | null
     /**
      * The data needed to update a mother_plant_type.
      */
@@ -11909,6 +13252,10 @@ export namespace Prisma {
      */
     omit?: mother_plant_typeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mother_plant_typeInclude<ExtArgs> | null
+    /**
      * The filter to search for the mother_plant_type to update in case it exists.
      */
     where: mother_plant_typeWhereUniqueInput
@@ -11935,6 +13282,10 @@ export namespace Prisma {
      */
     omit?: mother_plant_typeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mother_plant_typeInclude<ExtArgs> | null
+    /**
      * Filter which mother_plant_type to delete.
      */
     where: mother_plant_typeWhereUniqueInput
@@ -11955,6 +13306,30 @@ export namespace Prisma {
   }
 
   /**
+   * mother_plant_type.product
+   */
+  export type mother_plant_type$productArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product
+     */
+    select?: productSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product
+     */
+    omit?: productOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productInclude<ExtArgs> | null
+    where?: productWhereInput
+    orderBy?: productOrderByWithRelationInput | productOrderByWithRelationInput[]
+    cursor?: productWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: ProductScalarFieldEnum | ProductScalarFieldEnum[]
+  }
+
+  /**
    * mother_plant_type without action
    */
   export type mother_plant_typeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -11966,6 +13341,10 @@ export namespace Prisma {
      * Omit specific fields from the mother_plant_type
      */
     omit?: mother_plant_typeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: mother_plant_typeInclude<ExtArgs> | null
   }
 
 
@@ -12143,6 +13522,9 @@ export namespace Prisma {
   export type payment_methodSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    card_details?: boolean | payment_method$card_detailsArgs<ExtArgs>
+    invoice?: boolean | payment_method$invoiceArgs<ExtArgs>
+    _count?: boolean | Payment_methodCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["payment_method"]>
 
 
@@ -12153,10 +13535,18 @@ export namespace Prisma {
   }
 
   export type payment_methodOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["payment_method"]>
+  export type payment_methodInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    card_details?: boolean | payment_method$card_detailsArgs<ExtArgs>
+    invoice?: boolean | payment_method$invoiceArgs<ExtArgs>
+    _count?: boolean | Payment_methodCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $payment_methodPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "payment_method"
-    objects: {}
+    objects: {
+      card_details: Prisma.$card_detailsPayload<ExtArgs>[]
+      invoice: Prisma.$invoicePayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
@@ -12500,6 +13890,8 @@ export namespace Prisma {
    */
   export interface Prisma__payment_methodClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    card_details<T extends payment_method$card_detailsArgs<ExtArgs> = {}>(args?: Subset<T, payment_method$card_detailsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$card_detailsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    invoice<T extends payment_method$invoiceArgs<ExtArgs> = {}>(args?: Subset<T, payment_method$invoiceArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$invoicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -12548,6 +13940,10 @@ export namespace Prisma {
      */
     omit?: payment_methodOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: payment_methodInclude<ExtArgs> | null
+    /**
      * Filter, which payment_method to fetch.
      */
     where: payment_methodWhereUniqueInput
@@ -12566,6 +13962,10 @@ export namespace Prisma {
      */
     omit?: payment_methodOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: payment_methodInclude<ExtArgs> | null
+    /**
      * Filter, which payment_method to fetch.
      */
     where: payment_methodWhereUniqueInput
@@ -12583,6 +13983,10 @@ export namespace Prisma {
      * Omit specific fields from the payment_method
      */
     omit?: payment_methodOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: payment_methodInclude<ExtArgs> | null
     /**
      * Filter, which payment_method to fetch.
      */
@@ -12632,6 +14036,10 @@ export namespace Prisma {
      */
     omit?: payment_methodOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: payment_methodInclude<ExtArgs> | null
+    /**
      * Filter, which payment_method to fetch.
      */
     where?: payment_methodWhereInput
@@ -12680,6 +14088,10 @@ export namespace Prisma {
      */
     omit?: payment_methodOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: payment_methodInclude<ExtArgs> | null
+    /**
      * Filter, which payment_methods to fetch.
      */
     where?: payment_methodWhereInput
@@ -12723,6 +14135,10 @@ export namespace Prisma {
      */
     omit?: payment_methodOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: payment_methodInclude<ExtArgs> | null
+    /**
      * The data needed to create a payment_method.
      */
     data: XOR<payment_methodCreateInput, payment_methodUncheckedCreateInput>
@@ -12751,6 +14167,10 @@ export namespace Prisma {
      * Omit specific fields from the payment_method
      */
     omit?: payment_methodOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: payment_methodInclude<ExtArgs> | null
     /**
      * The data needed to update a payment_method.
      */
@@ -12792,6 +14212,10 @@ export namespace Prisma {
      */
     omit?: payment_methodOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: payment_methodInclude<ExtArgs> | null
+    /**
      * The filter to search for the payment_method to update in case it exists.
      */
     where: payment_methodWhereUniqueInput
@@ -12818,6 +14242,10 @@ export namespace Prisma {
      */
     omit?: payment_methodOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: payment_methodInclude<ExtArgs> | null
+    /**
      * Filter which payment_method to delete.
      */
     where: payment_methodWhereUniqueInput
@@ -12838,6 +14266,54 @@ export namespace Prisma {
   }
 
   /**
+   * payment_method.card_details
+   */
+  export type payment_method$card_detailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the card_details
+     */
+    select?: card_detailsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the card_details
+     */
+    omit?: card_detailsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: card_detailsInclude<ExtArgs> | null
+    where?: card_detailsWhereInput
+    orderBy?: card_detailsOrderByWithRelationInput | card_detailsOrderByWithRelationInput[]
+    cursor?: card_detailsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Card_detailsScalarFieldEnum | Card_detailsScalarFieldEnum[]
+  }
+
+  /**
+   * payment_method.invoice
+   */
+  export type payment_method$invoiceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the invoice
+     */
+    select?: invoiceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the invoice
+     */
+    omit?: invoiceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoiceInclude<ExtArgs> | null
+    where?: invoiceWhereInput
+    orderBy?: invoiceOrderByWithRelationInput | invoiceOrderByWithRelationInput[]
+    cursor?: invoiceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InvoiceScalarFieldEnum | InvoiceScalarFieldEnum[]
+  }
+
+  /**
    * payment_method without action
    */
   export type payment_methodDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -12849,6 +14325,10 @@ export namespace Prisma {
      * Omit specific fields from the payment_method
      */
     omit?: payment_methodOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: payment_methodInclude<ExtArgs> | null
   }
 
 
@@ -13046,6 +14526,8 @@ export namespace Prisma {
     name?: boolean
     price?: boolean
     desc?: boolean
+    pot_batch?: boolean | pot$pot_batchArgs<ExtArgs>
+    _count?: boolean | PotCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["pot"]>
 
 
@@ -13058,10 +14540,16 @@ export namespace Prisma {
   }
 
   export type potOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "price" | "desc", ExtArgs["result"]["pot"]>
+  export type potInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    pot_batch?: boolean | pot$pot_batchArgs<ExtArgs>
+    _count?: boolean | PotCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $potPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "pot"
-    objects: {}
+    objects: {
+      pot_batch: Prisma.$pot_batchPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
@@ -13407,6 +14895,7 @@ export namespace Prisma {
    */
   export interface Prisma__potClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    pot_batch<T extends pot$pot_batchArgs<ExtArgs> = {}>(args?: Subset<T, pot$pot_batchArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$pot_batchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -13457,6 +14946,10 @@ export namespace Prisma {
      */
     omit?: potOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: potInclude<ExtArgs> | null
+    /**
      * Filter, which pot to fetch.
      */
     where: potWhereUniqueInput
@@ -13475,6 +14968,10 @@ export namespace Prisma {
      */
     omit?: potOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: potInclude<ExtArgs> | null
+    /**
      * Filter, which pot to fetch.
      */
     where: potWhereUniqueInput
@@ -13492,6 +14989,10 @@ export namespace Prisma {
      * Omit specific fields from the pot
      */
     omit?: potOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: potInclude<ExtArgs> | null
     /**
      * Filter, which pot to fetch.
      */
@@ -13541,6 +15042,10 @@ export namespace Prisma {
      */
     omit?: potOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: potInclude<ExtArgs> | null
+    /**
      * Filter, which pot to fetch.
      */
     where?: potWhereInput
@@ -13589,6 +15094,10 @@ export namespace Prisma {
      */
     omit?: potOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: potInclude<ExtArgs> | null
+    /**
      * Filter, which pots to fetch.
      */
     where?: potWhereInput
@@ -13632,6 +15141,10 @@ export namespace Prisma {
      */
     omit?: potOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: potInclude<ExtArgs> | null
+    /**
      * The data needed to create a pot.
      */
     data: XOR<potCreateInput, potUncheckedCreateInput>
@@ -13660,6 +15173,10 @@ export namespace Prisma {
      * Omit specific fields from the pot
      */
     omit?: potOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: potInclude<ExtArgs> | null
     /**
      * The data needed to update a pot.
      */
@@ -13701,6 +15218,10 @@ export namespace Prisma {
      */
     omit?: potOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: potInclude<ExtArgs> | null
+    /**
      * The filter to search for the pot to update in case it exists.
      */
     where: potWhereUniqueInput
@@ -13727,6 +15248,10 @@ export namespace Prisma {
      */
     omit?: potOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: potInclude<ExtArgs> | null
+    /**
      * Filter which pot to delete.
      */
     where: potWhereUniqueInput
@@ -13747,6 +15272,30 @@ export namespace Prisma {
   }
 
   /**
+   * pot.pot_batch
+   */
+  export type pot$pot_batchArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pot_batch
+     */
+    select?: pot_batchSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pot_batch
+     */
+    omit?: pot_batchOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_batchInclude<ExtArgs> | null
+    where?: pot_batchWhereInput
+    orderBy?: pot_batchOrderByWithRelationInput | pot_batchOrderByWithRelationInput[]
+    cursor?: pot_batchWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Pot_batchScalarFieldEnum | Pot_batchScalarFieldEnum[]
+  }
+
+  /**
    * pot without action
    */
   export type potDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -13758,6 +15307,10 @@ export namespace Prisma {
      * Omit specific fields from the pot
      */
     omit?: potOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: potInclude<ExtArgs> | null
   }
 
 
@@ -14003,6 +15556,10 @@ export namespace Prisma {
     pot_id?: boolean
     pot_size_id?: boolean
     code?: boolean
+    pot?: boolean | potDefaultArgs<ExtArgs>
+    pot_size?: boolean | pot_sizeDefaultArgs<ExtArgs>
+    pot_images?: boolean | pot_batch$pot_imagesArgs<ExtArgs>
+    _count?: boolean | Pot_batchCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["pot_batch"]>
 
 
@@ -14019,10 +15576,20 @@ export namespace Prisma {
   }
 
   export type pot_batchOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "qty" | "price" | "cost" | "desc" | "pot_id" | "pot_size_id" | "code", ExtArgs["result"]["pot_batch"]>
+  export type pot_batchInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    pot?: boolean | potDefaultArgs<ExtArgs>
+    pot_size?: boolean | pot_sizeDefaultArgs<ExtArgs>
+    pot_images?: boolean | pot_batch$pot_imagesArgs<ExtArgs>
+    _count?: boolean | Pot_batchCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $pot_batchPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "pot_batch"
-    objects: {}
+    objects: {
+      pot: Prisma.$potPayload<ExtArgs>
+      pot_size: Prisma.$pot_sizePayload<ExtArgs>
+      pot_images: Prisma.$pot_imagesPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       qty: number
@@ -14372,6 +15939,9 @@ export namespace Prisma {
    */
   export interface Prisma__pot_batchClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    pot<T extends potDefaultArgs<ExtArgs> = {}>(args?: Subset<T, potDefaultArgs<ExtArgs>>): Prisma__potClient<$Result.GetResult<Prisma.$potPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    pot_size<T extends pot_sizeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, pot_sizeDefaultArgs<ExtArgs>>): Prisma__pot_sizeClient<$Result.GetResult<Prisma.$pot_sizePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    pot_images<T extends pot_batch$pot_imagesArgs<ExtArgs> = {}>(args?: Subset<T, pot_batch$pot_imagesArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -14426,6 +15996,10 @@ export namespace Prisma {
      */
     omit?: pot_batchOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_batchInclude<ExtArgs> | null
+    /**
      * Filter, which pot_batch to fetch.
      */
     where: pot_batchWhereUniqueInput
@@ -14444,6 +16018,10 @@ export namespace Prisma {
      */
     omit?: pot_batchOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_batchInclude<ExtArgs> | null
+    /**
      * Filter, which pot_batch to fetch.
      */
     where: pot_batchWhereUniqueInput
@@ -14461,6 +16039,10 @@ export namespace Prisma {
      * Omit specific fields from the pot_batch
      */
     omit?: pot_batchOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_batchInclude<ExtArgs> | null
     /**
      * Filter, which pot_batch to fetch.
      */
@@ -14510,6 +16092,10 @@ export namespace Prisma {
      */
     omit?: pot_batchOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_batchInclude<ExtArgs> | null
+    /**
      * Filter, which pot_batch to fetch.
      */
     where?: pot_batchWhereInput
@@ -14558,6 +16144,10 @@ export namespace Prisma {
      */
     omit?: pot_batchOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_batchInclude<ExtArgs> | null
+    /**
      * Filter, which pot_batches to fetch.
      */
     where?: pot_batchWhereInput
@@ -14601,6 +16191,10 @@ export namespace Prisma {
      */
     omit?: pot_batchOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_batchInclude<ExtArgs> | null
+    /**
      * The data needed to create a pot_batch.
      */
     data: XOR<pot_batchCreateInput, pot_batchUncheckedCreateInput>
@@ -14629,6 +16223,10 @@ export namespace Prisma {
      * Omit specific fields from the pot_batch
      */
     omit?: pot_batchOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_batchInclude<ExtArgs> | null
     /**
      * The data needed to update a pot_batch.
      */
@@ -14670,6 +16268,10 @@ export namespace Prisma {
      */
     omit?: pot_batchOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_batchInclude<ExtArgs> | null
+    /**
      * The filter to search for the pot_batch to update in case it exists.
      */
     where: pot_batchWhereUniqueInput
@@ -14696,6 +16298,10 @@ export namespace Prisma {
      */
     omit?: pot_batchOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_batchInclude<ExtArgs> | null
+    /**
      * Filter which pot_batch to delete.
      */
     where: pot_batchWhereUniqueInput
@@ -14716,6 +16322,30 @@ export namespace Prisma {
   }
 
   /**
+   * pot_batch.pot_images
+   */
+  export type pot_batch$pot_imagesArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pot_images
+     */
+    select?: pot_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pot_images
+     */
+    omit?: pot_imagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_imagesInclude<ExtArgs> | null
+    where?: pot_imagesWhereInput
+    orderBy?: pot_imagesOrderByWithRelationInput | pot_imagesOrderByWithRelationInput[]
+    cursor?: pot_imagesWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Pot_imagesScalarFieldEnum | Pot_imagesScalarFieldEnum[]
+  }
+
+  /**
    * pot_batch without action
    */
   export type pot_batchDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -14727,6 +16357,955 @@ export namespace Prisma {
      * Omit specific fields from the pot_batch
      */
     omit?: pot_batchOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_batchInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model pot_images
+   */
+
+  export type AggregatePot_images = {
+    _count: Pot_imagesCountAggregateOutputType | null
+    _avg: Pot_imagesAvgAggregateOutputType | null
+    _sum: Pot_imagesSumAggregateOutputType | null
+    _min: Pot_imagesMinAggregateOutputType | null
+    _max: Pot_imagesMaxAggregateOutputType | null
+  }
+
+  export type Pot_imagesAvgAggregateOutputType = {
+    id: number | null
+    pot_batch_id: number | null
+  }
+
+  export type Pot_imagesSumAggregateOutputType = {
+    id: number | null
+    pot_batch_id: number | null
+  }
+
+  export type Pot_imagesMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    pot_batch_id: number | null
+  }
+
+  export type Pot_imagesMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    pot_batch_id: number | null
+  }
+
+  export type Pot_imagesCountAggregateOutputType = {
+    id: number
+    name: number
+    pot_batch_id: number
+    _all: number
+  }
+
+
+  export type Pot_imagesAvgAggregateInputType = {
+    id?: true
+    pot_batch_id?: true
+  }
+
+  export type Pot_imagesSumAggregateInputType = {
+    id?: true
+    pot_batch_id?: true
+  }
+
+  export type Pot_imagesMinAggregateInputType = {
+    id?: true
+    name?: true
+    pot_batch_id?: true
+  }
+
+  export type Pot_imagesMaxAggregateInputType = {
+    id?: true
+    name?: true
+    pot_batch_id?: true
+  }
+
+  export type Pot_imagesCountAggregateInputType = {
+    id?: true
+    name?: true
+    pot_batch_id?: true
+    _all?: true
+  }
+
+  export type Pot_imagesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which pot_images to aggregate.
+     */
+    where?: pot_imagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of pot_images to fetch.
+     */
+    orderBy?: pot_imagesOrderByWithRelationInput | pot_imagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: pot_imagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` pot_images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` pot_images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned pot_images
+    **/
+    _count?: true | Pot_imagesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Pot_imagesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Pot_imagesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Pot_imagesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Pot_imagesMaxAggregateInputType
+  }
+
+  export type GetPot_imagesAggregateType<T extends Pot_imagesAggregateArgs> = {
+        [P in keyof T & keyof AggregatePot_images]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregatePot_images[P]>
+      : GetScalarType<T[P], AggregatePot_images[P]>
+  }
+
+
+
+
+  export type pot_imagesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: pot_imagesWhereInput
+    orderBy?: pot_imagesOrderByWithAggregationInput | pot_imagesOrderByWithAggregationInput[]
+    by: Pot_imagesScalarFieldEnum[] | Pot_imagesScalarFieldEnum
+    having?: pot_imagesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Pot_imagesCountAggregateInputType | true
+    _avg?: Pot_imagesAvgAggregateInputType
+    _sum?: Pot_imagesSumAggregateInputType
+    _min?: Pot_imagesMinAggregateInputType
+    _max?: Pot_imagesMaxAggregateInputType
+  }
+
+  export type Pot_imagesGroupByOutputType = {
+    id: number
+    name: string
+    pot_batch_id: number
+    _count: Pot_imagesCountAggregateOutputType | null
+    _avg: Pot_imagesAvgAggregateOutputType | null
+    _sum: Pot_imagesSumAggregateOutputType | null
+    _min: Pot_imagesMinAggregateOutputType | null
+    _max: Pot_imagesMaxAggregateOutputType | null
+  }
+
+  type GetPot_imagesGroupByPayload<T extends pot_imagesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Pot_imagesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Pot_imagesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Pot_imagesGroupByOutputType[P]>
+            : GetScalarType<T[P], Pot_imagesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type pot_imagesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    pot_batch_id?: boolean
+    pot_batch?: boolean | pot_batchDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["pot_images"]>
+
+
+
+  export type pot_imagesSelectScalar = {
+    id?: boolean
+    name?: boolean
+    pot_batch_id?: boolean
+  }
+
+  export type pot_imagesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "pot_batch_id", ExtArgs["result"]["pot_images"]>
+  export type pot_imagesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    pot_batch?: boolean | pot_batchDefaultArgs<ExtArgs>
+  }
+
+  export type $pot_imagesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "pot_images"
+    objects: {
+      pot_batch: Prisma.$pot_batchPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      pot_batch_id: number
+    }, ExtArgs["result"]["pot_images"]>
+    composites: {}
+  }
+
+  type pot_imagesGetPayload<S extends boolean | null | undefined | pot_imagesDefaultArgs> = $Result.GetResult<Prisma.$pot_imagesPayload, S>
+
+  type pot_imagesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<pot_imagesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Pot_imagesCountAggregateInputType | true
+    }
+
+  export interface pot_imagesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['pot_images'], meta: { name: 'pot_images' } }
+    /**
+     * Find zero or one Pot_images that matches the filter.
+     * @param {pot_imagesFindUniqueArgs} args - Arguments to find a Pot_images
+     * @example
+     * // Get one Pot_images
+     * const pot_images = await prisma.pot_images.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends pot_imagesFindUniqueArgs>(args: SelectSubset<T, pot_imagesFindUniqueArgs<ExtArgs>>): Prisma__pot_imagesClient<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Pot_images that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {pot_imagesFindUniqueOrThrowArgs} args - Arguments to find a Pot_images
+     * @example
+     * // Get one Pot_images
+     * const pot_images = await prisma.pot_images.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends pot_imagesFindUniqueOrThrowArgs>(args: SelectSubset<T, pot_imagesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__pot_imagesClient<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Pot_images that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pot_imagesFindFirstArgs} args - Arguments to find a Pot_images
+     * @example
+     * // Get one Pot_images
+     * const pot_images = await prisma.pot_images.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends pot_imagesFindFirstArgs>(args?: SelectSubset<T, pot_imagesFindFirstArgs<ExtArgs>>): Prisma__pot_imagesClient<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Pot_images that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pot_imagesFindFirstOrThrowArgs} args - Arguments to find a Pot_images
+     * @example
+     * // Get one Pot_images
+     * const pot_images = await prisma.pot_images.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends pot_imagesFindFirstOrThrowArgs>(args?: SelectSubset<T, pot_imagesFindFirstOrThrowArgs<ExtArgs>>): Prisma__pot_imagesClient<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Pot_images that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pot_imagesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Pot_images
+     * const pot_images = await prisma.pot_images.findMany()
+     * 
+     * // Get first 10 Pot_images
+     * const pot_images = await prisma.pot_images.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const pot_imagesWithIdOnly = await prisma.pot_images.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends pot_imagesFindManyArgs>(args?: SelectSubset<T, pot_imagesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Pot_images.
+     * @param {pot_imagesCreateArgs} args - Arguments to create a Pot_images.
+     * @example
+     * // Create one Pot_images
+     * const Pot_images = await prisma.pot_images.create({
+     *   data: {
+     *     // ... data to create a Pot_images
+     *   }
+     * })
+     * 
+     */
+    create<T extends pot_imagesCreateArgs>(args: SelectSubset<T, pot_imagesCreateArgs<ExtArgs>>): Prisma__pot_imagesClient<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Pot_images.
+     * @param {pot_imagesCreateManyArgs} args - Arguments to create many Pot_images.
+     * @example
+     * // Create many Pot_images
+     * const pot_images = await prisma.pot_images.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends pot_imagesCreateManyArgs>(args?: SelectSubset<T, pot_imagesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Pot_images.
+     * @param {pot_imagesDeleteArgs} args - Arguments to delete one Pot_images.
+     * @example
+     * // Delete one Pot_images
+     * const Pot_images = await prisma.pot_images.delete({
+     *   where: {
+     *     // ... filter to delete one Pot_images
+     *   }
+     * })
+     * 
+     */
+    delete<T extends pot_imagesDeleteArgs>(args: SelectSubset<T, pot_imagesDeleteArgs<ExtArgs>>): Prisma__pot_imagesClient<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Pot_images.
+     * @param {pot_imagesUpdateArgs} args - Arguments to update one Pot_images.
+     * @example
+     * // Update one Pot_images
+     * const pot_images = await prisma.pot_images.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends pot_imagesUpdateArgs>(args: SelectSubset<T, pot_imagesUpdateArgs<ExtArgs>>): Prisma__pot_imagesClient<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Pot_images.
+     * @param {pot_imagesDeleteManyArgs} args - Arguments to filter Pot_images to delete.
+     * @example
+     * // Delete a few Pot_images
+     * const { count } = await prisma.pot_images.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends pot_imagesDeleteManyArgs>(args?: SelectSubset<T, pot_imagesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Pot_images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pot_imagesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Pot_images
+     * const pot_images = await prisma.pot_images.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends pot_imagesUpdateManyArgs>(args: SelectSubset<T, pot_imagesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Pot_images.
+     * @param {pot_imagesUpsertArgs} args - Arguments to update or create a Pot_images.
+     * @example
+     * // Update or create a Pot_images
+     * const pot_images = await prisma.pot_images.upsert({
+     *   create: {
+     *     // ... data to create a Pot_images
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Pot_images we want to update
+     *   }
+     * })
+     */
+    upsert<T extends pot_imagesUpsertArgs>(args: SelectSubset<T, pot_imagesUpsertArgs<ExtArgs>>): Prisma__pot_imagesClient<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Pot_images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pot_imagesCountArgs} args - Arguments to filter Pot_images to count.
+     * @example
+     * // Count the number of Pot_images
+     * const count = await prisma.pot_images.count({
+     *   where: {
+     *     // ... the filter for the Pot_images we want to count
+     *   }
+     * })
+    **/
+    count<T extends pot_imagesCountArgs>(
+      args?: Subset<T, pot_imagesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Pot_imagesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Pot_images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Pot_imagesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Pot_imagesAggregateArgs>(args: Subset<T, Pot_imagesAggregateArgs>): Prisma.PrismaPromise<GetPot_imagesAggregateType<T>>
+
+    /**
+     * Group by Pot_images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {pot_imagesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends pot_imagesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: pot_imagesGroupByArgs['orderBy'] }
+        : { orderBy?: pot_imagesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, pot_imagesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPot_imagesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the pot_images model
+   */
+  readonly fields: pot_imagesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for pot_images.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__pot_imagesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    pot_batch<T extends pot_batchDefaultArgs<ExtArgs> = {}>(args?: Subset<T, pot_batchDefaultArgs<ExtArgs>>): Prisma__pot_batchClient<$Result.GetResult<Prisma.$pot_batchPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the pot_images model
+   */
+  interface pot_imagesFieldRefs {
+    readonly id: FieldRef<"pot_images", 'Int'>
+    readonly name: FieldRef<"pot_images", 'String'>
+    readonly pot_batch_id: FieldRef<"pot_images", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * pot_images findUnique
+   */
+  export type pot_imagesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pot_images
+     */
+    select?: pot_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pot_images
+     */
+    omit?: pot_imagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_imagesInclude<ExtArgs> | null
+    /**
+     * Filter, which pot_images to fetch.
+     */
+    where: pot_imagesWhereUniqueInput
+  }
+
+  /**
+   * pot_images findUniqueOrThrow
+   */
+  export type pot_imagesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pot_images
+     */
+    select?: pot_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pot_images
+     */
+    omit?: pot_imagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_imagesInclude<ExtArgs> | null
+    /**
+     * Filter, which pot_images to fetch.
+     */
+    where: pot_imagesWhereUniqueInput
+  }
+
+  /**
+   * pot_images findFirst
+   */
+  export type pot_imagesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pot_images
+     */
+    select?: pot_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pot_images
+     */
+    omit?: pot_imagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_imagesInclude<ExtArgs> | null
+    /**
+     * Filter, which pot_images to fetch.
+     */
+    where?: pot_imagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of pot_images to fetch.
+     */
+    orderBy?: pot_imagesOrderByWithRelationInput | pot_imagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for pot_images.
+     */
+    cursor?: pot_imagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` pot_images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` pot_images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of pot_images.
+     */
+    distinct?: Pot_imagesScalarFieldEnum | Pot_imagesScalarFieldEnum[]
+  }
+
+  /**
+   * pot_images findFirstOrThrow
+   */
+  export type pot_imagesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pot_images
+     */
+    select?: pot_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pot_images
+     */
+    omit?: pot_imagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_imagesInclude<ExtArgs> | null
+    /**
+     * Filter, which pot_images to fetch.
+     */
+    where?: pot_imagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of pot_images to fetch.
+     */
+    orderBy?: pot_imagesOrderByWithRelationInput | pot_imagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for pot_images.
+     */
+    cursor?: pot_imagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` pot_images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` pot_images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of pot_images.
+     */
+    distinct?: Pot_imagesScalarFieldEnum | Pot_imagesScalarFieldEnum[]
+  }
+
+  /**
+   * pot_images findMany
+   */
+  export type pot_imagesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pot_images
+     */
+    select?: pot_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pot_images
+     */
+    omit?: pot_imagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_imagesInclude<ExtArgs> | null
+    /**
+     * Filter, which pot_images to fetch.
+     */
+    where?: pot_imagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of pot_images to fetch.
+     */
+    orderBy?: pot_imagesOrderByWithRelationInput | pot_imagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing pot_images.
+     */
+    cursor?: pot_imagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` pot_images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` pot_images.
+     */
+    skip?: number
+    distinct?: Pot_imagesScalarFieldEnum | Pot_imagesScalarFieldEnum[]
+  }
+
+  /**
+   * pot_images create
+   */
+  export type pot_imagesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pot_images
+     */
+    select?: pot_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pot_images
+     */
+    omit?: pot_imagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_imagesInclude<ExtArgs> | null
+    /**
+     * The data needed to create a pot_images.
+     */
+    data: XOR<pot_imagesCreateInput, pot_imagesUncheckedCreateInput>
+  }
+
+  /**
+   * pot_images createMany
+   */
+  export type pot_imagesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many pot_images.
+     */
+    data: pot_imagesCreateManyInput | pot_imagesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * pot_images update
+   */
+  export type pot_imagesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pot_images
+     */
+    select?: pot_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pot_images
+     */
+    omit?: pot_imagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_imagesInclude<ExtArgs> | null
+    /**
+     * The data needed to update a pot_images.
+     */
+    data: XOR<pot_imagesUpdateInput, pot_imagesUncheckedUpdateInput>
+    /**
+     * Choose, which pot_images to update.
+     */
+    where: pot_imagesWhereUniqueInput
+  }
+
+  /**
+   * pot_images updateMany
+   */
+  export type pot_imagesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update pot_images.
+     */
+    data: XOR<pot_imagesUpdateManyMutationInput, pot_imagesUncheckedUpdateManyInput>
+    /**
+     * Filter which pot_images to update
+     */
+    where?: pot_imagesWhereInput
+    /**
+     * Limit how many pot_images to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * pot_images upsert
+   */
+  export type pot_imagesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pot_images
+     */
+    select?: pot_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pot_images
+     */
+    omit?: pot_imagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_imagesInclude<ExtArgs> | null
+    /**
+     * The filter to search for the pot_images to update in case it exists.
+     */
+    where: pot_imagesWhereUniqueInput
+    /**
+     * In case the pot_images found by the `where` argument doesn't exist, create a new pot_images with this data.
+     */
+    create: XOR<pot_imagesCreateInput, pot_imagesUncheckedCreateInput>
+    /**
+     * In case the pot_images was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<pot_imagesUpdateInput, pot_imagesUncheckedUpdateInput>
+  }
+
+  /**
+   * pot_images delete
+   */
+  export type pot_imagesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pot_images
+     */
+    select?: pot_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pot_images
+     */
+    omit?: pot_imagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_imagesInclude<ExtArgs> | null
+    /**
+     * Filter which pot_images to delete.
+     */
+    where: pot_imagesWhereUniqueInput
+  }
+
+  /**
+   * pot_images deleteMany
+   */
+  export type pot_imagesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which pot_images to delete
+     */
+    where?: pot_imagesWhereInput
+    /**
+     * Limit how many pot_images to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * pot_images without action
+   */
+  export type pot_imagesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pot_images
+     */
+    select?: pot_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pot_images
+     */
+    omit?: pot_imagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_imagesInclude<ExtArgs> | null
   }
 
 
@@ -14912,6 +17491,8 @@ export namespace Prisma {
     id?: boolean
     size?: boolean
     short_key?: boolean
+    pot_batch?: boolean | pot_size$pot_batchArgs<ExtArgs>
+    _count?: boolean | Pot_sizeCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["pot_size"]>
 
 
@@ -14923,10 +17504,16 @@ export namespace Prisma {
   }
 
   export type pot_sizeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "size" | "short_key", ExtArgs["result"]["pot_size"]>
+  export type pot_sizeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    pot_batch?: boolean | pot_size$pot_batchArgs<ExtArgs>
+    _count?: boolean | Pot_sizeCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $pot_sizePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "pot_size"
-    objects: {}
+    objects: {
+      pot_batch: Prisma.$pot_batchPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       size: string
@@ -15271,6 +17858,7 @@ export namespace Prisma {
    */
   export interface Prisma__pot_sizeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    pot_batch<T extends pot_size$pot_batchArgs<ExtArgs> = {}>(args?: Subset<T, pot_size$pot_batchArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$pot_batchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -15320,6 +17908,10 @@ export namespace Prisma {
      */
     omit?: pot_sizeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_sizeInclude<ExtArgs> | null
+    /**
      * Filter, which pot_size to fetch.
      */
     where: pot_sizeWhereUniqueInput
@@ -15338,6 +17930,10 @@ export namespace Prisma {
      */
     omit?: pot_sizeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_sizeInclude<ExtArgs> | null
+    /**
      * Filter, which pot_size to fetch.
      */
     where: pot_sizeWhereUniqueInput
@@ -15355,6 +17951,10 @@ export namespace Prisma {
      * Omit specific fields from the pot_size
      */
     omit?: pot_sizeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_sizeInclude<ExtArgs> | null
     /**
      * Filter, which pot_size to fetch.
      */
@@ -15404,6 +18004,10 @@ export namespace Prisma {
      */
     omit?: pot_sizeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_sizeInclude<ExtArgs> | null
+    /**
      * Filter, which pot_size to fetch.
      */
     where?: pot_sizeWhereInput
@@ -15452,6 +18056,10 @@ export namespace Prisma {
      */
     omit?: pot_sizeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_sizeInclude<ExtArgs> | null
+    /**
      * Filter, which pot_sizes to fetch.
      */
     where?: pot_sizeWhereInput
@@ -15495,6 +18103,10 @@ export namespace Prisma {
      */
     omit?: pot_sizeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_sizeInclude<ExtArgs> | null
+    /**
      * The data needed to create a pot_size.
      */
     data: XOR<pot_sizeCreateInput, pot_sizeUncheckedCreateInput>
@@ -15523,6 +18135,10 @@ export namespace Prisma {
      * Omit specific fields from the pot_size
      */
     omit?: pot_sizeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_sizeInclude<ExtArgs> | null
     /**
      * The data needed to update a pot_size.
      */
@@ -15564,6 +18180,10 @@ export namespace Prisma {
      */
     omit?: pot_sizeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_sizeInclude<ExtArgs> | null
+    /**
      * The filter to search for the pot_size to update in case it exists.
      */
     where: pot_sizeWhereUniqueInput
@@ -15590,6 +18210,10 @@ export namespace Prisma {
      */
     omit?: pot_sizeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_sizeInclude<ExtArgs> | null
+    /**
      * Filter which pot_size to delete.
      */
     where: pot_sizeWhereUniqueInput
@@ -15610,6 +18234,30 @@ export namespace Prisma {
   }
 
   /**
+   * pot_size.pot_batch
+   */
+  export type pot_size$pot_batchArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the pot_batch
+     */
+    select?: pot_batchSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the pot_batch
+     */
+    omit?: pot_batchOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_batchInclude<ExtArgs> | null
+    where?: pot_batchWhereInput
+    orderBy?: pot_batchOrderByWithRelationInput | pot_batchOrderByWithRelationInput[]
+    cursor?: pot_batchWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Pot_batchScalarFieldEnum | Pot_batchScalarFieldEnum[]
+  }
+
+  /**
    * pot_size without action
    */
   export type pot_sizeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -15621,6 +18269,10 @@ export namespace Prisma {
      * Omit specific fields from the pot_size
      */
     omit?: pot_sizeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: pot_sizeInclude<ExtArgs> | null
   }
 
 
@@ -15838,6 +18490,10 @@ export namespace Prisma {
     mother_plant_type_id?: boolean
     category_id?: boolean
     isActive?: boolean
+    batch?: boolean | product$batchArgs<ExtArgs>
+    category?: boolean | categoryDefaultArgs<ExtArgs>
+    mother_plant_type?: boolean | mother_plant_typeDefaultArgs<ExtArgs>
+    _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["product"]>
 
 
@@ -15852,10 +18508,20 @@ export namespace Prisma {
   }
 
   export type productOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "desc" | "mother_plant_type_id" | "category_id" | "isActive", ExtArgs["result"]["product"]>
+  export type productInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    batch?: boolean | product$batchArgs<ExtArgs>
+    category?: boolean | categoryDefaultArgs<ExtArgs>
+    mother_plant_type?: boolean | mother_plant_typeDefaultArgs<ExtArgs>
+    _count?: boolean | ProductCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $productPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "product"
-    objects: {}
+    objects: {
+      batch: Prisma.$batchPayload<ExtArgs>[]
+      category: Prisma.$categoryPayload<ExtArgs>
+      mother_plant_type: Prisma.$mother_plant_typePayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
@@ -16203,6 +18869,9 @@ export namespace Prisma {
    */
   export interface Prisma__productClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    batch<T extends product$batchArgs<ExtArgs> = {}>(args?: Subset<T, product$batchArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$batchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    category<T extends categoryDefaultArgs<ExtArgs> = {}>(args?: Subset<T, categoryDefaultArgs<ExtArgs>>): Prisma__categoryClient<$Result.GetResult<Prisma.$categoryPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    mother_plant_type<T extends mother_plant_typeDefaultArgs<ExtArgs> = {}>(args?: Subset<T, mother_plant_typeDefaultArgs<ExtArgs>>): Prisma__mother_plant_typeClient<$Result.GetResult<Prisma.$mother_plant_typePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -16255,6 +18924,10 @@ export namespace Prisma {
      */
     omit?: productOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productInclude<ExtArgs> | null
+    /**
      * Filter, which product to fetch.
      */
     where: productWhereUniqueInput
@@ -16273,6 +18946,10 @@ export namespace Prisma {
      */
     omit?: productOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productInclude<ExtArgs> | null
+    /**
      * Filter, which product to fetch.
      */
     where: productWhereUniqueInput
@@ -16290,6 +18967,10 @@ export namespace Prisma {
      * Omit specific fields from the product
      */
     omit?: productOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productInclude<ExtArgs> | null
     /**
      * Filter, which product to fetch.
      */
@@ -16339,6 +19020,10 @@ export namespace Prisma {
      */
     omit?: productOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productInclude<ExtArgs> | null
+    /**
      * Filter, which product to fetch.
      */
     where?: productWhereInput
@@ -16387,6 +19072,10 @@ export namespace Prisma {
      */
     omit?: productOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productInclude<ExtArgs> | null
+    /**
      * Filter, which products to fetch.
      */
     where?: productWhereInput
@@ -16430,6 +19119,10 @@ export namespace Prisma {
      */
     omit?: productOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productInclude<ExtArgs> | null
+    /**
      * The data needed to create a product.
      */
     data: XOR<productCreateInput, productUncheckedCreateInput>
@@ -16458,6 +19151,10 @@ export namespace Prisma {
      * Omit specific fields from the product
      */
     omit?: productOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productInclude<ExtArgs> | null
     /**
      * The data needed to update a product.
      */
@@ -16499,6 +19196,10 @@ export namespace Prisma {
      */
     omit?: productOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productInclude<ExtArgs> | null
+    /**
      * The filter to search for the product to update in case it exists.
      */
     where: productWhereUniqueInput
@@ -16525,6 +19226,10 @@ export namespace Prisma {
      */
     omit?: productOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productInclude<ExtArgs> | null
+    /**
      * Filter which product to delete.
      */
     where: productWhereUniqueInput
@@ -16545,6 +19250,30 @@ export namespace Prisma {
   }
 
   /**
+   * product.batch
+   */
+  export type product$batchArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the batch
+     */
+    select?: batchSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the batch
+     */
+    omit?: batchOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: batchInclude<ExtArgs> | null
+    where?: batchWhereInput
+    orderBy?: batchOrderByWithRelationInput | batchOrderByWithRelationInput[]
+    cursor?: batchWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BatchScalarFieldEnum | BatchScalarFieldEnum[]
+  }
+
+  /**
    * product without action
    */
   export type productDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -16556,6 +19285,955 @@ export namespace Prisma {
      * Omit specific fields from the product
      */
     omit?: productOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: productInclude<ExtArgs> | null
+  }
+
+
+  /**
+   * Model product_images
+   */
+
+  export type AggregateProduct_images = {
+    _count: Product_imagesCountAggregateOutputType | null
+    _avg: Product_imagesAvgAggregateOutputType | null
+    _sum: Product_imagesSumAggregateOutputType | null
+    _min: Product_imagesMinAggregateOutputType | null
+    _max: Product_imagesMaxAggregateOutputType | null
+  }
+
+  export type Product_imagesAvgAggregateOutputType = {
+    id: number | null
+    batch_id: number | null
+  }
+
+  export type Product_imagesSumAggregateOutputType = {
+    id: number | null
+    batch_id: number | null
+  }
+
+  export type Product_imagesMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+    batch_id: number | null
+  }
+
+  export type Product_imagesMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+    batch_id: number | null
+  }
+
+  export type Product_imagesCountAggregateOutputType = {
+    id: number
+    name: number
+    batch_id: number
+    _all: number
+  }
+
+
+  export type Product_imagesAvgAggregateInputType = {
+    id?: true
+    batch_id?: true
+  }
+
+  export type Product_imagesSumAggregateInputType = {
+    id?: true
+    batch_id?: true
+  }
+
+  export type Product_imagesMinAggregateInputType = {
+    id?: true
+    name?: true
+    batch_id?: true
+  }
+
+  export type Product_imagesMaxAggregateInputType = {
+    id?: true
+    name?: true
+    batch_id?: true
+  }
+
+  export type Product_imagesCountAggregateInputType = {
+    id?: true
+    name?: true
+    batch_id?: true
+    _all?: true
+  }
+
+  export type Product_imagesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which product_images to aggregate.
+     */
+    where?: product_imagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of product_images to fetch.
+     */
+    orderBy?: product_imagesOrderByWithRelationInput | product_imagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: product_imagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` product_images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` product_images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned product_images
+    **/
+    _count?: true | Product_imagesCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Product_imagesAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Product_imagesSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Product_imagesMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Product_imagesMaxAggregateInputType
+  }
+
+  export type GetProduct_imagesAggregateType<T extends Product_imagesAggregateArgs> = {
+        [P in keyof T & keyof AggregateProduct_images]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateProduct_images[P]>
+      : GetScalarType<T[P], AggregateProduct_images[P]>
+  }
+
+
+
+
+  export type product_imagesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: product_imagesWhereInput
+    orderBy?: product_imagesOrderByWithAggregationInput | product_imagesOrderByWithAggregationInput[]
+    by: Product_imagesScalarFieldEnum[] | Product_imagesScalarFieldEnum
+    having?: product_imagesScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Product_imagesCountAggregateInputType | true
+    _avg?: Product_imagesAvgAggregateInputType
+    _sum?: Product_imagesSumAggregateInputType
+    _min?: Product_imagesMinAggregateInputType
+    _max?: Product_imagesMaxAggregateInputType
+  }
+
+  export type Product_imagesGroupByOutputType = {
+    id: number
+    name: string
+    batch_id: number
+    _count: Product_imagesCountAggregateOutputType | null
+    _avg: Product_imagesAvgAggregateOutputType | null
+    _sum: Product_imagesSumAggregateOutputType | null
+    _min: Product_imagesMinAggregateOutputType | null
+    _max: Product_imagesMaxAggregateOutputType | null
+  }
+
+  type GetProduct_imagesGroupByPayload<T extends product_imagesGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Product_imagesGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Product_imagesGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Product_imagesGroupByOutputType[P]>
+            : GetScalarType<T[P], Product_imagesGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type product_imagesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    batch_id?: boolean
+    batch?: boolean | batchDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["product_images"]>
+
+
+
+  export type product_imagesSelectScalar = {
+    id?: boolean
+    name?: boolean
+    batch_id?: boolean
+  }
+
+  export type product_imagesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "batch_id", ExtArgs["result"]["product_images"]>
+  export type product_imagesInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    batch?: boolean | batchDefaultArgs<ExtArgs>
+  }
+
+  export type $product_imagesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "product_images"
+    objects: {
+      batch: Prisma.$batchPayload<ExtArgs>
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+      batch_id: number
+    }, ExtArgs["result"]["product_images"]>
+    composites: {}
+  }
+
+  type product_imagesGetPayload<S extends boolean | null | undefined | product_imagesDefaultArgs> = $Result.GetResult<Prisma.$product_imagesPayload, S>
+
+  type product_imagesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<product_imagesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Product_imagesCountAggregateInputType | true
+    }
+
+  export interface product_imagesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['product_images'], meta: { name: 'product_images' } }
+    /**
+     * Find zero or one Product_images that matches the filter.
+     * @param {product_imagesFindUniqueArgs} args - Arguments to find a Product_images
+     * @example
+     * // Get one Product_images
+     * const product_images = await prisma.product_images.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends product_imagesFindUniqueArgs>(args: SelectSubset<T, product_imagesFindUniqueArgs<ExtArgs>>): Prisma__product_imagesClient<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Product_images that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {product_imagesFindUniqueOrThrowArgs} args - Arguments to find a Product_images
+     * @example
+     * // Get one Product_images
+     * const product_images = await prisma.product_images.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends product_imagesFindUniqueOrThrowArgs>(args: SelectSubset<T, product_imagesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__product_imagesClient<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Product_images that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {product_imagesFindFirstArgs} args - Arguments to find a Product_images
+     * @example
+     * // Get one Product_images
+     * const product_images = await prisma.product_images.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends product_imagesFindFirstArgs>(args?: SelectSubset<T, product_imagesFindFirstArgs<ExtArgs>>): Prisma__product_imagesClient<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Product_images that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {product_imagesFindFirstOrThrowArgs} args - Arguments to find a Product_images
+     * @example
+     * // Get one Product_images
+     * const product_images = await prisma.product_images.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends product_imagesFindFirstOrThrowArgs>(args?: SelectSubset<T, product_imagesFindFirstOrThrowArgs<ExtArgs>>): Prisma__product_imagesClient<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Product_images that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {product_imagesFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Product_images
+     * const product_images = await prisma.product_images.findMany()
+     * 
+     * // Get first 10 Product_images
+     * const product_images = await prisma.product_images.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const product_imagesWithIdOnly = await prisma.product_images.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends product_imagesFindManyArgs>(args?: SelectSubset<T, product_imagesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Product_images.
+     * @param {product_imagesCreateArgs} args - Arguments to create a Product_images.
+     * @example
+     * // Create one Product_images
+     * const Product_images = await prisma.product_images.create({
+     *   data: {
+     *     // ... data to create a Product_images
+     *   }
+     * })
+     * 
+     */
+    create<T extends product_imagesCreateArgs>(args: SelectSubset<T, product_imagesCreateArgs<ExtArgs>>): Prisma__product_imagesClient<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Product_images.
+     * @param {product_imagesCreateManyArgs} args - Arguments to create many Product_images.
+     * @example
+     * // Create many Product_images
+     * const product_images = await prisma.product_images.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends product_imagesCreateManyArgs>(args?: SelectSubset<T, product_imagesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Product_images.
+     * @param {product_imagesDeleteArgs} args - Arguments to delete one Product_images.
+     * @example
+     * // Delete one Product_images
+     * const Product_images = await prisma.product_images.delete({
+     *   where: {
+     *     // ... filter to delete one Product_images
+     *   }
+     * })
+     * 
+     */
+    delete<T extends product_imagesDeleteArgs>(args: SelectSubset<T, product_imagesDeleteArgs<ExtArgs>>): Prisma__product_imagesClient<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Product_images.
+     * @param {product_imagesUpdateArgs} args - Arguments to update one Product_images.
+     * @example
+     * // Update one Product_images
+     * const product_images = await prisma.product_images.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends product_imagesUpdateArgs>(args: SelectSubset<T, product_imagesUpdateArgs<ExtArgs>>): Prisma__product_imagesClient<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Product_images.
+     * @param {product_imagesDeleteManyArgs} args - Arguments to filter Product_images to delete.
+     * @example
+     * // Delete a few Product_images
+     * const { count } = await prisma.product_images.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends product_imagesDeleteManyArgs>(args?: SelectSubset<T, product_imagesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Product_images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {product_imagesUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Product_images
+     * const product_images = await prisma.product_images.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends product_imagesUpdateManyArgs>(args: SelectSubset<T, product_imagesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Product_images.
+     * @param {product_imagesUpsertArgs} args - Arguments to update or create a Product_images.
+     * @example
+     * // Update or create a Product_images
+     * const product_images = await prisma.product_images.upsert({
+     *   create: {
+     *     // ... data to create a Product_images
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Product_images we want to update
+     *   }
+     * })
+     */
+    upsert<T extends product_imagesUpsertArgs>(args: SelectSubset<T, product_imagesUpsertArgs<ExtArgs>>): Prisma__product_imagesClient<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Product_images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {product_imagesCountArgs} args - Arguments to filter Product_images to count.
+     * @example
+     * // Count the number of Product_images
+     * const count = await prisma.product_images.count({
+     *   where: {
+     *     // ... the filter for the Product_images we want to count
+     *   }
+     * })
+    **/
+    count<T extends product_imagesCountArgs>(
+      args?: Subset<T, product_imagesCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Product_imagesCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Product_images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Product_imagesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Product_imagesAggregateArgs>(args: Subset<T, Product_imagesAggregateArgs>): Prisma.PrismaPromise<GetProduct_imagesAggregateType<T>>
+
+    /**
+     * Group by Product_images.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {product_imagesGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends product_imagesGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: product_imagesGroupByArgs['orderBy'] }
+        : { orderBy?: product_imagesGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, product_imagesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProduct_imagesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the product_images model
+   */
+  readonly fields: product_imagesFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for product_images.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__product_imagesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    batch<T extends batchDefaultArgs<ExtArgs> = {}>(args?: Subset<T, batchDefaultArgs<ExtArgs>>): Prisma__batchClient<$Result.GetResult<Prisma.$batchPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the product_images model
+   */
+  interface product_imagesFieldRefs {
+    readonly id: FieldRef<"product_images", 'Int'>
+    readonly name: FieldRef<"product_images", 'String'>
+    readonly batch_id: FieldRef<"product_images", 'Int'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * product_images findUnique
+   */
+  export type product_imagesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_images
+     */
+    select?: product_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_images
+     */
+    omit?: product_imagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_imagesInclude<ExtArgs> | null
+    /**
+     * Filter, which product_images to fetch.
+     */
+    where: product_imagesWhereUniqueInput
+  }
+
+  /**
+   * product_images findUniqueOrThrow
+   */
+  export type product_imagesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_images
+     */
+    select?: product_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_images
+     */
+    omit?: product_imagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_imagesInclude<ExtArgs> | null
+    /**
+     * Filter, which product_images to fetch.
+     */
+    where: product_imagesWhereUniqueInput
+  }
+
+  /**
+   * product_images findFirst
+   */
+  export type product_imagesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_images
+     */
+    select?: product_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_images
+     */
+    omit?: product_imagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_imagesInclude<ExtArgs> | null
+    /**
+     * Filter, which product_images to fetch.
+     */
+    where?: product_imagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of product_images to fetch.
+     */
+    orderBy?: product_imagesOrderByWithRelationInput | product_imagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for product_images.
+     */
+    cursor?: product_imagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` product_images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` product_images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of product_images.
+     */
+    distinct?: Product_imagesScalarFieldEnum | Product_imagesScalarFieldEnum[]
+  }
+
+  /**
+   * product_images findFirstOrThrow
+   */
+  export type product_imagesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_images
+     */
+    select?: product_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_images
+     */
+    omit?: product_imagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_imagesInclude<ExtArgs> | null
+    /**
+     * Filter, which product_images to fetch.
+     */
+    where?: product_imagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of product_images to fetch.
+     */
+    orderBy?: product_imagesOrderByWithRelationInput | product_imagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for product_images.
+     */
+    cursor?: product_imagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` product_images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` product_images.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of product_images.
+     */
+    distinct?: Product_imagesScalarFieldEnum | Product_imagesScalarFieldEnum[]
+  }
+
+  /**
+   * product_images findMany
+   */
+  export type product_imagesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_images
+     */
+    select?: product_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_images
+     */
+    omit?: product_imagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_imagesInclude<ExtArgs> | null
+    /**
+     * Filter, which product_images to fetch.
+     */
+    where?: product_imagesWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of product_images to fetch.
+     */
+    orderBy?: product_imagesOrderByWithRelationInput | product_imagesOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing product_images.
+     */
+    cursor?: product_imagesWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` product_images from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` product_images.
+     */
+    skip?: number
+    distinct?: Product_imagesScalarFieldEnum | Product_imagesScalarFieldEnum[]
+  }
+
+  /**
+   * product_images create
+   */
+  export type product_imagesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_images
+     */
+    select?: product_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_images
+     */
+    omit?: product_imagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_imagesInclude<ExtArgs> | null
+    /**
+     * The data needed to create a product_images.
+     */
+    data: XOR<product_imagesCreateInput, product_imagesUncheckedCreateInput>
+  }
+
+  /**
+   * product_images createMany
+   */
+  export type product_imagesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many product_images.
+     */
+    data: product_imagesCreateManyInput | product_imagesCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * product_images update
+   */
+  export type product_imagesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_images
+     */
+    select?: product_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_images
+     */
+    omit?: product_imagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_imagesInclude<ExtArgs> | null
+    /**
+     * The data needed to update a product_images.
+     */
+    data: XOR<product_imagesUpdateInput, product_imagesUncheckedUpdateInput>
+    /**
+     * Choose, which product_images to update.
+     */
+    where: product_imagesWhereUniqueInput
+  }
+
+  /**
+   * product_images updateMany
+   */
+  export type product_imagesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update product_images.
+     */
+    data: XOR<product_imagesUpdateManyMutationInput, product_imagesUncheckedUpdateManyInput>
+    /**
+     * Filter which product_images to update
+     */
+    where?: product_imagesWhereInput
+    /**
+     * Limit how many product_images to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * product_images upsert
+   */
+  export type product_imagesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_images
+     */
+    select?: product_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_images
+     */
+    omit?: product_imagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_imagesInclude<ExtArgs> | null
+    /**
+     * The filter to search for the product_images to update in case it exists.
+     */
+    where: product_imagesWhereUniqueInput
+    /**
+     * In case the product_images found by the `where` argument doesn't exist, create a new product_images with this data.
+     */
+    create: XOR<product_imagesCreateInput, product_imagesUncheckedCreateInput>
+    /**
+     * In case the product_images was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<product_imagesUpdateInput, product_imagesUncheckedUpdateInput>
+  }
+
+  /**
+   * product_images delete
+   */
+  export type product_imagesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_images
+     */
+    select?: product_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_images
+     */
+    omit?: product_imagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_imagesInclude<ExtArgs> | null
+    /**
+     * Filter which product_images to delete.
+     */
+    where: product_imagesWhereUniqueInput
+  }
+
+  /**
+   * product_images deleteMany
+   */
+  export type product_imagesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which product_images to delete
+     */
+    where?: product_imagesWhereInput
+    /**
+     * Limit how many product_images to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * product_images without action
+   */
+  export type product_imagesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the product_images
+     */
+    select?: product_imagesSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the product_images
+     */
+    omit?: product_imagesOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_imagesInclude<ExtArgs> | null
   }
 
 
@@ -16733,6 +20411,9 @@ export namespace Prisma {
   export type product_typeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    grn_items?: boolean | product_type$grn_itemsArgs<ExtArgs>
+    invoice_items?: boolean | product_type$invoice_itemsArgs<ExtArgs>
+    _count?: boolean | Product_typeCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["product_type"]>
 
 
@@ -16743,10 +20424,18 @@ export namespace Prisma {
   }
 
   export type product_typeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["product_type"]>
+  export type product_typeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    grn_items?: boolean | product_type$grn_itemsArgs<ExtArgs>
+    invoice_items?: boolean | product_type$invoice_itemsArgs<ExtArgs>
+    _count?: boolean | Product_typeCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $product_typePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "product_type"
-    objects: {}
+    objects: {
+      grn_items: Prisma.$grn_itemsPayload<ExtArgs>[]
+      invoice_items: Prisma.$invoice_itemsPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
@@ -17090,6 +20779,8 @@ export namespace Prisma {
    */
   export interface Prisma__product_typeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    grn_items<T extends product_type$grn_itemsArgs<ExtArgs> = {}>(args?: Subset<T, product_type$grn_itemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$grn_itemsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    invoice_items<T extends product_type$invoice_itemsArgs<ExtArgs> = {}>(args?: Subset<T, product_type$invoice_itemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$invoice_itemsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -17138,6 +20829,10 @@ export namespace Prisma {
      */
     omit?: product_typeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_typeInclude<ExtArgs> | null
+    /**
      * Filter, which product_type to fetch.
      */
     where: product_typeWhereUniqueInput
@@ -17156,6 +20851,10 @@ export namespace Prisma {
      */
     omit?: product_typeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_typeInclude<ExtArgs> | null
+    /**
      * Filter, which product_type to fetch.
      */
     where: product_typeWhereUniqueInput
@@ -17173,6 +20872,10 @@ export namespace Prisma {
      * Omit specific fields from the product_type
      */
     omit?: product_typeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_typeInclude<ExtArgs> | null
     /**
      * Filter, which product_type to fetch.
      */
@@ -17222,6 +20925,10 @@ export namespace Prisma {
      */
     omit?: product_typeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_typeInclude<ExtArgs> | null
+    /**
      * Filter, which product_type to fetch.
      */
     where?: product_typeWhereInput
@@ -17270,6 +20977,10 @@ export namespace Prisma {
      */
     omit?: product_typeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_typeInclude<ExtArgs> | null
+    /**
      * Filter, which product_types to fetch.
      */
     where?: product_typeWhereInput
@@ -17313,6 +21024,10 @@ export namespace Prisma {
      */
     omit?: product_typeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_typeInclude<ExtArgs> | null
+    /**
      * The data needed to create a product_type.
      */
     data: XOR<product_typeCreateInput, product_typeUncheckedCreateInput>
@@ -17341,6 +21056,10 @@ export namespace Prisma {
      * Omit specific fields from the product_type
      */
     omit?: product_typeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_typeInclude<ExtArgs> | null
     /**
      * The data needed to update a product_type.
      */
@@ -17382,6 +21101,10 @@ export namespace Prisma {
      */
     omit?: product_typeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_typeInclude<ExtArgs> | null
+    /**
      * The filter to search for the product_type to update in case it exists.
      */
     where: product_typeWhereUniqueInput
@@ -17408,6 +21131,10 @@ export namespace Prisma {
      */
     omit?: product_typeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_typeInclude<ExtArgs> | null
+    /**
      * Filter which product_type to delete.
      */
     where: product_typeWhereUniqueInput
@@ -17428,6 +21155,54 @@ export namespace Prisma {
   }
 
   /**
+   * product_type.grn_items
+   */
+  export type product_type$grn_itemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the grn_items
+     */
+    select?: grn_itemsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the grn_items
+     */
+    omit?: grn_itemsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: grn_itemsInclude<ExtArgs> | null
+    where?: grn_itemsWhereInput
+    orderBy?: grn_itemsOrderByWithRelationInput | grn_itemsOrderByWithRelationInput[]
+    cursor?: grn_itemsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Grn_itemsScalarFieldEnum | Grn_itemsScalarFieldEnum[]
+  }
+
+  /**
+   * product_type.invoice_items
+   */
+  export type product_type$invoice_itemsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the invoice_items
+     */
+    select?: invoice_itemsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the invoice_items
+     */
+    omit?: invoice_itemsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoice_itemsInclude<ExtArgs> | null
+    where?: invoice_itemsWhereInput
+    orderBy?: invoice_itemsOrderByWithRelationInput | invoice_itemsOrderByWithRelationInput[]
+    cursor?: invoice_itemsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Invoice_itemsScalarFieldEnum | Invoice_itemsScalarFieldEnum[]
+  }
+
+  /**
    * product_type without action
    */
   export type product_typeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -17439,6 +21214,10 @@ export namespace Prisma {
      * Omit specific fields from the product_type
      */
     omit?: product_typeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: product_typeInclude<ExtArgs> | null
   }
 
 
@@ -17624,6 +21403,8 @@ export namespace Prisma {
     id?: boolean
     size?: boolean
     short_key?: boolean
+    batch?: boolean | size$batchArgs<ExtArgs>
+    _count?: boolean | SizeCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["size"]>
 
 
@@ -17635,10 +21416,16 @@ export namespace Prisma {
   }
 
   export type sizeOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "size" | "short_key", ExtArgs["result"]["size"]>
+  export type sizeInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    batch?: boolean | size$batchArgs<ExtArgs>
+    _count?: boolean | SizeCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $sizePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "size"
-    objects: {}
+    objects: {
+      batch: Prisma.$batchPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       size: string
@@ -17983,6 +21770,7 @@ export namespace Prisma {
    */
   export interface Prisma__sizeClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    batch<T extends size$batchArgs<ExtArgs> = {}>(args?: Subset<T, size$batchArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$batchPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -18032,6 +21820,10 @@ export namespace Prisma {
      */
     omit?: sizeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sizeInclude<ExtArgs> | null
+    /**
      * Filter, which size to fetch.
      */
     where: sizeWhereUniqueInput
@@ -18050,6 +21842,10 @@ export namespace Prisma {
      */
     omit?: sizeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sizeInclude<ExtArgs> | null
+    /**
      * Filter, which size to fetch.
      */
     where: sizeWhereUniqueInput
@@ -18067,6 +21863,10 @@ export namespace Prisma {
      * Omit specific fields from the size
      */
     omit?: sizeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sizeInclude<ExtArgs> | null
     /**
      * Filter, which size to fetch.
      */
@@ -18116,6 +21916,10 @@ export namespace Prisma {
      */
     omit?: sizeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sizeInclude<ExtArgs> | null
+    /**
      * Filter, which size to fetch.
      */
     where?: sizeWhereInput
@@ -18164,6 +21968,10 @@ export namespace Prisma {
      */
     omit?: sizeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sizeInclude<ExtArgs> | null
+    /**
      * Filter, which sizes to fetch.
      */
     where?: sizeWhereInput
@@ -18207,6 +22015,10 @@ export namespace Prisma {
      */
     omit?: sizeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sizeInclude<ExtArgs> | null
+    /**
      * The data needed to create a size.
      */
     data: XOR<sizeCreateInput, sizeUncheckedCreateInput>
@@ -18235,6 +22047,10 @@ export namespace Prisma {
      * Omit specific fields from the size
      */
     omit?: sizeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sizeInclude<ExtArgs> | null
     /**
      * The data needed to update a size.
      */
@@ -18276,6 +22092,10 @@ export namespace Prisma {
      */
     omit?: sizeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sizeInclude<ExtArgs> | null
+    /**
      * The filter to search for the size to update in case it exists.
      */
     where: sizeWhereUniqueInput
@@ -18302,6 +22122,10 @@ export namespace Prisma {
      */
     omit?: sizeOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sizeInclude<ExtArgs> | null
+    /**
      * Filter which size to delete.
      */
     where: sizeWhereUniqueInput
@@ -18322,6 +22146,30 @@ export namespace Prisma {
   }
 
   /**
+   * size.batch
+   */
+  export type size$batchArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the batch
+     */
+    select?: batchSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the batch
+     */
+    omit?: batchOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: batchInclude<ExtArgs> | null
+    where?: batchWhereInput
+    orderBy?: batchOrderByWithRelationInput | batchOrderByWithRelationInput[]
+    cursor?: batchWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: BatchScalarFieldEnum | BatchScalarFieldEnum[]
+  }
+
+  /**
    * size without action
    */
   export type sizeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -18333,6 +22181,10 @@ export namespace Prisma {
      * Omit specific fields from the size
      */
     omit?: sizeOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: sizeInclude<ExtArgs> | null
   }
 
 
@@ -18510,6 +22362,9 @@ export namespace Prisma {
   export type statusSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    supplier?: boolean | status$supplierArgs<ExtArgs>
+    users?: boolean | status$usersArgs<ExtArgs>
+    _count?: boolean | StatusCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["status"]>
 
 
@@ -18520,10 +22375,18 @@ export namespace Prisma {
   }
 
   export type statusOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["status"]>
+  export type statusInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    supplier?: boolean | status$supplierArgs<ExtArgs>
+    users?: boolean | status$usersArgs<ExtArgs>
+    _count?: boolean | StatusCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $statusPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "status"
-    objects: {}
+    objects: {
+      supplier: Prisma.$supplierPayload<ExtArgs>[]
+      users: Prisma.$usersPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
@@ -18867,6 +22730,8 @@ export namespace Prisma {
    */
   export interface Prisma__statusClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    supplier<T extends status$supplierArgs<ExtArgs> = {}>(args?: Subset<T, status$supplierArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$supplierPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    users<T extends status$usersArgs<ExtArgs> = {}>(args?: Subset<T, status$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -18915,6 +22780,10 @@ export namespace Prisma {
      */
     omit?: statusOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: statusInclude<ExtArgs> | null
+    /**
      * Filter, which status to fetch.
      */
     where: statusWhereUniqueInput
@@ -18933,6 +22802,10 @@ export namespace Prisma {
      */
     omit?: statusOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: statusInclude<ExtArgs> | null
+    /**
      * Filter, which status to fetch.
      */
     where: statusWhereUniqueInput
@@ -18950,6 +22823,10 @@ export namespace Prisma {
      * Omit specific fields from the status
      */
     omit?: statusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: statusInclude<ExtArgs> | null
     /**
      * Filter, which status to fetch.
      */
@@ -18999,6 +22876,10 @@ export namespace Prisma {
      */
     omit?: statusOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: statusInclude<ExtArgs> | null
+    /**
      * Filter, which status to fetch.
      */
     where?: statusWhereInput
@@ -19047,6 +22928,10 @@ export namespace Prisma {
      */
     omit?: statusOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: statusInclude<ExtArgs> | null
+    /**
      * Filter, which statuses to fetch.
      */
     where?: statusWhereInput
@@ -19090,6 +22975,10 @@ export namespace Prisma {
      */
     omit?: statusOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: statusInclude<ExtArgs> | null
+    /**
      * The data needed to create a status.
      */
     data: XOR<statusCreateInput, statusUncheckedCreateInput>
@@ -19118,6 +23007,10 @@ export namespace Prisma {
      * Omit specific fields from the status
      */
     omit?: statusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: statusInclude<ExtArgs> | null
     /**
      * The data needed to update a status.
      */
@@ -19159,6 +23052,10 @@ export namespace Prisma {
      */
     omit?: statusOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: statusInclude<ExtArgs> | null
+    /**
      * The filter to search for the status to update in case it exists.
      */
     where: statusWhereUniqueInput
@@ -19185,6 +23082,10 @@ export namespace Prisma {
      */
     omit?: statusOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: statusInclude<ExtArgs> | null
+    /**
      * Filter which status to delete.
      */
     where: statusWhereUniqueInput
@@ -19205,6 +23106,54 @@ export namespace Prisma {
   }
 
   /**
+   * status.supplier
+   */
+  export type status$supplierArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the supplier
+     */
+    select?: supplierSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the supplier
+     */
+    omit?: supplierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: supplierInclude<ExtArgs> | null
+    where?: supplierWhereInput
+    orderBy?: supplierOrderByWithRelationInput | supplierOrderByWithRelationInput[]
+    cursor?: supplierWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: SupplierScalarFieldEnum | SupplierScalarFieldEnum[]
+  }
+
+  /**
+   * status.users
+   */
+  export type status$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
+    where?: usersWhereInput
+    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
+    cursor?: usersWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
+  }
+
+  /**
    * status without action
    */
   export type statusDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -19216,6 +23165,10 @@ export namespace Prisma {
      * Omit specific fields from the status
      */
     omit?: statusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: statusInclude<ExtArgs> | null
   }
 
 
@@ -19469,6 +23422,11 @@ export namespace Prisma {
     status_id?: boolean
     gender_id?: boolean
     city_id?: boolean
+    grn?: boolean | supplier$grnArgs<ExtArgs>
+    city?: boolean | cityDefaultArgs<ExtArgs>
+    gender?: boolean | genderDefaultArgs<ExtArgs>
+    status?: boolean | statusDefaultArgs<ExtArgs>
+    _count?: boolean | SupplierCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["supplier"]>
 
 
@@ -19487,10 +23445,22 @@ export namespace Prisma {
   }
 
   export type supplierOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fullname" | "company" | "address" | "mobile" | "email" | "isActive" | "status_id" | "gender_id" | "city_id", ExtArgs["result"]["supplier"]>
+  export type supplierInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    grn?: boolean | supplier$grnArgs<ExtArgs>
+    city?: boolean | cityDefaultArgs<ExtArgs>
+    gender?: boolean | genderDefaultArgs<ExtArgs>
+    status?: boolean | statusDefaultArgs<ExtArgs>
+    _count?: boolean | SupplierCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $supplierPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "supplier"
-    objects: {}
+    objects: {
+      grn: Prisma.$grnPayload<ExtArgs>[]
+      city: Prisma.$cityPayload<ExtArgs>
+      gender: Prisma.$genderPayload<ExtArgs>
+      status: Prisma.$statusPayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       fullname: string
@@ -19842,6 +23812,10 @@ export namespace Prisma {
    */
   export interface Prisma__supplierClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    grn<T extends supplier$grnArgs<ExtArgs> = {}>(args?: Subset<T, supplier$grnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$grnPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    city<T extends cityDefaultArgs<ExtArgs> = {}>(args?: Subset<T, cityDefaultArgs<ExtArgs>>): Prisma__cityClient<$Result.GetResult<Prisma.$cityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    gender<T extends genderDefaultArgs<ExtArgs> = {}>(args?: Subset<T, genderDefaultArgs<ExtArgs>>): Prisma__genderClient<$Result.GetResult<Prisma.$genderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    status<T extends statusDefaultArgs<ExtArgs> = {}>(args?: Subset<T, statusDefaultArgs<ExtArgs>>): Prisma__statusClient<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -19898,6 +23872,10 @@ export namespace Prisma {
      */
     omit?: supplierOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: supplierInclude<ExtArgs> | null
+    /**
      * Filter, which supplier to fetch.
      */
     where: supplierWhereUniqueInput
@@ -19916,6 +23894,10 @@ export namespace Prisma {
      */
     omit?: supplierOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: supplierInclude<ExtArgs> | null
+    /**
      * Filter, which supplier to fetch.
      */
     where: supplierWhereUniqueInput
@@ -19933,6 +23915,10 @@ export namespace Prisma {
      * Omit specific fields from the supplier
      */
     omit?: supplierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: supplierInclude<ExtArgs> | null
     /**
      * Filter, which supplier to fetch.
      */
@@ -19982,6 +23968,10 @@ export namespace Prisma {
      */
     omit?: supplierOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: supplierInclude<ExtArgs> | null
+    /**
      * Filter, which supplier to fetch.
      */
     where?: supplierWhereInput
@@ -20030,6 +24020,10 @@ export namespace Prisma {
      */
     omit?: supplierOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: supplierInclude<ExtArgs> | null
+    /**
      * Filter, which suppliers to fetch.
      */
     where?: supplierWhereInput
@@ -20073,6 +24067,10 @@ export namespace Prisma {
      */
     omit?: supplierOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: supplierInclude<ExtArgs> | null
+    /**
      * The data needed to create a supplier.
      */
     data: XOR<supplierCreateInput, supplierUncheckedCreateInput>
@@ -20101,6 +24099,10 @@ export namespace Prisma {
      * Omit specific fields from the supplier
      */
     omit?: supplierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: supplierInclude<ExtArgs> | null
     /**
      * The data needed to update a supplier.
      */
@@ -20142,6 +24144,10 @@ export namespace Prisma {
      */
     omit?: supplierOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: supplierInclude<ExtArgs> | null
+    /**
      * The filter to search for the supplier to update in case it exists.
      */
     where: supplierWhereUniqueInput
@@ -20168,6 +24174,10 @@ export namespace Prisma {
      */
     omit?: supplierOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: supplierInclude<ExtArgs> | null
+    /**
      * Filter which supplier to delete.
      */
     where: supplierWhereUniqueInput
@@ -20188,6 +24198,30 @@ export namespace Prisma {
   }
 
   /**
+   * supplier.grn
+   */
+  export type supplier$grnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the grn
+     */
+    select?: grnSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the grn
+     */
+    omit?: grnOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: grnInclude<ExtArgs> | null
+    where?: grnWhereInput
+    orderBy?: grnOrderByWithRelationInput | grnOrderByWithRelationInput[]
+    cursor?: grnWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: GrnScalarFieldEnum | GrnScalarFieldEnum[]
+  }
+
+  /**
    * supplier without action
    */
   export type supplierDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -20199,6 +24233,10 @@ export namespace Prisma {
      * Omit specific fields from the supplier
      */
     omit?: supplierOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: supplierInclude<ExtArgs> | null
   }
 
 
@@ -20376,6 +24414,8 @@ export namespace Prisma {
   export type user_roleSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
     id?: boolean
     name?: boolean
+    users?: boolean | user_role$usersArgs<ExtArgs>
+    _count?: boolean | User_roleCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["user_role"]>
 
 
@@ -20386,10 +24426,16 @@ export namespace Prisma {
   }
 
   export type user_roleOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["user_role"]>
+  export type user_roleInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    users?: boolean | user_role$usersArgs<ExtArgs>
+    _count?: boolean | User_roleCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $user_rolePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "user_role"
-    objects: {}
+    objects: {
+      users: Prisma.$usersPayload<ExtArgs>[]
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       name: string
@@ -20733,6 +24779,7 @@ export namespace Prisma {
    */
   export interface Prisma__user_roleClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    users<T extends user_role$usersArgs<ExtArgs> = {}>(args?: Subset<T, user_role$usersArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -20781,6 +24828,10 @@ export namespace Prisma {
      */
     omit?: user_roleOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_roleInclude<ExtArgs> | null
+    /**
      * Filter, which user_role to fetch.
      */
     where: user_roleWhereUniqueInput
@@ -20799,6 +24850,10 @@ export namespace Prisma {
      */
     omit?: user_roleOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_roleInclude<ExtArgs> | null
+    /**
      * Filter, which user_role to fetch.
      */
     where: user_roleWhereUniqueInput
@@ -20816,6 +24871,10 @@ export namespace Prisma {
      * Omit specific fields from the user_role
      */
     omit?: user_roleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_roleInclude<ExtArgs> | null
     /**
      * Filter, which user_role to fetch.
      */
@@ -20865,6 +24924,10 @@ export namespace Prisma {
      */
     omit?: user_roleOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_roleInclude<ExtArgs> | null
+    /**
      * Filter, which user_role to fetch.
      */
     where?: user_roleWhereInput
@@ -20913,6 +24976,10 @@ export namespace Prisma {
      */
     omit?: user_roleOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_roleInclude<ExtArgs> | null
+    /**
      * Filter, which user_roles to fetch.
      */
     where?: user_roleWhereInput
@@ -20956,6 +25023,10 @@ export namespace Prisma {
      */
     omit?: user_roleOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_roleInclude<ExtArgs> | null
+    /**
      * The data needed to create a user_role.
      */
     data: XOR<user_roleCreateInput, user_roleUncheckedCreateInput>
@@ -20984,6 +25055,10 @@ export namespace Prisma {
      * Omit specific fields from the user_role
      */
     omit?: user_roleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_roleInclude<ExtArgs> | null
     /**
      * The data needed to update a user_role.
      */
@@ -21025,6 +25100,10 @@ export namespace Prisma {
      */
     omit?: user_roleOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_roleInclude<ExtArgs> | null
+    /**
      * The filter to search for the user_role to update in case it exists.
      */
     where: user_roleWhereUniqueInput
@@ -21051,6 +25130,10 @@ export namespace Prisma {
      */
     omit?: user_roleOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_roleInclude<ExtArgs> | null
+    /**
      * Filter which user_role to delete.
      */
     where: user_roleWhereUniqueInput
@@ -21071,6 +25154,30 @@ export namespace Prisma {
   }
 
   /**
+   * user_role.users
+   */
+  export type user_role$usersArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the users
+     */
+    select?: usersSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the users
+     */
+    omit?: usersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
+    where?: usersWhereInput
+    orderBy?: usersOrderByWithRelationInput | usersOrderByWithRelationInput[]
+    cursor?: usersWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: UsersScalarFieldEnum | UsersScalarFieldEnum[]
+  }
+
+  /**
    * user_role without action
    */
   export type user_roleDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -21082,6 +25189,10 @@ export namespace Prisma {
      * Omit specific fields from the user_role
      */
     omit?: user_roleOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: user_roleInclude<ExtArgs> | null
   }
 
 
@@ -21363,6 +25474,14 @@ export namespace Prisma {
     gender_id?: boolean
     city_id?: boolean
     status_id?: boolean
+    card_details?: boolean | users$card_detailsArgs<ExtArgs>
+    grn?: boolean | users$grnArgs<ExtArgs>
+    invoice?: boolean | users$invoiceArgs<ExtArgs>
+    city?: boolean | cityDefaultArgs<ExtArgs>
+    gender?: boolean | genderDefaultArgs<ExtArgs>
+    status?: boolean | statusDefaultArgs<ExtArgs>
+    user_role?: boolean | user_roleDefaultArgs<ExtArgs>
+    _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["users"]>
 
 
@@ -21384,10 +25503,28 @@ export namespace Prisma {
   }
 
   export type usersOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "fname" | "lname" | "address" | "nic" | "email" | "password" | "mobile" | "p_img" | "user_role_id" | "gender_id" | "city_id" | "status_id", ExtArgs["result"]["users"]>
+  export type usersInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    card_details?: boolean | users$card_detailsArgs<ExtArgs>
+    grn?: boolean | users$grnArgs<ExtArgs>
+    invoice?: boolean | users$invoiceArgs<ExtArgs>
+    city?: boolean | cityDefaultArgs<ExtArgs>
+    gender?: boolean | genderDefaultArgs<ExtArgs>
+    status?: boolean | statusDefaultArgs<ExtArgs>
+    user_role?: boolean | user_roleDefaultArgs<ExtArgs>
+    _count?: boolean | UsersCountOutputTypeDefaultArgs<ExtArgs>
+  }
 
   export type $usersPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "users"
-    objects: {}
+    objects: {
+      card_details: Prisma.$card_detailsPayload<ExtArgs>[]
+      grn: Prisma.$grnPayload<ExtArgs>[]
+      invoice: Prisma.$invoicePayload<ExtArgs>[]
+      city: Prisma.$cityPayload<ExtArgs>
+      gender: Prisma.$genderPayload<ExtArgs>
+      status: Prisma.$statusPayload<ExtArgs>
+      user_role: Prisma.$user_rolePayload<ExtArgs>
+    }
     scalars: $Extensions.GetPayloadResult<{
       id: number
       fname: string
@@ -21742,6 +25879,13 @@ export namespace Prisma {
    */
   export interface Prisma__usersClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    card_details<T extends users$card_detailsArgs<ExtArgs> = {}>(args?: Subset<T, users$card_detailsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$card_detailsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    grn<T extends users$grnArgs<ExtArgs> = {}>(args?: Subset<T, users$grnArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$grnPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    invoice<T extends users$invoiceArgs<ExtArgs> = {}>(args?: Subset<T, users$invoiceArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$invoicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    city<T extends cityDefaultArgs<ExtArgs> = {}>(args?: Subset<T, cityDefaultArgs<ExtArgs>>): Prisma__cityClient<$Result.GetResult<Prisma.$cityPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    gender<T extends genderDefaultArgs<ExtArgs> = {}>(args?: Subset<T, genderDefaultArgs<ExtArgs>>): Prisma__genderClient<$Result.GetResult<Prisma.$genderPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    status<T extends statusDefaultArgs<ExtArgs> = {}>(args?: Subset<T, statusDefaultArgs<ExtArgs>>): Prisma__statusClient<$Result.GetResult<Prisma.$statusPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
+    user_role<T extends user_roleDefaultArgs<ExtArgs> = {}>(args?: Subset<T, user_roleDefaultArgs<ExtArgs>>): Prisma__user_roleClient<$Result.GetResult<Prisma.$user_rolePayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     /**
      * Attaches callbacks for the resolution and/or rejection of the Promise.
      * @param onfulfilled The callback to execute when the Promise is resolved.
@@ -21801,6 +25945,10 @@ export namespace Prisma {
      */
     omit?: usersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
+    /**
      * Filter, which users to fetch.
      */
     where: usersWhereUniqueInput
@@ -21819,6 +25967,10 @@ export namespace Prisma {
      */
     omit?: usersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
+    /**
      * Filter, which users to fetch.
      */
     where: usersWhereUniqueInput
@@ -21836,6 +25988,10 @@ export namespace Prisma {
      * Omit specific fields from the users
      */
     omit?: usersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
     /**
      * Filter, which users to fetch.
      */
@@ -21885,6 +26041,10 @@ export namespace Prisma {
      */
     omit?: usersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
+    /**
      * Filter, which users to fetch.
      */
     where?: usersWhereInput
@@ -21933,6 +26093,10 @@ export namespace Prisma {
      */
     omit?: usersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
+    /**
      * Filter, which users to fetch.
      */
     where?: usersWhereInput
@@ -21976,6 +26140,10 @@ export namespace Prisma {
      */
     omit?: usersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
+    /**
      * The data needed to create a users.
      */
     data: XOR<usersCreateInput, usersUncheckedCreateInput>
@@ -22004,6 +26172,10 @@ export namespace Prisma {
      * Omit specific fields from the users
      */
     omit?: usersOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
     /**
      * The data needed to update a users.
      */
@@ -22045,6 +26217,10 @@ export namespace Prisma {
      */
     omit?: usersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
+    /**
      * The filter to search for the users to update in case it exists.
      */
     where: usersWhereUniqueInput
@@ -22071,6 +26247,10 @@ export namespace Prisma {
      */
     omit?: usersOmit<ExtArgs> | null
     /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: usersInclude<ExtArgs> | null
+    /**
      * Filter which users to delete.
      */
     where: usersWhereUniqueInput
@@ -22091,6 +26271,78 @@ export namespace Prisma {
   }
 
   /**
+   * users.card_details
+   */
+  export type users$card_detailsArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the card_details
+     */
+    select?: card_detailsSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the card_details
+     */
+    omit?: card_detailsOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: card_detailsInclude<ExtArgs> | null
+    where?: card_detailsWhereInput
+    orderBy?: card_detailsOrderByWithRelationInput | card_detailsOrderByWithRelationInput[]
+    cursor?: card_detailsWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: Card_detailsScalarFieldEnum | Card_detailsScalarFieldEnum[]
+  }
+
+  /**
+   * users.grn
+   */
+  export type users$grnArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the grn
+     */
+    select?: grnSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the grn
+     */
+    omit?: grnOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: grnInclude<ExtArgs> | null
+    where?: grnWhereInput
+    orderBy?: grnOrderByWithRelationInput | grnOrderByWithRelationInput[]
+    cursor?: grnWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: GrnScalarFieldEnum | GrnScalarFieldEnum[]
+  }
+
+  /**
+   * users.invoice
+   */
+  export type users$invoiceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the invoice
+     */
+    select?: invoiceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the invoice
+     */
+    omit?: invoiceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoiceInclude<ExtArgs> | null
+    where?: invoiceWhereInput
+    orderBy?: invoiceOrderByWithRelationInput | invoiceOrderByWithRelationInput[]
+    cursor?: invoiceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InvoiceScalarFieldEnum | InvoiceScalarFieldEnum[]
+  }
+
+  /**
    * users without action
    */
   export type usersDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
@@ -22102,1802 +26354,10 @@ export namespace Prisma {
      * Omit specific fields from the users
      */
     omit?: usersOmit<ExtArgs> | null
-  }
-
-
-  /**
-   * Model pot_images
-   */
-
-  export type AggregatePot_images = {
-    _count: Pot_imagesCountAggregateOutputType | null
-    _avg: Pot_imagesAvgAggregateOutputType | null
-    _sum: Pot_imagesSumAggregateOutputType | null
-    _min: Pot_imagesMinAggregateOutputType | null
-    _max: Pot_imagesMaxAggregateOutputType | null
-  }
-
-  export type Pot_imagesAvgAggregateOutputType = {
-    id: number | null
-    pot_batch_id: number | null
-  }
-
-  export type Pot_imagesSumAggregateOutputType = {
-    id: number | null
-    pot_batch_id: number | null
-  }
-
-  export type Pot_imagesMinAggregateOutputType = {
-    id: number | null
-    name: string | null
-    pot_batch_id: number | null
-  }
-
-  export type Pot_imagesMaxAggregateOutputType = {
-    id: number | null
-    name: string | null
-    pot_batch_id: number | null
-  }
-
-  export type Pot_imagesCountAggregateOutputType = {
-    id: number
-    name: number
-    pot_batch_id: number
-    _all: number
-  }
-
-
-  export type Pot_imagesAvgAggregateInputType = {
-    id?: true
-    pot_batch_id?: true
-  }
-
-  export type Pot_imagesSumAggregateInputType = {
-    id?: true
-    pot_batch_id?: true
-  }
-
-  export type Pot_imagesMinAggregateInputType = {
-    id?: true
-    name?: true
-    pot_batch_id?: true
-  }
-
-  export type Pot_imagesMaxAggregateInputType = {
-    id?: true
-    name?: true
-    pot_batch_id?: true
-  }
-
-  export type Pot_imagesCountAggregateInputType = {
-    id?: true
-    name?: true
-    pot_batch_id?: true
-    _all?: true
-  }
-
-  export type Pot_imagesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     /**
-     * Filter which pot_images to aggregate.
+     * Choose, which related nodes to fetch as well
      */
-    where?: pot_imagesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of pot_images to fetch.
-     */
-    orderBy?: pot_imagesOrderByWithRelationInput | pot_imagesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: pot_imagesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` pot_images from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` pot_images.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned pot_images
-    **/
-    _count?: true | Pot_imagesCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Pot_imagesAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Pot_imagesSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Pot_imagesMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Pot_imagesMaxAggregateInputType
-  }
-
-  export type GetPot_imagesAggregateType<T extends Pot_imagesAggregateArgs> = {
-        [P in keyof T & keyof AggregatePot_images]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregatePot_images[P]>
-      : GetScalarType<T[P], AggregatePot_images[P]>
-  }
-
-
-
-
-  export type pot_imagesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: pot_imagesWhereInput
-    orderBy?: pot_imagesOrderByWithAggregationInput | pot_imagesOrderByWithAggregationInput[]
-    by: Pot_imagesScalarFieldEnum[] | Pot_imagesScalarFieldEnum
-    having?: pot_imagesScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Pot_imagesCountAggregateInputType | true
-    _avg?: Pot_imagesAvgAggregateInputType
-    _sum?: Pot_imagesSumAggregateInputType
-    _min?: Pot_imagesMinAggregateInputType
-    _max?: Pot_imagesMaxAggregateInputType
-  }
-
-  export type Pot_imagesGroupByOutputType = {
-    id: number
-    name: string
-    pot_batch_id: number
-    _count: Pot_imagesCountAggregateOutputType | null
-    _avg: Pot_imagesAvgAggregateOutputType | null
-    _sum: Pot_imagesSumAggregateOutputType | null
-    _min: Pot_imagesMinAggregateOutputType | null
-    _max: Pot_imagesMaxAggregateOutputType | null
-  }
-
-  type GetPot_imagesGroupByPayload<T extends pot_imagesGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Pot_imagesGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Pot_imagesGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Pot_imagesGroupByOutputType[P]>
-            : GetScalarType<T[P], Pot_imagesGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type pot_imagesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    pot_batch_id?: boolean
-  }, ExtArgs["result"]["pot_images"]>
-
-
-
-  export type pot_imagesSelectScalar = {
-    id?: boolean
-    name?: boolean
-    pot_batch_id?: boolean
-  }
-
-  export type pot_imagesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "pot_batch_id", ExtArgs["result"]["pot_images"]>
-
-  export type $pot_imagesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "pot_images"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      name: string
-      pot_batch_id: number
-    }, ExtArgs["result"]["pot_images"]>
-    composites: {}
-  }
-
-  type pot_imagesGetPayload<S extends boolean | null | undefined | pot_imagesDefaultArgs> = $Result.GetResult<Prisma.$pot_imagesPayload, S>
-
-  type pot_imagesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<pot_imagesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: Pot_imagesCountAggregateInputType | true
-    }
-
-  export interface pot_imagesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['pot_images'], meta: { name: 'pot_images' } }
-    /**
-     * Find zero or one Pot_images that matches the filter.
-     * @param {pot_imagesFindUniqueArgs} args - Arguments to find a Pot_images
-     * @example
-     * // Get one Pot_images
-     * const pot_images = await prisma.pot_images.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends pot_imagesFindUniqueArgs>(args: SelectSubset<T, pot_imagesFindUniqueArgs<ExtArgs>>): Prisma__pot_imagesClient<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Pot_images that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {pot_imagesFindUniqueOrThrowArgs} args - Arguments to find a Pot_images
-     * @example
-     * // Get one Pot_images
-     * const pot_images = await prisma.pot_images.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends pot_imagesFindUniqueOrThrowArgs>(args: SelectSubset<T, pot_imagesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__pot_imagesClient<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Pot_images that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {pot_imagesFindFirstArgs} args - Arguments to find a Pot_images
-     * @example
-     * // Get one Pot_images
-     * const pot_images = await prisma.pot_images.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends pot_imagesFindFirstArgs>(args?: SelectSubset<T, pot_imagesFindFirstArgs<ExtArgs>>): Prisma__pot_imagesClient<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Pot_images that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {pot_imagesFindFirstOrThrowArgs} args - Arguments to find a Pot_images
-     * @example
-     * // Get one Pot_images
-     * const pot_images = await prisma.pot_images.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends pot_imagesFindFirstOrThrowArgs>(args?: SelectSubset<T, pot_imagesFindFirstOrThrowArgs<ExtArgs>>): Prisma__pot_imagesClient<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Pot_images that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {pot_imagesFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Pot_images
-     * const pot_images = await prisma.pot_images.findMany()
-     * 
-     * // Get first 10 Pot_images
-     * const pot_images = await prisma.pot_images.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const pot_imagesWithIdOnly = await prisma.pot_images.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends pot_imagesFindManyArgs>(args?: SelectSubset<T, pot_imagesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Pot_images.
-     * @param {pot_imagesCreateArgs} args - Arguments to create a Pot_images.
-     * @example
-     * // Create one Pot_images
-     * const Pot_images = await prisma.pot_images.create({
-     *   data: {
-     *     // ... data to create a Pot_images
-     *   }
-     * })
-     * 
-     */
-    create<T extends pot_imagesCreateArgs>(args: SelectSubset<T, pot_imagesCreateArgs<ExtArgs>>): Prisma__pot_imagesClient<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Pot_images.
-     * @param {pot_imagesCreateManyArgs} args - Arguments to create many Pot_images.
-     * @example
-     * // Create many Pot_images
-     * const pot_images = await prisma.pot_images.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends pot_imagesCreateManyArgs>(args?: SelectSubset<T, pot_imagesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Pot_images.
-     * @param {pot_imagesDeleteArgs} args - Arguments to delete one Pot_images.
-     * @example
-     * // Delete one Pot_images
-     * const Pot_images = await prisma.pot_images.delete({
-     *   where: {
-     *     // ... filter to delete one Pot_images
-     *   }
-     * })
-     * 
-     */
-    delete<T extends pot_imagesDeleteArgs>(args: SelectSubset<T, pot_imagesDeleteArgs<ExtArgs>>): Prisma__pot_imagesClient<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Pot_images.
-     * @param {pot_imagesUpdateArgs} args - Arguments to update one Pot_images.
-     * @example
-     * // Update one Pot_images
-     * const pot_images = await prisma.pot_images.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends pot_imagesUpdateArgs>(args: SelectSubset<T, pot_imagesUpdateArgs<ExtArgs>>): Prisma__pot_imagesClient<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Pot_images.
-     * @param {pot_imagesDeleteManyArgs} args - Arguments to filter Pot_images to delete.
-     * @example
-     * // Delete a few Pot_images
-     * const { count } = await prisma.pot_images.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends pot_imagesDeleteManyArgs>(args?: SelectSubset<T, pot_imagesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Pot_images.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {pot_imagesUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Pot_images
-     * const pot_images = await prisma.pot_images.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends pot_imagesUpdateManyArgs>(args: SelectSubset<T, pot_imagesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Pot_images.
-     * @param {pot_imagesUpsertArgs} args - Arguments to update or create a Pot_images.
-     * @example
-     * // Update or create a Pot_images
-     * const pot_images = await prisma.pot_images.upsert({
-     *   create: {
-     *     // ... data to create a Pot_images
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Pot_images we want to update
-     *   }
-     * })
-     */
-    upsert<T extends pot_imagesUpsertArgs>(args: SelectSubset<T, pot_imagesUpsertArgs<ExtArgs>>): Prisma__pot_imagesClient<$Result.GetResult<Prisma.$pot_imagesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Pot_images.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {pot_imagesCountArgs} args - Arguments to filter Pot_images to count.
-     * @example
-     * // Count the number of Pot_images
-     * const count = await prisma.pot_images.count({
-     *   where: {
-     *     // ... the filter for the Pot_images we want to count
-     *   }
-     * })
-    **/
-    count<T extends pot_imagesCountArgs>(
-      args?: Subset<T, pot_imagesCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Pot_imagesCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Pot_images.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Pot_imagesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Pot_imagesAggregateArgs>(args: Subset<T, Pot_imagesAggregateArgs>): Prisma.PrismaPromise<GetPot_imagesAggregateType<T>>
-
-    /**
-     * Group by Pot_images.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {pot_imagesGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends pot_imagesGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: pot_imagesGroupByArgs['orderBy'] }
-        : { orderBy?: pot_imagesGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, pot_imagesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetPot_imagesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the pot_images model
-   */
-  readonly fields: pot_imagesFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for pot_images.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__pot_imagesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the pot_images model
-   */
-  interface pot_imagesFieldRefs {
-    readonly id: FieldRef<"pot_images", 'Int'>
-    readonly name: FieldRef<"pot_images", 'String'>
-    readonly pot_batch_id: FieldRef<"pot_images", 'Int'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * pot_images findUnique
-   */
-  export type pot_imagesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the pot_images
-     */
-    select?: pot_imagesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the pot_images
-     */
-    omit?: pot_imagesOmit<ExtArgs> | null
-    /**
-     * Filter, which pot_images to fetch.
-     */
-    where: pot_imagesWhereUniqueInput
-  }
-
-  /**
-   * pot_images findUniqueOrThrow
-   */
-  export type pot_imagesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the pot_images
-     */
-    select?: pot_imagesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the pot_images
-     */
-    omit?: pot_imagesOmit<ExtArgs> | null
-    /**
-     * Filter, which pot_images to fetch.
-     */
-    where: pot_imagesWhereUniqueInput
-  }
-
-  /**
-   * pot_images findFirst
-   */
-  export type pot_imagesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the pot_images
-     */
-    select?: pot_imagesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the pot_images
-     */
-    omit?: pot_imagesOmit<ExtArgs> | null
-    /**
-     * Filter, which pot_images to fetch.
-     */
-    where?: pot_imagesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of pot_images to fetch.
-     */
-    orderBy?: pot_imagesOrderByWithRelationInput | pot_imagesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for pot_images.
-     */
-    cursor?: pot_imagesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` pot_images from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` pot_images.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of pot_images.
-     */
-    distinct?: Pot_imagesScalarFieldEnum | Pot_imagesScalarFieldEnum[]
-  }
-
-  /**
-   * pot_images findFirstOrThrow
-   */
-  export type pot_imagesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the pot_images
-     */
-    select?: pot_imagesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the pot_images
-     */
-    omit?: pot_imagesOmit<ExtArgs> | null
-    /**
-     * Filter, which pot_images to fetch.
-     */
-    where?: pot_imagesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of pot_images to fetch.
-     */
-    orderBy?: pot_imagesOrderByWithRelationInput | pot_imagesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for pot_images.
-     */
-    cursor?: pot_imagesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` pot_images from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` pot_images.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of pot_images.
-     */
-    distinct?: Pot_imagesScalarFieldEnum | Pot_imagesScalarFieldEnum[]
-  }
-
-  /**
-   * pot_images findMany
-   */
-  export type pot_imagesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the pot_images
-     */
-    select?: pot_imagesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the pot_images
-     */
-    omit?: pot_imagesOmit<ExtArgs> | null
-    /**
-     * Filter, which pot_images to fetch.
-     */
-    where?: pot_imagesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of pot_images to fetch.
-     */
-    orderBy?: pot_imagesOrderByWithRelationInput | pot_imagesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing pot_images.
-     */
-    cursor?: pot_imagesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` pot_images from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` pot_images.
-     */
-    skip?: number
-    distinct?: Pot_imagesScalarFieldEnum | Pot_imagesScalarFieldEnum[]
-  }
-
-  /**
-   * pot_images create
-   */
-  export type pot_imagesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the pot_images
-     */
-    select?: pot_imagesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the pot_images
-     */
-    omit?: pot_imagesOmit<ExtArgs> | null
-    /**
-     * The data needed to create a pot_images.
-     */
-    data: XOR<pot_imagesCreateInput, pot_imagesUncheckedCreateInput>
-  }
-
-  /**
-   * pot_images createMany
-   */
-  export type pot_imagesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many pot_images.
-     */
-    data: pot_imagesCreateManyInput | pot_imagesCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * pot_images update
-   */
-  export type pot_imagesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the pot_images
-     */
-    select?: pot_imagesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the pot_images
-     */
-    omit?: pot_imagesOmit<ExtArgs> | null
-    /**
-     * The data needed to update a pot_images.
-     */
-    data: XOR<pot_imagesUpdateInput, pot_imagesUncheckedUpdateInput>
-    /**
-     * Choose, which pot_images to update.
-     */
-    where: pot_imagesWhereUniqueInput
-  }
-
-  /**
-   * pot_images updateMany
-   */
-  export type pot_imagesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update pot_images.
-     */
-    data: XOR<pot_imagesUpdateManyMutationInput, pot_imagesUncheckedUpdateManyInput>
-    /**
-     * Filter which pot_images to update
-     */
-    where?: pot_imagesWhereInput
-    /**
-     * Limit how many pot_images to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * pot_images upsert
-   */
-  export type pot_imagesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the pot_images
-     */
-    select?: pot_imagesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the pot_images
-     */
-    omit?: pot_imagesOmit<ExtArgs> | null
-    /**
-     * The filter to search for the pot_images to update in case it exists.
-     */
-    where: pot_imagesWhereUniqueInput
-    /**
-     * In case the pot_images found by the `where` argument doesn't exist, create a new pot_images with this data.
-     */
-    create: XOR<pot_imagesCreateInput, pot_imagesUncheckedCreateInput>
-    /**
-     * In case the pot_images was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<pot_imagesUpdateInput, pot_imagesUncheckedUpdateInput>
-  }
-
-  /**
-   * pot_images delete
-   */
-  export type pot_imagesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the pot_images
-     */
-    select?: pot_imagesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the pot_images
-     */
-    omit?: pot_imagesOmit<ExtArgs> | null
-    /**
-     * Filter which pot_images to delete.
-     */
-    where: pot_imagesWhereUniqueInput
-  }
-
-  /**
-   * pot_images deleteMany
-   */
-  export type pot_imagesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which pot_images to delete
-     */
-    where?: pot_imagesWhereInput
-    /**
-     * Limit how many pot_images to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * pot_images without action
-   */
-  export type pot_imagesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the pot_images
-     */
-    select?: pot_imagesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the pot_images
-     */
-    omit?: pot_imagesOmit<ExtArgs> | null
-  }
-
-
-  /**
-   * Model product_images
-   */
-
-  export type AggregateProduct_images = {
-    _count: Product_imagesCountAggregateOutputType | null
-    _avg: Product_imagesAvgAggregateOutputType | null
-    _sum: Product_imagesSumAggregateOutputType | null
-    _min: Product_imagesMinAggregateOutputType | null
-    _max: Product_imagesMaxAggregateOutputType | null
-  }
-
-  export type Product_imagesAvgAggregateOutputType = {
-    id: number | null
-    batch_id: number | null
-  }
-
-  export type Product_imagesSumAggregateOutputType = {
-    id: number | null
-    batch_id: number | null
-  }
-
-  export type Product_imagesMinAggregateOutputType = {
-    id: number | null
-    name: string | null
-    batch_id: number | null
-  }
-
-  export type Product_imagesMaxAggregateOutputType = {
-    id: number | null
-    name: string | null
-    batch_id: number | null
-  }
-
-  export type Product_imagesCountAggregateOutputType = {
-    id: number
-    name: number
-    batch_id: number
-    _all: number
-  }
-
-
-  export type Product_imagesAvgAggregateInputType = {
-    id?: true
-    batch_id?: true
-  }
-
-  export type Product_imagesSumAggregateInputType = {
-    id?: true
-    batch_id?: true
-  }
-
-  export type Product_imagesMinAggregateInputType = {
-    id?: true
-    name?: true
-    batch_id?: true
-  }
-
-  export type Product_imagesMaxAggregateInputType = {
-    id?: true
-    name?: true
-    batch_id?: true
-  }
-
-  export type Product_imagesCountAggregateInputType = {
-    id?: true
-    name?: true
-    batch_id?: true
-    _all?: true
-  }
-
-  export type Product_imagesAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which product_images to aggregate.
-     */
-    where?: product_imagesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of product_images to fetch.
-     */
-    orderBy?: product_imagesOrderByWithRelationInput | product_imagesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the start position
-     */
-    cursor?: product_imagesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` product_images from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` product_images.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Count returned product_images
-    **/
-    _count?: true | Product_imagesCountAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to average
-    **/
-    _avg?: Product_imagesAvgAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to sum
-    **/
-    _sum?: Product_imagesSumAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the minimum value
-    **/
-    _min?: Product_imagesMinAggregateInputType
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
-     * 
-     * Select which fields to find the maximum value
-    **/
-    _max?: Product_imagesMaxAggregateInputType
-  }
-
-  export type GetProduct_imagesAggregateType<T extends Product_imagesAggregateArgs> = {
-        [P in keyof T & keyof AggregateProduct_images]: P extends '_count' | 'count'
-      ? T[P] extends true
-        ? number
-        : GetScalarType<T[P], AggregateProduct_images[P]>
-      : GetScalarType<T[P], AggregateProduct_images[P]>
-  }
-
-
-
-
-  export type product_imagesGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    where?: product_imagesWhereInput
-    orderBy?: product_imagesOrderByWithAggregationInput | product_imagesOrderByWithAggregationInput[]
-    by: Product_imagesScalarFieldEnum[] | Product_imagesScalarFieldEnum
-    having?: product_imagesScalarWhereWithAggregatesInput
-    take?: number
-    skip?: number
-    _count?: Product_imagesCountAggregateInputType | true
-    _avg?: Product_imagesAvgAggregateInputType
-    _sum?: Product_imagesSumAggregateInputType
-    _min?: Product_imagesMinAggregateInputType
-    _max?: Product_imagesMaxAggregateInputType
-  }
-
-  export type Product_imagesGroupByOutputType = {
-    id: number
-    name: string
-    batch_id: number
-    _count: Product_imagesCountAggregateOutputType | null
-    _avg: Product_imagesAvgAggregateOutputType | null
-    _sum: Product_imagesSumAggregateOutputType | null
-    _min: Product_imagesMinAggregateOutputType | null
-    _max: Product_imagesMaxAggregateOutputType | null
-  }
-
-  type GetProduct_imagesGroupByPayload<T extends product_imagesGroupByArgs> = Prisma.PrismaPromise<
-    Array<
-      PickEnumerable<Product_imagesGroupByOutputType, T['by']> &
-        {
-          [P in ((keyof T) & (keyof Product_imagesGroupByOutputType))]: P extends '_count'
-            ? T[P] extends boolean
-              ? number
-              : GetScalarType<T[P], Product_imagesGroupByOutputType[P]>
-            : GetScalarType<T[P], Product_imagesGroupByOutputType[P]>
-        }
-      >
-    >
-
-
-  export type product_imagesSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
-    id?: boolean
-    name?: boolean
-    batch_id?: boolean
-  }, ExtArgs["result"]["product_images"]>
-
-
-
-  export type product_imagesSelectScalar = {
-    id?: boolean
-    name?: boolean
-    batch_id?: boolean
-  }
-
-  export type product_imagesOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name" | "batch_id", ExtArgs["result"]["product_images"]>
-
-  export type $product_imagesPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    name: "product_images"
-    objects: {}
-    scalars: $Extensions.GetPayloadResult<{
-      id: number
-      name: string
-      batch_id: number
-    }, ExtArgs["result"]["product_images"]>
-    composites: {}
-  }
-
-  type product_imagesGetPayload<S extends boolean | null | undefined | product_imagesDefaultArgs> = $Result.GetResult<Prisma.$product_imagesPayload, S>
-
-  type product_imagesCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
-    Omit<product_imagesFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
-      select?: Product_imagesCountAggregateInputType | true
-    }
-
-  export interface product_imagesDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
-    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['product_images'], meta: { name: 'product_images' } }
-    /**
-     * Find zero or one Product_images that matches the filter.
-     * @param {product_imagesFindUniqueArgs} args - Arguments to find a Product_images
-     * @example
-     * // Get one Product_images
-     * const product_images = await prisma.product_images.findUnique({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUnique<T extends product_imagesFindUniqueArgs>(args: SelectSubset<T, product_imagesFindUniqueArgs<ExtArgs>>): Prisma__product_imagesClient<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find one Product_images that matches the filter or throw an error with `error.code='P2025'`
-     * if no matches were found.
-     * @param {product_imagesFindUniqueOrThrowArgs} args - Arguments to find a Product_images
-     * @example
-     * // Get one Product_images
-     * const product_images = await prisma.product_images.findUniqueOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findUniqueOrThrow<T extends product_imagesFindUniqueOrThrowArgs>(args: SelectSubset<T, product_imagesFindUniqueOrThrowArgs<ExtArgs>>): Prisma__product_imagesClient<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Product_images that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {product_imagesFindFirstArgs} args - Arguments to find a Product_images
-     * @example
-     * // Get one Product_images
-     * const product_images = await prisma.product_images.findFirst({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirst<T extends product_imagesFindFirstArgs>(args?: SelectSubset<T, product_imagesFindFirstArgs<ExtArgs>>): Prisma__product_imagesClient<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find the first Product_images that matches the filter or
-     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {product_imagesFindFirstOrThrowArgs} args - Arguments to find a Product_images
-     * @example
-     * // Get one Product_images
-     * const product_images = await prisma.product_images.findFirstOrThrow({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     */
-    findFirstOrThrow<T extends product_imagesFindFirstOrThrowArgs>(args?: SelectSubset<T, product_imagesFindFirstOrThrowArgs<ExtArgs>>): Prisma__product_imagesClient<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Find zero or more Product_images that matches the filter.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {product_imagesFindManyArgs} args - Arguments to filter and select certain fields only.
-     * @example
-     * // Get all Product_images
-     * const product_images = await prisma.product_images.findMany()
-     * 
-     * // Get first 10 Product_images
-     * const product_images = await prisma.product_images.findMany({ take: 10 })
-     * 
-     * // Only select the `id`
-     * const product_imagesWithIdOnly = await prisma.product_images.findMany({ select: { id: true } })
-     * 
-     */
-    findMany<T extends product_imagesFindManyArgs>(args?: SelectSubset<T, product_imagesFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
-
-    /**
-     * Create a Product_images.
-     * @param {product_imagesCreateArgs} args - Arguments to create a Product_images.
-     * @example
-     * // Create one Product_images
-     * const Product_images = await prisma.product_images.create({
-     *   data: {
-     *     // ... data to create a Product_images
-     *   }
-     * })
-     * 
-     */
-    create<T extends product_imagesCreateArgs>(args: SelectSubset<T, product_imagesCreateArgs<ExtArgs>>): Prisma__product_imagesClient<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Create many Product_images.
-     * @param {product_imagesCreateManyArgs} args - Arguments to create many Product_images.
-     * @example
-     * // Create many Product_images
-     * const product_images = await prisma.product_images.createMany({
-     *   data: [
-     *     // ... provide data here
-     *   ]
-     * })
-     *     
-     */
-    createMany<T extends product_imagesCreateManyArgs>(args?: SelectSubset<T, product_imagesCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Delete a Product_images.
-     * @param {product_imagesDeleteArgs} args - Arguments to delete one Product_images.
-     * @example
-     * // Delete one Product_images
-     * const Product_images = await prisma.product_images.delete({
-     *   where: {
-     *     // ... filter to delete one Product_images
-     *   }
-     * })
-     * 
-     */
-    delete<T extends product_imagesDeleteArgs>(args: SelectSubset<T, product_imagesDeleteArgs<ExtArgs>>): Prisma__product_imagesClient<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Update one Product_images.
-     * @param {product_imagesUpdateArgs} args - Arguments to update one Product_images.
-     * @example
-     * // Update one Product_images
-     * const product_images = await prisma.product_images.update({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    update<T extends product_imagesUpdateArgs>(args: SelectSubset<T, product_imagesUpdateArgs<ExtArgs>>): Prisma__product_imagesClient<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-    /**
-     * Delete zero or more Product_images.
-     * @param {product_imagesDeleteManyArgs} args - Arguments to filter Product_images to delete.
-     * @example
-     * // Delete a few Product_images
-     * const { count } = await prisma.product_images.deleteMany({
-     *   where: {
-     *     // ... provide filter here
-     *   }
-     * })
-     * 
-     */
-    deleteMany<T extends product_imagesDeleteManyArgs>(args?: SelectSubset<T, product_imagesDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Update zero or more Product_images.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {product_imagesUpdateManyArgs} args - Arguments to update one or more rows.
-     * @example
-     * // Update many Product_images
-     * const product_images = await prisma.product_images.updateMany({
-     *   where: {
-     *     // ... provide filter here
-     *   },
-     *   data: {
-     *     // ... provide data here
-     *   }
-     * })
-     * 
-     */
-    updateMany<T extends product_imagesUpdateManyArgs>(args: SelectSubset<T, product_imagesUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
-
-    /**
-     * Create or update one Product_images.
-     * @param {product_imagesUpsertArgs} args - Arguments to update or create a Product_images.
-     * @example
-     * // Update or create a Product_images
-     * const product_images = await prisma.product_images.upsert({
-     *   create: {
-     *     // ... data to create a Product_images
-     *   },
-     *   update: {
-     *     // ... in case it already exists, update
-     *   },
-     *   where: {
-     *     // ... the filter for the Product_images we want to update
-     *   }
-     * })
-     */
-    upsert<T extends product_imagesUpsertArgs>(args: SelectSubset<T, product_imagesUpsertArgs<ExtArgs>>): Prisma__product_imagesClient<$Result.GetResult<Prisma.$product_imagesPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
-
-
-    /**
-     * Count the number of Product_images.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {product_imagesCountArgs} args - Arguments to filter Product_images to count.
-     * @example
-     * // Count the number of Product_images
-     * const count = await prisma.product_images.count({
-     *   where: {
-     *     // ... the filter for the Product_images we want to count
-     *   }
-     * })
-    **/
-    count<T extends product_imagesCountArgs>(
-      args?: Subset<T, product_imagesCountArgs>,
-    ): Prisma.PrismaPromise<
-      T extends $Utils.Record<'select', any>
-        ? T['select'] extends true
-          ? number
-          : GetScalarType<T['select'], Product_imagesCountAggregateOutputType>
-        : number
-    >
-
-    /**
-     * Allows you to perform aggregations operations on a Product_images.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {Product_imagesAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
-     * @example
-     * // Ordered by age ascending
-     * // Where email contains prisma.io
-     * // Limited to the 10 users
-     * const aggregations = await prisma.user.aggregate({
-     *   _avg: {
-     *     age: true,
-     *   },
-     *   where: {
-     *     email: {
-     *       contains: "prisma.io",
-     *     },
-     *   },
-     *   orderBy: {
-     *     age: "asc",
-     *   },
-     *   take: 10,
-     * })
-    **/
-    aggregate<T extends Product_imagesAggregateArgs>(args: Subset<T, Product_imagesAggregateArgs>): Prisma.PrismaPromise<GetProduct_imagesAggregateType<T>>
-
-    /**
-     * Group by Product_images.
-     * Note, that providing `undefined` is treated as the value not being there.
-     * Read more here: https://pris.ly/d/null-undefined
-     * @param {product_imagesGroupByArgs} args - Group by arguments.
-     * @example
-     * // Group by city, order by createdAt, get count
-     * const result = await prisma.user.groupBy({
-     *   by: ['city', 'createdAt'],
-     *   orderBy: {
-     *     createdAt: true
-     *   },
-     *   _count: {
-     *     _all: true
-     *   },
-     * })
-     * 
-    **/
-    groupBy<
-      T extends product_imagesGroupByArgs,
-      HasSelectOrTake extends Or<
-        Extends<'skip', Keys<T>>,
-        Extends<'take', Keys<T>>
-      >,
-      OrderByArg extends True extends HasSelectOrTake
-        ? { orderBy: product_imagesGroupByArgs['orderBy'] }
-        : { orderBy?: product_imagesGroupByArgs['orderBy'] },
-      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
-      ByFields extends MaybeTupleToUnion<T['by']>,
-      ByValid extends Has<ByFields, OrderFields>,
-      HavingFields extends GetHavingFields<T['having']>,
-      HavingValid extends Has<ByFields, HavingFields>,
-      ByEmpty extends T['by'] extends never[] ? True : False,
-      InputErrors extends ByEmpty extends True
-      ? `Error: "by" must not be empty.`
-      : HavingValid extends False
-      ? {
-          [P in HavingFields]: P extends ByFields
-            ? never
-            : P extends string
-            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
-            : [
-                Error,
-                'Field ',
-                P,
-                ` in "having" needs to be provided in "by"`,
-              ]
-        }[HavingFields]
-      : 'take' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "take", you also need to provide "orderBy"'
-      : 'skip' extends Keys<T>
-      ? 'orderBy' extends Keys<T>
-        ? ByValid extends True
-          ? {}
-          : {
-              [P in OrderFields]: P extends ByFields
-                ? never
-                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-            }[OrderFields]
-        : 'Error: If you provide "skip", you also need to provide "orderBy"'
-      : ByValid extends True
-      ? {}
-      : {
-          [P in OrderFields]: P extends ByFields
-            ? never
-            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
-        }[OrderFields]
-    >(args: SubsetIntersection<T, product_imagesGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetProduct_imagesGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
-  /**
-   * Fields of the product_images model
-   */
-  readonly fields: product_imagesFieldRefs;
-  }
-
-  /**
-   * The delegate class that acts as a "Promise-like" for product_images.
-   * Why is this prefixed with `Prisma__`?
-   * Because we want to prevent naming conflicts as mentioned in
-   * https://github.com/prisma/prisma-client-js/issues/707
-   */
-  export interface Prisma__product_imagesClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
-    readonly [Symbol.toStringTag]: "PrismaPromise"
-    /**
-     * Attaches callbacks for the resolution and/or rejection of the Promise.
-     * @param onfulfilled The callback to execute when the Promise is resolved.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of which ever callback is executed.
-     */
-    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
-    /**
-     * Attaches a callback for only the rejection of the Promise.
-     * @param onrejected The callback to execute when the Promise is rejected.
-     * @returns A Promise for the completion of the callback.
-     */
-    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
-    /**
-     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
-     * resolved value cannot be modified from the callback.
-     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
-     * @returns A Promise for the completion of the callback.
-     */
-    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
-  }
-
-
-
-
-  /**
-   * Fields of the product_images model
-   */
-  interface product_imagesFieldRefs {
-    readonly id: FieldRef<"product_images", 'Int'>
-    readonly name: FieldRef<"product_images", 'String'>
-    readonly batch_id: FieldRef<"product_images", 'Int'>
-  }
-    
-
-  // Custom InputTypes
-  /**
-   * product_images findUnique
-   */
-  export type product_imagesFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the product_images
-     */
-    select?: product_imagesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the product_images
-     */
-    omit?: product_imagesOmit<ExtArgs> | null
-    /**
-     * Filter, which product_images to fetch.
-     */
-    where: product_imagesWhereUniqueInput
-  }
-
-  /**
-   * product_images findUniqueOrThrow
-   */
-  export type product_imagesFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the product_images
-     */
-    select?: product_imagesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the product_images
-     */
-    omit?: product_imagesOmit<ExtArgs> | null
-    /**
-     * Filter, which product_images to fetch.
-     */
-    where: product_imagesWhereUniqueInput
-  }
-
-  /**
-   * product_images findFirst
-   */
-  export type product_imagesFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the product_images
-     */
-    select?: product_imagesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the product_images
-     */
-    omit?: product_imagesOmit<ExtArgs> | null
-    /**
-     * Filter, which product_images to fetch.
-     */
-    where?: product_imagesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of product_images to fetch.
-     */
-    orderBy?: product_imagesOrderByWithRelationInput | product_imagesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for product_images.
-     */
-    cursor?: product_imagesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` product_images from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` product_images.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of product_images.
-     */
-    distinct?: Product_imagesScalarFieldEnum | Product_imagesScalarFieldEnum[]
-  }
-
-  /**
-   * product_images findFirstOrThrow
-   */
-  export type product_imagesFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the product_images
-     */
-    select?: product_imagesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the product_images
-     */
-    omit?: product_imagesOmit<ExtArgs> | null
-    /**
-     * Filter, which product_images to fetch.
-     */
-    where?: product_imagesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of product_images to fetch.
-     */
-    orderBy?: product_imagesOrderByWithRelationInput | product_imagesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for searching for product_images.
-     */
-    cursor?: product_imagesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` product_images from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` product_images.
-     */
-    skip?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
-     * 
-     * Filter by unique combinations of product_images.
-     */
-    distinct?: Product_imagesScalarFieldEnum | Product_imagesScalarFieldEnum[]
-  }
-
-  /**
-   * product_images findMany
-   */
-  export type product_imagesFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the product_images
-     */
-    select?: product_imagesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the product_images
-     */
-    omit?: product_imagesOmit<ExtArgs> | null
-    /**
-     * Filter, which product_images to fetch.
-     */
-    where?: product_imagesWhereInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
-     * 
-     * Determine the order of product_images to fetch.
-     */
-    orderBy?: product_imagesOrderByWithRelationInput | product_imagesOrderByWithRelationInput[]
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
-     * 
-     * Sets the position for listing product_images.
-     */
-    cursor?: product_imagesWhereUniqueInput
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Take `±n` product_images from the position of the cursor.
-     */
-    take?: number
-    /**
-     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
-     * 
-     * Skip the first `n` product_images.
-     */
-    skip?: number
-    distinct?: Product_imagesScalarFieldEnum | Product_imagesScalarFieldEnum[]
-  }
-
-  /**
-   * product_images create
-   */
-  export type product_imagesCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the product_images
-     */
-    select?: product_imagesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the product_images
-     */
-    omit?: product_imagesOmit<ExtArgs> | null
-    /**
-     * The data needed to create a product_images.
-     */
-    data: XOR<product_imagesCreateInput, product_imagesUncheckedCreateInput>
-  }
-
-  /**
-   * product_images createMany
-   */
-  export type product_imagesCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to create many product_images.
-     */
-    data: product_imagesCreateManyInput | product_imagesCreateManyInput[]
-    skipDuplicates?: boolean
-  }
-
-  /**
-   * product_images update
-   */
-  export type product_imagesUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the product_images
-     */
-    select?: product_imagesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the product_images
-     */
-    omit?: product_imagesOmit<ExtArgs> | null
-    /**
-     * The data needed to update a product_images.
-     */
-    data: XOR<product_imagesUpdateInput, product_imagesUncheckedUpdateInput>
-    /**
-     * Choose, which product_images to update.
-     */
-    where: product_imagesWhereUniqueInput
-  }
-
-  /**
-   * product_images updateMany
-   */
-  export type product_imagesUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * The data used to update product_images.
-     */
-    data: XOR<product_imagesUpdateManyMutationInput, product_imagesUncheckedUpdateManyInput>
-    /**
-     * Filter which product_images to update
-     */
-    where?: product_imagesWhereInput
-    /**
-     * Limit how many product_images to update.
-     */
-    limit?: number
-  }
-
-  /**
-   * product_images upsert
-   */
-  export type product_imagesUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the product_images
-     */
-    select?: product_imagesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the product_images
-     */
-    omit?: product_imagesOmit<ExtArgs> | null
-    /**
-     * The filter to search for the product_images to update in case it exists.
-     */
-    where: product_imagesWhereUniqueInput
-    /**
-     * In case the product_images found by the `where` argument doesn't exist, create a new product_images with this data.
-     */
-    create: XOR<product_imagesCreateInput, product_imagesUncheckedCreateInput>
-    /**
-     * In case the product_images was found with the provided `where` argument, update it with this data.
-     */
-    update: XOR<product_imagesUpdateInput, product_imagesUncheckedUpdateInput>
-  }
-
-  /**
-   * product_images delete
-   */
-  export type product_imagesDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the product_images
-     */
-    select?: product_imagesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the product_images
-     */
-    omit?: product_imagesOmit<ExtArgs> | null
-    /**
-     * Filter which product_images to delete.
-     */
-    where: product_imagesWhereUniqueInput
-  }
-
-  /**
-   * product_images deleteMany
-   */
-  export type product_imagesDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Filter which product_images to delete
-     */
-    where?: product_imagesWhereInput
-    /**
-     * Limit how many product_images to delete.
-     */
-    limit?: number
-  }
-
-  /**
-   * product_images without action
-   */
-  export type product_imagesDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
-    /**
-     * Select specific fields to fetch from the product_images
-     */
-    select?: product_imagesSelect<ExtArgs> | null
-    /**
-     * Omit specific fields from the product_images
-     */
-    omit?: product_imagesOmit<ExtArgs> | null
+    include?: usersInclude<ExtArgs> | null
   }
 
 
@@ -23934,7 +26394,8 @@ export namespace Prisma {
     card_no: 'card_no',
     payment_method_id: 'payment_method_id',
     cvv: 'cvv',
-    exp: 'exp'
+    exp: 'exp',
+    users_id: 'users_id'
   };
 
   export type Card_detailsScalarFieldEnum = (typeof Card_detailsScalarFieldEnum)[keyof typeof Card_detailsScalarFieldEnum]
@@ -24058,6 +26519,15 @@ export namespace Prisma {
   export type Pot_batchScalarFieldEnum = (typeof Pot_batchScalarFieldEnum)[keyof typeof Pot_batchScalarFieldEnum]
 
 
+  export const Pot_imagesScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    pot_batch_id: 'pot_batch_id'
+  };
+
+  export type Pot_imagesScalarFieldEnum = (typeof Pot_imagesScalarFieldEnum)[keyof typeof Pot_imagesScalarFieldEnum]
+
+
   export const Pot_sizeScalarFieldEnum: {
     id: 'id',
     size: 'size',
@@ -24077,6 +26547,15 @@ export namespace Prisma {
   };
 
   export type ProductScalarFieldEnum = (typeof ProductScalarFieldEnum)[keyof typeof ProductScalarFieldEnum]
+
+
+  export const Product_imagesScalarFieldEnum: {
+    id: 'id',
+    name: 'name',
+    batch_id: 'batch_id'
+  };
+
+  export type Product_imagesScalarFieldEnum = (typeof Product_imagesScalarFieldEnum)[keyof typeof Product_imagesScalarFieldEnum]
 
 
   export const Product_typeScalarFieldEnum: {
@@ -24145,24 +26624,6 @@ export namespace Prisma {
   };
 
   export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
-
-
-  export const Pot_imagesScalarFieldEnum: {
-    id: 'id',
-    name: 'name',
-    pot_batch_id: 'pot_batch_id'
-  };
-
-  export type Pot_imagesScalarFieldEnum = (typeof Pot_imagesScalarFieldEnum)[keyof typeof Pot_imagesScalarFieldEnum]
-
-
-  export const Product_imagesScalarFieldEnum: {
-    id: 'id',
-    name: 'name',
-    batch_id: 'batch_id'
-  };
-
-  export type Product_imagesScalarFieldEnum = (typeof Product_imagesScalarFieldEnum)[keyof typeof Product_imagesScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -24254,6 +26715,13 @@ export namespace Prisma {
   export type pot_batchOrderByRelevanceFieldEnum = (typeof pot_batchOrderByRelevanceFieldEnum)[keyof typeof pot_batchOrderByRelevanceFieldEnum]
 
 
+  export const pot_imagesOrderByRelevanceFieldEnum: {
+    name: 'name'
+  };
+
+  export type pot_imagesOrderByRelevanceFieldEnum = (typeof pot_imagesOrderByRelevanceFieldEnum)[keyof typeof pot_imagesOrderByRelevanceFieldEnum]
+
+
   export const pot_sizeOrderByRelevanceFieldEnum: {
     size: 'size',
     short_key: 'short_key'
@@ -24268,6 +26736,13 @@ export namespace Prisma {
   };
 
   export type productOrderByRelevanceFieldEnum = (typeof productOrderByRelevanceFieldEnum)[keyof typeof productOrderByRelevanceFieldEnum]
+
+
+  export const product_imagesOrderByRelevanceFieldEnum: {
+    name: 'name'
+  };
+
+  export type product_imagesOrderByRelevanceFieldEnum = (typeof product_imagesOrderByRelevanceFieldEnum)[keyof typeof product_imagesOrderByRelevanceFieldEnum]
 
 
   export const product_typeOrderByRelevanceFieldEnum: {
@@ -24322,20 +26797,6 @@ export namespace Prisma {
   };
 
   export type usersOrderByRelevanceFieldEnum = (typeof usersOrderByRelevanceFieldEnum)[keyof typeof usersOrderByRelevanceFieldEnum]
-
-
-  export const pot_imagesOrderByRelevanceFieldEnum: {
-    name: 'name'
-  };
-
-  export type pot_imagesOrderByRelevanceFieldEnum = (typeof pot_imagesOrderByRelevanceFieldEnum)[keyof typeof pot_imagesOrderByRelevanceFieldEnum]
-
-
-  export const product_imagesOrderByRelevanceFieldEnum: {
-    name: 'name'
-  };
-
-  export type product_imagesOrderByRelevanceFieldEnum = (typeof product_imagesOrderByRelevanceFieldEnum)[keyof typeof product_imagesOrderByRelevanceFieldEnum]
 
 
   /**
@@ -24393,6 +26854,9 @@ export namespace Prisma {
     product_id?: IntFilter<"batch"> | number
     size_id?: IntFilter<"batch"> | number
     code?: StringFilter<"batch"> | string
+    product?: XOR<ProductScalarRelationFilter, productWhereInput>
+    size?: XOR<SizeScalarRelationFilter, sizeWhereInput>
+    product_images?: Product_imagesListRelationFilter
   }
 
   export type batchOrderByWithRelationInput = {
@@ -24404,6 +26868,9 @@ export namespace Prisma {
     product_id?: SortOrder
     size_id?: SortOrder
     code?: SortOrder
+    product?: productOrderByWithRelationInput
+    size?: sizeOrderByWithRelationInput
+    product_images?: product_imagesOrderByRelationAggregateInput
     _relevance?: batchOrderByRelevanceInput
   }
 
@@ -24419,6 +26886,9 @@ export namespace Prisma {
     product_id?: IntFilter<"batch"> | number
     size_id?: IntFilter<"batch"> | number
     code?: StringFilter<"batch"> | string
+    product?: XOR<ProductScalarRelationFilter, productWhereInput>
+    size?: XOR<SizeScalarRelationFilter, sizeWhereInput>
+    product_images?: Product_imagesListRelationFilter
   }, "id">
 
   export type batchOrderByWithAggregationInput = {
@@ -24460,6 +26930,9 @@ export namespace Prisma {
     payment_method_id?: IntFilter<"card_details"> | number
     cvv?: IntNullableFilter<"card_details"> | number | null
     exp?: StringNullableFilter<"card_details"> | string | null
+    users_id?: IntFilter<"card_details"> | number
+    payment_method?: XOR<Payment_methodScalarRelationFilter, payment_methodWhereInput>
+    users?: XOR<UsersScalarRelationFilter, usersWhereInput>
   }
 
   export type card_detailsOrderByWithRelationInput = {
@@ -24468,6 +26941,9 @@ export namespace Prisma {
     payment_method_id?: SortOrder
     cvv?: SortOrderInput | SortOrder
     exp?: SortOrderInput | SortOrder
+    users_id?: SortOrder
+    payment_method?: payment_methodOrderByWithRelationInput
+    users?: usersOrderByWithRelationInput
     _relevance?: card_detailsOrderByRelevanceInput
   }
 
@@ -24480,6 +26956,9 @@ export namespace Prisma {
     payment_method_id?: IntFilter<"card_details"> | number
     cvv?: IntNullableFilter<"card_details"> | number | null
     exp?: StringNullableFilter<"card_details"> | string | null
+    users_id?: IntFilter<"card_details"> | number
+    payment_method?: XOR<Payment_methodScalarRelationFilter, payment_methodWhereInput>
+    users?: XOR<UsersScalarRelationFilter, usersWhereInput>
   }, "id">
 
   export type card_detailsOrderByWithAggregationInput = {
@@ -24488,6 +26967,7 @@ export namespace Prisma {
     payment_method_id?: SortOrder
     cvv?: SortOrderInput | SortOrder
     exp?: SortOrderInput | SortOrder
+    users_id?: SortOrder
     _count?: card_detailsCountOrderByAggregateInput
     _avg?: card_detailsAvgOrderByAggregateInput
     _max?: card_detailsMaxOrderByAggregateInput
@@ -24504,6 +26984,7 @@ export namespace Prisma {
     payment_method_id?: IntWithAggregatesFilter<"card_details"> | number
     cvv?: IntNullableWithAggregatesFilter<"card_details"> | number | null
     exp?: StringNullableWithAggregatesFilter<"card_details"> | string | null
+    users_id?: IntWithAggregatesFilter<"card_details"> | number
   }
 
   export type categoryWhereInput = {
@@ -24512,11 +26993,13 @@ export namespace Prisma {
     NOT?: categoryWhereInput | categoryWhereInput[]
     id?: IntFilter<"category"> | number
     name?: StringFilter<"category"> | string
+    product?: ProductListRelationFilter
   }
 
   export type categoryOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    product?: productOrderByRelationAggregateInput
     _relevance?: categoryOrderByRelevanceInput
   }
 
@@ -24526,6 +27009,7 @@ export namespace Prisma {
     OR?: categoryWhereInput[]
     NOT?: categoryWhereInput | categoryWhereInput[]
     name?: StringFilter<"category"> | string
+    product?: ProductListRelationFilter
   }, "id">
 
   export type categoryOrderByWithAggregationInput = {
@@ -24552,11 +27036,15 @@ export namespace Prisma {
     NOT?: cityWhereInput | cityWhereInput[]
     id?: IntFilter<"city"> | number
     name?: StringFilter<"city"> | string
+    supplier?: SupplierListRelationFilter
+    users?: UsersListRelationFilter
   }
 
   export type cityOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    supplier?: supplierOrderByRelationAggregateInput
+    users?: usersOrderByRelationAggregateInput
     _relevance?: cityOrderByRelevanceInput
   }
 
@@ -24566,6 +27054,8 @@ export namespace Prisma {
     OR?: cityWhereInput[]
     NOT?: cityWhereInput | cityWhereInput[]
     name?: StringFilter<"city"> | string
+    supplier?: SupplierListRelationFilter
+    users?: UsersListRelationFilter
   }, "id">
 
   export type cityOrderByWithAggregationInput = {
@@ -24592,11 +27082,15 @@ export namespace Prisma {
     NOT?: genderWhereInput | genderWhereInput[]
     id?: IntFilter<"gender"> | number
     name?: StringFilter<"gender"> | string
+    supplier?: SupplierListRelationFilter
+    users?: UsersListRelationFilter
   }
 
   export type genderOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    supplier?: supplierOrderByRelationAggregateInput
+    users?: usersOrderByRelationAggregateInput
     _relevance?: genderOrderByRelevanceInput
   }
 
@@ -24606,6 +27100,8 @@ export namespace Prisma {
     OR?: genderWhereInput[]
     NOT?: genderWhereInput | genderWhereInput[]
     name?: StringFilter<"gender"> | string
+    supplier?: SupplierListRelationFilter
+    users?: UsersListRelationFilter
   }, "id">
 
   export type genderOrderByWithAggregationInput = {
@@ -24636,6 +27132,9 @@ export namespace Prisma {
     total_qty?: IntFilter<"grn"> | number
     supplier_id?: IntFilter<"grn"> | number
     users_id?: IntFilter<"grn"> | number
+    supplier?: XOR<SupplierScalarRelationFilter, supplierWhereInput>
+    users?: XOR<UsersScalarRelationFilter, usersWhereInput>
+    grn_items?: Grn_itemsListRelationFilter
   }
 
   export type grnOrderByWithRelationInput = {
@@ -24645,6 +27144,9 @@ export namespace Prisma {
     total_qty?: SortOrder
     supplier_id?: SortOrder
     users_id?: SortOrder
+    supplier?: supplierOrderByWithRelationInput
+    users?: usersOrderByWithRelationInput
+    grn_items?: grn_itemsOrderByRelationAggregateInput
   }
 
   export type grnWhereUniqueInput = Prisma.AtLeast<{
@@ -24657,6 +27159,9 @@ export namespace Prisma {
     total_qty?: IntFilter<"grn"> | number
     supplier_id?: IntFilter<"grn"> | number
     users_id?: IntFilter<"grn"> | number
+    supplier?: XOR<SupplierScalarRelationFilter, supplierWhereInput>
+    users?: XOR<UsersScalarRelationFilter, usersWhereInput>
+    grn_items?: Grn_itemsListRelationFilter
   }, "id">
 
   export type grnOrderByWithAggregationInput = {
@@ -24698,6 +27203,8 @@ export namespace Prisma {
     desc?: StringNullableFilter<"grn_items"> | string | null
     product_type_id?: IntFilter<"grn_items"> | number
     grn_id?: IntFilter<"grn_items"> | number
+    grn?: XOR<GrnScalarRelationFilter, grnWhereInput>
+    product_type?: XOR<Product_typeScalarRelationFilter, product_typeWhereInput>
   }
 
   export type grn_itemsOrderByWithRelationInput = {
@@ -24710,6 +27217,8 @@ export namespace Prisma {
     desc?: SortOrderInput | SortOrder
     product_type_id?: SortOrder
     grn_id?: SortOrder
+    grn?: grnOrderByWithRelationInput
+    product_type?: product_typeOrderByWithRelationInput
     _relevance?: grn_itemsOrderByRelevanceInput
   }
 
@@ -24726,6 +27235,8 @@ export namespace Prisma {
     desc?: StringNullableFilter<"grn_items"> | string | null
     product_type_id?: IntFilter<"grn_items"> | number
     grn_id?: IntFilter<"grn_items"> | number
+    grn?: XOR<GrnScalarRelationFilter, grnWhereInput>
+    product_type?: XOR<Product_typeScalarRelationFilter, product_typeWhereInput>
   }, "id">
 
   export type grn_itemsOrderByWithAggregationInput = {
@@ -24771,6 +27282,9 @@ export namespace Prisma {
     discount?: FloatFilter<"invoice"> | number
     payment_method_id?: IntFilter<"invoice"> | number
     users_id?: IntFilter<"invoice"> | number
+    payment_method?: XOR<Payment_methodScalarRelationFilter, payment_methodWhereInput>
+    users?: XOR<UsersScalarRelationFilter, usersWhereInput>
+    invoice_items?: Invoice_itemsListRelationFilter
   }
 
   export type invoiceOrderByWithRelationInput = {
@@ -24781,6 +27295,9 @@ export namespace Prisma {
     discount?: SortOrder
     payment_method_id?: SortOrder
     users_id?: SortOrder
+    payment_method?: payment_methodOrderByWithRelationInput
+    users?: usersOrderByWithRelationInput
+    invoice_items?: invoice_itemsOrderByRelationAggregateInput
   }
 
   export type invoiceWhereUniqueInput = Prisma.AtLeast<{
@@ -24794,6 +27311,9 @@ export namespace Prisma {
     discount?: FloatFilter<"invoice"> | number
     payment_method_id?: IntFilter<"invoice"> | number
     users_id?: IntFilter<"invoice"> | number
+    payment_method?: XOR<Payment_methodScalarRelationFilter, payment_methodWhereInput>
+    users?: XOR<UsersScalarRelationFilter, usersWhereInput>
+    invoice_items?: Invoice_itemsListRelationFilter
   }, "id">
 
   export type invoiceOrderByWithAggregationInput = {
@@ -24836,6 +27356,8 @@ export namespace Prisma {
     batch_id?: IntFilter<"invoice_items"> | number
     invoice_id?: IntFilter<"invoice_items"> | number
     product_type_id?: IntFilter<"invoice_items"> | number
+    invoice?: XOR<InvoiceScalarRelationFilter, invoiceWhereInput>
+    product_type?: XOR<Product_typeScalarRelationFilter, product_typeWhereInput>
   }
 
   export type invoice_itemsOrderByWithRelationInput = {
@@ -24847,6 +27369,8 @@ export namespace Prisma {
     batch_id?: SortOrder
     invoice_id?: SortOrder
     product_type_id?: SortOrder
+    invoice?: invoiceOrderByWithRelationInput
+    product_type?: product_typeOrderByWithRelationInput
   }
 
   export type invoice_itemsWhereUniqueInput = Prisma.AtLeast<{
@@ -24861,6 +27385,8 @@ export namespace Prisma {
     batch_id?: IntFilter<"invoice_items"> | number
     invoice_id?: IntFilter<"invoice_items"> | number
     product_type_id?: IntFilter<"invoice_items"> | number
+    invoice?: XOR<InvoiceScalarRelationFilter, invoiceWhereInput>
+    product_type?: XOR<Product_typeScalarRelationFilter, product_typeWhereInput>
   }, "id">
 
   export type invoice_itemsOrderByWithAggregationInput = {
@@ -24899,11 +27425,13 @@ export namespace Prisma {
     NOT?: mother_plant_typeWhereInput | mother_plant_typeWhereInput[]
     id?: IntFilter<"mother_plant_type"> | number
     name?: StringFilter<"mother_plant_type"> | string
+    product?: ProductListRelationFilter
   }
 
   export type mother_plant_typeOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    product?: productOrderByRelationAggregateInput
     _relevance?: mother_plant_typeOrderByRelevanceInput
   }
 
@@ -24913,6 +27441,7 @@ export namespace Prisma {
     OR?: mother_plant_typeWhereInput[]
     NOT?: mother_plant_typeWhereInput | mother_plant_typeWhereInput[]
     name?: StringFilter<"mother_plant_type"> | string
+    product?: ProductListRelationFilter
   }, "id">
 
   export type mother_plant_typeOrderByWithAggregationInput = {
@@ -24939,11 +27468,15 @@ export namespace Prisma {
     NOT?: payment_methodWhereInput | payment_methodWhereInput[]
     id?: IntFilter<"payment_method"> | number
     name?: StringFilter<"payment_method"> | string
+    card_details?: Card_detailsListRelationFilter
+    invoice?: InvoiceListRelationFilter
   }
 
   export type payment_methodOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    card_details?: card_detailsOrderByRelationAggregateInput
+    invoice?: invoiceOrderByRelationAggregateInput
     _relevance?: payment_methodOrderByRelevanceInput
   }
 
@@ -24953,6 +27486,8 @@ export namespace Prisma {
     OR?: payment_methodWhereInput[]
     NOT?: payment_methodWhereInput | payment_methodWhereInput[]
     name?: StringFilter<"payment_method"> | string
+    card_details?: Card_detailsListRelationFilter
+    invoice?: InvoiceListRelationFilter
   }, "id">
 
   export type payment_methodOrderByWithAggregationInput = {
@@ -24981,6 +27516,7 @@ export namespace Prisma {
     name?: StringFilter<"pot"> | string
     price?: FloatFilter<"pot"> | number
     desc?: StringFilter<"pot"> | string
+    pot_batch?: Pot_batchListRelationFilter
   }
 
   export type potOrderByWithRelationInput = {
@@ -24988,6 +27524,7 @@ export namespace Prisma {
     name?: SortOrder
     price?: SortOrder
     desc?: SortOrder
+    pot_batch?: pot_batchOrderByRelationAggregateInput
     _relevance?: potOrderByRelevanceInput
   }
 
@@ -24999,6 +27536,7 @@ export namespace Prisma {
     name?: StringFilter<"pot"> | string
     price?: FloatFilter<"pot"> | number
     desc?: StringFilter<"pot"> | string
+    pot_batch?: Pot_batchListRelationFilter
   }, "id">
 
   export type potOrderByWithAggregationInput = {
@@ -25035,6 +27573,9 @@ export namespace Prisma {
     pot_id?: IntFilter<"pot_batch"> | number
     pot_size_id?: IntFilter<"pot_batch"> | number
     code?: StringFilter<"pot_batch"> | string
+    pot?: XOR<PotScalarRelationFilter, potWhereInput>
+    pot_size?: XOR<Pot_sizeScalarRelationFilter, pot_sizeWhereInput>
+    pot_images?: Pot_imagesListRelationFilter
   }
 
   export type pot_batchOrderByWithRelationInput = {
@@ -25046,6 +27587,9 @@ export namespace Prisma {
     pot_id?: SortOrder
     pot_size_id?: SortOrder
     code?: SortOrder
+    pot?: potOrderByWithRelationInput
+    pot_size?: pot_sizeOrderByWithRelationInput
+    pot_images?: pot_imagesOrderByRelationAggregateInput
     _relevance?: pot_batchOrderByRelevanceInput
   }
 
@@ -25061,6 +27605,9 @@ export namespace Prisma {
     pot_id?: IntFilter<"pot_batch"> | number
     pot_size_id?: IntFilter<"pot_batch"> | number
     code?: StringFilter<"pot_batch"> | string
+    pot?: XOR<PotScalarRelationFilter, potWhereInput>
+    pot_size?: XOR<Pot_sizeScalarRelationFilter, pot_sizeWhereInput>
+    pot_images?: Pot_imagesListRelationFilter
   }, "id">
 
   export type pot_batchOrderByWithAggregationInput = {
@@ -25093,6 +27640,54 @@ export namespace Prisma {
     code?: StringWithAggregatesFilter<"pot_batch"> | string
   }
 
+  export type pot_imagesWhereInput = {
+    AND?: pot_imagesWhereInput | pot_imagesWhereInput[]
+    OR?: pot_imagesWhereInput[]
+    NOT?: pot_imagesWhereInput | pot_imagesWhereInput[]
+    id?: IntFilter<"pot_images"> | number
+    name?: StringFilter<"pot_images"> | string
+    pot_batch_id?: IntFilter<"pot_images"> | number
+    pot_batch?: XOR<Pot_batchScalarRelationFilter, pot_batchWhereInput>
+  }
+
+  export type pot_imagesOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    pot_batch_id?: SortOrder
+    pot_batch?: pot_batchOrderByWithRelationInput
+    _relevance?: pot_imagesOrderByRelevanceInput
+  }
+
+  export type pot_imagesWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: pot_imagesWhereInput | pot_imagesWhereInput[]
+    OR?: pot_imagesWhereInput[]
+    NOT?: pot_imagesWhereInput | pot_imagesWhereInput[]
+    name?: StringFilter<"pot_images"> | string
+    pot_batch_id?: IntFilter<"pot_images"> | number
+    pot_batch?: XOR<Pot_batchScalarRelationFilter, pot_batchWhereInput>
+  }, "id">
+
+  export type pot_imagesOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    pot_batch_id?: SortOrder
+    _count?: pot_imagesCountOrderByAggregateInput
+    _avg?: pot_imagesAvgOrderByAggregateInput
+    _max?: pot_imagesMaxOrderByAggregateInput
+    _min?: pot_imagesMinOrderByAggregateInput
+    _sum?: pot_imagesSumOrderByAggregateInput
+  }
+
+  export type pot_imagesScalarWhereWithAggregatesInput = {
+    AND?: pot_imagesScalarWhereWithAggregatesInput | pot_imagesScalarWhereWithAggregatesInput[]
+    OR?: pot_imagesScalarWhereWithAggregatesInput[]
+    NOT?: pot_imagesScalarWhereWithAggregatesInput | pot_imagesScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"pot_images"> | number
+    name?: StringWithAggregatesFilter<"pot_images"> | string
+    pot_batch_id?: IntWithAggregatesFilter<"pot_images"> | number
+  }
+
   export type pot_sizeWhereInput = {
     AND?: pot_sizeWhereInput | pot_sizeWhereInput[]
     OR?: pot_sizeWhereInput[]
@@ -25100,12 +27695,14 @@ export namespace Prisma {
     id?: IntFilter<"pot_size"> | number
     size?: StringFilter<"pot_size"> | string
     short_key?: StringFilter<"pot_size"> | string
+    pot_batch?: Pot_batchListRelationFilter
   }
 
   export type pot_sizeOrderByWithRelationInput = {
     id?: SortOrder
     size?: SortOrder
     short_key?: SortOrder
+    pot_batch?: pot_batchOrderByRelationAggregateInput
     _relevance?: pot_sizeOrderByRelevanceInput
   }
 
@@ -25116,6 +27713,7 @@ export namespace Prisma {
     NOT?: pot_sizeWhereInput | pot_sizeWhereInput[]
     size?: StringFilter<"pot_size"> | string
     short_key?: StringFilter<"pot_size"> | string
+    pot_batch?: Pot_batchListRelationFilter
   }, "id">
 
   export type pot_sizeOrderByWithAggregationInput = {
@@ -25148,6 +27746,9 @@ export namespace Prisma {
     mother_plant_type_id?: IntFilter<"product"> | number
     category_id?: IntFilter<"product"> | number
     isActive?: BoolFilter<"product"> | boolean
+    batch?: BatchListRelationFilter
+    category?: XOR<CategoryScalarRelationFilter, categoryWhereInput>
+    mother_plant_type?: XOR<Mother_plant_typeScalarRelationFilter, mother_plant_typeWhereInput>
   }
 
   export type productOrderByWithRelationInput = {
@@ -25157,6 +27758,9 @@ export namespace Prisma {
     mother_plant_type_id?: SortOrder
     category_id?: SortOrder
     isActive?: SortOrder
+    batch?: batchOrderByRelationAggregateInput
+    category?: categoryOrderByWithRelationInput
+    mother_plant_type?: mother_plant_typeOrderByWithRelationInput
     _relevance?: productOrderByRelevanceInput
   }
 
@@ -25170,6 +27774,9 @@ export namespace Prisma {
     mother_plant_type_id?: IntFilter<"product"> | number
     category_id?: IntFilter<"product"> | number
     isActive?: BoolFilter<"product"> | boolean
+    batch?: BatchListRelationFilter
+    category?: XOR<CategoryScalarRelationFilter, categoryWhereInput>
+    mother_plant_type?: XOR<Mother_plant_typeScalarRelationFilter, mother_plant_typeWhereInput>
   }, "id">
 
   export type productOrderByWithAggregationInput = {
@@ -25198,17 +27805,69 @@ export namespace Prisma {
     isActive?: BoolWithAggregatesFilter<"product"> | boolean
   }
 
+  export type product_imagesWhereInput = {
+    AND?: product_imagesWhereInput | product_imagesWhereInput[]
+    OR?: product_imagesWhereInput[]
+    NOT?: product_imagesWhereInput | product_imagesWhereInput[]
+    id?: IntFilter<"product_images"> | number
+    name?: StringFilter<"product_images"> | string
+    batch_id?: IntFilter<"product_images"> | number
+    batch?: XOR<BatchScalarRelationFilter, batchWhereInput>
+  }
+
+  export type product_imagesOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    batch_id?: SortOrder
+    batch?: batchOrderByWithRelationInput
+    _relevance?: product_imagesOrderByRelevanceInput
+  }
+
+  export type product_imagesWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: product_imagesWhereInput | product_imagesWhereInput[]
+    OR?: product_imagesWhereInput[]
+    NOT?: product_imagesWhereInput | product_imagesWhereInput[]
+    name?: StringFilter<"product_images"> | string
+    batch_id?: IntFilter<"product_images"> | number
+    batch?: XOR<BatchScalarRelationFilter, batchWhereInput>
+  }, "id">
+
+  export type product_imagesOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    batch_id?: SortOrder
+    _count?: product_imagesCountOrderByAggregateInput
+    _avg?: product_imagesAvgOrderByAggregateInput
+    _max?: product_imagesMaxOrderByAggregateInput
+    _min?: product_imagesMinOrderByAggregateInput
+    _sum?: product_imagesSumOrderByAggregateInput
+  }
+
+  export type product_imagesScalarWhereWithAggregatesInput = {
+    AND?: product_imagesScalarWhereWithAggregatesInput | product_imagesScalarWhereWithAggregatesInput[]
+    OR?: product_imagesScalarWhereWithAggregatesInput[]
+    NOT?: product_imagesScalarWhereWithAggregatesInput | product_imagesScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"product_images"> | number
+    name?: StringWithAggregatesFilter<"product_images"> | string
+    batch_id?: IntWithAggregatesFilter<"product_images"> | number
+  }
+
   export type product_typeWhereInput = {
     AND?: product_typeWhereInput | product_typeWhereInput[]
     OR?: product_typeWhereInput[]
     NOT?: product_typeWhereInput | product_typeWhereInput[]
     id?: IntFilter<"product_type"> | number
     name?: StringFilter<"product_type"> | string
+    grn_items?: Grn_itemsListRelationFilter
+    invoice_items?: Invoice_itemsListRelationFilter
   }
 
   export type product_typeOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    grn_items?: grn_itemsOrderByRelationAggregateInput
+    invoice_items?: invoice_itemsOrderByRelationAggregateInput
     _relevance?: product_typeOrderByRelevanceInput
   }
 
@@ -25218,6 +27877,8 @@ export namespace Prisma {
     OR?: product_typeWhereInput[]
     NOT?: product_typeWhereInput | product_typeWhereInput[]
     name?: StringFilter<"product_type"> | string
+    grn_items?: Grn_itemsListRelationFilter
+    invoice_items?: Invoice_itemsListRelationFilter
   }, "id">
 
   export type product_typeOrderByWithAggregationInput = {
@@ -25245,12 +27906,14 @@ export namespace Prisma {
     id?: IntFilter<"size"> | number
     size?: StringFilter<"size"> | string
     short_key?: StringFilter<"size"> | string
+    batch?: BatchListRelationFilter
   }
 
   export type sizeOrderByWithRelationInput = {
     id?: SortOrder
     size?: SortOrder
     short_key?: SortOrder
+    batch?: batchOrderByRelationAggregateInput
     _relevance?: sizeOrderByRelevanceInput
   }
 
@@ -25261,6 +27924,7 @@ export namespace Prisma {
     NOT?: sizeWhereInput | sizeWhereInput[]
     size?: StringFilter<"size"> | string
     short_key?: StringFilter<"size"> | string
+    batch?: BatchListRelationFilter
   }, "id">
 
   export type sizeOrderByWithAggregationInput = {
@@ -25289,11 +27953,15 @@ export namespace Prisma {
     NOT?: statusWhereInput | statusWhereInput[]
     id?: IntFilter<"status"> | number
     name?: StringFilter<"status"> | string
+    supplier?: SupplierListRelationFilter
+    users?: UsersListRelationFilter
   }
 
   export type statusOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    supplier?: supplierOrderByRelationAggregateInput
+    users?: usersOrderByRelationAggregateInput
     _relevance?: statusOrderByRelevanceInput
   }
 
@@ -25303,6 +27971,8 @@ export namespace Prisma {
     OR?: statusWhereInput[]
     NOT?: statusWhereInput | statusWhereInput[]
     name?: StringFilter<"status"> | string
+    supplier?: SupplierListRelationFilter
+    users?: UsersListRelationFilter
   }, "id">
 
   export type statusOrderByWithAggregationInput = {
@@ -25337,6 +28007,10 @@ export namespace Prisma {
     status_id?: IntFilter<"supplier"> | number
     gender_id?: IntFilter<"supplier"> | number
     city_id?: IntFilter<"supplier"> | number
+    grn?: GrnListRelationFilter
+    city?: XOR<CityScalarRelationFilter, cityWhereInput>
+    gender?: XOR<GenderScalarRelationFilter, genderWhereInput>
+    status?: XOR<StatusScalarRelationFilter, statusWhereInput>
   }
 
   export type supplierOrderByWithRelationInput = {
@@ -25350,6 +28024,10 @@ export namespace Prisma {
     status_id?: SortOrder
     gender_id?: SortOrder
     city_id?: SortOrder
+    grn?: grnOrderByRelationAggregateInput
+    city?: cityOrderByWithRelationInput
+    gender?: genderOrderByWithRelationInput
+    status?: statusOrderByWithRelationInput
     _relevance?: supplierOrderByRelevanceInput
   }
 
@@ -25367,6 +28045,10 @@ export namespace Prisma {
     status_id?: IntFilter<"supplier"> | number
     gender_id?: IntFilter<"supplier"> | number
     city_id?: IntFilter<"supplier"> | number
+    grn?: GrnListRelationFilter
+    city?: XOR<CityScalarRelationFilter, cityWhereInput>
+    gender?: XOR<GenderScalarRelationFilter, genderWhereInput>
+    status?: XOR<StatusScalarRelationFilter, statusWhereInput>
   }, "id">
 
   export type supplierOrderByWithAggregationInput = {
@@ -25409,11 +28091,13 @@ export namespace Prisma {
     NOT?: user_roleWhereInput | user_roleWhereInput[]
     id?: IntFilter<"user_role"> | number
     name?: StringFilter<"user_role"> | string
+    users?: UsersListRelationFilter
   }
 
   export type user_roleOrderByWithRelationInput = {
     id?: SortOrder
     name?: SortOrder
+    users?: usersOrderByRelationAggregateInput
     _relevance?: user_roleOrderByRelevanceInput
   }
 
@@ -25423,6 +28107,7 @@ export namespace Prisma {
     OR?: user_roleWhereInput[]
     NOT?: user_roleWhereInput | user_roleWhereInput[]
     name?: StringFilter<"user_role"> | string
+    users?: UsersListRelationFilter
   }, "id">
 
   export type user_roleOrderByWithAggregationInput = {
@@ -25460,6 +28145,13 @@ export namespace Prisma {
     gender_id?: IntFilter<"users"> | number
     city_id?: IntFilter<"users"> | number
     status_id?: IntFilter<"users"> | number
+    card_details?: Card_detailsListRelationFilter
+    grn?: GrnListRelationFilter
+    invoice?: InvoiceListRelationFilter
+    city?: XOR<CityScalarRelationFilter, cityWhereInput>
+    gender?: XOR<GenderScalarRelationFilter, genderWhereInput>
+    status?: XOR<StatusScalarRelationFilter, statusWhereInput>
+    user_role?: XOR<User_roleScalarRelationFilter, user_roleWhereInput>
   }
 
   export type usersOrderByWithRelationInput = {
@@ -25476,6 +28168,13 @@ export namespace Prisma {
     gender_id?: SortOrder
     city_id?: SortOrder
     status_id?: SortOrder
+    card_details?: card_detailsOrderByRelationAggregateInput
+    grn?: grnOrderByRelationAggregateInput
+    invoice?: invoiceOrderByRelationAggregateInput
+    city?: cityOrderByWithRelationInput
+    gender?: genderOrderByWithRelationInput
+    status?: statusOrderByWithRelationInput
+    user_role?: user_roleOrderByWithRelationInput
     _relevance?: usersOrderByRelevanceInput
   }
 
@@ -25496,6 +28195,13 @@ export namespace Prisma {
     gender_id?: IntFilter<"users"> | number
     city_id?: IntFilter<"users"> | number
     status_id?: IntFilter<"users"> | number
+    card_details?: Card_detailsListRelationFilter
+    grn?: GrnListRelationFilter
+    invoice?: InvoiceListRelationFilter
+    city?: XOR<CityScalarRelationFilter, cityWhereInput>
+    gender?: XOR<GenderScalarRelationFilter, genderWhereInput>
+    status?: XOR<StatusScalarRelationFilter, statusWhereInput>
+    user_role?: XOR<User_roleScalarRelationFilter, user_roleWhereInput>
   }, "id">
 
   export type usersOrderByWithAggregationInput = {
@@ -25538,104 +28244,15 @@ export namespace Prisma {
     status_id?: IntWithAggregatesFilter<"users"> | number
   }
 
-  export type pot_imagesWhereInput = {
-    AND?: pot_imagesWhereInput | pot_imagesWhereInput[]
-    OR?: pot_imagesWhereInput[]
-    NOT?: pot_imagesWhereInput | pot_imagesWhereInput[]
-    id?: IntFilter<"pot_images"> | number
-    name?: StringFilter<"pot_images"> | string
-    pot_batch_id?: IntFilter<"pot_images"> | number
-  }
-
-  export type pot_imagesOrderByWithRelationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    pot_batch_id?: SortOrder
-    _relevance?: pot_imagesOrderByRelevanceInput
-  }
-
-  export type pot_imagesWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: pot_imagesWhereInput | pot_imagesWhereInput[]
-    OR?: pot_imagesWhereInput[]
-    NOT?: pot_imagesWhereInput | pot_imagesWhereInput[]
-    name?: StringFilter<"pot_images"> | string
-    pot_batch_id?: IntFilter<"pot_images"> | number
-  }, "id">
-
-  export type pot_imagesOrderByWithAggregationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    pot_batch_id?: SortOrder
-    _count?: pot_imagesCountOrderByAggregateInput
-    _avg?: pot_imagesAvgOrderByAggregateInput
-    _max?: pot_imagesMaxOrderByAggregateInput
-    _min?: pot_imagesMinOrderByAggregateInput
-    _sum?: pot_imagesSumOrderByAggregateInput
-  }
-
-  export type pot_imagesScalarWhereWithAggregatesInput = {
-    AND?: pot_imagesScalarWhereWithAggregatesInput | pot_imagesScalarWhereWithAggregatesInput[]
-    OR?: pot_imagesScalarWhereWithAggregatesInput[]
-    NOT?: pot_imagesScalarWhereWithAggregatesInput | pot_imagesScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"pot_images"> | number
-    name?: StringWithAggregatesFilter<"pot_images"> | string
-    pot_batch_id?: IntWithAggregatesFilter<"pot_images"> | number
-  }
-
-  export type product_imagesWhereInput = {
-    AND?: product_imagesWhereInput | product_imagesWhereInput[]
-    OR?: product_imagesWhereInput[]
-    NOT?: product_imagesWhereInput | product_imagesWhereInput[]
-    id?: IntFilter<"product_images"> | number
-    name?: StringFilter<"product_images"> | string
-    batch_id?: IntFilter<"product_images"> | number
-  }
-
-  export type product_imagesOrderByWithRelationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    batch_id?: SortOrder
-    _relevance?: product_imagesOrderByRelevanceInput
-  }
-
-  export type product_imagesWhereUniqueInput = Prisma.AtLeast<{
-    id?: number
-    AND?: product_imagesWhereInput | product_imagesWhereInput[]
-    OR?: product_imagesWhereInput[]
-    NOT?: product_imagesWhereInput | product_imagesWhereInput[]
-    name?: StringFilter<"product_images"> | string
-    batch_id?: IntFilter<"product_images"> | number
-  }, "id">
-
-  export type product_imagesOrderByWithAggregationInput = {
-    id?: SortOrder
-    name?: SortOrder
-    batch_id?: SortOrder
-    _count?: product_imagesCountOrderByAggregateInput
-    _avg?: product_imagesAvgOrderByAggregateInput
-    _max?: product_imagesMaxOrderByAggregateInput
-    _min?: product_imagesMinOrderByAggregateInput
-    _sum?: product_imagesSumOrderByAggregateInput
-  }
-
-  export type product_imagesScalarWhereWithAggregatesInput = {
-    AND?: product_imagesScalarWhereWithAggregatesInput | product_imagesScalarWhereWithAggregatesInput[]
-    OR?: product_imagesScalarWhereWithAggregatesInput[]
-    NOT?: product_imagesScalarWhereWithAggregatesInput | product_imagesScalarWhereWithAggregatesInput[]
-    id?: IntWithAggregatesFilter<"product_images"> | number
-    name?: StringWithAggregatesFilter<"product_images"> | string
-    batch_id?: IntWithAggregatesFilter<"product_images"> | number
-  }
-
   export type batchCreateInput = {
     qty: number
     price: number
     cost: number
     desc?: string | null
-    product_id: number
-    size_id: number
     code: string
+    product: productCreateNestedOneWithoutBatchInput
+    size: sizeCreateNestedOneWithoutBatchInput
+    product_images?: product_imagesCreateNestedManyWithoutBatchInput
   }
 
   export type batchUncheckedCreateInput = {
@@ -25647,6 +28264,7 @@ export namespace Prisma {
     product_id: number
     size_id: number
     code: string
+    product_images?: product_imagesUncheckedCreateNestedManyWithoutBatchInput
   }
 
   export type batchUpdateInput = {
@@ -25654,9 +28272,10 @@ export namespace Prisma {
     price?: FloatFieldUpdateOperationsInput | number
     cost?: FloatFieldUpdateOperationsInput | number
     desc?: NullableStringFieldUpdateOperationsInput | string | null
-    product_id?: IntFieldUpdateOperationsInput | number
-    size_id?: IntFieldUpdateOperationsInput | number
     code?: StringFieldUpdateOperationsInput | string
+    product?: productUpdateOneRequiredWithoutBatchNestedInput
+    size?: sizeUpdateOneRequiredWithoutBatchNestedInput
+    product_images?: product_imagesUpdateManyWithoutBatchNestedInput
   }
 
   export type batchUncheckedUpdateInput = {
@@ -25668,6 +28287,7 @@ export namespace Prisma {
     product_id?: IntFieldUpdateOperationsInput | number
     size_id?: IntFieldUpdateOperationsInput | number
     code?: StringFieldUpdateOperationsInput | string
+    product_images?: product_imagesUncheckedUpdateManyWithoutBatchNestedInput
   }
 
   export type batchCreateManyInput = {
@@ -25686,8 +28306,6 @@ export namespace Prisma {
     price?: FloatFieldUpdateOperationsInput | number
     cost?: FloatFieldUpdateOperationsInput | number
     desc?: NullableStringFieldUpdateOperationsInput | string | null
-    product_id?: IntFieldUpdateOperationsInput | number
-    size_id?: IntFieldUpdateOperationsInput | number
     code?: StringFieldUpdateOperationsInput | string
   }
 
@@ -25704,9 +28322,10 @@ export namespace Prisma {
 
   export type card_detailsCreateInput = {
     card_no: number
-    payment_method_id: number
     cvv?: number | null
     exp?: string | null
+    payment_method: payment_methodCreateNestedOneWithoutCard_detailsInput
+    users: usersCreateNestedOneWithoutCard_detailsInput
   }
 
   export type card_detailsUncheckedCreateInput = {
@@ -25715,13 +28334,15 @@ export namespace Prisma {
     payment_method_id: number
     cvv?: number | null
     exp?: string | null
+    users_id: number
   }
 
   export type card_detailsUpdateInput = {
     card_no?: IntFieldUpdateOperationsInput | number
-    payment_method_id?: IntFieldUpdateOperationsInput | number
     cvv?: NullableIntFieldUpdateOperationsInput | number | null
     exp?: NullableStringFieldUpdateOperationsInput | string | null
+    payment_method?: payment_methodUpdateOneRequiredWithoutCard_detailsNestedInput
+    users?: usersUpdateOneRequiredWithoutCard_detailsNestedInput
   }
 
   export type card_detailsUncheckedUpdateInput = {
@@ -25730,6 +28351,7 @@ export namespace Prisma {
     payment_method_id?: IntFieldUpdateOperationsInput | number
     cvv?: NullableIntFieldUpdateOperationsInput | number | null
     exp?: NullableStringFieldUpdateOperationsInput | string | null
+    users_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type card_detailsCreateManyInput = {
@@ -25738,11 +28360,11 @@ export namespace Prisma {
     payment_method_id: number
     cvv?: number | null
     exp?: string | null
+    users_id: number
   }
 
   export type card_detailsUpdateManyMutationInput = {
     card_no?: IntFieldUpdateOperationsInput | number
-    payment_method_id?: IntFieldUpdateOperationsInput | number
     cvv?: NullableIntFieldUpdateOperationsInput | number | null
     exp?: NullableStringFieldUpdateOperationsInput | string | null
   }
@@ -25753,24 +28375,29 @@ export namespace Prisma {
     payment_method_id?: IntFieldUpdateOperationsInput | number
     cvv?: NullableIntFieldUpdateOperationsInput | number | null
     exp?: NullableStringFieldUpdateOperationsInput | string | null
+    users_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type categoryCreateInput = {
     name: string
+    product?: productCreateNestedManyWithoutCategoryInput
   }
 
   export type categoryUncheckedCreateInput = {
     id?: number
     name: string
+    product?: productUncheckedCreateNestedManyWithoutCategoryInput
   }
 
   export type categoryUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
+    product?: productUpdateManyWithoutCategoryNestedInput
   }
 
   export type categoryUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    product?: productUncheckedUpdateManyWithoutCategoryNestedInput
   }
 
   export type categoryCreateManyInput = {
@@ -25789,20 +28416,28 @@ export namespace Prisma {
 
   export type cityCreateInput = {
     name: string
+    supplier?: supplierCreateNestedManyWithoutCityInput
+    users?: usersCreateNestedManyWithoutCityInput
   }
 
   export type cityUncheckedCreateInput = {
     id?: number
     name: string
+    supplier?: supplierUncheckedCreateNestedManyWithoutCityInput
+    users?: usersUncheckedCreateNestedManyWithoutCityInput
   }
 
   export type cityUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
+    supplier?: supplierUpdateManyWithoutCityNestedInput
+    users?: usersUpdateManyWithoutCityNestedInput
   }
 
   export type cityUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    supplier?: supplierUncheckedUpdateManyWithoutCityNestedInput
+    users?: usersUncheckedUpdateManyWithoutCityNestedInput
   }
 
   export type cityCreateManyInput = {
@@ -25821,20 +28456,28 @@ export namespace Prisma {
 
   export type genderCreateInput = {
     name: string
+    supplier?: supplierCreateNestedManyWithoutGenderInput
+    users?: usersCreateNestedManyWithoutGenderInput
   }
 
   export type genderUncheckedCreateInput = {
     id?: number
     name: string
+    supplier?: supplierUncheckedCreateNestedManyWithoutGenderInput
+    users?: usersUncheckedCreateNestedManyWithoutGenderInput
   }
 
   export type genderUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
+    supplier?: supplierUpdateManyWithoutGenderNestedInput
+    users?: usersUpdateManyWithoutGenderNestedInput
   }
 
   export type genderUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    supplier?: supplierUncheckedUpdateManyWithoutGenderNestedInput
+    users?: usersUncheckedUpdateManyWithoutGenderNestedInput
   }
 
   export type genderCreateManyInput = {
@@ -25855,8 +28498,9 @@ export namespace Prisma {
     date: Date | string
     total: number
     total_qty: number
-    supplier_id: number
-    users_id: number
+    supplier: supplierCreateNestedOneWithoutGrnInput
+    users: usersCreateNestedOneWithoutGrnInput
+    grn_items?: grn_itemsCreateNestedManyWithoutGrnInput
   }
 
   export type grnUncheckedCreateInput = {
@@ -25866,14 +28510,16 @@ export namespace Prisma {
     total_qty: number
     supplier_id: number
     users_id: number
+    grn_items?: grn_itemsUncheckedCreateNestedManyWithoutGrnInput
   }
 
   export type grnUpdateInput = {
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     total?: FloatFieldUpdateOperationsInput | number
     total_qty?: IntFieldUpdateOperationsInput | number
-    supplier_id?: IntFieldUpdateOperationsInput | number
-    users_id?: IntFieldUpdateOperationsInput | number
+    supplier?: supplierUpdateOneRequiredWithoutGrnNestedInput
+    users?: usersUpdateOneRequiredWithoutGrnNestedInput
+    grn_items?: grn_itemsUpdateManyWithoutGrnNestedInput
   }
 
   export type grnUncheckedUpdateInput = {
@@ -25883,6 +28529,7 @@ export namespace Prisma {
     total_qty?: IntFieldUpdateOperationsInput | number
     supplier_id?: IntFieldUpdateOperationsInput | number
     users_id?: IntFieldUpdateOperationsInput | number
+    grn_items?: grn_itemsUncheckedUpdateManyWithoutGrnNestedInput
   }
 
   export type grnCreateManyInput = {
@@ -25898,8 +28545,6 @@ export namespace Prisma {
     date?: DateTimeFieldUpdateOperationsInput | Date | string
     total?: FloatFieldUpdateOperationsInput | number
     total_qty?: IntFieldUpdateOperationsInput | number
-    supplier_id?: IntFieldUpdateOperationsInput | number
-    users_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type grnUncheckedUpdateManyInput = {
@@ -25918,8 +28563,8 @@ export namespace Prisma {
     qty: number
     size_id: number
     desc?: string | null
-    product_type_id: number
-    grn_id: number
+    grn: grnCreateNestedOneWithoutGrn_itemsInput
+    product_type: product_typeCreateNestedOneWithoutGrn_itemsInput
   }
 
   export type grn_itemsUncheckedCreateInput = {
@@ -25941,8 +28586,8 @@ export namespace Prisma {
     qty?: IntFieldUpdateOperationsInput | number
     size_id?: IntFieldUpdateOperationsInput | number
     desc?: NullableStringFieldUpdateOperationsInput | string | null
-    product_type_id?: IntFieldUpdateOperationsInput | number
-    grn_id?: IntFieldUpdateOperationsInput | number
+    grn?: grnUpdateOneRequiredWithoutGrn_itemsNestedInput
+    product_type?: product_typeUpdateOneRequiredWithoutGrn_itemsNestedInput
   }
 
   export type grn_itemsUncheckedUpdateInput = {
@@ -25976,8 +28621,6 @@ export namespace Prisma {
     qty?: IntFieldUpdateOperationsInput | number
     size_id?: IntFieldUpdateOperationsInput | number
     desc?: NullableStringFieldUpdateOperationsInput | string | null
-    product_type_id?: IntFieldUpdateOperationsInput | number
-    grn_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type grn_itemsUncheckedUpdateManyInput = {
@@ -25997,8 +28640,9 @@ export namespace Prisma {
     qty: number
     datetime: Date | string
     discount: number
-    payment_method_id: number
-    users_id: number
+    payment_method: payment_methodCreateNestedOneWithoutInvoiceInput
+    users: usersCreateNestedOneWithoutInvoiceInput
+    invoice_items?: invoice_itemsCreateNestedManyWithoutInvoiceInput
   }
 
   export type invoiceUncheckedCreateInput = {
@@ -26009,6 +28653,7 @@ export namespace Prisma {
     discount: number
     payment_method_id: number
     users_id: number
+    invoice_items?: invoice_itemsUncheckedCreateNestedManyWithoutInvoiceInput
   }
 
   export type invoiceUpdateInput = {
@@ -26016,8 +28661,9 @@ export namespace Prisma {
     qty?: FloatFieldUpdateOperationsInput | number
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     discount?: FloatFieldUpdateOperationsInput | number
-    payment_method_id?: IntFieldUpdateOperationsInput | number
-    users_id?: IntFieldUpdateOperationsInput | number
+    payment_method?: payment_methodUpdateOneRequiredWithoutInvoiceNestedInput
+    users?: usersUpdateOneRequiredWithoutInvoiceNestedInput
+    invoice_items?: invoice_itemsUpdateManyWithoutInvoiceNestedInput
   }
 
   export type invoiceUncheckedUpdateInput = {
@@ -26028,6 +28674,7 @@ export namespace Prisma {
     discount?: FloatFieldUpdateOperationsInput | number
     payment_method_id?: IntFieldUpdateOperationsInput | number
     users_id?: IntFieldUpdateOperationsInput | number
+    invoice_items?: invoice_itemsUncheckedUpdateManyWithoutInvoiceNestedInput
   }
 
   export type invoiceCreateManyInput = {
@@ -26045,8 +28692,6 @@ export namespace Prisma {
     qty?: FloatFieldUpdateOperationsInput | number
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     discount?: FloatFieldUpdateOperationsInput | number
-    payment_method_id?: IntFieldUpdateOperationsInput | number
-    users_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type invoiceUncheckedUpdateManyInput = {
@@ -26065,8 +28710,8 @@ export namespace Prisma {
     product_id: number
     qty: number
     batch_id: number
-    invoice_id: number
-    product_type_id: number
+    invoice: invoiceCreateNestedOneWithoutInvoice_itemsInput
+    product_type: product_typeCreateNestedOneWithoutInvoice_itemsInput
   }
 
   export type invoice_itemsUncheckedCreateInput = {
@@ -26086,8 +28731,8 @@ export namespace Prisma {
     product_id?: IntFieldUpdateOperationsInput | number
     qty?: IntFieldUpdateOperationsInput | number
     batch_id?: IntFieldUpdateOperationsInput | number
-    invoice_id?: IntFieldUpdateOperationsInput | number
-    product_type_id?: IntFieldUpdateOperationsInput | number
+    invoice?: invoiceUpdateOneRequiredWithoutInvoice_itemsNestedInput
+    product_type?: product_typeUpdateOneRequiredWithoutInvoice_itemsNestedInput
   }
 
   export type invoice_itemsUncheckedUpdateInput = {
@@ -26118,8 +28763,6 @@ export namespace Prisma {
     product_id?: IntFieldUpdateOperationsInput | number
     qty?: IntFieldUpdateOperationsInput | number
     batch_id?: IntFieldUpdateOperationsInput | number
-    invoice_id?: IntFieldUpdateOperationsInput | number
-    product_type_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type invoice_itemsUncheckedUpdateManyInput = {
@@ -26135,20 +28778,24 @@ export namespace Prisma {
 
   export type mother_plant_typeCreateInput = {
     name: string
+    product?: productCreateNestedManyWithoutMother_plant_typeInput
   }
 
   export type mother_plant_typeUncheckedCreateInput = {
     id?: number
     name: string
+    product?: productUncheckedCreateNestedManyWithoutMother_plant_typeInput
   }
 
   export type mother_plant_typeUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
+    product?: productUpdateManyWithoutMother_plant_typeNestedInput
   }
 
   export type mother_plant_typeUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    product?: productUncheckedUpdateManyWithoutMother_plant_typeNestedInput
   }
 
   export type mother_plant_typeCreateManyInput = {
@@ -26167,20 +28814,28 @@ export namespace Prisma {
 
   export type payment_methodCreateInput = {
     name: string
+    card_details?: card_detailsCreateNestedManyWithoutPayment_methodInput
+    invoice?: invoiceCreateNestedManyWithoutPayment_methodInput
   }
 
   export type payment_methodUncheckedCreateInput = {
     id?: number
     name: string
+    card_details?: card_detailsUncheckedCreateNestedManyWithoutPayment_methodInput
+    invoice?: invoiceUncheckedCreateNestedManyWithoutPayment_methodInput
   }
 
   export type payment_methodUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
+    card_details?: card_detailsUpdateManyWithoutPayment_methodNestedInput
+    invoice?: invoiceUpdateManyWithoutPayment_methodNestedInput
   }
 
   export type payment_methodUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    card_details?: card_detailsUncheckedUpdateManyWithoutPayment_methodNestedInput
+    invoice?: invoiceUncheckedUpdateManyWithoutPayment_methodNestedInput
   }
 
   export type payment_methodCreateManyInput = {
@@ -26201,6 +28856,7 @@ export namespace Prisma {
     name: string
     price: number
     desc: string
+    pot_batch?: pot_batchCreateNestedManyWithoutPotInput
   }
 
   export type potUncheckedCreateInput = {
@@ -26208,12 +28864,14 @@ export namespace Prisma {
     name: string
     price: number
     desc: string
+    pot_batch?: pot_batchUncheckedCreateNestedManyWithoutPotInput
   }
 
   export type potUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     desc?: StringFieldUpdateOperationsInput | string
+    pot_batch?: pot_batchUpdateManyWithoutPotNestedInput
   }
 
   export type potUncheckedUpdateInput = {
@@ -26221,6 +28879,7 @@ export namespace Prisma {
     name?: StringFieldUpdateOperationsInput | string
     price?: FloatFieldUpdateOperationsInput | number
     desc?: StringFieldUpdateOperationsInput | string
+    pot_batch?: pot_batchUncheckedUpdateManyWithoutPotNestedInput
   }
 
   export type potCreateManyInput = {
@@ -26248,9 +28907,10 @@ export namespace Prisma {
     price: number
     cost: number
     desc?: string | null
-    pot_id: number
-    pot_size_id: number
     code: string
+    pot: potCreateNestedOneWithoutPot_batchInput
+    pot_size: pot_sizeCreateNestedOneWithoutPot_batchInput
+    pot_images?: pot_imagesCreateNestedManyWithoutPot_batchInput
   }
 
   export type pot_batchUncheckedCreateInput = {
@@ -26262,6 +28922,7 @@ export namespace Prisma {
     pot_id: number
     pot_size_id: number
     code: string
+    pot_images?: pot_imagesUncheckedCreateNestedManyWithoutPot_batchInput
   }
 
   export type pot_batchUpdateInput = {
@@ -26269,9 +28930,10 @@ export namespace Prisma {
     price?: FloatFieldUpdateOperationsInput | number
     cost?: FloatFieldUpdateOperationsInput | number
     desc?: NullableStringFieldUpdateOperationsInput | string | null
-    pot_id?: IntFieldUpdateOperationsInput | number
-    pot_size_id?: IntFieldUpdateOperationsInput | number
     code?: StringFieldUpdateOperationsInput | string
+    pot?: potUpdateOneRequiredWithoutPot_batchNestedInput
+    pot_size?: pot_sizeUpdateOneRequiredWithoutPot_batchNestedInput
+    pot_images?: pot_imagesUpdateManyWithoutPot_batchNestedInput
   }
 
   export type pot_batchUncheckedUpdateInput = {
@@ -26283,6 +28945,7 @@ export namespace Prisma {
     pot_id?: IntFieldUpdateOperationsInput | number
     pot_size_id?: IntFieldUpdateOperationsInput | number
     code?: StringFieldUpdateOperationsInput | string
+    pot_images?: pot_imagesUncheckedUpdateManyWithoutPot_batchNestedInput
   }
 
   export type pot_batchCreateManyInput = {
@@ -26301,8 +28964,6 @@ export namespace Prisma {
     price?: FloatFieldUpdateOperationsInput | number
     cost?: FloatFieldUpdateOperationsInput | number
     desc?: NullableStringFieldUpdateOperationsInput | string | null
-    pot_id?: IntFieldUpdateOperationsInput | number
-    pot_size_id?: IntFieldUpdateOperationsInput | number
     code?: StringFieldUpdateOperationsInput | string
   }
 
@@ -26317,26 +28978,68 @@ export namespace Prisma {
     code?: StringFieldUpdateOperationsInput | string
   }
 
+  export type pot_imagesCreateInput = {
+    name: string
+    pot_batch: pot_batchCreateNestedOneWithoutPot_imagesInput
+  }
+
+  export type pot_imagesUncheckedCreateInput = {
+    id?: number
+    name: string
+    pot_batch_id: number
+  }
+
+  export type pot_imagesUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    pot_batch?: pot_batchUpdateOneRequiredWithoutPot_imagesNestedInput
+  }
+
+  export type pot_imagesUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    pot_batch_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type pot_imagesCreateManyInput = {
+    id?: number
+    name: string
+    pot_batch_id: number
+  }
+
+  export type pot_imagesUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type pot_imagesUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    pot_batch_id?: IntFieldUpdateOperationsInput | number
+  }
+
   export type pot_sizeCreateInput = {
     size: string
     short_key: string
+    pot_batch?: pot_batchCreateNestedManyWithoutPot_sizeInput
   }
 
   export type pot_sizeUncheckedCreateInput = {
     id?: number
     size: string
     short_key: string
+    pot_batch?: pot_batchUncheckedCreateNestedManyWithoutPot_sizeInput
   }
 
   export type pot_sizeUpdateInput = {
     size?: StringFieldUpdateOperationsInput | string
     short_key?: StringFieldUpdateOperationsInput | string
+    pot_batch?: pot_batchUpdateManyWithoutPot_sizeNestedInput
   }
 
   export type pot_sizeUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     size?: StringFieldUpdateOperationsInput | string
     short_key?: StringFieldUpdateOperationsInput | string
+    pot_batch?: pot_batchUncheckedUpdateManyWithoutPot_sizeNestedInput
   }
 
   export type pot_sizeCreateManyInput = {
@@ -26359,9 +29062,10 @@ export namespace Prisma {
   export type productCreateInput = {
     name: string
     desc?: string | null
-    mother_plant_type_id: number
-    category_id: number
     isActive?: boolean
+    batch?: batchCreateNestedManyWithoutProductInput
+    category: categoryCreateNestedOneWithoutProductInput
+    mother_plant_type: mother_plant_typeCreateNestedOneWithoutProductInput
   }
 
   export type productUncheckedCreateInput = {
@@ -26371,14 +29075,16 @@ export namespace Prisma {
     mother_plant_type_id: number
     category_id: number
     isActive?: boolean
+    batch?: batchUncheckedCreateNestedManyWithoutProductInput
   }
 
   export type productUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
     desc?: NullableStringFieldUpdateOperationsInput | string | null
-    mother_plant_type_id?: IntFieldUpdateOperationsInput | number
-    category_id?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    batch?: batchUpdateManyWithoutProductNestedInput
+    category?: categoryUpdateOneRequiredWithoutProductNestedInput
+    mother_plant_type?: mother_plant_typeUpdateOneRequiredWithoutProductNestedInput
   }
 
   export type productUncheckedUpdateInput = {
@@ -26388,6 +29094,7 @@ export namespace Prisma {
     mother_plant_type_id?: IntFieldUpdateOperationsInput | number
     category_id?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
+    batch?: batchUncheckedUpdateManyWithoutProductNestedInput
   }
 
   export type productCreateManyInput = {
@@ -26402,8 +29109,6 @@ export namespace Prisma {
   export type productUpdateManyMutationInput = {
     name?: StringFieldUpdateOperationsInput | string
     desc?: NullableStringFieldUpdateOperationsInput | string | null
-    mother_plant_type_id?: IntFieldUpdateOperationsInput | number
-    category_id?: IntFieldUpdateOperationsInput | number
     isActive?: BoolFieldUpdateOperationsInput | boolean
   }
 
@@ -26416,22 +29121,68 @@ export namespace Prisma {
     isActive?: BoolFieldUpdateOperationsInput | boolean
   }
 
+  export type product_imagesCreateInput = {
+    name: string
+    batch: batchCreateNestedOneWithoutProduct_imagesInput
+  }
+
+  export type product_imagesUncheckedCreateInput = {
+    id?: number
+    name: string
+    batch_id: number
+  }
+
+  export type product_imagesUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    batch?: batchUpdateOneRequiredWithoutProduct_imagesNestedInput
+  }
+
+  export type product_imagesUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    batch_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type product_imagesCreateManyInput = {
+    id?: number
+    name: string
+    batch_id: number
+  }
+
+  export type product_imagesUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type product_imagesUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    batch_id?: IntFieldUpdateOperationsInput | number
+  }
+
   export type product_typeCreateInput = {
     name: string
+    grn_items?: grn_itemsCreateNestedManyWithoutProduct_typeInput
+    invoice_items?: invoice_itemsCreateNestedManyWithoutProduct_typeInput
   }
 
   export type product_typeUncheckedCreateInput = {
     id?: number
     name: string
+    grn_items?: grn_itemsUncheckedCreateNestedManyWithoutProduct_typeInput
+    invoice_items?: invoice_itemsUncheckedCreateNestedManyWithoutProduct_typeInput
   }
 
   export type product_typeUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
+    grn_items?: grn_itemsUpdateManyWithoutProduct_typeNestedInput
+    invoice_items?: invoice_itemsUpdateManyWithoutProduct_typeNestedInput
   }
 
   export type product_typeUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    grn_items?: grn_itemsUncheckedUpdateManyWithoutProduct_typeNestedInput
+    invoice_items?: invoice_itemsUncheckedUpdateManyWithoutProduct_typeNestedInput
   }
 
   export type product_typeCreateManyInput = {
@@ -26451,23 +29202,27 @@ export namespace Prisma {
   export type sizeCreateInput = {
     size: string
     short_key: string
+    batch?: batchCreateNestedManyWithoutSizeInput
   }
 
   export type sizeUncheckedCreateInput = {
     id?: number
     size: string
     short_key: string
+    batch?: batchUncheckedCreateNestedManyWithoutSizeInput
   }
 
   export type sizeUpdateInput = {
     size?: StringFieldUpdateOperationsInput | string
     short_key?: StringFieldUpdateOperationsInput | string
+    batch?: batchUpdateManyWithoutSizeNestedInput
   }
 
   export type sizeUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     size?: StringFieldUpdateOperationsInput | string
     short_key?: StringFieldUpdateOperationsInput | string
+    batch?: batchUncheckedUpdateManyWithoutSizeNestedInput
   }
 
   export type sizeCreateManyInput = {
@@ -26489,20 +29244,28 @@ export namespace Prisma {
 
   export type statusCreateInput = {
     name: string
+    supplier?: supplierCreateNestedManyWithoutStatusInput
+    users?: usersCreateNestedManyWithoutStatusInput
   }
 
   export type statusUncheckedCreateInput = {
     id?: number
     name: string
+    supplier?: supplierUncheckedCreateNestedManyWithoutStatusInput
+    users?: usersUncheckedCreateNestedManyWithoutStatusInput
   }
 
   export type statusUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
+    supplier?: supplierUpdateManyWithoutStatusNestedInput
+    users?: usersUpdateManyWithoutStatusNestedInput
   }
 
   export type statusUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    supplier?: supplierUncheckedUpdateManyWithoutStatusNestedInput
+    users?: usersUncheckedUpdateManyWithoutStatusNestedInput
   }
 
   export type statusCreateManyInput = {
@@ -26526,9 +29289,10 @@ export namespace Prisma {
     mobile: string
     email: string
     isActive: boolean
-    status_id: number
-    gender_id: number
-    city_id: number
+    grn?: grnCreateNestedManyWithoutSupplierInput
+    city: cityCreateNestedOneWithoutSupplierInput
+    gender: genderCreateNestedOneWithoutSupplierInput
+    status: statusCreateNestedOneWithoutSupplierInput
   }
 
   export type supplierUncheckedCreateInput = {
@@ -26542,6 +29306,7 @@ export namespace Prisma {
     status_id: number
     gender_id: number
     city_id: number
+    grn?: grnUncheckedCreateNestedManyWithoutSupplierInput
   }
 
   export type supplierUpdateInput = {
@@ -26551,9 +29316,10 @@ export namespace Prisma {
     mobile?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
-    status_id?: IntFieldUpdateOperationsInput | number
-    gender_id?: IntFieldUpdateOperationsInput | number
-    city_id?: IntFieldUpdateOperationsInput | number
+    grn?: grnUpdateManyWithoutSupplierNestedInput
+    city?: cityUpdateOneRequiredWithoutSupplierNestedInput
+    gender?: genderUpdateOneRequiredWithoutSupplierNestedInput
+    status?: statusUpdateOneRequiredWithoutSupplierNestedInput
   }
 
   export type supplierUncheckedUpdateInput = {
@@ -26567,6 +29333,7 @@ export namespace Prisma {
     status_id?: IntFieldUpdateOperationsInput | number
     gender_id?: IntFieldUpdateOperationsInput | number
     city_id?: IntFieldUpdateOperationsInput | number
+    grn?: grnUncheckedUpdateManyWithoutSupplierNestedInput
   }
 
   export type supplierCreateManyInput = {
@@ -26589,9 +29356,6 @@ export namespace Prisma {
     mobile?: StringFieldUpdateOperationsInput | string
     email?: StringFieldUpdateOperationsInput | string
     isActive?: BoolFieldUpdateOperationsInput | boolean
-    status_id?: IntFieldUpdateOperationsInput | number
-    gender_id?: IntFieldUpdateOperationsInput | number
-    city_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type supplierUncheckedUpdateManyInput = {
@@ -26609,20 +29373,24 @@ export namespace Prisma {
 
   export type user_roleCreateInput = {
     name: string
+    users?: usersCreateNestedManyWithoutUser_roleInput
   }
 
   export type user_roleUncheckedCreateInput = {
     id?: number
     name: string
+    users?: usersUncheckedCreateNestedManyWithoutUser_roleInput
   }
 
   export type user_roleUpdateInput = {
     name?: StringFieldUpdateOperationsInput | string
+    users?: usersUpdateManyWithoutUser_roleNestedInput
   }
 
   export type user_roleUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+    users?: usersUncheckedUpdateManyWithoutUser_roleNestedInput
   }
 
   export type user_roleCreateManyInput = {
@@ -26648,10 +29416,13 @@ export namespace Prisma {
     password: string
     mobile: string
     p_img?: string | null
-    user_role_id: number
-    gender_id: number
-    city_id: number
-    status_id: number
+    card_details?: card_detailsCreateNestedManyWithoutUsersInput
+    grn?: grnCreateNestedManyWithoutUsersInput
+    invoice?: invoiceCreateNestedManyWithoutUsersInput
+    city: cityCreateNestedOneWithoutUsersInput
+    gender: genderCreateNestedOneWithoutUsersInput
+    status: statusCreateNestedOneWithoutUsersInput
+    user_role: user_roleCreateNestedOneWithoutUsersInput
   }
 
   export type usersUncheckedCreateInput = {
@@ -26668,6 +29439,9 @@ export namespace Prisma {
     gender_id: number
     city_id: number
     status_id: number
+    card_details?: card_detailsUncheckedCreateNestedManyWithoutUsersInput
+    grn?: grnUncheckedCreateNestedManyWithoutUsersInput
+    invoice?: invoiceUncheckedCreateNestedManyWithoutUsersInput
   }
 
   export type usersUpdateInput = {
@@ -26679,10 +29453,13 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     p_img?: NullableStringFieldUpdateOperationsInput | string | null
-    user_role_id?: IntFieldUpdateOperationsInput | number
-    gender_id?: IntFieldUpdateOperationsInput | number
-    city_id?: IntFieldUpdateOperationsInput | number
-    status_id?: IntFieldUpdateOperationsInput | number
+    card_details?: card_detailsUpdateManyWithoutUsersNestedInput
+    grn?: grnUpdateManyWithoutUsersNestedInput
+    invoice?: invoiceUpdateManyWithoutUsersNestedInput
+    city?: cityUpdateOneRequiredWithoutUsersNestedInput
+    gender?: genderUpdateOneRequiredWithoutUsersNestedInput
+    status?: statusUpdateOneRequiredWithoutUsersNestedInput
+    user_role?: user_roleUpdateOneRequiredWithoutUsersNestedInput
   }
 
   export type usersUncheckedUpdateInput = {
@@ -26699,6 +29476,9 @@ export namespace Prisma {
     gender_id?: IntFieldUpdateOperationsInput | number
     city_id?: IntFieldUpdateOperationsInput | number
     status_id?: IntFieldUpdateOperationsInput | number
+    card_details?: card_detailsUncheckedUpdateManyWithoutUsersNestedInput
+    grn?: grnUncheckedUpdateManyWithoutUsersNestedInput
+    invoice?: invoiceUncheckedUpdateManyWithoutUsersNestedInput
   }
 
   export type usersCreateManyInput = {
@@ -26726,10 +29506,6 @@ export namespace Prisma {
     password?: StringFieldUpdateOperationsInput | string
     mobile?: StringFieldUpdateOperationsInput | string
     p_img?: NullableStringFieldUpdateOperationsInput | string | null
-    user_role_id?: IntFieldUpdateOperationsInput | number
-    gender_id?: IntFieldUpdateOperationsInput | number
-    city_id?: IntFieldUpdateOperationsInput | number
-    status_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type usersUncheckedUpdateManyInput = {
@@ -26746,84 +29522,6 @@ export namespace Prisma {
     gender_id?: IntFieldUpdateOperationsInput | number
     city_id?: IntFieldUpdateOperationsInput | number
     status_id?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type pot_imagesCreateInput = {
-    name: string
-    pot_batch_id: number
-  }
-
-  export type pot_imagesUncheckedCreateInput = {
-    id?: number
-    name: string
-    pot_batch_id: number
-  }
-
-  export type pot_imagesUpdateInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    pot_batch_id?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type pot_imagesUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    pot_batch_id?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type pot_imagesCreateManyInput = {
-    id?: number
-    name: string
-    pot_batch_id: number
-  }
-
-  export type pot_imagesUpdateManyMutationInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    pot_batch_id?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type pot_imagesUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    pot_batch_id?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type product_imagesCreateInput = {
-    name: string
-    batch_id: number
-  }
-
-  export type product_imagesUncheckedCreateInput = {
-    id?: number
-    name: string
-    batch_id: number
-  }
-
-  export type product_imagesUpdateInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    batch_id?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type product_imagesUncheckedUpdateInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    batch_id?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type product_imagesCreateManyInput = {
-    id?: number
-    name: string
-    batch_id: number
-  }
-
-  export type product_imagesUpdateManyMutationInput = {
-    name?: StringFieldUpdateOperationsInput | string
-    batch_id?: IntFieldUpdateOperationsInput | number
-  }
-
-  export type product_imagesUncheckedUpdateManyInput = {
-    id?: IntFieldUpdateOperationsInput | number
-    name?: StringFieldUpdateOperationsInput | string
-    batch_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type IntFilter<$PrismaModel = never> = {
@@ -26878,9 +29576,29 @@ export namespace Prisma {
     not?: NestedStringFilter<$PrismaModel> | string
   }
 
+  export type ProductScalarRelationFilter = {
+    is?: productWhereInput
+    isNot?: productWhereInput
+  }
+
+  export type SizeScalarRelationFilter = {
+    is?: sizeWhereInput
+    isNot?: sizeWhereInput
+  }
+
+  export type Product_imagesListRelationFilter = {
+    every?: product_imagesWhereInput
+    some?: product_imagesWhereInput
+    none?: product_imagesWhereInput
+  }
+
   export type SortOrderInput = {
     sort: SortOrder
     nulls?: NullsOrder
+  }
+
+  export type product_imagesOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type batchOrderByRelevanceInput = {
@@ -27019,6 +29737,16 @@ export namespace Prisma {
     not?: NestedIntNullableFilter<$PrismaModel> | number | null
   }
 
+  export type Payment_methodScalarRelationFilter = {
+    is?: payment_methodWhereInput
+    isNot?: payment_methodWhereInput
+  }
+
+  export type UsersScalarRelationFilter = {
+    is?: usersWhereInput
+    isNot?: usersWhereInput
+  }
+
   export type card_detailsOrderByRelevanceInput = {
     fields: card_detailsOrderByRelevanceFieldEnum | card_detailsOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -27031,6 +29759,7 @@ export namespace Prisma {
     payment_method_id?: SortOrder
     cvv?: SortOrder
     exp?: SortOrder
+    users_id?: SortOrder
   }
 
   export type card_detailsAvgOrderByAggregateInput = {
@@ -27038,6 +29767,7 @@ export namespace Prisma {
     card_no?: SortOrder
     payment_method_id?: SortOrder
     cvv?: SortOrder
+    users_id?: SortOrder
   }
 
   export type card_detailsMaxOrderByAggregateInput = {
@@ -27046,6 +29776,7 @@ export namespace Prisma {
     payment_method_id?: SortOrder
     cvv?: SortOrder
     exp?: SortOrder
+    users_id?: SortOrder
   }
 
   export type card_detailsMinOrderByAggregateInput = {
@@ -27054,6 +29785,7 @@ export namespace Prisma {
     payment_method_id?: SortOrder
     cvv?: SortOrder
     exp?: SortOrder
+    users_id?: SortOrder
   }
 
   export type card_detailsSumOrderByAggregateInput = {
@@ -27061,6 +29793,7 @@ export namespace Prisma {
     card_no?: SortOrder
     payment_method_id?: SortOrder
     cvv?: SortOrder
+    users_id?: SortOrder
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -27077,6 +29810,16 @@ export namespace Prisma {
     _sum?: NestedIntNullableFilter<$PrismaModel>
     _min?: NestedIntNullableFilter<$PrismaModel>
     _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type ProductListRelationFilter = {
+    every?: productWhereInput
+    some?: productWhereInput
+    none?: productWhereInput
+  }
+
+  export type productOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type categoryOrderByRelevanceInput = {
@@ -27106,6 +29849,26 @@ export namespace Prisma {
 
   export type categorySumOrderByAggregateInput = {
     id?: SortOrder
+  }
+
+  export type SupplierListRelationFilter = {
+    every?: supplierWhereInput
+    some?: supplierWhereInput
+    none?: supplierWhereInput
+  }
+
+  export type UsersListRelationFilter = {
+    every?: usersWhereInput
+    some?: usersWhereInput
+    none?: usersWhereInput
+  }
+
+  export type supplierOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type usersOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type cityOrderByRelevanceInput = {
@@ -27177,6 +29940,21 @@ export namespace Prisma {
     not?: NestedDateTimeFilter<$PrismaModel> | Date | string
   }
 
+  export type SupplierScalarRelationFilter = {
+    is?: supplierWhereInput
+    isNot?: supplierWhereInput
+  }
+
+  export type Grn_itemsListRelationFilter = {
+    every?: grn_itemsWhereInput
+    some?: grn_itemsWhereInput
+    none?: grn_itemsWhereInput
+  }
+
+  export type grn_itemsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type grnCountOrderByAggregateInput = {
     id?: SortOrder
     date?: SortOrder
@@ -27232,6 +30010,16 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedDateTimeFilter<$PrismaModel>
     _max?: NestedDateTimeFilter<$PrismaModel>
+  }
+
+  export type GrnScalarRelationFilter = {
+    is?: grnWhereInput
+    isNot?: grnWhereInput
+  }
+
+  export type Product_typeScalarRelationFilter = {
+    is?: product_typeWhereInput
+    isNot?: product_typeWhereInput
   }
 
   export type grn_itemsOrderByRelevanceInput = {
@@ -27298,6 +30086,16 @@ export namespace Prisma {
     grn_id?: SortOrder
   }
 
+  export type Invoice_itemsListRelationFilter = {
+    every?: invoice_itemsWhereInput
+    some?: invoice_itemsWhereInput
+    none?: invoice_itemsWhereInput
+  }
+
+  export type invoice_itemsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type invoiceCountOrderByAggregateInput = {
     id?: SortOrder
     total?: SortOrder
@@ -27344,6 +30142,11 @@ export namespace Prisma {
     discount?: SortOrder
     payment_method_id?: SortOrder
     users_id?: SortOrder
+  }
+
+  export type InvoiceScalarRelationFilter = {
+    is?: invoiceWhereInput
+    isNot?: invoiceWhereInput
   }
 
   export type invoice_itemsCountOrderByAggregateInput = {
@@ -27430,6 +30233,26 @@ export namespace Prisma {
     id?: SortOrder
   }
 
+  export type Card_detailsListRelationFilter = {
+    every?: card_detailsWhereInput
+    some?: card_detailsWhereInput
+    none?: card_detailsWhereInput
+  }
+
+  export type InvoiceListRelationFilter = {
+    every?: invoiceWhereInput
+    some?: invoiceWhereInput
+    none?: invoiceWhereInput
+  }
+
+  export type card_detailsOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
+  export type invoiceOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type payment_methodOrderByRelevanceInput = {
     fields: payment_methodOrderByRelevanceFieldEnum | payment_methodOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -27457,6 +30280,16 @@ export namespace Prisma {
 
   export type payment_methodSumOrderByAggregateInput = {
     id?: SortOrder
+  }
+
+  export type Pot_batchListRelationFilter = {
+    every?: pot_batchWhereInput
+    some?: pot_batchWhereInput
+    none?: pot_batchWhereInput
+  }
+
+  export type pot_batchOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type potOrderByRelevanceInput = {
@@ -27494,6 +30327,26 @@ export namespace Prisma {
   export type potSumOrderByAggregateInput = {
     id?: SortOrder
     price?: SortOrder
+  }
+
+  export type PotScalarRelationFilter = {
+    is?: potWhereInput
+    isNot?: potWhereInput
+  }
+
+  export type Pot_sizeScalarRelationFilter = {
+    is?: pot_sizeWhereInput
+    isNot?: pot_sizeWhereInput
+  }
+
+  export type Pot_imagesListRelationFilter = {
+    every?: pot_imagesWhereInput
+    some?: pot_imagesWhereInput
+    none?: pot_imagesWhereInput
+  }
+
+  export type pot_imagesOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type pot_batchOrderByRelevanceInput = {
@@ -27553,6 +30406,45 @@ export namespace Prisma {
     pot_size_id?: SortOrder
   }
 
+  export type Pot_batchScalarRelationFilter = {
+    is?: pot_batchWhereInput
+    isNot?: pot_batchWhereInput
+  }
+
+  export type pot_imagesOrderByRelevanceInput = {
+    fields: pot_imagesOrderByRelevanceFieldEnum | pot_imagesOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type pot_imagesCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    pot_batch_id?: SortOrder
+  }
+
+  export type pot_imagesAvgOrderByAggregateInput = {
+    id?: SortOrder
+    pot_batch_id?: SortOrder
+  }
+
+  export type pot_imagesMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    pot_batch_id?: SortOrder
+  }
+
+  export type pot_imagesMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    pot_batch_id?: SortOrder
+  }
+
+  export type pot_imagesSumOrderByAggregateInput = {
+    id?: SortOrder
+    pot_batch_id?: SortOrder
+  }
+
   export type pot_sizeOrderByRelevanceInput = {
     fields: pot_sizeOrderByRelevanceFieldEnum | pot_sizeOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -27588,6 +30480,26 @@ export namespace Prisma {
   export type BoolFilter<$PrismaModel = never> = {
     equals?: boolean | BooleanFieldRefInput<$PrismaModel>
     not?: NestedBoolFilter<$PrismaModel> | boolean
+  }
+
+  export type BatchListRelationFilter = {
+    every?: batchWhereInput
+    some?: batchWhereInput
+    none?: batchWhereInput
+  }
+
+  export type CategoryScalarRelationFilter = {
+    is?: categoryWhereInput
+    isNot?: categoryWhereInput
+  }
+
+  export type Mother_plant_typeScalarRelationFilter = {
+    is?: mother_plant_typeWhereInput
+    isNot?: mother_plant_typeWhereInput
+  }
+
+  export type batchOrderByRelationAggregateInput = {
+    _count?: SortOrder
   }
 
   export type productOrderByRelevanceInput = {
@@ -27641,6 +30553,45 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type BatchScalarRelationFilter = {
+    is?: batchWhereInput
+    isNot?: batchWhereInput
+  }
+
+  export type product_imagesOrderByRelevanceInput = {
+    fields: product_imagesOrderByRelevanceFieldEnum | product_imagesOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type product_imagesCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    batch_id?: SortOrder
+  }
+
+  export type product_imagesAvgOrderByAggregateInput = {
+    id?: SortOrder
+    batch_id?: SortOrder
+  }
+
+  export type product_imagesMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    batch_id?: SortOrder
+  }
+
+  export type product_imagesMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+    batch_id?: SortOrder
+  }
+
+  export type product_imagesSumOrderByAggregateInput = {
+    id?: SortOrder
+    batch_id?: SortOrder
   }
 
   export type product_typeOrderByRelevanceInput = {
@@ -27733,6 +30684,31 @@ export namespace Prisma {
     id?: SortOrder
   }
 
+  export type GrnListRelationFilter = {
+    every?: grnWhereInput
+    some?: grnWhereInput
+    none?: grnWhereInput
+  }
+
+  export type CityScalarRelationFilter = {
+    is?: cityWhereInput
+    isNot?: cityWhereInput
+  }
+
+  export type GenderScalarRelationFilter = {
+    is?: genderWhereInput
+    isNot?: genderWhereInput
+  }
+
+  export type StatusScalarRelationFilter = {
+    is?: statusWhereInput
+    isNot?: statusWhereInput
+  }
+
+  export type grnOrderByRelationAggregateInput = {
+    _count?: SortOrder
+  }
+
   export type supplierOrderByRelevanceInput = {
     fields: supplierOrderByRelevanceFieldEnum | supplierOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -27821,6 +30797,11 @@ export namespace Prisma {
     id?: SortOrder
   }
 
+  export type User_roleScalarRelationFilter = {
+    is?: user_roleWhereInput
+    isNot?: user_roleWhereInput
+  }
+
   export type usersOrderByRelevanceInput = {
     fields: usersOrderByRelevanceFieldEnum | usersOrderByRelevanceFieldEnum[]
     sort: SortOrder
@@ -27891,72 +30872,30 @@ export namespace Prisma {
     status_id?: SortOrder
   }
 
-  export type pot_imagesOrderByRelevanceInput = {
-    fields: pot_imagesOrderByRelevanceFieldEnum | pot_imagesOrderByRelevanceFieldEnum[]
-    sort: SortOrder
-    search: string
+  export type productCreateNestedOneWithoutBatchInput = {
+    create?: XOR<productCreateWithoutBatchInput, productUncheckedCreateWithoutBatchInput>
+    connectOrCreate?: productCreateOrConnectWithoutBatchInput
+    connect?: productWhereUniqueInput
   }
 
-  export type pot_imagesCountOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    pot_batch_id?: SortOrder
+  export type sizeCreateNestedOneWithoutBatchInput = {
+    create?: XOR<sizeCreateWithoutBatchInput, sizeUncheckedCreateWithoutBatchInput>
+    connectOrCreate?: sizeCreateOrConnectWithoutBatchInput
+    connect?: sizeWhereUniqueInput
   }
 
-  export type pot_imagesAvgOrderByAggregateInput = {
-    id?: SortOrder
-    pot_batch_id?: SortOrder
+  export type product_imagesCreateNestedManyWithoutBatchInput = {
+    create?: XOR<product_imagesCreateWithoutBatchInput, product_imagesUncheckedCreateWithoutBatchInput> | product_imagesCreateWithoutBatchInput[] | product_imagesUncheckedCreateWithoutBatchInput[]
+    connectOrCreate?: product_imagesCreateOrConnectWithoutBatchInput | product_imagesCreateOrConnectWithoutBatchInput[]
+    createMany?: product_imagesCreateManyBatchInputEnvelope
+    connect?: product_imagesWhereUniqueInput | product_imagesWhereUniqueInput[]
   }
 
-  export type pot_imagesMaxOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    pot_batch_id?: SortOrder
-  }
-
-  export type pot_imagesMinOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    pot_batch_id?: SortOrder
-  }
-
-  export type pot_imagesSumOrderByAggregateInput = {
-    id?: SortOrder
-    pot_batch_id?: SortOrder
-  }
-
-  export type product_imagesOrderByRelevanceInput = {
-    fields: product_imagesOrderByRelevanceFieldEnum | product_imagesOrderByRelevanceFieldEnum[]
-    sort: SortOrder
-    search: string
-  }
-
-  export type product_imagesCountOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    batch_id?: SortOrder
-  }
-
-  export type product_imagesAvgOrderByAggregateInput = {
-    id?: SortOrder
-    batch_id?: SortOrder
-  }
-
-  export type product_imagesMaxOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    batch_id?: SortOrder
-  }
-
-  export type product_imagesMinOrderByAggregateInput = {
-    id?: SortOrder
-    name?: SortOrder
-    batch_id?: SortOrder
-  }
-
-  export type product_imagesSumOrderByAggregateInput = {
-    id?: SortOrder
-    batch_id?: SortOrder
+  export type product_imagesUncheckedCreateNestedManyWithoutBatchInput = {
+    create?: XOR<product_imagesCreateWithoutBatchInput, product_imagesUncheckedCreateWithoutBatchInput> | product_imagesCreateWithoutBatchInput[] | product_imagesUncheckedCreateWithoutBatchInput[]
+    connectOrCreate?: product_imagesCreateOrConnectWithoutBatchInput | product_imagesCreateOrConnectWithoutBatchInput[]
+    createMany?: product_imagesCreateManyBatchInputEnvelope
+    connect?: product_imagesWhereUniqueInput | product_imagesWhereUniqueInput[]
   }
 
   export type IntFieldUpdateOperationsInput = {
@@ -27983,6 +30922,62 @@ export namespace Prisma {
     set?: string
   }
 
+  export type productUpdateOneRequiredWithoutBatchNestedInput = {
+    create?: XOR<productCreateWithoutBatchInput, productUncheckedCreateWithoutBatchInput>
+    connectOrCreate?: productCreateOrConnectWithoutBatchInput
+    upsert?: productUpsertWithoutBatchInput
+    connect?: productWhereUniqueInput
+    update?: XOR<XOR<productUpdateToOneWithWhereWithoutBatchInput, productUpdateWithoutBatchInput>, productUncheckedUpdateWithoutBatchInput>
+  }
+
+  export type sizeUpdateOneRequiredWithoutBatchNestedInput = {
+    create?: XOR<sizeCreateWithoutBatchInput, sizeUncheckedCreateWithoutBatchInput>
+    connectOrCreate?: sizeCreateOrConnectWithoutBatchInput
+    upsert?: sizeUpsertWithoutBatchInput
+    connect?: sizeWhereUniqueInput
+    update?: XOR<XOR<sizeUpdateToOneWithWhereWithoutBatchInput, sizeUpdateWithoutBatchInput>, sizeUncheckedUpdateWithoutBatchInput>
+  }
+
+  export type product_imagesUpdateManyWithoutBatchNestedInput = {
+    create?: XOR<product_imagesCreateWithoutBatchInput, product_imagesUncheckedCreateWithoutBatchInput> | product_imagesCreateWithoutBatchInput[] | product_imagesUncheckedCreateWithoutBatchInput[]
+    connectOrCreate?: product_imagesCreateOrConnectWithoutBatchInput | product_imagesCreateOrConnectWithoutBatchInput[]
+    upsert?: product_imagesUpsertWithWhereUniqueWithoutBatchInput | product_imagesUpsertWithWhereUniqueWithoutBatchInput[]
+    createMany?: product_imagesCreateManyBatchInputEnvelope
+    set?: product_imagesWhereUniqueInput | product_imagesWhereUniqueInput[]
+    disconnect?: product_imagesWhereUniqueInput | product_imagesWhereUniqueInput[]
+    delete?: product_imagesWhereUniqueInput | product_imagesWhereUniqueInput[]
+    connect?: product_imagesWhereUniqueInput | product_imagesWhereUniqueInput[]
+    update?: product_imagesUpdateWithWhereUniqueWithoutBatchInput | product_imagesUpdateWithWhereUniqueWithoutBatchInput[]
+    updateMany?: product_imagesUpdateManyWithWhereWithoutBatchInput | product_imagesUpdateManyWithWhereWithoutBatchInput[]
+    deleteMany?: product_imagesScalarWhereInput | product_imagesScalarWhereInput[]
+  }
+
+  export type product_imagesUncheckedUpdateManyWithoutBatchNestedInput = {
+    create?: XOR<product_imagesCreateWithoutBatchInput, product_imagesUncheckedCreateWithoutBatchInput> | product_imagesCreateWithoutBatchInput[] | product_imagesUncheckedCreateWithoutBatchInput[]
+    connectOrCreate?: product_imagesCreateOrConnectWithoutBatchInput | product_imagesCreateOrConnectWithoutBatchInput[]
+    upsert?: product_imagesUpsertWithWhereUniqueWithoutBatchInput | product_imagesUpsertWithWhereUniqueWithoutBatchInput[]
+    createMany?: product_imagesCreateManyBatchInputEnvelope
+    set?: product_imagesWhereUniqueInput | product_imagesWhereUniqueInput[]
+    disconnect?: product_imagesWhereUniqueInput | product_imagesWhereUniqueInput[]
+    delete?: product_imagesWhereUniqueInput | product_imagesWhereUniqueInput[]
+    connect?: product_imagesWhereUniqueInput | product_imagesWhereUniqueInput[]
+    update?: product_imagesUpdateWithWhereUniqueWithoutBatchInput | product_imagesUpdateWithWhereUniqueWithoutBatchInput[]
+    updateMany?: product_imagesUpdateManyWithWhereWithoutBatchInput | product_imagesUpdateManyWithWhereWithoutBatchInput[]
+    deleteMany?: product_imagesScalarWhereInput | product_imagesScalarWhereInput[]
+  }
+
+  export type payment_methodCreateNestedOneWithoutCard_detailsInput = {
+    create?: XOR<payment_methodCreateWithoutCard_detailsInput, payment_methodUncheckedCreateWithoutCard_detailsInput>
+    connectOrCreate?: payment_methodCreateOrConnectWithoutCard_detailsInput
+    connect?: payment_methodWhereUniqueInput
+  }
+
+  export type usersCreateNestedOneWithoutCard_detailsInput = {
+    create?: XOR<usersCreateWithoutCard_detailsInput, usersUncheckedCreateWithoutCard_detailsInput>
+    connectOrCreate?: usersCreateOrConnectWithoutCard_detailsInput
+    connect?: usersWhereUniqueInput
+  }
+
   export type NullableIntFieldUpdateOperationsInput = {
     set?: number | null
     increment?: number
@@ -27991,12 +30986,1330 @@ export namespace Prisma {
     divide?: number
   }
 
+  export type payment_methodUpdateOneRequiredWithoutCard_detailsNestedInput = {
+    create?: XOR<payment_methodCreateWithoutCard_detailsInput, payment_methodUncheckedCreateWithoutCard_detailsInput>
+    connectOrCreate?: payment_methodCreateOrConnectWithoutCard_detailsInput
+    upsert?: payment_methodUpsertWithoutCard_detailsInput
+    connect?: payment_methodWhereUniqueInput
+    update?: XOR<XOR<payment_methodUpdateToOneWithWhereWithoutCard_detailsInput, payment_methodUpdateWithoutCard_detailsInput>, payment_methodUncheckedUpdateWithoutCard_detailsInput>
+  }
+
+  export type usersUpdateOneRequiredWithoutCard_detailsNestedInput = {
+    create?: XOR<usersCreateWithoutCard_detailsInput, usersUncheckedCreateWithoutCard_detailsInput>
+    connectOrCreate?: usersCreateOrConnectWithoutCard_detailsInput
+    upsert?: usersUpsertWithoutCard_detailsInput
+    connect?: usersWhereUniqueInput
+    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutCard_detailsInput, usersUpdateWithoutCard_detailsInput>, usersUncheckedUpdateWithoutCard_detailsInput>
+  }
+
+  export type productCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<productCreateWithoutCategoryInput, productUncheckedCreateWithoutCategoryInput> | productCreateWithoutCategoryInput[] | productUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: productCreateOrConnectWithoutCategoryInput | productCreateOrConnectWithoutCategoryInput[]
+    createMany?: productCreateManyCategoryInputEnvelope
+    connect?: productWhereUniqueInput | productWhereUniqueInput[]
+  }
+
+  export type productUncheckedCreateNestedManyWithoutCategoryInput = {
+    create?: XOR<productCreateWithoutCategoryInput, productUncheckedCreateWithoutCategoryInput> | productCreateWithoutCategoryInput[] | productUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: productCreateOrConnectWithoutCategoryInput | productCreateOrConnectWithoutCategoryInput[]
+    createMany?: productCreateManyCategoryInputEnvelope
+    connect?: productWhereUniqueInput | productWhereUniqueInput[]
+  }
+
+  export type productUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<productCreateWithoutCategoryInput, productUncheckedCreateWithoutCategoryInput> | productCreateWithoutCategoryInput[] | productUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: productCreateOrConnectWithoutCategoryInput | productCreateOrConnectWithoutCategoryInput[]
+    upsert?: productUpsertWithWhereUniqueWithoutCategoryInput | productUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: productCreateManyCategoryInputEnvelope
+    set?: productWhereUniqueInput | productWhereUniqueInput[]
+    disconnect?: productWhereUniqueInput | productWhereUniqueInput[]
+    delete?: productWhereUniqueInput | productWhereUniqueInput[]
+    connect?: productWhereUniqueInput | productWhereUniqueInput[]
+    update?: productUpdateWithWhereUniqueWithoutCategoryInput | productUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: productUpdateManyWithWhereWithoutCategoryInput | productUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: productScalarWhereInput | productScalarWhereInput[]
+  }
+
+  export type productUncheckedUpdateManyWithoutCategoryNestedInput = {
+    create?: XOR<productCreateWithoutCategoryInput, productUncheckedCreateWithoutCategoryInput> | productCreateWithoutCategoryInput[] | productUncheckedCreateWithoutCategoryInput[]
+    connectOrCreate?: productCreateOrConnectWithoutCategoryInput | productCreateOrConnectWithoutCategoryInput[]
+    upsert?: productUpsertWithWhereUniqueWithoutCategoryInput | productUpsertWithWhereUniqueWithoutCategoryInput[]
+    createMany?: productCreateManyCategoryInputEnvelope
+    set?: productWhereUniqueInput | productWhereUniqueInput[]
+    disconnect?: productWhereUniqueInput | productWhereUniqueInput[]
+    delete?: productWhereUniqueInput | productWhereUniqueInput[]
+    connect?: productWhereUniqueInput | productWhereUniqueInput[]
+    update?: productUpdateWithWhereUniqueWithoutCategoryInput | productUpdateWithWhereUniqueWithoutCategoryInput[]
+    updateMany?: productUpdateManyWithWhereWithoutCategoryInput | productUpdateManyWithWhereWithoutCategoryInput[]
+    deleteMany?: productScalarWhereInput | productScalarWhereInput[]
+  }
+
+  export type supplierCreateNestedManyWithoutCityInput = {
+    create?: XOR<supplierCreateWithoutCityInput, supplierUncheckedCreateWithoutCityInput> | supplierCreateWithoutCityInput[] | supplierUncheckedCreateWithoutCityInput[]
+    connectOrCreate?: supplierCreateOrConnectWithoutCityInput | supplierCreateOrConnectWithoutCityInput[]
+    createMany?: supplierCreateManyCityInputEnvelope
+    connect?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+  }
+
+  export type usersCreateNestedManyWithoutCityInput = {
+    create?: XOR<usersCreateWithoutCityInput, usersUncheckedCreateWithoutCityInput> | usersCreateWithoutCityInput[] | usersUncheckedCreateWithoutCityInput[]
+    connectOrCreate?: usersCreateOrConnectWithoutCityInput | usersCreateOrConnectWithoutCityInput[]
+    createMany?: usersCreateManyCityInputEnvelope
+    connect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+  }
+
+  export type supplierUncheckedCreateNestedManyWithoutCityInput = {
+    create?: XOR<supplierCreateWithoutCityInput, supplierUncheckedCreateWithoutCityInput> | supplierCreateWithoutCityInput[] | supplierUncheckedCreateWithoutCityInput[]
+    connectOrCreate?: supplierCreateOrConnectWithoutCityInput | supplierCreateOrConnectWithoutCityInput[]
+    createMany?: supplierCreateManyCityInputEnvelope
+    connect?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+  }
+
+  export type usersUncheckedCreateNestedManyWithoutCityInput = {
+    create?: XOR<usersCreateWithoutCityInput, usersUncheckedCreateWithoutCityInput> | usersCreateWithoutCityInput[] | usersUncheckedCreateWithoutCityInput[]
+    connectOrCreate?: usersCreateOrConnectWithoutCityInput | usersCreateOrConnectWithoutCityInput[]
+    createMany?: usersCreateManyCityInputEnvelope
+    connect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+  }
+
+  export type supplierUpdateManyWithoutCityNestedInput = {
+    create?: XOR<supplierCreateWithoutCityInput, supplierUncheckedCreateWithoutCityInput> | supplierCreateWithoutCityInput[] | supplierUncheckedCreateWithoutCityInput[]
+    connectOrCreate?: supplierCreateOrConnectWithoutCityInput | supplierCreateOrConnectWithoutCityInput[]
+    upsert?: supplierUpsertWithWhereUniqueWithoutCityInput | supplierUpsertWithWhereUniqueWithoutCityInput[]
+    createMany?: supplierCreateManyCityInputEnvelope
+    set?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+    disconnect?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+    delete?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+    connect?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+    update?: supplierUpdateWithWhereUniqueWithoutCityInput | supplierUpdateWithWhereUniqueWithoutCityInput[]
+    updateMany?: supplierUpdateManyWithWhereWithoutCityInput | supplierUpdateManyWithWhereWithoutCityInput[]
+    deleteMany?: supplierScalarWhereInput | supplierScalarWhereInput[]
+  }
+
+  export type usersUpdateManyWithoutCityNestedInput = {
+    create?: XOR<usersCreateWithoutCityInput, usersUncheckedCreateWithoutCityInput> | usersCreateWithoutCityInput[] | usersUncheckedCreateWithoutCityInput[]
+    connectOrCreate?: usersCreateOrConnectWithoutCityInput | usersCreateOrConnectWithoutCityInput[]
+    upsert?: usersUpsertWithWhereUniqueWithoutCityInput | usersUpsertWithWhereUniqueWithoutCityInput[]
+    createMany?: usersCreateManyCityInputEnvelope
+    set?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    disconnect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    delete?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    connect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    update?: usersUpdateWithWhereUniqueWithoutCityInput | usersUpdateWithWhereUniqueWithoutCityInput[]
+    updateMany?: usersUpdateManyWithWhereWithoutCityInput | usersUpdateManyWithWhereWithoutCityInput[]
+    deleteMany?: usersScalarWhereInput | usersScalarWhereInput[]
+  }
+
+  export type supplierUncheckedUpdateManyWithoutCityNestedInput = {
+    create?: XOR<supplierCreateWithoutCityInput, supplierUncheckedCreateWithoutCityInput> | supplierCreateWithoutCityInput[] | supplierUncheckedCreateWithoutCityInput[]
+    connectOrCreate?: supplierCreateOrConnectWithoutCityInput | supplierCreateOrConnectWithoutCityInput[]
+    upsert?: supplierUpsertWithWhereUniqueWithoutCityInput | supplierUpsertWithWhereUniqueWithoutCityInput[]
+    createMany?: supplierCreateManyCityInputEnvelope
+    set?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+    disconnect?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+    delete?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+    connect?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+    update?: supplierUpdateWithWhereUniqueWithoutCityInput | supplierUpdateWithWhereUniqueWithoutCityInput[]
+    updateMany?: supplierUpdateManyWithWhereWithoutCityInput | supplierUpdateManyWithWhereWithoutCityInput[]
+    deleteMany?: supplierScalarWhereInput | supplierScalarWhereInput[]
+  }
+
+  export type usersUncheckedUpdateManyWithoutCityNestedInput = {
+    create?: XOR<usersCreateWithoutCityInput, usersUncheckedCreateWithoutCityInput> | usersCreateWithoutCityInput[] | usersUncheckedCreateWithoutCityInput[]
+    connectOrCreate?: usersCreateOrConnectWithoutCityInput | usersCreateOrConnectWithoutCityInput[]
+    upsert?: usersUpsertWithWhereUniqueWithoutCityInput | usersUpsertWithWhereUniqueWithoutCityInput[]
+    createMany?: usersCreateManyCityInputEnvelope
+    set?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    disconnect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    delete?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    connect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    update?: usersUpdateWithWhereUniqueWithoutCityInput | usersUpdateWithWhereUniqueWithoutCityInput[]
+    updateMany?: usersUpdateManyWithWhereWithoutCityInput | usersUpdateManyWithWhereWithoutCityInput[]
+    deleteMany?: usersScalarWhereInput | usersScalarWhereInput[]
+  }
+
+  export type supplierCreateNestedManyWithoutGenderInput = {
+    create?: XOR<supplierCreateWithoutGenderInput, supplierUncheckedCreateWithoutGenderInput> | supplierCreateWithoutGenderInput[] | supplierUncheckedCreateWithoutGenderInput[]
+    connectOrCreate?: supplierCreateOrConnectWithoutGenderInput | supplierCreateOrConnectWithoutGenderInput[]
+    createMany?: supplierCreateManyGenderInputEnvelope
+    connect?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+  }
+
+  export type usersCreateNestedManyWithoutGenderInput = {
+    create?: XOR<usersCreateWithoutGenderInput, usersUncheckedCreateWithoutGenderInput> | usersCreateWithoutGenderInput[] | usersUncheckedCreateWithoutGenderInput[]
+    connectOrCreate?: usersCreateOrConnectWithoutGenderInput | usersCreateOrConnectWithoutGenderInput[]
+    createMany?: usersCreateManyGenderInputEnvelope
+    connect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+  }
+
+  export type supplierUncheckedCreateNestedManyWithoutGenderInput = {
+    create?: XOR<supplierCreateWithoutGenderInput, supplierUncheckedCreateWithoutGenderInput> | supplierCreateWithoutGenderInput[] | supplierUncheckedCreateWithoutGenderInput[]
+    connectOrCreate?: supplierCreateOrConnectWithoutGenderInput | supplierCreateOrConnectWithoutGenderInput[]
+    createMany?: supplierCreateManyGenderInputEnvelope
+    connect?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+  }
+
+  export type usersUncheckedCreateNestedManyWithoutGenderInput = {
+    create?: XOR<usersCreateWithoutGenderInput, usersUncheckedCreateWithoutGenderInput> | usersCreateWithoutGenderInput[] | usersUncheckedCreateWithoutGenderInput[]
+    connectOrCreate?: usersCreateOrConnectWithoutGenderInput | usersCreateOrConnectWithoutGenderInput[]
+    createMany?: usersCreateManyGenderInputEnvelope
+    connect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+  }
+
+  export type supplierUpdateManyWithoutGenderNestedInput = {
+    create?: XOR<supplierCreateWithoutGenderInput, supplierUncheckedCreateWithoutGenderInput> | supplierCreateWithoutGenderInput[] | supplierUncheckedCreateWithoutGenderInput[]
+    connectOrCreate?: supplierCreateOrConnectWithoutGenderInput | supplierCreateOrConnectWithoutGenderInput[]
+    upsert?: supplierUpsertWithWhereUniqueWithoutGenderInput | supplierUpsertWithWhereUniqueWithoutGenderInput[]
+    createMany?: supplierCreateManyGenderInputEnvelope
+    set?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+    disconnect?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+    delete?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+    connect?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+    update?: supplierUpdateWithWhereUniqueWithoutGenderInput | supplierUpdateWithWhereUniqueWithoutGenderInput[]
+    updateMany?: supplierUpdateManyWithWhereWithoutGenderInput | supplierUpdateManyWithWhereWithoutGenderInput[]
+    deleteMany?: supplierScalarWhereInput | supplierScalarWhereInput[]
+  }
+
+  export type usersUpdateManyWithoutGenderNestedInput = {
+    create?: XOR<usersCreateWithoutGenderInput, usersUncheckedCreateWithoutGenderInput> | usersCreateWithoutGenderInput[] | usersUncheckedCreateWithoutGenderInput[]
+    connectOrCreate?: usersCreateOrConnectWithoutGenderInput | usersCreateOrConnectWithoutGenderInput[]
+    upsert?: usersUpsertWithWhereUniqueWithoutGenderInput | usersUpsertWithWhereUniqueWithoutGenderInput[]
+    createMany?: usersCreateManyGenderInputEnvelope
+    set?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    disconnect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    delete?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    connect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    update?: usersUpdateWithWhereUniqueWithoutGenderInput | usersUpdateWithWhereUniqueWithoutGenderInput[]
+    updateMany?: usersUpdateManyWithWhereWithoutGenderInput | usersUpdateManyWithWhereWithoutGenderInput[]
+    deleteMany?: usersScalarWhereInput | usersScalarWhereInput[]
+  }
+
+  export type supplierUncheckedUpdateManyWithoutGenderNestedInput = {
+    create?: XOR<supplierCreateWithoutGenderInput, supplierUncheckedCreateWithoutGenderInput> | supplierCreateWithoutGenderInput[] | supplierUncheckedCreateWithoutGenderInput[]
+    connectOrCreate?: supplierCreateOrConnectWithoutGenderInput | supplierCreateOrConnectWithoutGenderInput[]
+    upsert?: supplierUpsertWithWhereUniqueWithoutGenderInput | supplierUpsertWithWhereUniqueWithoutGenderInput[]
+    createMany?: supplierCreateManyGenderInputEnvelope
+    set?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+    disconnect?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+    delete?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+    connect?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+    update?: supplierUpdateWithWhereUniqueWithoutGenderInput | supplierUpdateWithWhereUniqueWithoutGenderInput[]
+    updateMany?: supplierUpdateManyWithWhereWithoutGenderInput | supplierUpdateManyWithWhereWithoutGenderInput[]
+    deleteMany?: supplierScalarWhereInput | supplierScalarWhereInput[]
+  }
+
+  export type usersUncheckedUpdateManyWithoutGenderNestedInput = {
+    create?: XOR<usersCreateWithoutGenderInput, usersUncheckedCreateWithoutGenderInput> | usersCreateWithoutGenderInput[] | usersUncheckedCreateWithoutGenderInput[]
+    connectOrCreate?: usersCreateOrConnectWithoutGenderInput | usersCreateOrConnectWithoutGenderInput[]
+    upsert?: usersUpsertWithWhereUniqueWithoutGenderInput | usersUpsertWithWhereUniqueWithoutGenderInput[]
+    createMany?: usersCreateManyGenderInputEnvelope
+    set?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    disconnect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    delete?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    connect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    update?: usersUpdateWithWhereUniqueWithoutGenderInput | usersUpdateWithWhereUniqueWithoutGenderInput[]
+    updateMany?: usersUpdateManyWithWhereWithoutGenderInput | usersUpdateManyWithWhereWithoutGenderInput[]
+    deleteMany?: usersScalarWhereInput | usersScalarWhereInput[]
+  }
+
+  export type supplierCreateNestedOneWithoutGrnInput = {
+    create?: XOR<supplierCreateWithoutGrnInput, supplierUncheckedCreateWithoutGrnInput>
+    connectOrCreate?: supplierCreateOrConnectWithoutGrnInput
+    connect?: supplierWhereUniqueInput
+  }
+
+  export type usersCreateNestedOneWithoutGrnInput = {
+    create?: XOR<usersCreateWithoutGrnInput, usersUncheckedCreateWithoutGrnInput>
+    connectOrCreate?: usersCreateOrConnectWithoutGrnInput
+    connect?: usersWhereUniqueInput
+  }
+
+  export type grn_itemsCreateNestedManyWithoutGrnInput = {
+    create?: XOR<grn_itemsCreateWithoutGrnInput, grn_itemsUncheckedCreateWithoutGrnInput> | grn_itemsCreateWithoutGrnInput[] | grn_itemsUncheckedCreateWithoutGrnInput[]
+    connectOrCreate?: grn_itemsCreateOrConnectWithoutGrnInput | grn_itemsCreateOrConnectWithoutGrnInput[]
+    createMany?: grn_itemsCreateManyGrnInputEnvelope
+    connect?: grn_itemsWhereUniqueInput | grn_itemsWhereUniqueInput[]
+  }
+
+  export type grn_itemsUncheckedCreateNestedManyWithoutGrnInput = {
+    create?: XOR<grn_itemsCreateWithoutGrnInput, grn_itemsUncheckedCreateWithoutGrnInput> | grn_itemsCreateWithoutGrnInput[] | grn_itemsUncheckedCreateWithoutGrnInput[]
+    connectOrCreate?: grn_itemsCreateOrConnectWithoutGrnInput | grn_itemsCreateOrConnectWithoutGrnInput[]
+    createMany?: grn_itemsCreateManyGrnInputEnvelope
+    connect?: grn_itemsWhereUniqueInput | grn_itemsWhereUniqueInput[]
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
 
+  export type supplierUpdateOneRequiredWithoutGrnNestedInput = {
+    create?: XOR<supplierCreateWithoutGrnInput, supplierUncheckedCreateWithoutGrnInput>
+    connectOrCreate?: supplierCreateOrConnectWithoutGrnInput
+    upsert?: supplierUpsertWithoutGrnInput
+    connect?: supplierWhereUniqueInput
+    update?: XOR<XOR<supplierUpdateToOneWithWhereWithoutGrnInput, supplierUpdateWithoutGrnInput>, supplierUncheckedUpdateWithoutGrnInput>
+  }
+
+  export type usersUpdateOneRequiredWithoutGrnNestedInput = {
+    create?: XOR<usersCreateWithoutGrnInput, usersUncheckedCreateWithoutGrnInput>
+    connectOrCreate?: usersCreateOrConnectWithoutGrnInput
+    upsert?: usersUpsertWithoutGrnInput
+    connect?: usersWhereUniqueInput
+    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutGrnInput, usersUpdateWithoutGrnInput>, usersUncheckedUpdateWithoutGrnInput>
+  }
+
+  export type grn_itemsUpdateManyWithoutGrnNestedInput = {
+    create?: XOR<grn_itemsCreateWithoutGrnInput, grn_itemsUncheckedCreateWithoutGrnInput> | grn_itemsCreateWithoutGrnInput[] | grn_itemsUncheckedCreateWithoutGrnInput[]
+    connectOrCreate?: grn_itemsCreateOrConnectWithoutGrnInput | grn_itemsCreateOrConnectWithoutGrnInput[]
+    upsert?: grn_itemsUpsertWithWhereUniqueWithoutGrnInput | grn_itemsUpsertWithWhereUniqueWithoutGrnInput[]
+    createMany?: grn_itemsCreateManyGrnInputEnvelope
+    set?: grn_itemsWhereUniqueInput | grn_itemsWhereUniqueInput[]
+    disconnect?: grn_itemsWhereUniqueInput | grn_itemsWhereUniqueInput[]
+    delete?: grn_itemsWhereUniqueInput | grn_itemsWhereUniqueInput[]
+    connect?: grn_itemsWhereUniqueInput | grn_itemsWhereUniqueInput[]
+    update?: grn_itemsUpdateWithWhereUniqueWithoutGrnInput | grn_itemsUpdateWithWhereUniqueWithoutGrnInput[]
+    updateMany?: grn_itemsUpdateManyWithWhereWithoutGrnInput | grn_itemsUpdateManyWithWhereWithoutGrnInput[]
+    deleteMany?: grn_itemsScalarWhereInput | grn_itemsScalarWhereInput[]
+  }
+
+  export type grn_itemsUncheckedUpdateManyWithoutGrnNestedInput = {
+    create?: XOR<grn_itemsCreateWithoutGrnInput, grn_itemsUncheckedCreateWithoutGrnInput> | grn_itemsCreateWithoutGrnInput[] | grn_itemsUncheckedCreateWithoutGrnInput[]
+    connectOrCreate?: grn_itemsCreateOrConnectWithoutGrnInput | grn_itemsCreateOrConnectWithoutGrnInput[]
+    upsert?: grn_itemsUpsertWithWhereUniqueWithoutGrnInput | grn_itemsUpsertWithWhereUniqueWithoutGrnInput[]
+    createMany?: grn_itemsCreateManyGrnInputEnvelope
+    set?: grn_itemsWhereUniqueInput | grn_itemsWhereUniqueInput[]
+    disconnect?: grn_itemsWhereUniqueInput | grn_itemsWhereUniqueInput[]
+    delete?: grn_itemsWhereUniqueInput | grn_itemsWhereUniqueInput[]
+    connect?: grn_itemsWhereUniqueInput | grn_itemsWhereUniqueInput[]
+    update?: grn_itemsUpdateWithWhereUniqueWithoutGrnInput | grn_itemsUpdateWithWhereUniqueWithoutGrnInput[]
+    updateMany?: grn_itemsUpdateManyWithWhereWithoutGrnInput | grn_itemsUpdateManyWithWhereWithoutGrnInput[]
+    deleteMany?: grn_itemsScalarWhereInput | grn_itemsScalarWhereInput[]
+  }
+
+  export type grnCreateNestedOneWithoutGrn_itemsInput = {
+    create?: XOR<grnCreateWithoutGrn_itemsInput, grnUncheckedCreateWithoutGrn_itemsInput>
+    connectOrCreate?: grnCreateOrConnectWithoutGrn_itemsInput
+    connect?: grnWhereUniqueInput
+  }
+
+  export type product_typeCreateNestedOneWithoutGrn_itemsInput = {
+    create?: XOR<product_typeCreateWithoutGrn_itemsInput, product_typeUncheckedCreateWithoutGrn_itemsInput>
+    connectOrCreate?: product_typeCreateOrConnectWithoutGrn_itemsInput
+    connect?: product_typeWhereUniqueInput
+  }
+
+  export type grnUpdateOneRequiredWithoutGrn_itemsNestedInput = {
+    create?: XOR<grnCreateWithoutGrn_itemsInput, grnUncheckedCreateWithoutGrn_itemsInput>
+    connectOrCreate?: grnCreateOrConnectWithoutGrn_itemsInput
+    upsert?: grnUpsertWithoutGrn_itemsInput
+    connect?: grnWhereUniqueInput
+    update?: XOR<XOR<grnUpdateToOneWithWhereWithoutGrn_itemsInput, grnUpdateWithoutGrn_itemsInput>, grnUncheckedUpdateWithoutGrn_itemsInput>
+  }
+
+  export type product_typeUpdateOneRequiredWithoutGrn_itemsNestedInput = {
+    create?: XOR<product_typeCreateWithoutGrn_itemsInput, product_typeUncheckedCreateWithoutGrn_itemsInput>
+    connectOrCreate?: product_typeCreateOrConnectWithoutGrn_itemsInput
+    upsert?: product_typeUpsertWithoutGrn_itemsInput
+    connect?: product_typeWhereUniqueInput
+    update?: XOR<XOR<product_typeUpdateToOneWithWhereWithoutGrn_itemsInput, product_typeUpdateWithoutGrn_itemsInput>, product_typeUncheckedUpdateWithoutGrn_itemsInput>
+  }
+
+  export type payment_methodCreateNestedOneWithoutInvoiceInput = {
+    create?: XOR<payment_methodCreateWithoutInvoiceInput, payment_methodUncheckedCreateWithoutInvoiceInput>
+    connectOrCreate?: payment_methodCreateOrConnectWithoutInvoiceInput
+    connect?: payment_methodWhereUniqueInput
+  }
+
+  export type usersCreateNestedOneWithoutInvoiceInput = {
+    create?: XOR<usersCreateWithoutInvoiceInput, usersUncheckedCreateWithoutInvoiceInput>
+    connectOrCreate?: usersCreateOrConnectWithoutInvoiceInput
+    connect?: usersWhereUniqueInput
+  }
+
+  export type invoice_itemsCreateNestedManyWithoutInvoiceInput = {
+    create?: XOR<invoice_itemsCreateWithoutInvoiceInput, invoice_itemsUncheckedCreateWithoutInvoiceInput> | invoice_itemsCreateWithoutInvoiceInput[] | invoice_itemsUncheckedCreateWithoutInvoiceInput[]
+    connectOrCreate?: invoice_itemsCreateOrConnectWithoutInvoiceInput | invoice_itemsCreateOrConnectWithoutInvoiceInput[]
+    createMany?: invoice_itemsCreateManyInvoiceInputEnvelope
+    connect?: invoice_itemsWhereUniqueInput | invoice_itemsWhereUniqueInput[]
+  }
+
+  export type invoice_itemsUncheckedCreateNestedManyWithoutInvoiceInput = {
+    create?: XOR<invoice_itemsCreateWithoutInvoiceInput, invoice_itemsUncheckedCreateWithoutInvoiceInput> | invoice_itemsCreateWithoutInvoiceInput[] | invoice_itemsUncheckedCreateWithoutInvoiceInput[]
+    connectOrCreate?: invoice_itemsCreateOrConnectWithoutInvoiceInput | invoice_itemsCreateOrConnectWithoutInvoiceInput[]
+    createMany?: invoice_itemsCreateManyInvoiceInputEnvelope
+    connect?: invoice_itemsWhereUniqueInput | invoice_itemsWhereUniqueInput[]
+  }
+
+  export type payment_methodUpdateOneRequiredWithoutInvoiceNestedInput = {
+    create?: XOR<payment_methodCreateWithoutInvoiceInput, payment_methodUncheckedCreateWithoutInvoiceInput>
+    connectOrCreate?: payment_methodCreateOrConnectWithoutInvoiceInput
+    upsert?: payment_methodUpsertWithoutInvoiceInput
+    connect?: payment_methodWhereUniqueInput
+    update?: XOR<XOR<payment_methodUpdateToOneWithWhereWithoutInvoiceInput, payment_methodUpdateWithoutInvoiceInput>, payment_methodUncheckedUpdateWithoutInvoiceInput>
+  }
+
+  export type usersUpdateOneRequiredWithoutInvoiceNestedInput = {
+    create?: XOR<usersCreateWithoutInvoiceInput, usersUncheckedCreateWithoutInvoiceInput>
+    connectOrCreate?: usersCreateOrConnectWithoutInvoiceInput
+    upsert?: usersUpsertWithoutInvoiceInput
+    connect?: usersWhereUniqueInput
+    update?: XOR<XOR<usersUpdateToOneWithWhereWithoutInvoiceInput, usersUpdateWithoutInvoiceInput>, usersUncheckedUpdateWithoutInvoiceInput>
+  }
+
+  export type invoice_itemsUpdateManyWithoutInvoiceNestedInput = {
+    create?: XOR<invoice_itemsCreateWithoutInvoiceInput, invoice_itemsUncheckedCreateWithoutInvoiceInput> | invoice_itemsCreateWithoutInvoiceInput[] | invoice_itemsUncheckedCreateWithoutInvoiceInput[]
+    connectOrCreate?: invoice_itemsCreateOrConnectWithoutInvoiceInput | invoice_itemsCreateOrConnectWithoutInvoiceInput[]
+    upsert?: invoice_itemsUpsertWithWhereUniqueWithoutInvoiceInput | invoice_itemsUpsertWithWhereUniqueWithoutInvoiceInput[]
+    createMany?: invoice_itemsCreateManyInvoiceInputEnvelope
+    set?: invoice_itemsWhereUniqueInput | invoice_itemsWhereUniqueInput[]
+    disconnect?: invoice_itemsWhereUniqueInput | invoice_itemsWhereUniqueInput[]
+    delete?: invoice_itemsWhereUniqueInput | invoice_itemsWhereUniqueInput[]
+    connect?: invoice_itemsWhereUniqueInput | invoice_itemsWhereUniqueInput[]
+    update?: invoice_itemsUpdateWithWhereUniqueWithoutInvoiceInput | invoice_itemsUpdateWithWhereUniqueWithoutInvoiceInput[]
+    updateMany?: invoice_itemsUpdateManyWithWhereWithoutInvoiceInput | invoice_itemsUpdateManyWithWhereWithoutInvoiceInput[]
+    deleteMany?: invoice_itemsScalarWhereInput | invoice_itemsScalarWhereInput[]
+  }
+
+  export type invoice_itemsUncheckedUpdateManyWithoutInvoiceNestedInput = {
+    create?: XOR<invoice_itemsCreateWithoutInvoiceInput, invoice_itemsUncheckedCreateWithoutInvoiceInput> | invoice_itemsCreateWithoutInvoiceInput[] | invoice_itemsUncheckedCreateWithoutInvoiceInput[]
+    connectOrCreate?: invoice_itemsCreateOrConnectWithoutInvoiceInput | invoice_itemsCreateOrConnectWithoutInvoiceInput[]
+    upsert?: invoice_itemsUpsertWithWhereUniqueWithoutInvoiceInput | invoice_itemsUpsertWithWhereUniqueWithoutInvoiceInput[]
+    createMany?: invoice_itemsCreateManyInvoiceInputEnvelope
+    set?: invoice_itemsWhereUniqueInput | invoice_itemsWhereUniqueInput[]
+    disconnect?: invoice_itemsWhereUniqueInput | invoice_itemsWhereUniqueInput[]
+    delete?: invoice_itemsWhereUniqueInput | invoice_itemsWhereUniqueInput[]
+    connect?: invoice_itemsWhereUniqueInput | invoice_itemsWhereUniqueInput[]
+    update?: invoice_itemsUpdateWithWhereUniqueWithoutInvoiceInput | invoice_itemsUpdateWithWhereUniqueWithoutInvoiceInput[]
+    updateMany?: invoice_itemsUpdateManyWithWhereWithoutInvoiceInput | invoice_itemsUpdateManyWithWhereWithoutInvoiceInput[]
+    deleteMany?: invoice_itemsScalarWhereInput | invoice_itemsScalarWhereInput[]
+  }
+
+  export type invoiceCreateNestedOneWithoutInvoice_itemsInput = {
+    create?: XOR<invoiceCreateWithoutInvoice_itemsInput, invoiceUncheckedCreateWithoutInvoice_itemsInput>
+    connectOrCreate?: invoiceCreateOrConnectWithoutInvoice_itemsInput
+    connect?: invoiceWhereUniqueInput
+  }
+
+  export type product_typeCreateNestedOneWithoutInvoice_itemsInput = {
+    create?: XOR<product_typeCreateWithoutInvoice_itemsInput, product_typeUncheckedCreateWithoutInvoice_itemsInput>
+    connectOrCreate?: product_typeCreateOrConnectWithoutInvoice_itemsInput
+    connect?: product_typeWhereUniqueInput
+  }
+
+  export type invoiceUpdateOneRequiredWithoutInvoice_itemsNestedInput = {
+    create?: XOR<invoiceCreateWithoutInvoice_itemsInput, invoiceUncheckedCreateWithoutInvoice_itemsInput>
+    connectOrCreate?: invoiceCreateOrConnectWithoutInvoice_itemsInput
+    upsert?: invoiceUpsertWithoutInvoice_itemsInput
+    connect?: invoiceWhereUniqueInput
+    update?: XOR<XOR<invoiceUpdateToOneWithWhereWithoutInvoice_itemsInput, invoiceUpdateWithoutInvoice_itemsInput>, invoiceUncheckedUpdateWithoutInvoice_itemsInput>
+  }
+
+  export type product_typeUpdateOneRequiredWithoutInvoice_itemsNestedInput = {
+    create?: XOR<product_typeCreateWithoutInvoice_itemsInput, product_typeUncheckedCreateWithoutInvoice_itemsInput>
+    connectOrCreate?: product_typeCreateOrConnectWithoutInvoice_itemsInput
+    upsert?: product_typeUpsertWithoutInvoice_itemsInput
+    connect?: product_typeWhereUniqueInput
+    update?: XOR<XOR<product_typeUpdateToOneWithWhereWithoutInvoice_itemsInput, product_typeUpdateWithoutInvoice_itemsInput>, product_typeUncheckedUpdateWithoutInvoice_itemsInput>
+  }
+
+  export type productCreateNestedManyWithoutMother_plant_typeInput = {
+    create?: XOR<productCreateWithoutMother_plant_typeInput, productUncheckedCreateWithoutMother_plant_typeInput> | productCreateWithoutMother_plant_typeInput[] | productUncheckedCreateWithoutMother_plant_typeInput[]
+    connectOrCreate?: productCreateOrConnectWithoutMother_plant_typeInput | productCreateOrConnectWithoutMother_plant_typeInput[]
+    createMany?: productCreateManyMother_plant_typeInputEnvelope
+    connect?: productWhereUniqueInput | productWhereUniqueInput[]
+  }
+
+  export type productUncheckedCreateNestedManyWithoutMother_plant_typeInput = {
+    create?: XOR<productCreateWithoutMother_plant_typeInput, productUncheckedCreateWithoutMother_plant_typeInput> | productCreateWithoutMother_plant_typeInput[] | productUncheckedCreateWithoutMother_plant_typeInput[]
+    connectOrCreate?: productCreateOrConnectWithoutMother_plant_typeInput | productCreateOrConnectWithoutMother_plant_typeInput[]
+    createMany?: productCreateManyMother_plant_typeInputEnvelope
+    connect?: productWhereUniqueInput | productWhereUniqueInput[]
+  }
+
+  export type productUpdateManyWithoutMother_plant_typeNestedInput = {
+    create?: XOR<productCreateWithoutMother_plant_typeInput, productUncheckedCreateWithoutMother_plant_typeInput> | productCreateWithoutMother_plant_typeInput[] | productUncheckedCreateWithoutMother_plant_typeInput[]
+    connectOrCreate?: productCreateOrConnectWithoutMother_plant_typeInput | productCreateOrConnectWithoutMother_plant_typeInput[]
+    upsert?: productUpsertWithWhereUniqueWithoutMother_plant_typeInput | productUpsertWithWhereUniqueWithoutMother_plant_typeInput[]
+    createMany?: productCreateManyMother_plant_typeInputEnvelope
+    set?: productWhereUniqueInput | productWhereUniqueInput[]
+    disconnect?: productWhereUniqueInput | productWhereUniqueInput[]
+    delete?: productWhereUniqueInput | productWhereUniqueInput[]
+    connect?: productWhereUniqueInput | productWhereUniqueInput[]
+    update?: productUpdateWithWhereUniqueWithoutMother_plant_typeInput | productUpdateWithWhereUniqueWithoutMother_plant_typeInput[]
+    updateMany?: productUpdateManyWithWhereWithoutMother_plant_typeInput | productUpdateManyWithWhereWithoutMother_plant_typeInput[]
+    deleteMany?: productScalarWhereInput | productScalarWhereInput[]
+  }
+
+  export type productUncheckedUpdateManyWithoutMother_plant_typeNestedInput = {
+    create?: XOR<productCreateWithoutMother_plant_typeInput, productUncheckedCreateWithoutMother_plant_typeInput> | productCreateWithoutMother_plant_typeInput[] | productUncheckedCreateWithoutMother_plant_typeInput[]
+    connectOrCreate?: productCreateOrConnectWithoutMother_plant_typeInput | productCreateOrConnectWithoutMother_plant_typeInput[]
+    upsert?: productUpsertWithWhereUniqueWithoutMother_plant_typeInput | productUpsertWithWhereUniqueWithoutMother_plant_typeInput[]
+    createMany?: productCreateManyMother_plant_typeInputEnvelope
+    set?: productWhereUniqueInput | productWhereUniqueInput[]
+    disconnect?: productWhereUniqueInput | productWhereUniqueInput[]
+    delete?: productWhereUniqueInput | productWhereUniqueInput[]
+    connect?: productWhereUniqueInput | productWhereUniqueInput[]
+    update?: productUpdateWithWhereUniqueWithoutMother_plant_typeInput | productUpdateWithWhereUniqueWithoutMother_plant_typeInput[]
+    updateMany?: productUpdateManyWithWhereWithoutMother_plant_typeInput | productUpdateManyWithWhereWithoutMother_plant_typeInput[]
+    deleteMany?: productScalarWhereInput | productScalarWhereInput[]
+  }
+
+  export type card_detailsCreateNestedManyWithoutPayment_methodInput = {
+    create?: XOR<card_detailsCreateWithoutPayment_methodInput, card_detailsUncheckedCreateWithoutPayment_methodInput> | card_detailsCreateWithoutPayment_methodInput[] | card_detailsUncheckedCreateWithoutPayment_methodInput[]
+    connectOrCreate?: card_detailsCreateOrConnectWithoutPayment_methodInput | card_detailsCreateOrConnectWithoutPayment_methodInput[]
+    createMany?: card_detailsCreateManyPayment_methodInputEnvelope
+    connect?: card_detailsWhereUniqueInput | card_detailsWhereUniqueInput[]
+  }
+
+  export type invoiceCreateNestedManyWithoutPayment_methodInput = {
+    create?: XOR<invoiceCreateWithoutPayment_methodInput, invoiceUncheckedCreateWithoutPayment_methodInput> | invoiceCreateWithoutPayment_methodInput[] | invoiceUncheckedCreateWithoutPayment_methodInput[]
+    connectOrCreate?: invoiceCreateOrConnectWithoutPayment_methodInput | invoiceCreateOrConnectWithoutPayment_methodInput[]
+    createMany?: invoiceCreateManyPayment_methodInputEnvelope
+    connect?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+  }
+
+  export type card_detailsUncheckedCreateNestedManyWithoutPayment_methodInput = {
+    create?: XOR<card_detailsCreateWithoutPayment_methodInput, card_detailsUncheckedCreateWithoutPayment_methodInput> | card_detailsCreateWithoutPayment_methodInput[] | card_detailsUncheckedCreateWithoutPayment_methodInput[]
+    connectOrCreate?: card_detailsCreateOrConnectWithoutPayment_methodInput | card_detailsCreateOrConnectWithoutPayment_methodInput[]
+    createMany?: card_detailsCreateManyPayment_methodInputEnvelope
+    connect?: card_detailsWhereUniqueInput | card_detailsWhereUniqueInput[]
+  }
+
+  export type invoiceUncheckedCreateNestedManyWithoutPayment_methodInput = {
+    create?: XOR<invoiceCreateWithoutPayment_methodInput, invoiceUncheckedCreateWithoutPayment_methodInput> | invoiceCreateWithoutPayment_methodInput[] | invoiceUncheckedCreateWithoutPayment_methodInput[]
+    connectOrCreate?: invoiceCreateOrConnectWithoutPayment_methodInput | invoiceCreateOrConnectWithoutPayment_methodInput[]
+    createMany?: invoiceCreateManyPayment_methodInputEnvelope
+    connect?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+  }
+
+  export type card_detailsUpdateManyWithoutPayment_methodNestedInput = {
+    create?: XOR<card_detailsCreateWithoutPayment_methodInput, card_detailsUncheckedCreateWithoutPayment_methodInput> | card_detailsCreateWithoutPayment_methodInput[] | card_detailsUncheckedCreateWithoutPayment_methodInput[]
+    connectOrCreate?: card_detailsCreateOrConnectWithoutPayment_methodInput | card_detailsCreateOrConnectWithoutPayment_methodInput[]
+    upsert?: card_detailsUpsertWithWhereUniqueWithoutPayment_methodInput | card_detailsUpsertWithWhereUniqueWithoutPayment_methodInput[]
+    createMany?: card_detailsCreateManyPayment_methodInputEnvelope
+    set?: card_detailsWhereUniqueInput | card_detailsWhereUniqueInput[]
+    disconnect?: card_detailsWhereUniqueInput | card_detailsWhereUniqueInput[]
+    delete?: card_detailsWhereUniqueInput | card_detailsWhereUniqueInput[]
+    connect?: card_detailsWhereUniqueInput | card_detailsWhereUniqueInput[]
+    update?: card_detailsUpdateWithWhereUniqueWithoutPayment_methodInput | card_detailsUpdateWithWhereUniqueWithoutPayment_methodInput[]
+    updateMany?: card_detailsUpdateManyWithWhereWithoutPayment_methodInput | card_detailsUpdateManyWithWhereWithoutPayment_methodInput[]
+    deleteMany?: card_detailsScalarWhereInput | card_detailsScalarWhereInput[]
+  }
+
+  export type invoiceUpdateManyWithoutPayment_methodNestedInput = {
+    create?: XOR<invoiceCreateWithoutPayment_methodInput, invoiceUncheckedCreateWithoutPayment_methodInput> | invoiceCreateWithoutPayment_methodInput[] | invoiceUncheckedCreateWithoutPayment_methodInput[]
+    connectOrCreate?: invoiceCreateOrConnectWithoutPayment_methodInput | invoiceCreateOrConnectWithoutPayment_methodInput[]
+    upsert?: invoiceUpsertWithWhereUniqueWithoutPayment_methodInput | invoiceUpsertWithWhereUniqueWithoutPayment_methodInput[]
+    createMany?: invoiceCreateManyPayment_methodInputEnvelope
+    set?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+    disconnect?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+    delete?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+    connect?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+    update?: invoiceUpdateWithWhereUniqueWithoutPayment_methodInput | invoiceUpdateWithWhereUniqueWithoutPayment_methodInput[]
+    updateMany?: invoiceUpdateManyWithWhereWithoutPayment_methodInput | invoiceUpdateManyWithWhereWithoutPayment_methodInput[]
+    deleteMany?: invoiceScalarWhereInput | invoiceScalarWhereInput[]
+  }
+
+  export type card_detailsUncheckedUpdateManyWithoutPayment_methodNestedInput = {
+    create?: XOR<card_detailsCreateWithoutPayment_methodInput, card_detailsUncheckedCreateWithoutPayment_methodInput> | card_detailsCreateWithoutPayment_methodInput[] | card_detailsUncheckedCreateWithoutPayment_methodInput[]
+    connectOrCreate?: card_detailsCreateOrConnectWithoutPayment_methodInput | card_detailsCreateOrConnectWithoutPayment_methodInput[]
+    upsert?: card_detailsUpsertWithWhereUniqueWithoutPayment_methodInput | card_detailsUpsertWithWhereUniqueWithoutPayment_methodInput[]
+    createMany?: card_detailsCreateManyPayment_methodInputEnvelope
+    set?: card_detailsWhereUniqueInput | card_detailsWhereUniqueInput[]
+    disconnect?: card_detailsWhereUniqueInput | card_detailsWhereUniqueInput[]
+    delete?: card_detailsWhereUniqueInput | card_detailsWhereUniqueInput[]
+    connect?: card_detailsWhereUniqueInput | card_detailsWhereUniqueInput[]
+    update?: card_detailsUpdateWithWhereUniqueWithoutPayment_methodInput | card_detailsUpdateWithWhereUniqueWithoutPayment_methodInput[]
+    updateMany?: card_detailsUpdateManyWithWhereWithoutPayment_methodInput | card_detailsUpdateManyWithWhereWithoutPayment_methodInput[]
+    deleteMany?: card_detailsScalarWhereInput | card_detailsScalarWhereInput[]
+  }
+
+  export type invoiceUncheckedUpdateManyWithoutPayment_methodNestedInput = {
+    create?: XOR<invoiceCreateWithoutPayment_methodInput, invoiceUncheckedCreateWithoutPayment_methodInput> | invoiceCreateWithoutPayment_methodInput[] | invoiceUncheckedCreateWithoutPayment_methodInput[]
+    connectOrCreate?: invoiceCreateOrConnectWithoutPayment_methodInput | invoiceCreateOrConnectWithoutPayment_methodInput[]
+    upsert?: invoiceUpsertWithWhereUniqueWithoutPayment_methodInput | invoiceUpsertWithWhereUniqueWithoutPayment_methodInput[]
+    createMany?: invoiceCreateManyPayment_methodInputEnvelope
+    set?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+    disconnect?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+    delete?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+    connect?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+    update?: invoiceUpdateWithWhereUniqueWithoutPayment_methodInput | invoiceUpdateWithWhereUniqueWithoutPayment_methodInput[]
+    updateMany?: invoiceUpdateManyWithWhereWithoutPayment_methodInput | invoiceUpdateManyWithWhereWithoutPayment_methodInput[]
+    deleteMany?: invoiceScalarWhereInput | invoiceScalarWhereInput[]
+  }
+
+  export type pot_batchCreateNestedManyWithoutPotInput = {
+    create?: XOR<pot_batchCreateWithoutPotInput, pot_batchUncheckedCreateWithoutPotInput> | pot_batchCreateWithoutPotInput[] | pot_batchUncheckedCreateWithoutPotInput[]
+    connectOrCreate?: pot_batchCreateOrConnectWithoutPotInput | pot_batchCreateOrConnectWithoutPotInput[]
+    createMany?: pot_batchCreateManyPotInputEnvelope
+    connect?: pot_batchWhereUniqueInput | pot_batchWhereUniqueInput[]
+  }
+
+  export type pot_batchUncheckedCreateNestedManyWithoutPotInput = {
+    create?: XOR<pot_batchCreateWithoutPotInput, pot_batchUncheckedCreateWithoutPotInput> | pot_batchCreateWithoutPotInput[] | pot_batchUncheckedCreateWithoutPotInput[]
+    connectOrCreate?: pot_batchCreateOrConnectWithoutPotInput | pot_batchCreateOrConnectWithoutPotInput[]
+    createMany?: pot_batchCreateManyPotInputEnvelope
+    connect?: pot_batchWhereUniqueInput | pot_batchWhereUniqueInput[]
+  }
+
+  export type pot_batchUpdateManyWithoutPotNestedInput = {
+    create?: XOR<pot_batchCreateWithoutPotInput, pot_batchUncheckedCreateWithoutPotInput> | pot_batchCreateWithoutPotInput[] | pot_batchUncheckedCreateWithoutPotInput[]
+    connectOrCreate?: pot_batchCreateOrConnectWithoutPotInput | pot_batchCreateOrConnectWithoutPotInput[]
+    upsert?: pot_batchUpsertWithWhereUniqueWithoutPotInput | pot_batchUpsertWithWhereUniqueWithoutPotInput[]
+    createMany?: pot_batchCreateManyPotInputEnvelope
+    set?: pot_batchWhereUniqueInput | pot_batchWhereUniqueInput[]
+    disconnect?: pot_batchWhereUniqueInput | pot_batchWhereUniqueInput[]
+    delete?: pot_batchWhereUniqueInput | pot_batchWhereUniqueInput[]
+    connect?: pot_batchWhereUniqueInput | pot_batchWhereUniqueInput[]
+    update?: pot_batchUpdateWithWhereUniqueWithoutPotInput | pot_batchUpdateWithWhereUniqueWithoutPotInput[]
+    updateMany?: pot_batchUpdateManyWithWhereWithoutPotInput | pot_batchUpdateManyWithWhereWithoutPotInput[]
+    deleteMany?: pot_batchScalarWhereInput | pot_batchScalarWhereInput[]
+  }
+
+  export type pot_batchUncheckedUpdateManyWithoutPotNestedInput = {
+    create?: XOR<pot_batchCreateWithoutPotInput, pot_batchUncheckedCreateWithoutPotInput> | pot_batchCreateWithoutPotInput[] | pot_batchUncheckedCreateWithoutPotInput[]
+    connectOrCreate?: pot_batchCreateOrConnectWithoutPotInput | pot_batchCreateOrConnectWithoutPotInput[]
+    upsert?: pot_batchUpsertWithWhereUniqueWithoutPotInput | pot_batchUpsertWithWhereUniqueWithoutPotInput[]
+    createMany?: pot_batchCreateManyPotInputEnvelope
+    set?: pot_batchWhereUniqueInput | pot_batchWhereUniqueInput[]
+    disconnect?: pot_batchWhereUniqueInput | pot_batchWhereUniqueInput[]
+    delete?: pot_batchWhereUniqueInput | pot_batchWhereUniqueInput[]
+    connect?: pot_batchWhereUniqueInput | pot_batchWhereUniqueInput[]
+    update?: pot_batchUpdateWithWhereUniqueWithoutPotInput | pot_batchUpdateWithWhereUniqueWithoutPotInput[]
+    updateMany?: pot_batchUpdateManyWithWhereWithoutPotInput | pot_batchUpdateManyWithWhereWithoutPotInput[]
+    deleteMany?: pot_batchScalarWhereInput | pot_batchScalarWhereInput[]
+  }
+
+  export type potCreateNestedOneWithoutPot_batchInput = {
+    create?: XOR<potCreateWithoutPot_batchInput, potUncheckedCreateWithoutPot_batchInput>
+    connectOrCreate?: potCreateOrConnectWithoutPot_batchInput
+    connect?: potWhereUniqueInput
+  }
+
+  export type pot_sizeCreateNestedOneWithoutPot_batchInput = {
+    create?: XOR<pot_sizeCreateWithoutPot_batchInput, pot_sizeUncheckedCreateWithoutPot_batchInput>
+    connectOrCreate?: pot_sizeCreateOrConnectWithoutPot_batchInput
+    connect?: pot_sizeWhereUniqueInput
+  }
+
+  export type pot_imagesCreateNestedManyWithoutPot_batchInput = {
+    create?: XOR<pot_imagesCreateWithoutPot_batchInput, pot_imagesUncheckedCreateWithoutPot_batchInput> | pot_imagesCreateWithoutPot_batchInput[] | pot_imagesUncheckedCreateWithoutPot_batchInput[]
+    connectOrCreate?: pot_imagesCreateOrConnectWithoutPot_batchInput | pot_imagesCreateOrConnectWithoutPot_batchInput[]
+    createMany?: pot_imagesCreateManyPot_batchInputEnvelope
+    connect?: pot_imagesWhereUniqueInput | pot_imagesWhereUniqueInput[]
+  }
+
+  export type pot_imagesUncheckedCreateNestedManyWithoutPot_batchInput = {
+    create?: XOR<pot_imagesCreateWithoutPot_batchInput, pot_imagesUncheckedCreateWithoutPot_batchInput> | pot_imagesCreateWithoutPot_batchInput[] | pot_imagesUncheckedCreateWithoutPot_batchInput[]
+    connectOrCreate?: pot_imagesCreateOrConnectWithoutPot_batchInput | pot_imagesCreateOrConnectWithoutPot_batchInput[]
+    createMany?: pot_imagesCreateManyPot_batchInputEnvelope
+    connect?: pot_imagesWhereUniqueInput | pot_imagesWhereUniqueInput[]
+  }
+
+  export type potUpdateOneRequiredWithoutPot_batchNestedInput = {
+    create?: XOR<potCreateWithoutPot_batchInput, potUncheckedCreateWithoutPot_batchInput>
+    connectOrCreate?: potCreateOrConnectWithoutPot_batchInput
+    upsert?: potUpsertWithoutPot_batchInput
+    connect?: potWhereUniqueInput
+    update?: XOR<XOR<potUpdateToOneWithWhereWithoutPot_batchInput, potUpdateWithoutPot_batchInput>, potUncheckedUpdateWithoutPot_batchInput>
+  }
+
+  export type pot_sizeUpdateOneRequiredWithoutPot_batchNestedInput = {
+    create?: XOR<pot_sizeCreateWithoutPot_batchInput, pot_sizeUncheckedCreateWithoutPot_batchInput>
+    connectOrCreate?: pot_sizeCreateOrConnectWithoutPot_batchInput
+    upsert?: pot_sizeUpsertWithoutPot_batchInput
+    connect?: pot_sizeWhereUniqueInput
+    update?: XOR<XOR<pot_sizeUpdateToOneWithWhereWithoutPot_batchInput, pot_sizeUpdateWithoutPot_batchInput>, pot_sizeUncheckedUpdateWithoutPot_batchInput>
+  }
+
+  export type pot_imagesUpdateManyWithoutPot_batchNestedInput = {
+    create?: XOR<pot_imagesCreateWithoutPot_batchInput, pot_imagesUncheckedCreateWithoutPot_batchInput> | pot_imagesCreateWithoutPot_batchInput[] | pot_imagesUncheckedCreateWithoutPot_batchInput[]
+    connectOrCreate?: pot_imagesCreateOrConnectWithoutPot_batchInput | pot_imagesCreateOrConnectWithoutPot_batchInput[]
+    upsert?: pot_imagesUpsertWithWhereUniqueWithoutPot_batchInput | pot_imagesUpsertWithWhereUniqueWithoutPot_batchInput[]
+    createMany?: pot_imagesCreateManyPot_batchInputEnvelope
+    set?: pot_imagesWhereUniqueInput | pot_imagesWhereUniqueInput[]
+    disconnect?: pot_imagesWhereUniqueInput | pot_imagesWhereUniqueInput[]
+    delete?: pot_imagesWhereUniqueInput | pot_imagesWhereUniqueInput[]
+    connect?: pot_imagesWhereUniqueInput | pot_imagesWhereUniqueInput[]
+    update?: pot_imagesUpdateWithWhereUniqueWithoutPot_batchInput | pot_imagesUpdateWithWhereUniqueWithoutPot_batchInput[]
+    updateMany?: pot_imagesUpdateManyWithWhereWithoutPot_batchInput | pot_imagesUpdateManyWithWhereWithoutPot_batchInput[]
+    deleteMany?: pot_imagesScalarWhereInput | pot_imagesScalarWhereInput[]
+  }
+
+  export type pot_imagesUncheckedUpdateManyWithoutPot_batchNestedInput = {
+    create?: XOR<pot_imagesCreateWithoutPot_batchInput, pot_imagesUncheckedCreateWithoutPot_batchInput> | pot_imagesCreateWithoutPot_batchInput[] | pot_imagesUncheckedCreateWithoutPot_batchInput[]
+    connectOrCreate?: pot_imagesCreateOrConnectWithoutPot_batchInput | pot_imagesCreateOrConnectWithoutPot_batchInput[]
+    upsert?: pot_imagesUpsertWithWhereUniqueWithoutPot_batchInput | pot_imagesUpsertWithWhereUniqueWithoutPot_batchInput[]
+    createMany?: pot_imagesCreateManyPot_batchInputEnvelope
+    set?: pot_imagesWhereUniqueInput | pot_imagesWhereUniqueInput[]
+    disconnect?: pot_imagesWhereUniqueInput | pot_imagesWhereUniqueInput[]
+    delete?: pot_imagesWhereUniqueInput | pot_imagesWhereUniqueInput[]
+    connect?: pot_imagesWhereUniqueInput | pot_imagesWhereUniqueInput[]
+    update?: pot_imagesUpdateWithWhereUniqueWithoutPot_batchInput | pot_imagesUpdateWithWhereUniqueWithoutPot_batchInput[]
+    updateMany?: pot_imagesUpdateManyWithWhereWithoutPot_batchInput | pot_imagesUpdateManyWithWhereWithoutPot_batchInput[]
+    deleteMany?: pot_imagesScalarWhereInput | pot_imagesScalarWhereInput[]
+  }
+
+  export type pot_batchCreateNestedOneWithoutPot_imagesInput = {
+    create?: XOR<pot_batchCreateWithoutPot_imagesInput, pot_batchUncheckedCreateWithoutPot_imagesInput>
+    connectOrCreate?: pot_batchCreateOrConnectWithoutPot_imagesInput
+    connect?: pot_batchWhereUniqueInput
+  }
+
+  export type pot_batchUpdateOneRequiredWithoutPot_imagesNestedInput = {
+    create?: XOR<pot_batchCreateWithoutPot_imagesInput, pot_batchUncheckedCreateWithoutPot_imagesInput>
+    connectOrCreate?: pot_batchCreateOrConnectWithoutPot_imagesInput
+    upsert?: pot_batchUpsertWithoutPot_imagesInput
+    connect?: pot_batchWhereUniqueInput
+    update?: XOR<XOR<pot_batchUpdateToOneWithWhereWithoutPot_imagesInput, pot_batchUpdateWithoutPot_imagesInput>, pot_batchUncheckedUpdateWithoutPot_imagesInput>
+  }
+
+  export type pot_batchCreateNestedManyWithoutPot_sizeInput = {
+    create?: XOR<pot_batchCreateWithoutPot_sizeInput, pot_batchUncheckedCreateWithoutPot_sizeInput> | pot_batchCreateWithoutPot_sizeInput[] | pot_batchUncheckedCreateWithoutPot_sizeInput[]
+    connectOrCreate?: pot_batchCreateOrConnectWithoutPot_sizeInput | pot_batchCreateOrConnectWithoutPot_sizeInput[]
+    createMany?: pot_batchCreateManyPot_sizeInputEnvelope
+    connect?: pot_batchWhereUniqueInput | pot_batchWhereUniqueInput[]
+  }
+
+  export type pot_batchUncheckedCreateNestedManyWithoutPot_sizeInput = {
+    create?: XOR<pot_batchCreateWithoutPot_sizeInput, pot_batchUncheckedCreateWithoutPot_sizeInput> | pot_batchCreateWithoutPot_sizeInput[] | pot_batchUncheckedCreateWithoutPot_sizeInput[]
+    connectOrCreate?: pot_batchCreateOrConnectWithoutPot_sizeInput | pot_batchCreateOrConnectWithoutPot_sizeInput[]
+    createMany?: pot_batchCreateManyPot_sizeInputEnvelope
+    connect?: pot_batchWhereUniqueInput | pot_batchWhereUniqueInput[]
+  }
+
+  export type pot_batchUpdateManyWithoutPot_sizeNestedInput = {
+    create?: XOR<pot_batchCreateWithoutPot_sizeInput, pot_batchUncheckedCreateWithoutPot_sizeInput> | pot_batchCreateWithoutPot_sizeInput[] | pot_batchUncheckedCreateWithoutPot_sizeInput[]
+    connectOrCreate?: pot_batchCreateOrConnectWithoutPot_sizeInput | pot_batchCreateOrConnectWithoutPot_sizeInput[]
+    upsert?: pot_batchUpsertWithWhereUniqueWithoutPot_sizeInput | pot_batchUpsertWithWhereUniqueWithoutPot_sizeInput[]
+    createMany?: pot_batchCreateManyPot_sizeInputEnvelope
+    set?: pot_batchWhereUniqueInput | pot_batchWhereUniqueInput[]
+    disconnect?: pot_batchWhereUniqueInput | pot_batchWhereUniqueInput[]
+    delete?: pot_batchWhereUniqueInput | pot_batchWhereUniqueInput[]
+    connect?: pot_batchWhereUniqueInput | pot_batchWhereUniqueInput[]
+    update?: pot_batchUpdateWithWhereUniqueWithoutPot_sizeInput | pot_batchUpdateWithWhereUniqueWithoutPot_sizeInput[]
+    updateMany?: pot_batchUpdateManyWithWhereWithoutPot_sizeInput | pot_batchUpdateManyWithWhereWithoutPot_sizeInput[]
+    deleteMany?: pot_batchScalarWhereInput | pot_batchScalarWhereInput[]
+  }
+
+  export type pot_batchUncheckedUpdateManyWithoutPot_sizeNestedInput = {
+    create?: XOR<pot_batchCreateWithoutPot_sizeInput, pot_batchUncheckedCreateWithoutPot_sizeInput> | pot_batchCreateWithoutPot_sizeInput[] | pot_batchUncheckedCreateWithoutPot_sizeInput[]
+    connectOrCreate?: pot_batchCreateOrConnectWithoutPot_sizeInput | pot_batchCreateOrConnectWithoutPot_sizeInput[]
+    upsert?: pot_batchUpsertWithWhereUniqueWithoutPot_sizeInput | pot_batchUpsertWithWhereUniqueWithoutPot_sizeInput[]
+    createMany?: pot_batchCreateManyPot_sizeInputEnvelope
+    set?: pot_batchWhereUniqueInput | pot_batchWhereUniqueInput[]
+    disconnect?: pot_batchWhereUniqueInput | pot_batchWhereUniqueInput[]
+    delete?: pot_batchWhereUniqueInput | pot_batchWhereUniqueInput[]
+    connect?: pot_batchWhereUniqueInput | pot_batchWhereUniqueInput[]
+    update?: pot_batchUpdateWithWhereUniqueWithoutPot_sizeInput | pot_batchUpdateWithWhereUniqueWithoutPot_sizeInput[]
+    updateMany?: pot_batchUpdateManyWithWhereWithoutPot_sizeInput | pot_batchUpdateManyWithWhereWithoutPot_sizeInput[]
+    deleteMany?: pot_batchScalarWhereInput | pot_batchScalarWhereInput[]
+  }
+
+  export type batchCreateNestedManyWithoutProductInput = {
+    create?: XOR<batchCreateWithoutProductInput, batchUncheckedCreateWithoutProductInput> | batchCreateWithoutProductInput[] | batchUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: batchCreateOrConnectWithoutProductInput | batchCreateOrConnectWithoutProductInput[]
+    createMany?: batchCreateManyProductInputEnvelope
+    connect?: batchWhereUniqueInput | batchWhereUniqueInput[]
+  }
+
+  export type categoryCreateNestedOneWithoutProductInput = {
+    create?: XOR<categoryCreateWithoutProductInput, categoryUncheckedCreateWithoutProductInput>
+    connectOrCreate?: categoryCreateOrConnectWithoutProductInput
+    connect?: categoryWhereUniqueInput
+  }
+
+  export type mother_plant_typeCreateNestedOneWithoutProductInput = {
+    create?: XOR<mother_plant_typeCreateWithoutProductInput, mother_plant_typeUncheckedCreateWithoutProductInput>
+    connectOrCreate?: mother_plant_typeCreateOrConnectWithoutProductInput
+    connect?: mother_plant_typeWhereUniqueInput
+  }
+
+  export type batchUncheckedCreateNestedManyWithoutProductInput = {
+    create?: XOR<batchCreateWithoutProductInput, batchUncheckedCreateWithoutProductInput> | batchCreateWithoutProductInput[] | batchUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: batchCreateOrConnectWithoutProductInput | batchCreateOrConnectWithoutProductInput[]
+    createMany?: batchCreateManyProductInputEnvelope
+    connect?: batchWhereUniqueInput | batchWhereUniqueInput[]
+  }
+
   export type BoolFieldUpdateOperationsInput = {
     set?: boolean
+  }
+
+  export type batchUpdateManyWithoutProductNestedInput = {
+    create?: XOR<batchCreateWithoutProductInput, batchUncheckedCreateWithoutProductInput> | batchCreateWithoutProductInput[] | batchUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: batchCreateOrConnectWithoutProductInput | batchCreateOrConnectWithoutProductInput[]
+    upsert?: batchUpsertWithWhereUniqueWithoutProductInput | batchUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: batchCreateManyProductInputEnvelope
+    set?: batchWhereUniqueInput | batchWhereUniqueInput[]
+    disconnect?: batchWhereUniqueInput | batchWhereUniqueInput[]
+    delete?: batchWhereUniqueInput | batchWhereUniqueInput[]
+    connect?: batchWhereUniqueInput | batchWhereUniqueInput[]
+    update?: batchUpdateWithWhereUniqueWithoutProductInput | batchUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: batchUpdateManyWithWhereWithoutProductInput | batchUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: batchScalarWhereInput | batchScalarWhereInput[]
+  }
+
+  export type categoryUpdateOneRequiredWithoutProductNestedInput = {
+    create?: XOR<categoryCreateWithoutProductInput, categoryUncheckedCreateWithoutProductInput>
+    connectOrCreate?: categoryCreateOrConnectWithoutProductInput
+    upsert?: categoryUpsertWithoutProductInput
+    connect?: categoryWhereUniqueInput
+    update?: XOR<XOR<categoryUpdateToOneWithWhereWithoutProductInput, categoryUpdateWithoutProductInput>, categoryUncheckedUpdateWithoutProductInput>
+  }
+
+  export type mother_plant_typeUpdateOneRequiredWithoutProductNestedInput = {
+    create?: XOR<mother_plant_typeCreateWithoutProductInput, mother_plant_typeUncheckedCreateWithoutProductInput>
+    connectOrCreate?: mother_plant_typeCreateOrConnectWithoutProductInput
+    upsert?: mother_plant_typeUpsertWithoutProductInput
+    connect?: mother_plant_typeWhereUniqueInput
+    update?: XOR<XOR<mother_plant_typeUpdateToOneWithWhereWithoutProductInput, mother_plant_typeUpdateWithoutProductInput>, mother_plant_typeUncheckedUpdateWithoutProductInput>
+  }
+
+  export type batchUncheckedUpdateManyWithoutProductNestedInput = {
+    create?: XOR<batchCreateWithoutProductInput, batchUncheckedCreateWithoutProductInput> | batchCreateWithoutProductInput[] | batchUncheckedCreateWithoutProductInput[]
+    connectOrCreate?: batchCreateOrConnectWithoutProductInput | batchCreateOrConnectWithoutProductInput[]
+    upsert?: batchUpsertWithWhereUniqueWithoutProductInput | batchUpsertWithWhereUniqueWithoutProductInput[]
+    createMany?: batchCreateManyProductInputEnvelope
+    set?: batchWhereUniqueInput | batchWhereUniqueInput[]
+    disconnect?: batchWhereUniqueInput | batchWhereUniqueInput[]
+    delete?: batchWhereUniqueInput | batchWhereUniqueInput[]
+    connect?: batchWhereUniqueInput | batchWhereUniqueInput[]
+    update?: batchUpdateWithWhereUniqueWithoutProductInput | batchUpdateWithWhereUniqueWithoutProductInput[]
+    updateMany?: batchUpdateManyWithWhereWithoutProductInput | batchUpdateManyWithWhereWithoutProductInput[]
+    deleteMany?: batchScalarWhereInput | batchScalarWhereInput[]
+  }
+
+  export type batchCreateNestedOneWithoutProduct_imagesInput = {
+    create?: XOR<batchCreateWithoutProduct_imagesInput, batchUncheckedCreateWithoutProduct_imagesInput>
+    connectOrCreate?: batchCreateOrConnectWithoutProduct_imagesInput
+    connect?: batchWhereUniqueInput
+  }
+
+  export type batchUpdateOneRequiredWithoutProduct_imagesNestedInput = {
+    create?: XOR<batchCreateWithoutProduct_imagesInput, batchUncheckedCreateWithoutProduct_imagesInput>
+    connectOrCreate?: batchCreateOrConnectWithoutProduct_imagesInput
+    upsert?: batchUpsertWithoutProduct_imagesInput
+    connect?: batchWhereUniqueInput
+    update?: XOR<XOR<batchUpdateToOneWithWhereWithoutProduct_imagesInput, batchUpdateWithoutProduct_imagesInput>, batchUncheckedUpdateWithoutProduct_imagesInput>
+  }
+
+  export type grn_itemsCreateNestedManyWithoutProduct_typeInput = {
+    create?: XOR<grn_itemsCreateWithoutProduct_typeInput, grn_itemsUncheckedCreateWithoutProduct_typeInput> | grn_itemsCreateWithoutProduct_typeInput[] | grn_itemsUncheckedCreateWithoutProduct_typeInput[]
+    connectOrCreate?: grn_itemsCreateOrConnectWithoutProduct_typeInput | grn_itemsCreateOrConnectWithoutProduct_typeInput[]
+    createMany?: grn_itemsCreateManyProduct_typeInputEnvelope
+    connect?: grn_itemsWhereUniqueInput | grn_itemsWhereUniqueInput[]
+  }
+
+  export type invoice_itemsCreateNestedManyWithoutProduct_typeInput = {
+    create?: XOR<invoice_itemsCreateWithoutProduct_typeInput, invoice_itemsUncheckedCreateWithoutProduct_typeInput> | invoice_itemsCreateWithoutProduct_typeInput[] | invoice_itemsUncheckedCreateWithoutProduct_typeInput[]
+    connectOrCreate?: invoice_itemsCreateOrConnectWithoutProduct_typeInput | invoice_itemsCreateOrConnectWithoutProduct_typeInput[]
+    createMany?: invoice_itemsCreateManyProduct_typeInputEnvelope
+    connect?: invoice_itemsWhereUniqueInput | invoice_itemsWhereUniqueInput[]
+  }
+
+  export type grn_itemsUncheckedCreateNestedManyWithoutProduct_typeInput = {
+    create?: XOR<grn_itemsCreateWithoutProduct_typeInput, grn_itemsUncheckedCreateWithoutProduct_typeInput> | grn_itemsCreateWithoutProduct_typeInput[] | grn_itemsUncheckedCreateWithoutProduct_typeInput[]
+    connectOrCreate?: grn_itemsCreateOrConnectWithoutProduct_typeInput | grn_itemsCreateOrConnectWithoutProduct_typeInput[]
+    createMany?: grn_itemsCreateManyProduct_typeInputEnvelope
+    connect?: grn_itemsWhereUniqueInput | grn_itemsWhereUniqueInput[]
+  }
+
+  export type invoice_itemsUncheckedCreateNestedManyWithoutProduct_typeInput = {
+    create?: XOR<invoice_itemsCreateWithoutProduct_typeInput, invoice_itemsUncheckedCreateWithoutProduct_typeInput> | invoice_itemsCreateWithoutProduct_typeInput[] | invoice_itemsUncheckedCreateWithoutProduct_typeInput[]
+    connectOrCreate?: invoice_itemsCreateOrConnectWithoutProduct_typeInput | invoice_itemsCreateOrConnectWithoutProduct_typeInput[]
+    createMany?: invoice_itemsCreateManyProduct_typeInputEnvelope
+    connect?: invoice_itemsWhereUniqueInput | invoice_itemsWhereUniqueInput[]
+  }
+
+  export type grn_itemsUpdateManyWithoutProduct_typeNestedInput = {
+    create?: XOR<grn_itemsCreateWithoutProduct_typeInput, grn_itemsUncheckedCreateWithoutProduct_typeInput> | grn_itemsCreateWithoutProduct_typeInput[] | grn_itemsUncheckedCreateWithoutProduct_typeInput[]
+    connectOrCreate?: grn_itemsCreateOrConnectWithoutProduct_typeInput | grn_itemsCreateOrConnectWithoutProduct_typeInput[]
+    upsert?: grn_itemsUpsertWithWhereUniqueWithoutProduct_typeInput | grn_itemsUpsertWithWhereUniqueWithoutProduct_typeInput[]
+    createMany?: grn_itemsCreateManyProduct_typeInputEnvelope
+    set?: grn_itemsWhereUniqueInput | grn_itemsWhereUniqueInput[]
+    disconnect?: grn_itemsWhereUniqueInput | grn_itemsWhereUniqueInput[]
+    delete?: grn_itemsWhereUniqueInput | grn_itemsWhereUniqueInput[]
+    connect?: grn_itemsWhereUniqueInput | grn_itemsWhereUniqueInput[]
+    update?: grn_itemsUpdateWithWhereUniqueWithoutProduct_typeInput | grn_itemsUpdateWithWhereUniqueWithoutProduct_typeInput[]
+    updateMany?: grn_itemsUpdateManyWithWhereWithoutProduct_typeInput | grn_itemsUpdateManyWithWhereWithoutProduct_typeInput[]
+    deleteMany?: grn_itemsScalarWhereInput | grn_itemsScalarWhereInput[]
+  }
+
+  export type invoice_itemsUpdateManyWithoutProduct_typeNestedInput = {
+    create?: XOR<invoice_itemsCreateWithoutProduct_typeInput, invoice_itemsUncheckedCreateWithoutProduct_typeInput> | invoice_itemsCreateWithoutProduct_typeInput[] | invoice_itemsUncheckedCreateWithoutProduct_typeInput[]
+    connectOrCreate?: invoice_itemsCreateOrConnectWithoutProduct_typeInput | invoice_itemsCreateOrConnectWithoutProduct_typeInput[]
+    upsert?: invoice_itemsUpsertWithWhereUniqueWithoutProduct_typeInput | invoice_itemsUpsertWithWhereUniqueWithoutProduct_typeInput[]
+    createMany?: invoice_itemsCreateManyProduct_typeInputEnvelope
+    set?: invoice_itemsWhereUniqueInput | invoice_itemsWhereUniqueInput[]
+    disconnect?: invoice_itemsWhereUniqueInput | invoice_itemsWhereUniqueInput[]
+    delete?: invoice_itemsWhereUniqueInput | invoice_itemsWhereUniqueInput[]
+    connect?: invoice_itemsWhereUniqueInput | invoice_itemsWhereUniqueInput[]
+    update?: invoice_itemsUpdateWithWhereUniqueWithoutProduct_typeInput | invoice_itemsUpdateWithWhereUniqueWithoutProduct_typeInput[]
+    updateMany?: invoice_itemsUpdateManyWithWhereWithoutProduct_typeInput | invoice_itemsUpdateManyWithWhereWithoutProduct_typeInput[]
+    deleteMany?: invoice_itemsScalarWhereInput | invoice_itemsScalarWhereInput[]
+  }
+
+  export type grn_itemsUncheckedUpdateManyWithoutProduct_typeNestedInput = {
+    create?: XOR<grn_itemsCreateWithoutProduct_typeInput, grn_itemsUncheckedCreateWithoutProduct_typeInput> | grn_itemsCreateWithoutProduct_typeInput[] | grn_itemsUncheckedCreateWithoutProduct_typeInput[]
+    connectOrCreate?: grn_itemsCreateOrConnectWithoutProduct_typeInput | grn_itemsCreateOrConnectWithoutProduct_typeInput[]
+    upsert?: grn_itemsUpsertWithWhereUniqueWithoutProduct_typeInput | grn_itemsUpsertWithWhereUniqueWithoutProduct_typeInput[]
+    createMany?: grn_itemsCreateManyProduct_typeInputEnvelope
+    set?: grn_itemsWhereUniqueInput | grn_itemsWhereUniqueInput[]
+    disconnect?: grn_itemsWhereUniqueInput | grn_itemsWhereUniqueInput[]
+    delete?: grn_itemsWhereUniqueInput | grn_itemsWhereUniqueInput[]
+    connect?: grn_itemsWhereUniqueInput | grn_itemsWhereUniqueInput[]
+    update?: grn_itemsUpdateWithWhereUniqueWithoutProduct_typeInput | grn_itemsUpdateWithWhereUniqueWithoutProduct_typeInput[]
+    updateMany?: grn_itemsUpdateManyWithWhereWithoutProduct_typeInput | grn_itemsUpdateManyWithWhereWithoutProduct_typeInput[]
+    deleteMany?: grn_itemsScalarWhereInput | grn_itemsScalarWhereInput[]
+  }
+
+  export type invoice_itemsUncheckedUpdateManyWithoutProduct_typeNestedInput = {
+    create?: XOR<invoice_itemsCreateWithoutProduct_typeInput, invoice_itemsUncheckedCreateWithoutProduct_typeInput> | invoice_itemsCreateWithoutProduct_typeInput[] | invoice_itemsUncheckedCreateWithoutProduct_typeInput[]
+    connectOrCreate?: invoice_itemsCreateOrConnectWithoutProduct_typeInput | invoice_itemsCreateOrConnectWithoutProduct_typeInput[]
+    upsert?: invoice_itemsUpsertWithWhereUniqueWithoutProduct_typeInput | invoice_itemsUpsertWithWhereUniqueWithoutProduct_typeInput[]
+    createMany?: invoice_itemsCreateManyProduct_typeInputEnvelope
+    set?: invoice_itemsWhereUniqueInput | invoice_itemsWhereUniqueInput[]
+    disconnect?: invoice_itemsWhereUniqueInput | invoice_itemsWhereUniqueInput[]
+    delete?: invoice_itemsWhereUniqueInput | invoice_itemsWhereUniqueInput[]
+    connect?: invoice_itemsWhereUniqueInput | invoice_itemsWhereUniqueInput[]
+    update?: invoice_itemsUpdateWithWhereUniqueWithoutProduct_typeInput | invoice_itemsUpdateWithWhereUniqueWithoutProduct_typeInput[]
+    updateMany?: invoice_itemsUpdateManyWithWhereWithoutProduct_typeInput | invoice_itemsUpdateManyWithWhereWithoutProduct_typeInput[]
+    deleteMany?: invoice_itemsScalarWhereInput | invoice_itemsScalarWhereInput[]
+  }
+
+  export type batchCreateNestedManyWithoutSizeInput = {
+    create?: XOR<batchCreateWithoutSizeInput, batchUncheckedCreateWithoutSizeInput> | batchCreateWithoutSizeInput[] | batchUncheckedCreateWithoutSizeInput[]
+    connectOrCreate?: batchCreateOrConnectWithoutSizeInput | batchCreateOrConnectWithoutSizeInput[]
+    createMany?: batchCreateManySizeInputEnvelope
+    connect?: batchWhereUniqueInput | batchWhereUniqueInput[]
+  }
+
+  export type batchUncheckedCreateNestedManyWithoutSizeInput = {
+    create?: XOR<batchCreateWithoutSizeInput, batchUncheckedCreateWithoutSizeInput> | batchCreateWithoutSizeInput[] | batchUncheckedCreateWithoutSizeInput[]
+    connectOrCreate?: batchCreateOrConnectWithoutSizeInput | batchCreateOrConnectWithoutSizeInput[]
+    createMany?: batchCreateManySizeInputEnvelope
+    connect?: batchWhereUniqueInput | batchWhereUniqueInput[]
+  }
+
+  export type batchUpdateManyWithoutSizeNestedInput = {
+    create?: XOR<batchCreateWithoutSizeInput, batchUncheckedCreateWithoutSizeInput> | batchCreateWithoutSizeInput[] | batchUncheckedCreateWithoutSizeInput[]
+    connectOrCreate?: batchCreateOrConnectWithoutSizeInput | batchCreateOrConnectWithoutSizeInput[]
+    upsert?: batchUpsertWithWhereUniqueWithoutSizeInput | batchUpsertWithWhereUniqueWithoutSizeInput[]
+    createMany?: batchCreateManySizeInputEnvelope
+    set?: batchWhereUniqueInput | batchWhereUniqueInput[]
+    disconnect?: batchWhereUniqueInput | batchWhereUniqueInput[]
+    delete?: batchWhereUniqueInput | batchWhereUniqueInput[]
+    connect?: batchWhereUniqueInput | batchWhereUniqueInput[]
+    update?: batchUpdateWithWhereUniqueWithoutSizeInput | batchUpdateWithWhereUniqueWithoutSizeInput[]
+    updateMany?: batchUpdateManyWithWhereWithoutSizeInput | batchUpdateManyWithWhereWithoutSizeInput[]
+    deleteMany?: batchScalarWhereInput | batchScalarWhereInput[]
+  }
+
+  export type batchUncheckedUpdateManyWithoutSizeNestedInput = {
+    create?: XOR<batchCreateWithoutSizeInput, batchUncheckedCreateWithoutSizeInput> | batchCreateWithoutSizeInput[] | batchUncheckedCreateWithoutSizeInput[]
+    connectOrCreate?: batchCreateOrConnectWithoutSizeInput | batchCreateOrConnectWithoutSizeInput[]
+    upsert?: batchUpsertWithWhereUniqueWithoutSizeInput | batchUpsertWithWhereUniqueWithoutSizeInput[]
+    createMany?: batchCreateManySizeInputEnvelope
+    set?: batchWhereUniqueInput | batchWhereUniqueInput[]
+    disconnect?: batchWhereUniqueInput | batchWhereUniqueInput[]
+    delete?: batchWhereUniqueInput | batchWhereUniqueInput[]
+    connect?: batchWhereUniqueInput | batchWhereUniqueInput[]
+    update?: batchUpdateWithWhereUniqueWithoutSizeInput | batchUpdateWithWhereUniqueWithoutSizeInput[]
+    updateMany?: batchUpdateManyWithWhereWithoutSizeInput | batchUpdateManyWithWhereWithoutSizeInput[]
+    deleteMany?: batchScalarWhereInput | batchScalarWhereInput[]
+  }
+
+  export type supplierCreateNestedManyWithoutStatusInput = {
+    create?: XOR<supplierCreateWithoutStatusInput, supplierUncheckedCreateWithoutStatusInput> | supplierCreateWithoutStatusInput[] | supplierUncheckedCreateWithoutStatusInput[]
+    connectOrCreate?: supplierCreateOrConnectWithoutStatusInput | supplierCreateOrConnectWithoutStatusInput[]
+    createMany?: supplierCreateManyStatusInputEnvelope
+    connect?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+  }
+
+  export type usersCreateNestedManyWithoutStatusInput = {
+    create?: XOR<usersCreateWithoutStatusInput, usersUncheckedCreateWithoutStatusInput> | usersCreateWithoutStatusInput[] | usersUncheckedCreateWithoutStatusInput[]
+    connectOrCreate?: usersCreateOrConnectWithoutStatusInput | usersCreateOrConnectWithoutStatusInput[]
+    createMany?: usersCreateManyStatusInputEnvelope
+    connect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+  }
+
+  export type supplierUncheckedCreateNestedManyWithoutStatusInput = {
+    create?: XOR<supplierCreateWithoutStatusInput, supplierUncheckedCreateWithoutStatusInput> | supplierCreateWithoutStatusInput[] | supplierUncheckedCreateWithoutStatusInput[]
+    connectOrCreate?: supplierCreateOrConnectWithoutStatusInput | supplierCreateOrConnectWithoutStatusInput[]
+    createMany?: supplierCreateManyStatusInputEnvelope
+    connect?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+  }
+
+  export type usersUncheckedCreateNestedManyWithoutStatusInput = {
+    create?: XOR<usersCreateWithoutStatusInput, usersUncheckedCreateWithoutStatusInput> | usersCreateWithoutStatusInput[] | usersUncheckedCreateWithoutStatusInput[]
+    connectOrCreate?: usersCreateOrConnectWithoutStatusInput | usersCreateOrConnectWithoutStatusInput[]
+    createMany?: usersCreateManyStatusInputEnvelope
+    connect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+  }
+
+  export type supplierUpdateManyWithoutStatusNestedInput = {
+    create?: XOR<supplierCreateWithoutStatusInput, supplierUncheckedCreateWithoutStatusInput> | supplierCreateWithoutStatusInput[] | supplierUncheckedCreateWithoutStatusInput[]
+    connectOrCreate?: supplierCreateOrConnectWithoutStatusInput | supplierCreateOrConnectWithoutStatusInput[]
+    upsert?: supplierUpsertWithWhereUniqueWithoutStatusInput | supplierUpsertWithWhereUniqueWithoutStatusInput[]
+    createMany?: supplierCreateManyStatusInputEnvelope
+    set?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+    disconnect?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+    delete?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+    connect?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+    update?: supplierUpdateWithWhereUniqueWithoutStatusInput | supplierUpdateWithWhereUniqueWithoutStatusInput[]
+    updateMany?: supplierUpdateManyWithWhereWithoutStatusInput | supplierUpdateManyWithWhereWithoutStatusInput[]
+    deleteMany?: supplierScalarWhereInput | supplierScalarWhereInput[]
+  }
+
+  export type usersUpdateManyWithoutStatusNestedInput = {
+    create?: XOR<usersCreateWithoutStatusInput, usersUncheckedCreateWithoutStatusInput> | usersCreateWithoutStatusInput[] | usersUncheckedCreateWithoutStatusInput[]
+    connectOrCreate?: usersCreateOrConnectWithoutStatusInput | usersCreateOrConnectWithoutStatusInput[]
+    upsert?: usersUpsertWithWhereUniqueWithoutStatusInput | usersUpsertWithWhereUniqueWithoutStatusInput[]
+    createMany?: usersCreateManyStatusInputEnvelope
+    set?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    disconnect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    delete?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    connect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    update?: usersUpdateWithWhereUniqueWithoutStatusInput | usersUpdateWithWhereUniqueWithoutStatusInput[]
+    updateMany?: usersUpdateManyWithWhereWithoutStatusInput | usersUpdateManyWithWhereWithoutStatusInput[]
+    deleteMany?: usersScalarWhereInput | usersScalarWhereInput[]
+  }
+
+  export type supplierUncheckedUpdateManyWithoutStatusNestedInput = {
+    create?: XOR<supplierCreateWithoutStatusInput, supplierUncheckedCreateWithoutStatusInput> | supplierCreateWithoutStatusInput[] | supplierUncheckedCreateWithoutStatusInput[]
+    connectOrCreate?: supplierCreateOrConnectWithoutStatusInput | supplierCreateOrConnectWithoutStatusInput[]
+    upsert?: supplierUpsertWithWhereUniqueWithoutStatusInput | supplierUpsertWithWhereUniqueWithoutStatusInput[]
+    createMany?: supplierCreateManyStatusInputEnvelope
+    set?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+    disconnect?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+    delete?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+    connect?: supplierWhereUniqueInput | supplierWhereUniqueInput[]
+    update?: supplierUpdateWithWhereUniqueWithoutStatusInput | supplierUpdateWithWhereUniqueWithoutStatusInput[]
+    updateMany?: supplierUpdateManyWithWhereWithoutStatusInput | supplierUpdateManyWithWhereWithoutStatusInput[]
+    deleteMany?: supplierScalarWhereInput | supplierScalarWhereInput[]
+  }
+
+  export type usersUncheckedUpdateManyWithoutStatusNestedInput = {
+    create?: XOR<usersCreateWithoutStatusInput, usersUncheckedCreateWithoutStatusInput> | usersCreateWithoutStatusInput[] | usersUncheckedCreateWithoutStatusInput[]
+    connectOrCreate?: usersCreateOrConnectWithoutStatusInput | usersCreateOrConnectWithoutStatusInput[]
+    upsert?: usersUpsertWithWhereUniqueWithoutStatusInput | usersUpsertWithWhereUniqueWithoutStatusInput[]
+    createMany?: usersCreateManyStatusInputEnvelope
+    set?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    disconnect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    delete?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    connect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    update?: usersUpdateWithWhereUniqueWithoutStatusInput | usersUpdateWithWhereUniqueWithoutStatusInput[]
+    updateMany?: usersUpdateManyWithWhereWithoutStatusInput | usersUpdateManyWithWhereWithoutStatusInput[]
+    deleteMany?: usersScalarWhereInput | usersScalarWhereInput[]
+  }
+
+  export type grnCreateNestedManyWithoutSupplierInput = {
+    create?: XOR<grnCreateWithoutSupplierInput, grnUncheckedCreateWithoutSupplierInput> | grnCreateWithoutSupplierInput[] | grnUncheckedCreateWithoutSupplierInput[]
+    connectOrCreate?: grnCreateOrConnectWithoutSupplierInput | grnCreateOrConnectWithoutSupplierInput[]
+    createMany?: grnCreateManySupplierInputEnvelope
+    connect?: grnWhereUniqueInput | grnWhereUniqueInput[]
+  }
+
+  export type cityCreateNestedOneWithoutSupplierInput = {
+    create?: XOR<cityCreateWithoutSupplierInput, cityUncheckedCreateWithoutSupplierInput>
+    connectOrCreate?: cityCreateOrConnectWithoutSupplierInput
+    connect?: cityWhereUniqueInput
+  }
+
+  export type genderCreateNestedOneWithoutSupplierInput = {
+    create?: XOR<genderCreateWithoutSupplierInput, genderUncheckedCreateWithoutSupplierInput>
+    connectOrCreate?: genderCreateOrConnectWithoutSupplierInput
+    connect?: genderWhereUniqueInput
+  }
+
+  export type statusCreateNestedOneWithoutSupplierInput = {
+    create?: XOR<statusCreateWithoutSupplierInput, statusUncheckedCreateWithoutSupplierInput>
+    connectOrCreate?: statusCreateOrConnectWithoutSupplierInput
+    connect?: statusWhereUniqueInput
+  }
+
+  export type grnUncheckedCreateNestedManyWithoutSupplierInput = {
+    create?: XOR<grnCreateWithoutSupplierInput, grnUncheckedCreateWithoutSupplierInput> | grnCreateWithoutSupplierInput[] | grnUncheckedCreateWithoutSupplierInput[]
+    connectOrCreate?: grnCreateOrConnectWithoutSupplierInput | grnCreateOrConnectWithoutSupplierInput[]
+    createMany?: grnCreateManySupplierInputEnvelope
+    connect?: grnWhereUniqueInput | grnWhereUniqueInput[]
+  }
+
+  export type grnUpdateManyWithoutSupplierNestedInput = {
+    create?: XOR<grnCreateWithoutSupplierInput, grnUncheckedCreateWithoutSupplierInput> | grnCreateWithoutSupplierInput[] | grnUncheckedCreateWithoutSupplierInput[]
+    connectOrCreate?: grnCreateOrConnectWithoutSupplierInput | grnCreateOrConnectWithoutSupplierInput[]
+    upsert?: grnUpsertWithWhereUniqueWithoutSupplierInput | grnUpsertWithWhereUniqueWithoutSupplierInput[]
+    createMany?: grnCreateManySupplierInputEnvelope
+    set?: grnWhereUniqueInput | grnWhereUniqueInput[]
+    disconnect?: grnWhereUniqueInput | grnWhereUniqueInput[]
+    delete?: grnWhereUniqueInput | grnWhereUniqueInput[]
+    connect?: grnWhereUniqueInput | grnWhereUniqueInput[]
+    update?: grnUpdateWithWhereUniqueWithoutSupplierInput | grnUpdateWithWhereUniqueWithoutSupplierInput[]
+    updateMany?: grnUpdateManyWithWhereWithoutSupplierInput | grnUpdateManyWithWhereWithoutSupplierInput[]
+    deleteMany?: grnScalarWhereInput | grnScalarWhereInput[]
+  }
+
+  export type cityUpdateOneRequiredWithoutSupplierNestedInput = {
+    create?: XOR<cityCreateWithoutSupplierInput, cityUncheckedCreateWithoutSupplierInput>
+    connectOrCreate?: cityCreateOrConnectWithoutSupplierInput
+    upsert?: cityUpsertWithoutSupplierInput
+    connect?: cityWhereUniqueInput
+    update?: XOR<XOR<cityUpdateToOneWithWhereWithoutSupplierInput, cityUpdateWithoutSupplierInput>, cityUncheckedUpdateWithoutSupplierInput>
+  }
+
+  export type genderUpdateOneRequiredWithoutSupplierNestedInput = {
+    create?: XOR<genderCreateWithoutSupplierInput, genderUncheckedCreateWithoutSupplierInput>
+    connectOrCreate?: genderCreateOrConnectWithoutSupplierInput
+    upsert?: genderUpsertWithoutSupplierInput
+    connect?: genderWhereUniqueInput
+    update?: XOR<XOR<genderUpdateToOneWithWhereWithoutSupplierInput, genderUpdateWithoutSupplierInput>, genderUncheckedUpdateWithoutSupplierInput>
+  }
+
+  export type statusUpdateOneRequiredWithoutSupplierNestedInput = {
+    create?: XOR<statusCreateWithoutSupplierInput, statusUncheckedCreateWithoutSupplierInput>
+    connectOrCreate?: statusCreateOrConnectWithoutSupplierInput
+    upsert?: statusUpsertWithoutSupplierInput
+    connect?: statusWhereUniqueInput
+    update?: XOR<XOR<statusUpdateToOneWithWhereWithoutSupplierInput, statusUpdateWithoutSupplierInput>, statusUncheckedUpdateWithoutSupplierInput>
+  }
+
+  export type grnUncheckedUpdateManyWithoutSupplierNestedInput = {
+    create?: XOR<grnCreateWithoutSupplierInput, grnUncheckedCreateWithoutSupplierInput> | grnCreateWithoutSupplierInput[] | grnUncheckedCreateWithoutSupplierInput[]
+    connectOrCreate?: grnCreateOrConnectWithoutSupplierInput | grnCreateOrConnectWithoutSupplierInput[]
+    upsert?: grnUpsertWithWhereUniqueWithoutSupplierInput | grnUpsertWithWhereUniqueWithoutSupplierInput[]
+    createMany?: grnCreateManySupplierInputEnvelope
+    set?: grnWhereUniqueInput | grnWhereUniqueInput[]
+    disconnect?: grnWhereUniqueInput | grnWhereUniqueInput[]
+    delete?: grnWhereUniqueInput | grnWhereUniqueInput[]
+    connect?: grnWhereUniqueInput | grnWhereUniqueInput[]
+    update?: grnUpdateWithWhereUniqueWithoutSupplierInput | grnUpdateWithWhereUniqueWithoutSupplierInput[]
+    updateMany?: grnUpdateManyWithWhereWithoutSupplierInput | grnUpdateManyWithWhereWithoutSupplierInput[]
+    deleteMany?: grnScalarWhereInput | grnScalarWhereInput[]
+  }
+
+  export type usersCreateNestedManyWithoutUser_roleInput = {
+    create?: XOR<usersCreateWithoutUser_roleInput, usersUncheckedCreateWithoutUser_roleInput> | usersCreateWithoutUser_roleInput[] | usersUncheckedCreateWithoutUser_roleInput[]
+    connectOrCreate?: usersCreateOrConnectWithoutUser_roleInput | usersCreateOrConnectWithoutUser_roleInput[]
+    createMany?: usersCreateManyUser_roleInputEnvelope
+    connect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+  }
+
+  export type usersUncheckedCreateNestedManyWithoutUser_roleInput = {
+    create?: XOR<usersCreateWithoutUser_roleInput, usersUncheckedCreateWithoutUser_roleInput> | usersCreateWithoutUser_roleInput[] | usersUncheckedCreateWithoutUser_roleInput[]
+    connectOrCreate?: usersCreateOrConnectWithoutUser_roleInput | usersCreateOrConnectWithoutUser_roleInput[]
+    createMany?: usersCreateManyUser_roleInputEnvelope
+    connect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+  }
+
+  export type usersUpdateManyWithoutUser_roleNestedInput = {
+    create?: XOR<usersCreateWithoutUser_roleInput, usersUncheckedCreateWithoutUser_roleInput> | usersCreateWithoutUser_roleInput[] | usersUncheckedCreateWithoutUser_roleInput[]
+    connectOrCreate?: usersCreateOrConnectWithoutUser_roleInput | usersCreateOrConnectWithoutUser_roleInput[]
+    upsert?: usersUpsertWithWhereUniqueWithoutUser_roleInput | usersUpsertWithWhereUniqueWithoutUser_roleInput[]
+    createMany?: usersCreateManyUser_roleInputEnvelope
+    set?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    disconnect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    delete?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    connect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    update?: usersUpdateWithWhereUniqueWithoutUser_roleInput | usersUpdateWithWhereUniqueWithoutUser_roleInput[]
+    updateMany?: usersUpdateManyWithWhereWithoutUser_roleInput | usersUpdateManyWithWhereWithoutUser_roleInput[]
+    deleteMany?: usersScalarWhereInput | usersScalarWhereInput[]
+  }
+
+  export type usersUncheckedUpdateManyWithoutUser_roleNestedInput = {
+    create?: XOR<usersCreateWithoutUser_roleInput, usersUncheckedCreateWithoutUser_roleInput> | usersCreateWithoutUser_roleInput[] | usersUncheckedCreateWithoutUser_roleInput[]
+    connectOrCreate?: usersCreateOrConnectWithoutUser_roleInput | usersCreateOrConnectWithoutUser_roleInput[]
+    upsert?: usersUpsertWithWhereUniqueWithoutUser_roleInput | usersUpsertWithWhereUniqueWithoutUser_roleInput[]
+    createMany?: usersCreateManyUser_roleInputEnvelope
+    set?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    disconnect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    delete?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    connect?: usersWhereUniqueInput | usersWhereUniqueInput[]
+    update?: usersUpdateWithWhereUniqueWithoutUser_roleInput | usersUpdateWithWhereUniqueWithoutUser_roleInput[]
+    updateMany?: usersUpdateManyWithWhereWithoutUser_roleInput | usersUpdateManyWithWhereWithoutUser_roleInput[]
+    deleteMany?: usersScalarWhereInput | usersScalarWhereInput[]
+  }
+
+  export type card_detailsCreateNestedManyWithoutUsersInput = {
+    create?: XOR<card_detailsCreateWithoutUsersInput, card_detailsUncheckedCreateWithoutUsersInput> | card_detailsCreateWithoutUsersInput[] | card_detailsUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: card_detailsCreateOrConnectWithoutUsersInput | card_detailsCreateOrConnectWithoutUsersInput[]
+    createMany?: card_detailsCreateManyUsersInputEnvelope
+    connect?: card_detailsWhereUniqueInput | card_detailsWhereUniqueInput[]
+  }
+
+  export type grnCreateNestedManyWithoutUsersInput = {
+    create?: XOR<grnCreateWithoutUsersInput, grnUncheckedCreateWithoutUsersInput> | grnCreateWithoutUsersInput[] | grnUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: grnCreateOrConnectWithoutUsersInput | grnCreateOrConnectWithoutUsersInput[]
+    createMany?: grnCreateManyUsersInputEnvelope
+    connect?: grnWhereUniqueInput | grnWhereUniqueInput[]
+  }
+
+  export type invoiceCreateNestedManyWithoutUsersInput = {
+    create?: XOR<invoiceCreateWithoutUsersInput, invoiceUncheckedCreateWithoutUsersInput> | invoiceCreateWithoutUsersInput[] | invoiceUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: invoiceCreateOrConnectWithoutUsersInput | invoiceCreateOrConnectWithoutUsersInput[]
+    createMany?: invoiceCreateManyUsersInputEnvelope
+    connect?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+  }
+
+  export type cityCreateNestedOneWithoutUsersInput = {
+    create?: XOR<cityCreateWithoutUsersInput, cityUncheckedCreateWithoutUsersInput>
+    connectOrCreate?: cityCreateOrConnectWithoutUsersInput
+    connect?: cityWhereUniqueInput
+  }
+
+  export type genderCreateNestedOneWithoutUsersInput = {
+    create?: XOR<genderCreateWithoutUsersInput, genderUncheckedCreateWithoutUsersInput>
+    connectOrCreate?: genderCreateOrConnectWithoutUsersInput
+    connect?: genderWhereUniqueInput
+  }
+
+  export type statusCreateNestedOneWithoutUsersInput = {
+    create?: XOR<statusCreateWithoutUsersInput, statusUncheckedCreateWithoutUsersInput>
+    connectOrCreate?: statusCreateOrConnectWithoutUsersInput
+    connect?: statusWhereUniqueInput
+  }
+
+  export type user_roleCreateNestedOneWithoutUsersInput = {
+    create?: XOR<user_roleCreateWithoutUsersInput, user_roleUncheckedCreateWithoutUsersInput>
+    connectOrCreate?: user_roleCreateOrConnectWithoutUsersInput
+    connect?: user_roleWhereUniqueInput
+  }
+
+  export type card_detailsUncheckedCreateNestedManyWithoutUsersInput = {
+    create?: XOR<card_detailsCreateWithoutUsersInput, card_detailsUncheckedCreateWithoutUsersInput> | card_detailsCreateWithoutUsersInput[] | card_detailsUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: card_detailsCreateOrConnectWithoutUsersInput | card_detailsCreateOrConnectWithoutUsersInput[]
+    createMany?: card_detailsCreateManyUsersInputEnvelope
+    connect?: card_detailsWhereUniqueInput | card_detailsWhereUniqueInput[]
+  }
+
+  export type grnUncheckedCreateNestedManyWithoutUsersInput = {
+    create?: XOR<grnCreateWithoutUsersInput, grnUncheckedCreateWithoutUsersInput> | grnCreateWithoutUsersInput[] | grnUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: grnCreateOrConnectWithoutUsersInput | grnCreateOrConnectWithoutUsersInput[]
+    createMany?: grnCreateManyUsersInputEnvelope
+    connect?: grnWhereUniqueInput | grnWhereUniqueInput[]
+  }
+
+  export type invoiceUncheckedCreateNestedManyWithoutUsersInput = {
+    create?: XOR<invoiceCreateWithoutUsersInput, invoiceUncheckedCreateWithoutUsersInput> | invoiceCreateWithoutUsersInput[] | invoiceUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: invoiceCreateOrConnectWithoutUsersInput | invoiceCreateOrConnectWithoutUsersInput[]
+    createMany?: invoiceCreateManyUsersInputEnvelope
+    connect?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+  }
+
+  export type card_detailsUpdateManyWithoutUsersNestedInput = {
+    create?: XOR<card_detailsCreateWithoutUsersInput, card_detailsUncheckedCreateWithoutUsersInput> | card_detailsCreateWithoutUsersInput[] | card_detailsUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: card_detailsCreateOrConnectWithoutUsersInput | card_detailsCreateOrConnectWithoutUsersInput[]
+    upsert?: card_detailsUpsertWithWhereUniqueWithoutUsersInput | card_detailsUpsertWithWhereUniqueWithoutUsersInput[]
+    createMany?: card_detailsCreateManyUsersInputEnvelope
+    set?: card_detailsWhereUniqueInput | card_detailsWhereUniqueInput[]
+    disconnect?: card_detailsWhereUniqueInput | card_detailsWhereUniqueInput[]
+    delete?: card_detailsWhereUniqueInput | card_detailsWhereUniqueInput[]
+    connect?: card_detailsWhereUniqueInput | card_detailsWhereUniqueInput[]
+    update?: card_detailsUpdateWithWhereUniqueWithoutUsersInput | card_detailsUpdateWithWhereUniqueWithoutUsersInput[]
+    updateMany?: card_detailsUpdateManyWithWhereWithoutUsersInput | card_detailsUpdateManyWithWhereWithoutUsersInput[]
+    deleteMany?: card_detailsScalarWhereInput | card_detailsScalarWhereInput[]
+  }
+
+  export type grnUpdateManyWithoutUsersNestedInput = {
+    create?: XOR<grnCreateWithoutUsersInput, grnUncheckedCreateWithoutUsersInput> | grnCreateWithoutUsersInput[] | grnUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: grnCreateOrConnectWithoutUsersInput | grnCreateOrConnectWithoutUsersInput[]
+    upsert?: grnUpsertWithWhereUniqueWithoutUsersInput | grnUpsertWithWhereUniqueWithoutUsersInput[]
+    createMany?: grnCreateManyUsersInputEnvelope
+    set?: grnWhereUniqueInput | grnWhereUniqueInput[]
+    disconnect?: grnWhereUniqueInput | grnWhereUniqueInput[]
+    delete?: grnWhereUniqueInput | grnWhereUniqueInput[]
+    connect?: grnWhereUniqueInput | grnWhereUniqueInput[]
+    update?: grnUpdateWithWhereUniqueWithoutUsersInput | grnUpdateWithWhereUniqueWithoutUsersInput[]
+    updateMany?: grnUpdateManyWithWhereWithoutUsersInput | grnUpdateManyWithWhereWithoutUsersInput[]
+    deleteMany?: grnScalarWhereInput | grnScalarWhereInput[]
+  }
+
+  export type invoiceUpdateManyWithoutUsersNestedInput = {
+    create?: XOR<invoiceCreateWithoutUsersInput, invoiceUncheckedCreateWithoutUsersInput> | invoiceCreateWithoutUsersInput[] | invoiceUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: invoiceCreateOrConnectWithoutUsersInput | invoiceCreateOrConnectWithoutUsersInput[]
+    upsert?: invoiceUpsertWithWhereUniqueWithoutUsersInput | invoiceUpsertWithWhereUniqueWithoutUsersInput[]
+    createMany?: invoiceCreateManyUsersInputEnvelope
+    set?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+    disconnect?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+    delete?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+    connect?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+    update?: invoiceUpdateWithWhereUniqueWithoutUsersInput | invoiceUpdateWithWhereUniqueWithoutUsersInput[]
+    updateMany?: invoiceUpdateManyWithWhereWithoutUsersInput | invoiceUpdateManyWithWhereWithoutUsersInput[]
+    deleteMany?: invoiceScalarWhereInput | invoiceScalarWhereInput[]
+  }
+
+  export type cityUpdateOneRequiredWithoutUsersNestedInput = {
+    create?: XOR<cityCreateWithoutUsersInput, cityUncheckedCreateWithoutUsersInput>
+    connectOrCreate?: cityCreateOrConnectWithoutUsersInput
+    upsert?: cityUpsertWithoutUsersInput
+    connect?: cityWhereUniqueInput
+    update?: XOR<XOR<cityUpdateToOneWithWhereWithoutUsersInput, cityUpdateWithoutUsersInput>, cityUncheckedUpdateWithoutUsersInput>
+  }
+
+  export type genderUpdateOneRequiredWithoutUsersNestedInput = {
+    create?: XOR<genderCreateWithoutUsersInput, genderUncheckedCreateWithoutUsersInput>
+    connectOrCreate?: genderCreateOrConnectWithoutUsersInput
+    upsert?: genderUpsertWithoutUsersInput
+    connect?: genderWhereUniqueInput
+    update?: XOR<XOR<genderUpdateToOneWithWhereWithoutUsersInput, genderUpdateWithoutUsersInput>, genderUncheckedUpdateWithoutUsersInput>
+  }
+
+  export type statusUpdateOneRequiredWithoutUsersNestedInput = {
+    create?: XOR<statusCreateWithoutUsersInput, statusUncheckedCreateWithoutUsersInput>
+    connectOrCreate?: statusCreateOrConnectWithoutUsersInput
+    upsert?: statusUpsertWithoutUsersInput
+    connect?: statusWhereUniqueInput
+    update?: XOR<XOR<statusUpdateToOneWithWhereWithoutUsersInput, statusUpdateWithoutUsersInput>, statusUncheckedUpdateWithoutUsersInput>
+  }
+
+  export type user_roleUpdateOneRequiredWithoutUsersNestedInput = {
+    create?: XOR<user_roleCreateWithoutUsersInput, user_roleUncheckedCreateWithoutUsersInput>
+    connectOrCreate?: user_roleCreateOrConnectWithoutUsersInput
+    upsert?: user_roleUpsertWithoutUsersInput
+    connect?: user_roleWhereUniqueInput
+    update?: XOR<XOR<user_roleUpdateToOneWithWhereWithoutUsersInput, user_roleUpdateWithoutUsersInput>, user_roleUncheckedUpdateWithoutUsersInput>
+  }
+
+  export type card_detailsUncheckedUpdateManyWithoutUsersNestedInput = {
+    create?: XOR<card_detailsCreateWithoutUsersInput, card_detailsUncheckedCreateWithoutUsersInput> | card_detailsCreateWithoutUsersInput[] | card_detailsUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: card_detailsCreateOrConnectWithoutUsersInput | card_detailsCreateOrConnectWithoutUsersInput[]
+    upsert?: card_detailsUpsertWithWhereUniqueWithoutUsersInput | card_detailsUpsertWithWhereUniqueWithoutUsersInput[]
+    createMany?: card_detailsCreateManyUsersInputEnvelope
+    set?: card_detailsWhereUniqueInput | card_detailsWhereUniqueInput[]
+    disconnect?: card_detailsWhereUniqueInput | card_detailsWhereUniqueInput[]
+    delete?: card_detailsWhereUniqueInput | card_detailsWhereUniqueInput[]
+    connect?: card_detailsWhereUniqueInput | card_detailsWhereUniqueInput[]
+    update?: card_detailsUpdateWithWhereUniqueWithoutUsersInput | card_detailsUpdateWithWhereUniqueWithoutUsersInput[]
+    updateMany?: card_detailsUpdateManyWithWhereWithoutUsersInput | card_detailsUpdateManyWithWhereWithoutUsersInput[]
+    deleteMany?: card_detailsScalarWhereInput | card_detailsScalarWhereInput[]
+  }
+
+  export type grnUncheckedUpdateManyWithoutUsersNestedInput = {
+    create?: XOR<grnCreateWithoutUsersInput, grnUncheckedCreateWithoutUsersInput> | grnCreateWithoutUsersInput[] | grnUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: grnCreateOrConnectWithoutUsersInput | grnCreateOrConnectWithoutUsersInput[]
+    upsert?: grnUpsertWithWhereUniqueWithoutUsersInput | grnUpsertWithWhereUniqueWithoutUsersInput[]
+    createMany?: grnCreateManyUsersInputEnvelope
+    set?: grnWhereUniqueInput | grnWhereUniqueInput[]
+    disconnect?: grnWhereUniqueInput | grnWhereUniqueInput[]
+    delete?: grnWhereUniqueInput | grnWhereUniqueInput[]
+    connect?: grnWhereUniqueInput | grnWhereUniqueInput[]
+    update?: grnUpdateWithWhereUniqueWithoutUsersInput | grnUpdateWithWhereUniqueWithoutUsersInput[]
+    updateMany?: grnUpdateManyWithWhereWithoutUsersInput | grnUpdateManyWithWhereWithoutUsersInput[]
+    deleteMany?: grnScalarWhereInput | grnScalarWhereInput[]
+  }
+
+  export type invoiceUncheckedUpdateManyWithoutUsersNestedInput = {
+    create?: XOR<invoiceCreateWithoutUsersInput, invoiceUncheckedCreateWithoutUsersInput> | invoiceCreateWithoutUsersInput[] | invoiceUncheckedCreateWithoutUsersInput[]
+    connectOrCreate?: invoiceCreateOrConnectWithoutUsersInput | invoiceCreateOrConnectWithoutUsersInput[]
+    upsert?: invoiceUpsertWithWhereUniqueWithoutUsersInput | invoiceUpsertWithWhereUniqueWithoutUsersInput[]
+    createMany?: invoiceCreateManyUsersInputEnvelope
+    set?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+    disconnect?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+    delete?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+    connect?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+    update?: invoiceUpdateWithWhereUniqueWithoutUsersInput | invoiceUpdateWithWhereUniqueWithoutUsersInput[]
+    updateMany?: invoiceUpdateManyWithWhereWithoutUsersInput | invoiceUpdateManyWithWhereWithoutUsersInput[]
+    deleteMany?: invoiceScalarWhereInput | invoiceScalarWhereInput[]
   }
 
   export type NestedIntFilter<$PrismaModel = never> = {
@@ -28193,6 +32506,3583 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedBoolFilter<$PrismaModel>
     _max?: NestedBoolFilter<$PrismaModel>
+  }
+
+  export type productCreateWithoutBatchInput = {
+    name: string
+    desc?: string | null
+    isActive?: boolean
+    category: categoryCreateNestedOneWithoutProductInput
+    mother_plant_type: mother_plant_typeCreateNestedOneWithoutProductInput
+  }
+
+  export type productUncheckedCreateWithoutBatchInput = {
+    id?: number
+    name: string
+    desc?: string | null
+    mother_plant_type_id: number
+    category_id: number
+    isActive?: boolean
+  }
+
+  export type productCreateOrConnectWithoutBatchInput = {
+    where: productWhereUniqueInput
+    create: XOR<productCreateWithoutBatchInput, productUncheckedCreateWithoutBatchInput>
+  }
+
+  export type sizeCreateWithoutBatchInput = {
+    size: string
+    short_key: string
+  }
+
+  export type sizeUncheckedCreateWithoutBatchInput = {
+    id?: number
+    size: string
+    short_key: string
+  }
+
+  export type sizeCreateOrConnectWithoutBatchInput = {
+    where: sizeWhereUniqueInput
+    create: XOR<sizeCreateWithoutBatchInput, sizeUncheckedCreateWithoutBatchInput>
+  }
+
+  export type product_imagesCreateWithoutBatchInput = {
+    name: string
+  }
+
+  export type product_imagesUncheckedCreateWithoutBatchInput = {
+    id?: number
+    name: string
+  }
+
+  export type product_imagesCreateOrConnectWithoutBatchInput = {
+    where: product_imagesWhereUniqueInput
+    create: XOR<product_imagesCreateWithoutBatchInput, product_imagesUncheckedCreateWithoutBatchInput>
+  }
+
+  export type product_imagesCreateManyBatchInputEnvelope = {
+    data: product_imagesCreateManyBatchInput | product_imagesCreateManyBatchInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type productUpsertWithoutBatchInput = {
+    update: XOR<productUpdateWithoutBatchInput, productUncheckedUpdateWithoutBatchInput>
+    create: XOR<productCreateWithoutBatchInput, productUncheckedCreateWithoutBatchInput>
+    where?: productWhereInput
+  }
+
+  export type productUpdateToOneWithWhereWithoutBatchInput = {
+    where?: productWhereInput
+    data: XOR<productUpdateWithoutBatchInput, productUncheckedUpdateWithoutBatchInput>
+  }
+
+  export type productUpdateWithoutBatchInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    category?: categoryUpdateOneRequiredWithoutProductNestedInput
+    mother_plant_type?: mother_plant_typeUpdateOneRequiredWithoutProductNestedInput
+  }
+
+  export type productUncheckedUpdateWithoutBatchInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    mother_plant_type_id?: IntFieldUpdateOperationsInput | number
+    category_id?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type sizeUpsertWithoutBatchInput = {
+    update: XOR<sizeUpdateWithoutBatchInput, sizeUncheckedUpdateWithoutBatchInput>
+    create: XOR<sizeCreateWithoutBatchInput, sizeUncheckedCreateWithoutBatchInput>
+    where?: sizeWhereInput
+  }
+
+  export type sizeUpdateToOneWithWhereWithoutBatchInput = {
+    where?: sizeWhereInput
+    data: XOR<sizeUpdateWithoutBatchInput, sizeUncheckedUpdateWithoutBatchInput>
+  }
+
+  export type sizeUpdateWithoutBatchInput = {
+    size?: StringFieldUpdateOperationsInput | string
+    short_key?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type sizeUncheckedUpdateWithoutBatchInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    size?: StringFieldUpdateOperationsInput | string
+    short_key?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type product_imagesUpsertWithWhereUniqueWithoutBatchInput = {
+    where: product_imagesWhereUniqueInput
+    update: XOR<product_imagesUpdateWithoutBatchInput, product_imagesUncheckedUpdateWithoutBatchInput>
+    create: XOR<product_imagesCreateWithoutBatchInput, product_imagesUncheckedCreateWithoutBatchInput>
+  }
+
+  export type product_imagesUpdateWithWhereUniqueWithoutBatchInput = {
+    where: product_imagesWhereUniqueInput
+    data: XOR<product_imagesUpdateWithoutBatchInput, product_imagesUncheckedUpdateWithoutBatchInput>
+  }
+
+  export type product_imagesUpdateManyWithWhereWithoutBatchInput = {
+    where: product_imagesScalarWhereInput
+    data: XOR<product_imagesUpdateManyMutationInput, product_imagesUncheckedUpdateManyWithoutBatchInput>
+  }
+
+  export type product_imagesScalarWhereInput = {
+    AND?: product_imagesScalarWhereInput | product_imagesScalarWhereInput[]
+    OR?: product_imagesScalarWhereInput[]
+    NOT?: product_imagesScalarWhereInput | product_imagesScalarWhereInput[]
+    id?: IntFilter<"product_images"> | number
+    name?: StringFilter<"product_images"> | string
+    batch_id?: IntFilter<"product_images"> | number
+  }
+
+  export type payment_methodCreateWithoutCard_detailsInput = {
+    name: string
+    invoice?: invoiceCreateNestedManyWithoutPayment_methodInput
+  }
+
+  export type payment_methodUncheckedCreateWithoutCard_detailsInput = {
+    id?: number
+    name: string
+    invoice?: invoiceUncheckedCreateNestedManyWithoutPayment_methodInput
+  }
+
+  export type payment_methodCreateOrConnectWithoutCard_detailsInput = {
+    where: payment_methodWhereUniqueInput
+    create: XOR<payment_methodCreateWithoutCard_detailsInput, payment_methodUncheckedCreateWithoutCard_detailsInput>
+  }
+
+  export type usersCreateWithoutCard_detailsInput = {
+    fname: string
+    lname: string
+    address: string
+    nic: string
+    email: string
+    password: string
+    mobile: string
+    p_img?: string | null
+    grn?: grnCreateNestedManyWithoutUsersInput
+    invoice?: invoiceCreateNestedManyWithoutUsersInput
+    city: cityCreateNestedOneWithoutUsersInput
+    gender: genderCreateNestedOneWithoutUsersInput
+    status: statusCreateNestedOneWithoutUsersInput
+    user_role: user_roleCreateNestedOneWithoutUsersInput
+  }
+
+  export type usersUncheckedCreateWithoutCard_detailsInput = {
+    id?: number
+    fname: string
+    lname: string
+    address: string
+    nic: string
+    email: string
+    password: string
+    mobile: string
+    p_img?: string | null
+    user_role_id: number
+    gender_id: number
+    city_id: number
+    status_id: number
+    grn?: grnUncheckedCreateNestedManyWithoutUsersInput
+    invoice?: invoiceUncheckedCreateNestedManyWithoutUsersInput
+  }
+
+  export type usersCreateOrConnectWithoutCard_detailsInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutCard_detailsInput, usersUncheckedCreateWithoutCard_detailsInput>
+  }
+
+  export type payment_methodUpsertWithoutCard_detailsInput = {
+    update: XOR<payment_methodUpdateWithoutCard_detailsInput, payment_methodUncheckedUpdateWithoutCard_detailsInput>
+    create: XOR<payment_methodCreateWithoutCard_detailsInput, payment_methodUncheckedCreateWithoutCard_detailsInput>
+    where?: payment_methodWhereInput
+  }
+
+  export type payment_methodUpdateToOneWithWhereWithoutCard_detailsInput = {
+    where?: payment_methodWhereInput
+    data: XOR<payment_methodUpdateWithoutCard_detailsInput, payment_methodUncheckedUpdateWithoutCard_detailsInput>
+  }
+
+  export type payment_methodUpdateWithoutCard_detailsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    invoice?: invoiceUpdateManyWithoutPayment_methodNestedInput
+  }
+
+  export type payment_methodUncheckedUpdateWithoutCard_detailsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    invoice?: invoiceUncheckedUpdateManyWithoutPayment_methodNestedInput
+  }
+
+  export type usersUpsertWithoutCard_detailsInput = {
+    update: XOR<usersUpdateWithoutCard_detailsInput, usersUncheckedUpdateWithoutCard_detailsInput>
+    create: XOR<usersCreateWithoutCard_detailsInput, usersUncheckedCreateWithoutCard_detailsInput>
+    where?: usersWhereInput
+  }
+
+  export type usersUpdateToOneWithWhereWithoutCard_detailsInput = {
+    where?: usersWhereInput
+    data: XOR<usersUpdateWithoutCard_detailsInput, usersUncheckedUpdateWithoutCard_detailsInput>
+  }
+
+  export type usersUpdateWithoutCard_detailsInput = {
+    fname?: StringFieldUpdateOperationsInput | string
+    lname?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    nic?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    p_img?: NullableStringFieldUpdateOperationsInput | string | null
+    grn?: grnUpdateManyWithoutUsersNestedInput
+    invoice?: invoiceUpdateManyWithoutUsersNestedInput
+    city?: cityUpdateOneRequiredWithoutUsersNestedInput
+    gender?: genderUpdateOneRequiredWithoutUsersNestedInput
+    status?: statusUpdateOneRequiredWithoutUsersNestedInput
+    user_role?: user_roleUpdateOneRequiredWithoutUsersNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutCard_detailsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fname?: StringFieldUpdateOperationsInput | string
+    lname?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    nic?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    p_img?: NullableStringFieldUpdateOperationsInput | string | null
+    user_role_id?: IntFieldUpdateOperationsInput | number
+    gender_id?: IntFieldUpdateOperationsInput | number
+    city_id?: IntFieldUpdateOperationsInput | number
+    status_id?: IntFieldUpdateOperationsInput | number
+    grn?: grnUncheckedUpdateManyWithoutUsersNestedInput
+    invoice?: invoiceUncheckedUpdateManyWithoutUsersNestedInput
+  }
+
+  export type productCreateWithoutCategoryInput = {
+    name: string
+    desc?: string | null
+    isActive?: boolean
+    batch?: batchCreateNestedManyWithoutProductInput
+    mother_plant_type: mother_plant_typeCreateNestedOneWithoutProductInput
+  }
+
+  export type productUncheckedCreateWithoutCategoryInput = {
+    id?: number
+    name: string
+    desc?: string | null
+    mother_plant_type_id: number
+    isActive?: boolean
+    batch?: batchUncheckedCreateNestedManyWithoutProductInput
+  }
+
+  export type productCreateOrConnectWithoutCategoryInput = {
+    where: productWhereUniqueInput
+    create: XOR<productCreateWithoutCategoryInput, productUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type productCreateManyCategoryInputEnvelope = {
+    data: productCreateManyCategoryInput | productCreateManyCategoryInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type productUpsertWithWhereUniqueWithoutCategoryInput = {
+    where: productWhereUniqueInput
+    update: XOR<productUpdateWithoutCategoryInput, productUncheckedUpdateWithoutCategoryInput>
+    create: XOR<productCreateWithoutCategoryInput, productUncheckedCreateWithoutCategoryInput>
+  }
+
+  export type productUpdateWithWhereUniqueWithoutCategoryInput = {
+    where: productWhereUniqueInput
+    data: XOR<productUpdateWithoutCategoryInput, productUncheckedUpdateWithoutCategoryInput>
+  }
+
+  export type productUpdateManyWithWhereWithoutCategoryInput = {
+    where: productScalarWhereInput
+    data: XOR<productUpdateManyMutationInput, productUncheckedUpdateManyWithoutCategoryInput>
+  }
+
+  export type productScalarWhereInput = {
+    AND?: productScalarWhereInput | productScalarWhereInput[]
+    OR?: productScalarWhereInput[]
+    NOT?: productScalarWhereInput | productScalarWhereInput[]
+    id?: IntFilter<"product"> | number
+    name?: StringFilter<"product"> | string
+    desc?: StringNullableFilter<"product"> | string | null
+    mother_plant_type_id?: IntFilter<"product"> | number
+    category_id?: IntFilter<"product"> | number
+    isActive?: BoolFilter<"product"> | boolean
+  }
+
+  export type supplierCreateWithoutCityInput = {
+    fullname: string
+    company: string
+    address: string
+    mobile: string
+    email: string
+    isActive: boolean
+    grn?: grnCreateNestedManyWithoutSupplierInput
+    gender: genderCreateNestedOneWithoutSupplierInput
+    status: statusCreateNestedOneWithoutSupplierInput
+  }
+
+  export type supplierUncheckedCreateWithoutCityInput = {
+    id?: number
+    fullname: string
+    company: string
+    address: string
+    mobile: string
+    email: string
+    isActive: boolean
+    status_id: number
+    gender_id: number
+    grn?: grnUncheckedCreateNestedManyWithoutSupplierInput
+  }
+
+  export type supplierCreateOrConnectWithoutCityInput = {
+    where: supplierWhereUniqueInput
+    create: XOR<supplierCreateWithoutCityInput, supplierUncheckedCreateWithoutCityInput>
+  }
+
+  export type supplierCreateManyCityInputEnvelope = {
+    data: supplierCreateManyCityInput | supplierCreateManyCityInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type usersCreateWithoutCityInput = {
+    fname: string
+    lname: string
+    address: string
+    nic: string
+    email: string
+    password: string
+    mobile: string
+    p_img?: string | null
+    card_details?: card_detailsCreateNestedManyWithoutUsersInput
+    grn?: grnCreateNestedManyWithoutUsersInput
+    invoice?: invoiceCreateNestedManyWithoutUsersInput
+    gender: genderCreateNestedOneWithoutUsersInput
+    status: statusCreateNestedOneWithoutUsersInput
+    user_role: user_roleCreateNestedOneWithoutUsersInput
+  }
+
+  export type usersUncheckedCreateWithoutCityInput = {
+    id?: number
+    fname: string
+    lname: string
+    address: string
+    nic: string
+    email: string
+    password: string
+    mobile: string
+    p_img?: string | null
+    user_role_id: number
+    gender_id: number
+    status_id: number
+    card_details?: card_detailsUncheckedCreateNestedManyWithoutUsersInput
+    grn?: grnUncheckedCreateNestedManyWithoutUsersInput
+    invoice?: invoiceUncheckedCreateNestedManyWithoutUsersInput
+  }
+
+  export type usersCreateOrConnectWithoutCityInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutCityInput, usersUncheckedCreateWithoutCityInput>
+  }
+
+  export type usersCreateManyCityInputEnvelope = {
+    data: usersCreateManyCityInput | usersCreateManyCityInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type supplierUpsertWithWhereUniqueWithoutCityInput = {
+    where: supplierWhereUniqueInput
+    update: XOR<supplierUpdateWithoutCityInput, supplierUncheckedUpdateWithoutCityInput>
+    create: XOR<supplierCreateWithoutCityInput, supplierUncheckedCreateWithoutCityInput>
+  }
+
+  export type supplierUpdateWithWhereUniqueWithoutCityInput = {
+    where: supplierWhereUniqueInput
+    data: XOR<supplierUpdateWithoutCityInput, supplierUncheckedUpdateWithoutCityInput>
+  }
+
+  export type supplierUpdateManyWithWhereWithoutCityInput = {
+    where: supplierScalarWhereInput
+    data: XOR<supplierUpdateManyMutationInput, supplierUncheckedUpdateManyWithoutCityInput>
+  }
+
+  export type supplierScalarWhereInput = {
+    AND?: supplierScalarWhereInput | supplierScalarWhereInput[]
+    OR?: supplierScalarWhereInput[]
+    NOT?: supplierScalarWhereInput | supplierScalarWhereInput[]
+    id?: IntFilter<"supplier"> | number
+    fullname?: StringFilter<"supplier"> | string
+    company?: StringFilter<"supplier"> | string
+    address?: StringFilter<"supplier"> | string
+    mobile?: StringFilter<"supplier"> | string
+    email?: StringFilter<"supplier"> | string
+    isActive?: BoolFilter<"supplier"> | boolean
+    status_id?: IntFilter<"supplier"> | number
+    gender_id?: IntFilter<"supplier"> | number
+    city_id?: IntFilter<"supplier"> | number
+  }
+
+  export type usersUpsertWithWhereUniqueWithoutCityInput = {
+    where: usersWhereUniqueInput
+    update: XOR<usersUpdateWithoutCityInput, usersUncheckedUpdateWithoutCityInput>
+    create: XOR<usersCreateWithoutCityInput, usersUncheckedCreateWithoutCityInput>
+  }
+
+  export type usersUpdateWithWhereUniqueWithoutCityInput = {
+    where: usersWhereUniqueInput
+    data: XOR<usersUpdateWithoutCityInput, usersUncheckedUpdateWithoutCityInput>
+  }
+
+  export type usersUpdateManyWithWhereWithoutCityInput = {
+    where: usersScalarWhereInput
+    data: XOR<usersUpdateManyMutationInput, usersUncheckedUpdateManyWithoutCityInput>
+  }
+
+  export type usersScalarWhereInput = {
+    AND?: usersScalarWhereInput | usersScalarWhereInput[]
+    OR?: usersScalarWhereInput[]
+    NOT?: usersScalarWhereInput | usersScalarWhereInput[]
+    id?: IntFilter<"users"> | number
+    fname?: StringFilter<"users"> | string
+    lname?: StringFilter<"users"> | string
+    address?: StringFilter<"users"> | string
+    nic?: StringFilter<"users"> | string
+    email?: StringFilter<"users"> | string
+    password?: StringFilter<"users"> | string
+    mobile?: StringFilter<"users"> | string
+    p_img?: StringNullableFilter<"users"> | string | null
+    user_role_id?: IntFilter<"users"> | number
+    gender_id?: IntFilter<"users"> | number
+    city_id?: IntFilter<"users"> | number
+    status_id?: IntFilter<"users"> | number
+  }
+
+  export type supplierCreateWithoutGenderInput = {
+    fullname: string
+    company: string
+    address: string
+    mobile: string
+    email: string
+    isActive: boolean
+    grn?: grnCreateNestedManyWithoutSupplierInput
+    city: cityCreateNestedOneWithoutSupplierInput
+    status: statusCreateNestedOneWithoutSupplierInput
+  }
+
+  export type supplierUncheckedCreateWithoutGenderInput = {
+    id?: number
+    fullname: string
+    company: string
+    address: string
+    mobile: string
+    email: string
+    isActive: boolean
+    status_id: number
+    city_id: number
+    grn?: grnUncheckedCreateNestedManyWithoutSupplierInput
+  }
+
+  export type supplierCreateOrConnectWithoutGenderInput = {
+    where: supplierWhereUniqueInput
+    create: XOR<supplierCreateWithoutGenderInput, supplierUncheckedCreateWithoutGenderInput>
+  }
+
+  export type supplierCreateManyGenderInputEnvelope = {
+    data: supplierCreateManyGenderInput | supplierCreateManyGenderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type usersCreateWithoutGenderInput = {
+    fname: string
+    lname: string
+    address: string
+    nic: string
+    email: string
+    password: string
+    mobile: string
+    p_img?: string | null
+    card_details?: card_detailsCreateNestedManyWithoutUsersInput
+    grn?: grnCreateNestedManyWithoutUsersInput
+    invoice?: invoiceCreateNestedManyWithoutUsersInput
+    city: cityCreateNestedOneWithoutUsersInput
+    status: statusCreateNestedOneWithoutUsersInput
+    user_role: user_roleCreateNestedOneWithoutUsersInput
+  }
+
+  export type usersUncheckedCreateWithoutGenderInput = {
+    id?: number
+    fname: string
+    lname: string
+    address: string
+    nic: string
+    email: string
+    password: string
+    mobile: string
+    p_img?: string | null
+    user_role_id: number
+    city_id: number
+    status_id: number
+    card_details?: card_detailsUncheckedCreateNestedManyWithoutUsersInput
+    grn?: grnUncheckedCreateNestedManyWithoutUsersInput
+    invoice?: invoiceUncheckedCreateNestedManyWithoutUsersInput
+  }
+
+  export type usersCreateOrConnectWithoutGenderInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutGenderInput, usersUncheckedCreateWithoutGenderInput>
+  }
+
+  export type usersCreateManyGenderInputEnvelope = {
+    data: usersCreateManyGenderInput | usersCreateManyGenderInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type supplierUpsertWithWhereUniqueWithoutGenderInput = {
+    where: supplierWhereUniqueInput
+    update: XOR<supplierUpdateWithoutGenderInput, supplierUncheckedUpdateWithoutGenderInput>
+    create: XOR<supplierCreateWithoutGenderInput, supplierUncheckedCreateWithoutGenderInput>
+  }
+
+  export type supplierUpdateWithWhereUniqueWithoutGenderInput = {
+    where: supplierWhereUniqueInput
+    data: XOR<supplierUpdateWithoutGenderInput, supplierUncheckedUpdateWithoutGenderInput>
+  }
+
+  export type supplierUpdateManyWithWhereWithoutGenderInput = {
+    where: supplierScalarWhereInput
+    data: XOR<supplierUpdateManyMutationInput, supplierUncheckedUpdateManyWithoutGenderInput>
+  }
+
+  export type usersUpsertWithWhereUniqueWithoutGenderInput = {
+    where: usersWhereUniqueInput
+    update: XOR<usersUpdateWithoutGenderInput, usersUncheckedUpdateWithoutGenderInput>
+    create: XOR<usersCreateWithoutGenderInput, usersUncheckedCreateWithoutGenderInput>
+  }
+
+  export type usersUpdateWithWhereUniqueWithoutGenderInput = {
+    where: usersWhereUniqueInput
+    data: XOR<usersUpdateWithoutGenderInput, usersUncheckedUpdateWithoutGenderInput>
+  }
+
+  export type usersUpdateManyWithWhereWithoutGenderInput = {
+    where: usersScalarWhereInput
+    data: XOR<usersUpdateManyMutationInput, usersUncheckedUpdateManyWithoutGenderInput>
+  }
+
+  export type supplierCreateWithoutGrnInput = {
+    fullname: string
+    company: string
+    address: string
+    mobile: string
+    email: string
+    isActive: boolean
+    city: cityCreateNestedOneWithoutSupplierInput
+    gender: genderCreateNestedOneWithoutSupplierInput
+    status: statusCreateNestedOneWithoutSupplierInput
+  }
+
+  export type supplierUncheckedCreateWithoutGrnInput = {
+    id?: number
+    fullname: string
+    company: string
+    address: string
+    mobile: string
+    email: string
+    isActive: boolean
+    status_id: number
+    gender_id: number
+    city_id: number
+  }
+
+  export type supplierCreateOrConnectWithoutGrnInput = {
+    where: supplierWhereUniqueInput
+    create: XOR<supplierCreateWithoutGrnInput, supplierUncheckedCreateWithoutGrnInput>
+  }
+
+  export type usersCreateWithoutGrnInput = {
+    fname: string
+    lname: string
+    address: string
+    nic: string
+    email: string
+    password: string
+    mobile: string
+    p_img?: string | null
+    card_details?: card_detailsCreateNestedManyWithoutUsersInput
+    invoice?: invoiceCreateNestedManyWithoutUsersInput
+    city: cityCreateNestedOneWithoutUsersInput
+    gender: genderCreateNestedOneWithoutUsersInput
+    status: statusCreateNestedOneWithoutUsersInput
+    user_role: user_roleCreateNestedOneWithoutUsersInput
+  }
+
+  export type usersUncheckedCreateWithoutGrnInput = {
+    id?: number
+    fname: string
+    lname: string
+    address: string
+    nic: string
+    email: string
+    password: string
+    mobile: string
+    p_img?: string | null
+    user_role_id: number
+    gender_id: number
+    city_id: number
+    status_id: number
+    card_details?: card_detailsUncheckedCreateNestedManyWithoutUsersInput
+    invoice?: invoiceUncheckedCreateNestedManyWithoutUsersInput
+  }
+
+  export type usersCreateOrConnectWithoutGrnInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutGrnInput, usersUncheckedCreateWithoutGrnInput>
+  }
+
+  export type grn_itemsCreateWithoutGrnInput = {
+    price: number
+    cost: number
+    product_id: number
+    qty: number
+    size_id: number
+    desc?: string | null
+    product_type: product_typeCreateNestedOneWithoutGrn_itemsInput
+  }
+
+  export type grn_itemsUncheckedCreateWithoutGrnInput = {
+    id?: number
+    price: number
+    cost: number
+    product_id: number
+    qty: number
+    size_id: number
+    desc?: string | null
+    product_type_id: number
+  }
+
+  export type grn_itemsCreateOrConnectWithoutGrnInput = {
+    where: grn_itemsWhereUniqueInput
+    create: XOR<grn_itemsCreateWithoutGrnInput, grn_itemsUncheckedCreateWithoutGrnInput>
+  }
+
+  export type grn_itemsCreateManyGrnInputEnvelope = {
+    data: grn_itemsCreateManyGrnInput | grn_itemsCreateManyGrnInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type supplierUpsertWithoutGrnInput = {
+    update: XOR<supplierUpdateWithoutGrnInput, supplierUncheckedUpdateWithoutGrnInput>
+    create: XOR<supplierCreateWithoutGrnInput, supplierUncheckedCreateWithoutGrnInput>
+    where?: supplierWhereInput
+  }
+
+  export type supplierUpdateToOneWithWhereWithoutGrnInput = {
+    where?: supplierWhereInput
+    data: XOR<supplierUpdateWithoutGrnInput, supplierUncheckedUpdateWithoutGrnInput>
+  }
+
+  export type supplierUpdateWithoutGrnInput = {
+    fullname?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    city?: cityUpdateOneRequiredWithoutSupplierNestedInput
+    gender?: genderUpdateOneRequiredWithoutSupplierNestedInput
+    status?: statusUpdateOneRequiredWithoutSupplierNestedInput
+  }
+
+  export type supplierUncheckedUpdateWithoutGrnInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fullname?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    status_id?: IntFieldUpdateOperationsInput | number
+    gender_id?: IntFieldUpdateOperationsInput | number
+    city_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type usersUpsertWithoutGrnInput = {
+    update: XOR<usersUpdateWithoutGrnInput, usersUncheckedUpdateWithoutGrnInput>
+    create: XOR<usersCreateWithoutGrnInput, usersUncheckedCreateWithoutGrnInput>
+    where?: usersWhereInput
+  }
+
+  export type usersUpdateToOneWithWhereWithoutGrnInput = {
+    where?: usersWhereInput
+    data: XOR<usersUpdateWithoutGrnInput, usersUncheckedUpdateWithoutGrnInput>
+  }
+
+  export type usersUpdateWithoutGrnInput = {
+    fname?: StringFieldUpdateOperationsInput | string
+    lname?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    nic?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    p_img?: NullableStringFieldUpdateOperationsInput | string | null
+    card_details?: card_detailsUpdateManyWithoutUsersNestedInput
+    invoice?: invoiceUpdateManyWithoutUsersNestedInput
+    city?: cityUpdateOneRequiredWithoutUsersNestedInput
+    gender?: genderUpdateOneRequiredWithoutUsersNestedInput
+    status?: statusUpdateOneRequiredWithoutUsersNestedInput
+    user_role?: user_roleUpdateOneRequiredWithoutUsersNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutGrnInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fname?: StringFieldUpdateOperationsInput | string
+    lname?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    nic?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    p_img?: NullableStringFieldUpdateOperationsInput | string | null
+    user_role_id?: IntFieldUpdateOperationsInput | number
+    gender_id?: IntFieldUpdateOperationsInput | number
+    city_id?: IntFieldUpdateOperationsInput | number
+    status_id?: IntFieldUpdateOperationsInput | number
+    card_details?: card_detailsUncheckedUpdateManyWithoutUsersNestedInput
+    invoice?: invoiceUncheckedUpdateManyWithoutUsersNestedInput
+  }
+
+  export type grn_itemsUpsertWithWhereUniqueWithoutGrnInput = {
+    where: grn_itemsWhereUniqueInput
+    update: XOR<grn_itemsUpdateWithoutGrnInput, grn_itemsUncheckedUpdateWithoutGrnInput>
+    create: XOR<grn_itemsCreateWithoutGrnInput, grn_itemsUncheckedCreateWithoutGrnInput>
+  }
+
+  export type grn_itemsUpdateWithWhereUniqueWithoutGrnInput = {
+    where: grn_itemsWhereUniqueInput
+    data: XOR<grn_itemsUpdateWithoutGrnInput, grn_itemsUncheckedUpdateWithoutGrnInput>
+  }
+
+  export type grn_itemsUpdateManyWithWhereWithoutGrnInput = {
+    where: grn_itemsScalarWhereInput
+    data: XOR<grn_itemsUpdateManyMutationInput, grn_itemsUncheckedUpdateManyWithoutGrnInput>
+  }
+
+  export type grn_itemsScalarWhereInput = {
+    AND?: grn_itemsScalarWhereInput | grn_itemsScalarWhereInput[]
+    OR?: grn_itemsScalarWhereInput[]
+    NOT?: grn_itemsScalarWhereInput | grn_itemsScalarWhereInput[]
+    id?: IntFilter<"grn_items"> | number
+    price?: FloatFilter<"grn_items"> | number
+    cost?: FloatFilter<"grn_items"> | number
+    product_id?: IntFilter<"grn_items"> | number
+    qty?: IntFilter<"grn_items"> | number
+    size_id?: IntFilter<"grn_items"> | number
+    desc?: StringNullableFilter<"grn_items"> | string | null
+    product_type_id?: IntFilter<"grn_items"> | number
+    grn_id?: IntFilter<"grn_items"> | number
+  }
+
+  export type grnCreateWithoutGrn_itemsInput = {
+    date: Date | string
+    total: number
+    total_qty: number
+    supplier: supplierCreateNestedOneWithoutGrnInput
+    users: usersCreateNestedOneWithoutGrnInput
+  }
+
+  export type grnUncheckedCreateWithoutGrn_itemsInput = {
+    id?: number
+    date: Date | string
+    total: number
+    total_qty: number
+    supplier_id: number
+    users_id: number
+  }
+
+  export type grnCreateOrConnectWithoutGrn_itemsInput = {
+    where: grnWhereUniqueInput
+    create: XOR<grnCreateWithoutGrn_itemsInput, grnUncheckedCreateWithoutGrn_itemsInput>
+  }
+
+  export type product_typeCreateWithoutGrn_itemsInput = {
+    name: string
+    invoice_items?: invoice_itemsCreateNestedManyWithoutProduct_typeInput
+  }
+
+  export type product_typeUncheckedCreateWithoutGrn_itemsInput = {
+    id?: number
+    name: string
+    invoice_items?: invoice_itemsUncheckedCreateNestedManyWithoutProduct_typeInput
+  }
+
+  export type product_typeCreateOrConnectWithoutGrn_itemsInput = {
+    where: product_typeWhereUniqueInput
+    create: XOR<product_typeCreateWithoutGrn_itemsInput, product_typeUncheckedCreateWithoutGrn_itemsInput>
+  }
+
+  export type grnUpsertWithoutGrn_itemsInput = {
+    update: XOR<grnUpdateWithoutGrn_itemsInput, grnUncheckedUpdateWithoutGrn_itemsInput>
+    create: XOR<grnCreateWithoutGrn_itemsInput, grnUncheckedCreateWithoutGrn_itemsInput>
+    where?: grnWhereInput
+  }
+
+  export type grnUpdateToOneWithWhereWithoutGrn_itemsInput = {
+    where?: grnWhereInput
+    data: XOR<grnUpdateWithoutGrn_itemsInput, grnUncheckedUpdateWithoutGrn_itemsInput>
+  }
+
+  export type grnUpdateWithoutGrn_itemsInput = {
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    total?: FloatFieldUpdateOperationsInput | number
+    total_qty?: IntFieldUpdateOperationsInput | number
+    supplier?: supplierUpdateOneRequiredWithoutGrnNestedInput
+    users?: usersUpdateOneRequiredWithoutGrnNestedInput
+  }
+
+  export type grnUncheckedUpdateWithoutGrn_itemsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    total?: FloatFieldUpdateOperationsInput | number
+    total_qty?: IntFieldUpdateOperationsInput | number
+    supplier_id?: IntFieldUpdateOperationsInput | number
+    users_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type product_typeUpsertWithoutGrn_itemsInput = {
+    update: XOR<product_typeUpdateWithoutGrn_itemsInput, product_typeUncheckedUpdateWithoutGrn_itemsInput>
+    create: XOR<product_typeCreateWithoutGrn_itemsInput, product_typeUncheckedCreateWithoutGrn_itemsInput>
+    where?: product_typeWhereInput
+  }
+
+  export type product_typeUpdateToOneWithWhereWithoutGrn_itemsInput = {
+    where?: product_typeWhereInput
+    data: XOR<product_typeUpdateWithoutGrn_itemsInput, product_typeUncheckedUpdateWithoutGrn_itemsInput>
+  }
+
+  export type product_typeUpdateWithoutGrn_itemsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    invoice_items?: invoice_itemsUpdateManyWithoutProduct_typeNestedInput
+  }
+
+  export type product_typeUncheckedUpdateWithoutGrn_itemsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    invoice_items?: invoice_itemsUncheckedUpdateManyWithoutProduct_typeNestedInput
+  }
+
+  export type payment_methodCreateWithoutInvoiceInput = {
+    name: string
+    card_details?: card_detailsCreateNestedManyWithoutPayment_methodInput
+  }
+
+  export type payment_methodUncheckedCreateWithoutInvoiceInput = {
+    id?: number
+    name: string
+    card_details?: card_detailsUncheckedCreateNestedManyWithoutPayment_methodInput
+  }
+
+  export type payment_methodCreateOrConnectWithoutInvoiceInput = {
+    where: payment_methodWhereUniqueInput
+    create: XOR<payment_methodCreateWithoutInvoiceInput, payment_methodUncheckedCreateWithoutInvoiceInput>
+  }
+
+  export type usersCreateWithoutInvoiceInput = {
+    fname: string
+    lname: string
+    address: string
+    nic: string
+    email: string
+    password: string
+    mobile: string
+    p_img?: string | null
+    card_details?: card_detailsCreateNestedManyWithoutUsersInput
+    grn?: grnCreateNestedManyWithoutUsersInput
+    city: cityCreateNestedOneWithoutUsersInput
+    gender: genderCreateNestedOneWithoutUsersInput
+    status: statusCreateNestedOneWithoutUsersInput
+    user_role: user_roleCreateNestedOneWithoutUsersInput
+  }
+
+  export type usersUncheckedCreateWithoutInvoiceInput = {
+    id?: number
+    fname: string
+    lname: string
+    address: string
+    nic: string
+    email: string
+    password: string
+    mobile: string
+    p_img?: string | null
+    user_role_id: number
+    gender_id: number
+    city_id: number
+    status_id: number
+    card_details?: card_detailsUncheckedCreateNestedManyWithoutUsersInput
+    grn?: grnUncheckedCreateNestedManyWithoutUsersInput
+  }
+
+  export type usersCreateOrConnectWithoutInvoiceInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutInvoiceInput, usersUncheckedCreateWithoutInvoiceInput>
+  }
+
+  export type invoice_itemsCreateWithoutInvoiceInput = {
+    price: number
+    cost: number
+    product_id: number
+    qty: number
+    batch_id: number
+    product_type: product_typeCreateNestedOneWithoutInvoice_itemsInput
+  }
+
+  export type invoice_itemsUncheckedCreateWithoutInvoiceInput = {
+    id?: number
+    price: number
+    cost: number
+    product_id: number
+    qty: number
+    batch_id: number
+    product_type_id: number
+  }
+
+  export type invoice_itemsCreateOrConnectWithoutInvoiceInput = {
+    where: invoice_itemsWhereUniqueInput
+    create: XOR<invoice_itemsCreateWithoutInvoiceInput, invoice_itemsUncheckedCreateWithoutInvoiceInput>
+  }
+
+  export type invoice_itemsCreateManyInvoiceInputEnvelope = {
+    data: invoice_itemsCreateManyInvoiceInput | invoice_itemsCreateManyInvoiceInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type payment_methodUpsertWithoutInvoiceInput = {
+    update: XOR<payment_methodUpdateWithoutInvoiceInput, payment_methodUncheckedUpdateWithoutInvoiceInput>
+    create: XOR<payment_methodCreateWithoutInvoiceInput, payment_methodUncheckedCreateWithoutInvoiceInput>
+    where?: payment_methodWhereInput
+  }
+
+  export type payment_methodUpdateToOneWithWhereWithoutInvoiceInput = {
+    where?: payment_methodWhereInput
+    data: XOR<payment_methodUpdateWithoutInvoiceInput, payment_methodUncheckedUpdateWithoutInvoiceInput>
+  }
+
+  export type payment_methodUpdateWithoutInvoiceInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    card_details?: card_detailsUpdateManyWithoutPayment_methodNestedInput
+  }
+
+  export type payment_methodUncheckedUpdateWithoutInvoiceInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    card_details?: card_detailsUncheckedUpdateManyWithoutPayment_methodNestedInput
+  }
+
+  export type usersUpsertWithoutInvoiceInput = {
+    update: XOR<usersUpdateWithoutInvoiceInput, usersUncheckedUpdateWithoutInvoiceInput>
+    create: XOR<usersCreateWithoutInvoiceInput, usersUncheckedCreateWithoutInvoiceInput>
+    where?: usersWhereInput
+  }
+
+  export type usersUpdateToOneWithWhereWithoutInvoiceInput = {
+    where?: usersWhereInput
+    data: XOR<usersUpdateWithoutInvoiceInput, usersUncheckedUpdateWithoutInvoiceInput>
+  }
+
+  export type usersUpdateWithoutInvoiceInput = {
+    fname?: StringFieldUpdateOperationsInput | string
+    lname?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    nic?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    p_img?: NullableStringFieldUpdateOperationsInput | string | null
+    card_details?: card_detailsUpdateManyWithoutUsersNestedInput
+    grn?: grnUpdateManyWithoutUsersNestedInput
+    city?: cityUpdateOneRequiredWithoutUsersNestedInput
+    gender?: genderUpdateOneRequiredWithoutUsersNestedInput
+    status?: statusUpdateOneRequiredWithoutUsersNestedInput
+    user_role?: user_roleUpdateOneRequiredWithoutUsersNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutInvoiceInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fname?: StringFieldUpdateOperationsInput | string
+    lname?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    nic?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    p_img?: NullableStringFieldUpdateOperationsInput | string | null
+    user_role_id?: IntFieldUpdateOperationsInput | number
+    gender_id?: IntFieldUpdateOperationsInput | number
+    city_id?: IntFieldUpdateOperationsInput | number
+    status_id?: IntFieldUpdateOperationsInput | number
+    card_details?: card_detailsUncheckedUpdateManyWithoutUsersNestedInput
+    grn?: grnUncheckedUpdateManyWithoutUsersNestedInput
+  }
+
+  export type invoice_itemsUpsertWithWhereUniqueWithoutInvoiceInput = {
+    where: invoice_itemsWhereUniqueInput
+    update: XOR<invoice_itemsUpdateWithoutInvoiceInput, invoice_itemsUncheckedUpdateWithoutInvoiceInput>
+    create: XOR<invoice_itemsCreateWithoutInvoiceInput, invoice_itemsUncheckedCreateWithoutInvoiceInput>
+  }
+
+  export type invoice_itemsUpdateWithWhereUniqueWithoutInvoiceInput = {
+    where: invoice_itemsWhereUniqueInput
+    data: XOR<invoice_itemsUpdateWithoutInvoiceInput, invoice_itemsUncheckedUpdateWithoutInvoiceInput>
+  }
+
+  export type invoice_itemsUpdateManyWithWhereWithoutInvoiceInput = {
+    where: invoice_itemsScalarWhereInput
+    data: XOR<invoice_itemsUpdateManyMutationInput, invoice_itemsUncheckedUpdateManyWithoutInvoiceInput>
+  }
+
+  export type invoice_itemsScalarWhereInput = {
+    AND?: invoice_itemsScalarWhereInput | invoice_itemsScalarWhereInput[]
+    OR?: invoice_itemsScalarWhereInput[]
+    NOT?: invoice_itemsScalarWhereInput | invoice_itemsScalarWhereInput[]
+    id?: IntFilter<"invoice_items"> | number
+    price?: FloatFilter<"invoice_items"> | number
+    cost?: FloatFilter<"invoice_items"> | number
+    product_id?: IntFilter<"invoice_items"> | number
+    qty?: IntFilter<"invoice_items"> | number
+    batch_id?: IntFilter<"invoice_items"> | number
+    invoice_id?: IntFilter<"invoice_items"> | number
+    product_type_id?: IntFilter<"invoice_items"> | number
+  }
+
+  export type invoiceCreateWithoutInvoice_itemsInput = {
+    total: number
+    qty: number
+    datetime: Date | string
+    discount: number
+    payment_method: payment_methodCreateNestedOneWithoutInvoiceInput
+    users: usersCreateNestedOneWithoutInvoiceInput
+  }
+
+  export type invoiceUncheckedCreateWithoutInvoice_itemsInput = {
+    id?: number
+    total: number
+    qty: number
+    datetime: Date | string
+    discount: number
+    payment_method_id: number
+    users_id: number
+  }
+
+  export type invoiceCreateOrConnectWithoutInvoice_itemsInput = {
+    where: invoiceWhereUniqueInput
+    create: XOR<invoiceCreateWithoutInvoice_itemsInput, invoiceUncheckedCreateWithoutInvoice_itemsInput>
+  }
+
+  export type product_typeCreateWithoutInvoice_itemsInput = {
+    name: string
+    grn_items?: grn_itemsCreateNestedManyWithoutProduct_typeInput
+  }
+
+  export type product_typeUncheckedCreateWithoutInvoice_itemsInput = {
+    id?: number
+    name: string
+    grn_items?: grn_itemsUncheckedCreateNestedManyWithoutProduct_typeInput
+  }
+
+  export type product_typeCreateOrConnectWithoutInvoice_itemsInput = {
+    where: product_typeWhereUniqueInput
+    create: XOR<product_typeCreateWithoutInvoice_itemsInput, product_typeUncheckedCreateWithoutInvoice_itemsInput>
+  }
+
+  export type invoiceUpsertWithoutInvoice_itemsInput = {
+    update: XOR<invoiceUpdateWithoutInvoice_itemsInput, invoiceUncheckedUpdateWithoutInvoice_itemsInput>
+    create: XOR<invoiceCreateWithoutInvoice_itemsInput, invoiceUncheckedCreateWithoutInvoice_itemsInput>
+    where?: invoiceWhereInput
+  }
+
+  export type invoiceUpdateToOneWithWhereWithoutInvoice_itemsInput = {
+    where?: invoiceWhereInput
+    data: XOR<invoiceUpdateWithoutInvoice_itemsInput, invoiceUncheckedUpdateWithoutInvoice_itemsInput>
+  }
+
+  export type invoiceUpdateWithoutInvoice_itemsInput = {
+    total?: FloatFieldUpdateOperationsInput | number
+    qty?: FloatFieldUpdateOperationsInput | number
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    discount?: FloatFieldUpdateOperationsInput | number
+    payment_method?: payment_methodUpdateOneRequiredWithoutInvoiceNestedInput
+    users?: usersUpdateOneRequiredWithoutInvoiceNestedInput
+  }
+
+  export type invoiceUncheckedUpdateWithoutInvoice_itemsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    total?: FloatFieldUpdateOperationsInput | number
+    qty?: FloatFieldUpdateOperationsInput | number
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    discount?: FloatFieldUpdateOperationsInput | number
+    payment_method_id?: IntFieldUpdateOperationsInput | number
+    users_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type product_typeUpsertWithoutInvoice_itemsInput = {
+    update: XOR<product_typeUpdateWithoutInvoice_itemsInput, product_typeUncheckedUpdateWithoutInvoice_itemsInput>
+    create: XOR<product_typeCreateWithoutInvoice_itemsInput, product_typeUncheckedCreateWithoutInvoice_itemsInput>
+    where?: product_typeWhereInput
+  }
+
+  export type product_typeUpdateToOneWithWhereWithoutInvoice_itemsInput = {
+    where?: product_typeWhereInput
+    data: XOR<product_typeUpdateWithoutInvoice_itemsInput, product_typeUncheckedUpdateWithoutInvoice_itemsInput>
+  }
+
+  export type product_typeUpdateWithoutInvoice_itemsInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    grn_items?: grn_itemsUpdateManyWithoutProduct_typeNestedInput
+  }
+
+  export type product_typeUncheckedUpdateWithoutInvoice_itemsInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    grn_items?: grn_itemsUncheckedUpdateManyWithoutProduct_typeNestedInput
+  }
+
+  export type productCreateWithoutMother_plant_typeInput = {
+    name: string
+    desc?: string | null
+    isActive?: boolean
+    batch?: batchCreateNestedManyWithoutProductInput
+    category: categoryCreateNestedOneWithoutProductInput
+  }
+
+  export type productUncheckedCreateWithoutMother_plant_typeInput = {
+    id?: number
+    name: string
+    desc?: string | null
+    category_id: number
+    isActive?: boolean
+    batch?: batchUncheckedCreateNestedManyWithoutProductInput
+  }
+
+  export type productCreateOrConnectWithoutMother_plant_typeInput = {
+    where: productWhereUniqueInput
+    create: XOR<productCreateWithoutMother_plant_typeInput, productUncheckedCreateWithoutMother_plant_typeInput>
+  }
+
+  export type productCreateManyMother_plant_typeInputEnvelope = {
+    data: productCreateManyMother_plant_typeInput | productCreateManyMother_plant_typeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type productUpsertWithWhereUniqueWithoutMother_plant_typeInput = {
+    where: productWhereUniqueInput
+    update: XOR<productUpdateWithoutMother_plant_typeInput, productUncheckedUpdateWithoutMother_plant_typeInput>
+    create: XOR<productCreateWithoutMother_plant_typeInput, productUncheckedCreateWithoutMother_plant_typeInput>
+  }
+
+  export type productUpdateWithWhereUniqueWithoutMother_plant_typeInput = {
+    where: productWhereUniqueInput
+    data: XOR<productUpdateWithoutMother_plant_typeInput, productUncheckedUpdateWithoutMother_plant_typeInput>
+  }
+
+  export type productUpdateManyWithWhereWithoutMother_plant_typeInput = {
+    where: productScalarWhereInput
+    data: XOR<productUpdateManyMutationInput, productUncheckedUpdateManyWithoutMother_plant_typeInput>
+  }
+
+  export type card_detailsCreateWithoutPayment_methodInput = {
+    card_no: number
+    cvv?: number | null
+    exp?: string | null
+    users: usersCreateNestedOneWithoutCard_detailsInput
+  }
+
+  export type card_detailsUncheckedCreateWithoutPayment_methodInput = {
+    id?: number
+    card_no: number
+    cvv?: number | null
+    exp?: string | null
+    users_id: number
+  }
+
+  export type card_detailsCreateOrConnectWithoutPayment_methodInput = {
+    where: card_detailsWhereUniqueInput
+    create: XOR<card_detailsCreateWithoutPayment_methodInput, card_detailsUncheckedCreateWithoutPayment_methodInput>
+  }
+
+  export type card_detailsCreateManyPayment_methodInputEnvelope = {
+    data: card_detailsCreateManyPayment_methodInput | card_detailsCreateManyPayment_methodInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type invoiceCreateWithoutPayment_methodInput = {
+    total: number
+    qty: number
+    datetime: Date | string
+    discount: number
+    users: usersCreateNestedOneWithoutInvoiceInput
+    invoice_items?: invoice_itemsCreateNestedManyWithoutInvoiceInput
+  }
+
+  export type invoiceUncheckedCreateWithoutPayment_methodInput = {
+    id?: number
+    total: number
+    qty: number
+    datetime: Date | string
+    discount: number
+    users_id: number
+    invoice_items?: invoice_itemsUncheckedCreateNestedManyWithoutInvoiceInput
+  }
+
+  export type invoiceCreateOrConnectWithoutPayment_methodInput = {
+    where: invoiceWhereUniqueInput
+    create: XOR<invoiceCreateWithoutPayment_methodInput, invoiceUncheckedCreateWithoutPayment_methodInput>
+  }
+
+  export type invoiceCreateManyPayment_methodInputEnvelope = {
+    data: invoiceCreateManyPayment_methodInput | invoiceCreateManyPayment_methodInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type card_detailsUpsertWithWhereUniqueWithoutPayment_methodInput = {
+    where: card_detailsWhereUniqueInput
+    update: XOR<card_detailsUpdateWithoutPayment_methodInput, card_detailsUncheckedUpdateWithoutPayment_methodInput>
+    create: XOR<card_detailsCreateWithoutPayment_methodInput, card_detailsUncheckedCreateWithoutPayment_methodInput>
+  }
+
+  export type card_detailsUpdateWithWhereUniqueWithoutPayment_methodInput = {
+    where: card_detailsWhereUniqueInput
+    data: XOR<card_detailsUpdateWithoutPayment_methodInput, card_detailsUncheckedUpdateWithoutPayment_methodInput>
+  }
+
+  export type card_detailsUpdateManyWithWhereWithoutPayment_methodInput = {
+    where: card_detailsScalarWhereInput
+    data: XOR<card_detailsUpdateManyMutationInput, card_detailsUncheckedUpdateManyWithoutPayment_methodInput>
+  }
+
+  export type card_detailsScalarWhereInput = {
+    AND?: card_detailsScalarWhereInput | card_detailsScalarWhereInput[]
+    OR?: card_detailsScalarWhereInput[]
+    NOT?: card_detailsScalarWhereInput | card_detailsScalarWhereInput[]
+    id?: IntFilter<"card_details"> | number
+    card_no?: IntFilter<"card_details"> | number
+    payment_method_id?: IntFilter<"card_details"> | number
+    cvv?: IntNullableFilter<"card_details"> | number | null
+    exp?: StringNullableFilter<"card_details"> | string | null
+    users_id?: IntFilter<"card_details"> | number
+  }
+
+  export type invoiceUpsertWithWhereUniqueWithoutPayment_methodInput = {
+    where: invoiceWhereUniqueInput
+    update: XOR<invoiceUpdateWithoutPayment_methodInput, invoiceUncheckedUpdateWithoutPayment_methodInput>
+    create: XOR<invoiceCreateWithoutPayment_methodInput, invoiceUncheckedCreateWithoutPayment_methodInput>
+  }
+
+  export type invoiceUpdateWithWhereUniqueWithoutPayment_methodInput = {
+    where: invoiceWhereUniqueInput
+    data: XOR<invoiceUpdateWithoutPayment_methodInput, invoiceUncheckedUpdateWithoutPayment_methodInput>
+  }
+
+  export type invoiceUpdateManyWithWhereWithoutPayment_methodInput = {
+    where: invoiceScalarWhereInput
+    data: XOR<invoiceUpdateManyMutationInput, invoiceUncheckedUpdateManyWithoutPayment_methodInput>
+  }
+
+  export type invoiceScalarWhereInput = {
+    AND?: invoiceScalarWhereInput | invoiceScalarWhereInput[]
+    OR?: invoiceScalarWhereInput[]
+    NOT?: invoiceScalarWhereInput | invoiceScalarWhereInput[]
+    id?: IntFilter<"invoice"> | number
+    total?: FloatFilter<"invoice"> | number
+    qty?: FloatFilter<"invoice"> | number
+    datetime?: DateTimeFilter<"invoice"> | Date | string
+    discount?: FloatFilter<"invoice"> | number
+    payment_method_id?: IntFilter<"invoice"> | number
+    users_id?: IntFilter<"invoice"> | number
+  }
+
+  export type pot_batchCreateWithoutPotInput = {
+    qty: number
+    price: number
+    cost: number
+    desc?: string | null
+    code: string
+    pot_size: pot_sizeCreateNestedOneWithoutPot_batchInput
+    pot_images?: pot_imagesCreateNestedManyWithoutPot_batchInput
+  }
+
+  export type pot_batchUncheckedCreateWithoutPotInput = {
+    id?: number
+    qty: number
+    price: number
+    cost: number
+    desc?: string | null
+    pot_size_id: number
+    code: string
+    pot_images?: pot_imagesUncheckedCreateNestedManyWithoutPot_batchInput
+  }
+
+  export type pot_batchCreateOrConnectWithoutPotInput = {
+    where: pot_batchWhereUniqueInput
+    create: XOR<pot_batchCreateWithoutPotInput, pot_batchUncheckedCreateWithoutPotInput>
+  }
+
+  export type pot_batchCreateManyPotInputEnvelope = {
+    data: pot_batchCreateManyPotInput | pot_batchCreateManyPotInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type pot_batchUpsertWithWhereUniqueWithoutPotInput = {
+    where: pot_batchWhereUniqueInput
+    update: XOR<pot_batchUpdateWithoutPotInput, pot_batchUncheckedUpdateWithoutPotInput>
+    create: XOR<pot_batchCreateWithoutPotInput, pot_batchUncheckedCreateWithoutPotInput>
+  }
+
+  export type pot_batchUpdateWithWhereUniqueWithoutPotInput = {
+    where: pot_batchWhereUniqueInput
+    data: XOR<pot_batchUpdateWithoutPotInput, pot_batchUncheckedUpdateWithoutPotInput>
+  }
+
+  export type pot_batchUpdateManyWithWhereWithoutPotInput = {
+    where: pot_batchScalarWhereInput
+    data: XOR<pot_batchUpdateManyMutationInput, pot_batchUncheckedUpdateManyWithoutPotInput>
+  }
+
+  export type pot_batchScalarWhereInput = {
+    AND?: pot_batchScalarWhereInput | pot_batchScalarWhereInput[]
+    OR?: pot_batchScalarWhereInput[]
+    NOT?: pot_batchScalarWhereInput | pot_batchScalarWhereInput[]
+    id?: IntFilter<"pot_batch"> | number
+    qty?: IntFilter<"pot_batch"> | number
+    price?: FloatFilter<"pot_batch"> | number
+    cost?: FloatFilter<"pot_batch"> | number
+    desc?: StringNullableFilter<"pot_batch"> | string | null
+    pot_id?: IntFilter<"pot_batch"> | number
+    pot_size_id?: IntFilter<"pot_batch"> | number
+    code?: StringFilter<"pot_batch"> | string
+  }
+
+  export type potCreateWithoutPot_batchInput = {
+    name: string
+    price: number
+    desc: string
+  }
+
+  export type potUncheckedCreateWithoutPot_batchInput = {
+    id?: number
+    name: string
+    price: number
+    desc: string
+  }
+
+  export type potCreateOrConnectWithoutPot_batchInput = {
+    where: potWhereUniqueInput
+    create: XOR<potCreateWithoutPot_batchInput, potUncheckedCreateWithoutPot_batchInput>
+  }
+
+  export type pot_sizeCreateWithoutPot_batchInput = {
+    size: string
+    short_key: string
+  }
+
+  export type pot_sizeUncheckedCreateWithoutPot_batchInput = {
+    id?: number
+    size: string
+    short_key: string
+  }
+
+  export type pot_sizeCreateOrConnectWithoutPot_batchInput = {
+    where: pot_sizeWhereUniqueInput
+    create: XOR<pot_sizeCreateWithoutPot_batchInput, pot_sizeUncheckedCreateWithoutPot_batchInput>
+  }
+
+  export type pot_imagesCreateWithoutPot_batchInput = {
+    name: string
+  }
+
+  export type pot_imagesUncheckedCreateWithoutPot_batchInput = {
+    id?: number
+    name: string
+  }
+
+  export type pot_imagesCreateOrConnectWithoutPot_batchInput = {
+    where: pot_imagesWhereUniqueInput
+    create: XOR<pot_imagesCreateWithoutPot_batchInput, pot_imagesUncheckedCreateWithoutPot_batchInput>
+  }
+
+  export type pot_imagesCreateManyPot_batchInputEnvelope = {
+    data: pot_imagesCreateManyPot_batchInput | pot_imagesCreateManyPot_batchInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type potUpsertWithoutPot_batchInput = {
+    update: XOR<potUpdateWithoutPot_batchInput, potUncheckedUpdateWithoutPot_batchInput>
+    create: XOR<potCreateWithoutPot_batchInput, potUncheckedCreateWithoutPot_batchInput>
+    where?: potWhereInput
+  }
+
+  export type potUpdateToOneWithWhereWithoutPot_batchInput = {
+    where?: potWhereInput
+    data: XOR<potUpdateWithoutPot_batchInput, potUncheckedUpdateWithoutPot_batchInput>
+  }
+
+  export type potUpdateWithoutPot_batchInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    desc?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type potUncheckedUpdateWithoutPot_batchInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    price?: FloatFieldUpdateOperationsInput | number
+    desc?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type pot_sizeUpsertWithoutPot_batchInput = {
+    update: XOR<pot_sizeUpdateWithoutPot_batchInput, pot_sizeUncheckedUpdateWithoutPot_batchInput>
+    create: XOR<pot_sizeCreateWithoutPot_batchInput, pot_sizeUncheckedCreateWithoutPot_batchInput>
+    where?: pot_sizeWhereInput
+  }
+
+  export type pot_sizeUpdateToOneWithWhereWithoutPot_batchInput = {
+    where?: pot_sizeWhereInput
+    data: XOR<pot_sizeUpdateWithoutPot_batchInput, pot_sizeUncheckedUpdateWithoutPot_batchInput>
+  }
+
+  export type pot_sizeUpdateWithoutPot_batchInput = {
+    size?: StringFieldUpdateOperationsInput | string
+    short_key?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type pot_sizeUncheckedUpdateWithoutPot_batchInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    size?: StringFieldUpdateOperationsInput | string
+    short_key?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type pot_imagesUpsertWithWhereUniqueWithoutPot_batchInput = {
+    where: pot_imagesWhereUniqueInput
+    update: XOR<pot_imagesUpdateWithoutPot_batchInput, pot_imagesUncheckedUpdateWithoutPot_batchInput>
+    create: XOR<pot_imagesCreateWithoutPot_batchInput, pot_imagesUncheckedCreateWithoutPot_batchInput>
+  }
+
+  export type pot_imagesUpdateWithWhereUniqueWithoutPot_batchInput = {
+    where: pot_imagesWhereUniqueInput
+    data: XOR<pot_imagesUpdateWithoutPot_batchInput, pot_imagesUncheckedUpdateWithoutPot_batchInput>
+  }
+
+  export type pot_imagesUpdateManyWithWhereWithoutPot_batchInput = {
+    where: pot_imagesScalarWhereInput
+    data: XOR<pot_imagesUpdateManyMutationInput, pot_imagesUncheckedUpdateManyWithoutPot_batchInput>
+  }
+
+  export type pot_imagesScalarWhereInput = {
+    AND?: pot_imagesScalarWhereInput | pot_imagesScalarWhereInput[]
+    OR?: pot_imagesScalarWhereInput[]
+    NOT?: pot_imagesScalarWhereInput | pot_imagesScalarWhereInput[]
+    id?: IntFilter<"pot_images"> | number
+    name?: StringFilter<"pot_images"> | string
+    pot_batch_id?: IntFilter<"pot_images"> | number
+  }
+
+  export type pot_batchCreateWithoutPot_imagesInput = {
+    qty: number
+    price: number
+    cost: number
+    desc?: string | null
+    code: string
+    pot: potCreateNestedOneWithoutPot_batchInput
+    pot_size: pot_sizeCreateNestedOneWithoutPot_batchInput
+  }
+
+  export type pot_batchUncheckedCreateWithoutPot_imagesInput = {
+    id?: number
+    qty: number
+    price: number
+    cost: number
+    desc?: string | null
+    pot_id: number
+    pot_size_id: number
+    code: string
+  }
+
+  export type pot_batchCreateOrConnectWithoutPot_imagesInput = {
+    where: pot_batchWhereUniqueInput
+    create: XOR<pot_batchCreateWithoutPot_imagesInput, pot_batchUncheckedCreateWithoutPot_imagesInput>
+  }
+
+  export type pot_batchUpsertWithoutPot_imagesInput = {
+    update: XOR<pot_batchUpdateWithoutPot_imagesInput, pot_batchUncheckedUpdateWithoutPot_imagesInput>
+    create: XOR<pot_batchCreateWithoutPot_imagesInput, pot_batchUncheckedCreateWithoutPot_imagesInput>
+    where?: pot_batchWhereInput
+  }
+
+  export type pot_batchUpdateToOneWithWhereWithoutPot_imagesInput = {
+    where?: pot_batchWhereInput
+    data: XOR<pot_batchUpdateWithoutPot_imagesInput, pot_batchUncheckedUpdateWithoutPot_imagesInput>
+  }
+
+  export type pot_batchUpdateWithoutPot_imagesInput = {
+    qty?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    code?: StringFieldUpdateOperationsInput | string
+    pot?: potUpdateOneRequiredWithoutPot_batchNestedInput
+    pot_size?: pot_sizeUpdateOneRequiredWithoutPot_batchNestedInput
+  }
+
+  export type pot_batchUncheckedUpdateWithoutPot_imagesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    pot_id?: IntFieldUpdateOperationsInput | number
+    pot_size_id?: IntFieldUpdateOperationsInput | number
+    code?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type pot_batchCreateWithoutPot_sizeInput = {
+    qty: number
+    price: number
+    cost: number
+    desc?: string | null
+    code: string
+    pot: potCreateNestedOneWithoutPot_batchInput
+    pot_images?: pot_imagesCreateNestedManyWithoutPot_batchInput
+  }
+
+  export type pot_batchUncheckedCreateWithoutPot_sizeInput = {
+    id?: number
+    qty: number
+    price: number
+    cost: number
+    desc?: string | null
+    pot_id: number
+    code: string
+    pot_images?: pot_imagesUncheckedCreateNestedManyWithoutPot_batchInput
+  }
+
+  export type pot_batchCreateOrConnectWithoutPot_sizeInput = {
+    where: pot_batchWhereUniqueInput
+    create: XOR<pot_batchCreateWithoutPot_sizeInput, pot_batchUncheckedCreateWithoutPot_sizeInput>
+  }
+
+  export type pot_batchCreateManyPot_sizeInputEnvelope = {
+    data: pot_batchCreateManyPot_sizeInput | pot_batchCreateManyPot_sizeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type pot_batchUpsertWithWhereUniqueWithoutPot_sizeInput = {
+    where: pot_batchWhereUniqueInput
+    update: XOR<pot_batchUpdateWithoutPot_sizeInput, pot_batchUncheckedUpdateWithoutPot_sizeInput>
+    create: XOR<pot_batchCreateWithoutPot_sizeInput, pot_batchUncheckedCreateWithoutPot_sizeInput>
+  }
+
+  export type pot_batchUpdateWithWhereUniqueWithoutPot_sizeInput = {
+    where: pot_batchWhereUniqueInput
+    data: XOR<pot_batchUpdateWithoutPot_sizeInput, pot_batchUncheckedUpdateWithoutPot_sizeInput>
+  }
+
+  export type pot_batchUpdateManyWithWhereWithoutPot_sizeInput = {
+    where: pot_batchScalarWhereInput
+    data: XOR<pot_batchUpdateManyMutationInput, pot_batchUncheckedUpdateManyWithoutPot_sizeInput>
+  }
+
+  export type batchCreateWithoutProductInput = {
+    qty: number
+    price: number
+    cost: number
+    desc?: string | null
+    code: string
+    size: sizeCreateNestedOneWithoutBatchInput
+    product_images?: product_imagesCreateNestedManyWithoutBatchInput
+  }
+
+  export type batchUncheckedCreateWithoutProductInput = {
+    id?: number
+    qty: number
+    price: number
+    cost: number
+    desc?: string | null
+    size_id: number
+    code: string
+    product_images?: product_imagesUncheckedCreateNestedManyWithoutBatchInput
+  }
+
+  export type batchCreateOrConnectWithoutProductInput = {
+    where: batchWhereUniqueInput
+    create: XOR<batchCreateWithoutProductInput, batchUncheckedCreateWithoutProductInput>
+  }
+
+  export type batchCreateManyProductInputEnvelope = {
+    data: batchCreateManyProductInput | batchCreateManyProductInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type categoryCreateWithoutProductInput = {
+    name: string
+  }
+
+  export type categoryUncheckedCreateWithoutProductInput = {
+    id?: number
+    name: string
+  }
+
+  export type categoryCreateOrConnectWithoutProductInput = {
+    where: categoryWhereUniqueInput
+    create: XOR<categoryCreateWithoutProductInput, categoryUncheckedCreateWithoutProductInput>
+  }
+
+  export type mother_plant_typeCreateWithoutProductInput = {
+    name: string
+  }
+
+  export type mother_plant_typeUncheckedCreateWithoutProductInput = {
+    id?: number
+    name: string
+  }
+
+  export type mother_plant_typeCreateOrConnectWithoutProductInput = {
+    where: mother_plant_typeWhereUniqueInput
+    create: XOR<mother_plant_typeCreateWithoutProductInput, mother_plant_typeUncheckedCreateWithoutProductInput>
+  }
+
+  export type batchUpsertWithWhereUniqueWithoutProductInput = {
+    where: batchWhereUniqueInput
+    update: XOR<batchUpdateWithoutProductInput, batchUncheckedUpdateWithoutProductInput>
+    create: XOR<batchCreateWithoutProductInput, batchUncheckedCreateWithoutProductInput>
+  }
+
+  export type batchUpdateWithWhereUniqueWithoutProductInput = {
+    where: batchWhereUniqueInput
+    data: XOR<batchUpdateWithoutProductInput, batchUncheckedUpdateWithoutProductInput>
+  }
+
+  export type batchUpdateManyWithWhereWithoutProductInput = {
+    where: batchScalarWhereInput
+    data: XOR<batchUpdateManyMutationInput, batchUncheckedUpdateManyWithoutProductInput>
+  }
+
+  export type batchScalarWhereInput = {
+    AND?: batchScalarWhereInput | batchScalarWhereInput[]
+    OR?: batchScalarWhereInput[]
+    NOT?: batchScalarWhereInput | batchScalarWhereInput[]
+    id?: IntFilter<"batch"> | number
+    qty?: IntFilter<"batch"> | number
+    price?: FloatFilter<"batch"> | number
+    cost?: FloatFilter<"batch"> | number
+    desc?: StringNullableFilter<"batch"> | string | null
+    product_id?: IntFilter<"batch"> | number
+    size_id?: IntFilter<"batch"> | number
+    code?: StringFilter<"batch"> | string
+  }
+
+  export type categoryUpsertWithoutProductInput = {
+    update: XOR<categoryUpdateWithoutProductInput, categoryUncheckedUpdateWithoutProductInput>
+    create: XOR<categoryCreateWithoutProductInput, categoryUncheckedCreateWithoutProductInput>
+    where?: categoryWhereInput
+  }
+
+  export type categoryUpdateToOneWithWhereWithoutProductInput = {
+    where?: categoryWhereInput
+    data: XOR<categoryUpdateWithoutProductInput, categoryUncheckedUpdateWithoutProductInput>
+  }
+
+  export type categoryUpdateWithoutProductInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type categoryUncheckedUpdateWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type mother_plant_typeUpsertWithoutProductInput = {
+    update: XOR<mother_plant_typeUpdateWithoutProductInput, mother_plant_typeUncheckedUpdateWithoutProductInput>
+    create: XOR<mother_plant_typeCreateWithoutProductInput, mother_plant_typeUncheckedCreateWithoutProductInput>
+    where?: mother_plant_typeWhereInput
+  }
+
+  export type mother_plant_typeUpdateToOneWithWhereWithoutProductInput = {
+    where?: mother_plant_typeWhereInput
+    data: XOR<mother_plant_typeUpdateWithoutProductInput, mother_plant_typeUncheckedUpdateWithoutProductInput>
+  }
+
+  export type mother_plant_typeUpdateWithoutProductInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type mother_plant_typeUncheckedUpdateWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type batchCreateWithoutProduct_imagesInput = {
+    qty: number
+    price: number
+    cost: number
+    desc?: string | null
+    code: string
+    product: productCreateNestedOneWithoutBatchInput
+    size: sizeCreateNestedOneWithoutBatchInput
+  }
+
+  export type batchUncheckedCreateWithoutProduct_imagesInput = {
+    id?: number
+    qty: number
+    price: number
+    cost: number
+    desc?: string | null
+    product_id: number
+    size_id: number
+    code: string
+  }
+
+  export type batchCreateOrConnectWithoutProduct_imagesInput = {
+    where: batchWhereUniqueInput
+    create: XOR<batchCreateWithoutProduct_imagesInput, batchUncheckedCreateWithoutProduct_imagesInput>
+  }
+
+  export type batchUpsertWithoutProduct_imagesInput = {
+    update: XOR<batchUpdateWithoutProduct_imagesInput, batchUncheckedUpdateWithoutProduct_imagesInput>
+    create: XOR<batchCreateWithoutProduct_imagesInput, batchUncheckedCreateWithoutProduct_imagesInput>
+    where?: batchWhereInput
+  }
+
+  export type batchUpdateToOneWithWhereWithoutProduct_imagesInput = {
+    where?: batchWhereInput
+    data: XOR<batchUpdateWithoutProduct_imagesInput, batchUncheckedUpdateWithoutProduct_imagesInput>
+  }
+
+  export type batchUpdateWithoutProduct_imagesInput = {
+    qty?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    code?: StringFieldUpdateOperationsInput | string
+    product?: productUpdateOneRequiredWithoutBatchNestedInput
+    size?: sizeUpdateOneRequiredWithoutBatchNestedInput
+  }
+
+  export type batchUncheckedUpdateWithoutProduct_imagesInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    product_id?: IntFieldUpdateOperationsInput | number
+    size_id?: IntFieldUpdateOperationsInput | number
+    code?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type grn_itemsCreateWithoutProduct_typeInput = {
+    price: number
+    cost: number
+    product_id: number
+    qty: number
+    size_id: number
+    desc?: string | null
+    grn: grnCreateNestedOneWithoutGrn_itemsInput
+  }
+
+  export type grn_itemsUncheckedCreateWithoutProduct_typeInput = {
+    id?: number
+    price: number
+    cost: number
+    product_id: number
+    qty: number
+    size_id: number
+    desc?: string | null
+    grn_id: number
+  }
+
+  export type grn_itemsCreateOrConnectWithoutProduct_typeInput = {
+    where: grn_itemsWhereUniqueInput
+    create: XOR<grn_itemsCreateWithoutProduct_typeInput, grn_itemsUncheckedCreateWithoutProduct_typeInput>
+  }
+
+  export type grn_itemsCreateManyProduct_typeInputEnvelope = {
+    data: grn_itemsCreateManyProduct_typeInput | grn_itemsCreateManyProduct_typeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type invoice_itemsCreateWithoutProduct_typeInput = {
+    price: number
+    cost: number
+    product_id: number
+    qty: number
+    batch_id: number
+    invoice: invoiceCreateNestedOneWithoutInvoice_itemsInput
+  }
+
+  export type invoice_itemsUncheckedCreateWithoutProduct_typeInput = {
+    id?: number
+    price: number
+    cost: number
+    product_id: number
+    qty: number
+    batch_id: number
+    invoice_id: number
+  }
+
+  export type invoice_itemsCreateOrConnectWithoutProduct_typeInput = {
+    where: invoice_itemsWhereUniqueInput
+    create: XOR<invoice_itemsCreateWithoutProduct_typeInput, invoice_itemsUncheckedCreateWithoutProduct_typeInput>
+  }
+
+  export type invoice_itemsCreateManyProduct_typeInputEnvelope = {
+    data: invoice_itemsCreateManyProduct_typeInput | invoice_itemsCreateManyProduct_typeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type grn_itemsUpsertWithWhereUniqueWithoutProduct_typeInput = {
+    where: grn_itemsWhereUniqueInput
+    update: XOR<grn_itemsUpdateWithoutProduct_typeInput, grn_itemsUncheckedUpdateWithoutProduct_typeInput>
+    create: XOR<grn_itemsCreateWithoutProduct_typeInput, grn_itemsUncheckedCreateWithoutProduct_typeInput>
+  }
+
+  export type grn_itemsUpdateWithWhereUniqueWithoutProduct_typeInput = {
+    where: grn_itemsWhereUniqueInput
+    data: XOR<grn_itemsUpdateWithoutProduct_typeInput, grn_itemsUncheckedUpdateWithoutProduct_typeInput>
+  }
+
+  export type grn_itemsUpdateManyWithWhereWithoutProduct_typeInput = {
+    where: grn_itemsScalarWhereInput
+    data: XOR<grn_itemsUpdateManyMutationInput, grn_itemsUncheckedUpdateManyWithoutProduct_typeInput>
+  }
+
+  export type invoice_itemsUpsertWithWhereUniqueWithoutProduct_typeInput = {
+    where: invoice_itemsWhereUniqueInput
+    update: XOR<invoice_itemsUpdateWithoutProduct_typeInput, invoice_itemsUncheckedUpdateWithoutProduct_typeInput>
+    create: XOR<invoice_itemsCreateWithoutProduct_typeInput, invoice_itemsUncheckedCreateWithoutProduct_typeInput>
+  }
+
+  export type invoice_itemsUpdateWithWhereUniqueWithoutProduct_typeInput = {
+    where: invoice_itemsWhereUniqueInput
+    data: XOR<invoice_itemsUpdateWithoutProduct_typeInput, invoice_itemsUncheckedUpdateWithoutProduct_typeInput>
+  }
+
+  export type invoice_itemsUpdateManyWithWhereWithoutProduct_typeInput = {
+    where: invoice_itemsScalarWhereInput
+    data: XOR<invoice_itemsUpdateManyMutationInput, invoice_itemsUncheckedUpdateManyWithoutProduct_typeInput>
+  }
+
+  export type batchCreateWithoutSizeInput = {
+    qty: number
+    price: number
+    cost: number
+    desc?: string | null
+    code: string
+    product: productCreateNestedOneWithoutBatchInput
+    product_images?: product_imagesCreateNestedManyWithoutBatchInput
+  }
+
+  export type batchUncheckedCreateWithoutSizeInput = {
+    id?: number
+    qty: number
+    price: number
+    cost: number
+    desc?: string | null
+    product_id: number
+    code: string
+    product_images?: product_imagesUncheckedCreateNestedManyWithoutBatchInput
+  }
+
+  export type batchCreateOrConnectWithoutSizeInput = {
+    where: batchWhereUniqueInput
+    create: XOR<batchCreateWithoutSizeInput, batchUncheckedCreateWithoutSizeInput>
+  }
+
+  export type batchCreateManySizeInputEnvelope = {
+    data: batchCreateManySizeInput | batchCreateManySizeInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type batchUpsertWithWhereUniqueWithoutSizeInput = {
+    where: batchWhereUniqueInput
+    update: XOR<batchUpdateWithoutSizeInput, batchUncheckedUpdateWithoutSizeInput>
+    create: XOR<batchCreateWithoutSizeInput, batchUncheckedCreateWithoutSizeInput>
+  }
+
+  export type batchUpdateWithWhereUniqueWithoutSizeInput = {
+    where: batchWhereUniqueInput
+    data: XOR<batchUpdateWithoutSizeInput, batchUncheckedUpdateWithoutSizeInput>
+  }
+
+  export type batchUpdateManyWithWhereWithoutSizeInput = {
+    where: batchScalarWhereInput
+    data: XOR<batchUpdateManyMutationInput, batchUncheckedUpdateManyWithoutSizeInput>
+  }
+
+  export type supplierCreateWithoutStatusInput = {
+    fullname: string
+    company: string
+    address: string
+    mobile: string
+    email: string
+    isActive: boolean
+    grn?: grnCreateNestedManyWithoutSupplierInput
+    city: cityCreateNestedOneWithoutSupplierInput
+    gender: genderCreateNestedOneWithoutSupplierInput
+  }
+
+  export type supplierUncheckedCreateWithoutStatusInput = {
+    id?: number
+    fullname: string
+    company: string
+    address: string
+    mobile: string
+    email: string
+    isActive: boolean
+    gender_id: number
+    city_id: number
+    grn?: grnUncheckedCreateNestedManyWithoutSupplierInput
+  }
+
+  export type supplierCreateOrConnectWithoutStatusInput = {
+    where: supplierWhereUniqueInput
+    create: XOR<supplierCreateWithoutStatusInput, supplierUncheckedCreateWithoutStatusInput>
+  }
+
+  export type supplierCreateManyStatusInputEnvelope = {
+    data: supplierCreateManyStatusInput | supplierCreateManyStatusInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type usersCreateWithoutStatusInput = {
+    fname: string
+    lname: string
+    address: string
+    nic: string
+    email: string
+    password: string
+    mobile: string
+    p_img?: string | null
+    card_details?: card_detailsCreateNestedManyWithoutUsersInput
+    grn?: grnCreateNestedManyWithoutUsersInput
+    invoice?: invoiceCreateNestedManyWithoutUsersInput
+    city: cityCreateNestedOneWithoutUsersInput
+    gender: genderCreateNestedOneWithoutUsersInput
+    user_role: user_roleCreateNestedOneWithoutUsersInput
+  }
+
+  export type usersUncheckedCreateWithoutStatusInput = {
+    id?: number
+    fname: string
+    lname: string
+    address: string
+    nic: string
+    email: string
+    password: string
+    mobile: string
+    p_img?: string | null
+    user_role_id: number
+    gender_id: number
+    city_id: number
+    card_details?: card_detailsUncheckedCreateNestedManyWithoutUsersInput
+    grn?: grnUncheckedCreateNestedManyWithoutUsersInput
+    invoice?: invoiceUncheckedCreateNestedManyWithoutUsersInput
+  }
+
+  export type usersCreateOrConnectWithoutStatusInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutStatusInput, usersUncheckedCreateWithoutStatusInput>
+  }
+
+  export type usersCreateManyStatusInputEnvelope = {
+    data: usersCreateManyStatusInput | usersCreateManyStatusInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type supplierUpsertWithWhereUniqueWithoutStatusInput = {
+    where: supplierWhereUniqueInput
+    update: XOR<supplierUpdateWithoutStatusInput, supplierUncheckedUpdateWithoutStatusInput>
+    create: XOR<supplierCreateWithoutStatusInput, supplierUncheckedCreateWithoutStatusInput>
+  }
+
+  export type supplierUpdateWithWhereUniqueWithoutStatusInput = {
+    where: supplierWhereUniqueInput
+    data: XOR<supplierUpdateWithoutStatusInput, supplierUncheckedUpdateWithoutStatusInput>
+  }
+
+  export type supplierUpdateManyWithWhereWithoutStatusInput = {
+    where: supplierScalarWhereInput
+    data: XOR<supplierUpdateManyMutationInput, supplierUncheckedUpdateManyWithoutStatusInput>
+  }
+
+  export type usersUpsertWithWhereUniqueWithoutStatusInput = {
+    where: usersWhereUniqueInput
+    update: XOR<usersUpdateWithoutStatusInput, usersUncheckedUpdateWithoutStatusInput>
+    create: XOR<usersCreateWithoutStatusInput, usersUncheckedCreateWithoutStatusInput>
+  }
+
+  export type usersUpdateWithWhereUniqueWithoutStatusInput = {
+    where: usersWhereUniqueInput
+    data: XOR<usersUpdateWithoutStatusInput, usersUncheckedUpdateWithoutStatusInput>
+  }
+
+  export type usersUpdateManyWithWhereWithoutStatusInput = {
+    where: usersScalarWhereInput
+    data: XOR<usersUpdateManyMutationInput, usersUncheckedUpdateManyWithoutStatusInput>
+  }
+
+  export type grnCreateWithoutSupplierInput = {
+    date: Date | string
+    total: number
+    total_qty: number
+    users: usersCreateNestedOneWithoutGrnInput
+    grn_items?: grn_itemsCreateNestedManyWithoutGrnInput
+  }
+
+  export type grnUncheckedCreateWithoutSupplierInput = {
+    id?: number
+    date: Date | string
+    total: number
+    total_qty: number
+    users_id: number
+    grn_items?: grn_itemsUncheckedCreateNestedManyWithoutGrnInput
+  }
+
+  export type grnCreateOrConnectWithoutSupplierInput = {
+    where: grnWhereUniqueInput
+    create: XOR<grnCreateWithoutSupplierInput, grnUncheckedCreateWithoutSupplierInput>
+  }
+
+  export type grnCreateManySupplierInputEnvelope = {
+    data: grnCreateManySupplierInput | grnCreateManySupplierInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type cityCreateWithoutSupplierInput = {
+    name: string
+    users?: usersCreateNestedManyWithoutCityInput
+  }
+
+  export type cityUncheckedCreateWithoutSupplierInput = {
+    id?: number
+    name: string
+    users?: usersUncheckedCreateNestedManyWithoutCityInput
+  }
+
+  export type cityCreateOrConnectWithoutSupplierInput = {
+    where: cityWhereUniqueInput
+    create: XOR<cityCreateWithoutSupplierInput, cityUncheckedCreateWithoutSupplierInput>
+  }
+
+  export type genderCreateWithoutSupplierInput = {
+    name: string
+    users?: usersCreateNestedManyWithoutGenderInput
+  }
+
+  export type genderUncheckedCreateWithoutSupplierInput = {
+    id?: number
+    name: string
+    users?: usersUncheckedCreateNestedManyWithoutGenderInput
+  }
+
+  export type genderCreateOrConnectWithoutSupplierInput = {
+    where: genderWhereUniqueInput
+    create: XOR<genderCreateWithoutSupplierInput, genderUncheckedCreateWithoutSupplierInput>
+  }
+
+  export type statusCreateWithoutSupplierInput = {
+    name: string
+    users?: usersCreateNestedManyWithoutStatusInput
+  }
+
+  export type statusUncheckedCreateWithoutSupplierInput = {
+    id?: number
+    name: string
+    users?: usersUncheckedCreateNestedManyWithoutStatusInput
+  }
+
+  export type statusCreateOrConnectWithoutSupplierInput = {
+    where: statusWhereUniqueInput
+    create: XOR<statusCreateWithoutSupplierInput, statusUncheckedCreateWithoutSupplierInput>
+  }
+
+  export type grnUpsertWithWhereUniqueWithoutSupplierInput = {
+    where: grnWhereUniqueInput
+    update: XOR<grnUpdateWithoutSupplierInput, grnUncheckedUpdateWithoutSupplierInput>
+    create: XOR<grnCreateWithoutSupplierInput, grnUncheckedCreateWithoutSupplierInput>
+  }
+
+  export type grnUpdateWithWhereUniqueWithoutSupplierInput = {
+    where: grnWhereUniqueInput
+    data: XOR<grnUpdateWithoutSupplierInput, grnUncheckedUpdateWithoutSupplierInput>
+  }
+
+  export type grnUpdateManyWithWhereWithoutSupplierInput = {
+    where: grnScalarWhereInput
+    data: XOR<grnUpdateManyMutationInput, grnUncheckedUpdateManyWithoutSupplierInput>
+  }
+
+  export type grnScalarWhereInput = {
+    AND?: grnScalarWhereInput | grnScalarWhereInput[]
+    OR?: grnScalarWhereInput[]
+    NOT?: grnScalarWhereInput | grnScalarWhereInput[]
+    id?: IntFilter<"grn"> | number
+    date?: DateTimeFilter<"grn"> | Date | string
+    total?: FloatFilter<"grn"> | number
+    total_qty?: IntFilter<"grn"> | number
+    supplier_id?: IntFilter<"grn"> | number
+    users_id?: IntFilter<"grn"> | number
+  }
+
+  export type cityUpsertWithoutSupplierInput = {
+    update: XOR<cityUpdateWithoutSupplierInput, cityUncheckedUpdateWithoutSupplierInput>
+    create: XOR<cityCreateWithoutSupplierInput, cityUncheckedCreateWithoutSupplierInput>
+    where?: cityWhereInput
+  }
+
+  export type cityUpdateToOneWithWhereWithoutSupplierInput = {
+    where?: cityWhereInput
+    data: XOR<cityUpdateWithoutSupplierInput, cityUncheckedUpdateWithoutSupplierInput>
+  }
+
+  export type cityUpdateWithoutSupplierInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    users?: usersUpdateManyWithoutCityNestedInput
+  }
+
+  export type cityUncheckedUpdateWithoutSupplierInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    users?: usersUncheckedUpdateManyWithoutCityNestedInput
+  }
+
+  export type genderUpsertWithoutSupplierInput = {
+    update: XOR<genderUpdateWithoutSupplierInput, genderUncheckedUpdateWithoutSupplierInput>
+    create: XOR<genderCreateWithoutSupplierInput, genderUncheckedCreateWithoutSupplierInput>
+    where?: genderWhereInput
+  }
+
+  export type genderUpdateToOneWithWhereWithoutSupplierInput = {
+    where?: genderWhereInput
+    data: XOR<genderUpdateWithoutSupplierInput, genderUncheckedUpdateWithoutSupplierInput>
+  }
+
+  export type genderUpdateWithoutSupplierInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    users?: usersUpdateManyWithoutGenderNestedInput
+  }
+
+  export type genderUncheckedUpdateWithoutSupplierInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    users?: usersUncheckedUpdateManyWithoutGenderNestedInput
+  }
+
+  export type statusUpsertWithoutSupplierInput = {
+    update: XOR<statusUpdateWithoutSupplierInput, statusUncheckedUpdateWithoutSupplierInput>
+    create: XOR<statusCreateWithoutSupplierInput, statusUncheckedCreateWithoutSupplierInput>
+    where?: statusWhereInput
+  }
+
+  export type statusUpdateToOneWithWhereWithoutSupplierInput = {
+    where?: statusWhereInput
+    data: XOR<statusUpdateWithoutSupplierInput, statusUncheckedUpdateWithoutSupplierInput>
+  }
+
+  export type statusUpdateWithoutSupplierInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    users?: usersUpdateManyWithoutStatusNestedInput
+  }
+
+  export type statusUncheckedUpdateWithoutSupplierInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    users?: usersUncheckedUpdateManyWithoutStatusNestedInput
+  }
+
+  export type usersCreateWithoutUser_roleInput = {
+    fname: string
+    lname: string
+    address: string
+    nic: string
+    email: string
+    password: string
+    mobile: string
+    p_img?: string | null
+    card_details?: card_detailsCreateNestedManyWithoutUsersInput
+    grn?: grnCreateNestedManyWithoutUsersInput
+    invoice?: invoiceCreateNestedManyWithoutUsersInput
+    city: cityCreateNestedOneWithoutUsersInput
+    gender: genderCreateNestedOneWithoutUsersInput
+    status: statusCreateNestedOneWithoutUsersInput
+  }
+
+  export type usersUncheckedCreateWithoutUser_roleInput = {
+    id?: number
+    fname: string
+    lname: string
+    address: string
+    nic: string
+    email: string
+    password: string
+    mobile: string
+    p_img?: string | null
+    gender_id: number
+    city_id: number
+    status_id: number
+    card_details?: card_detailsUncheckedCreateNestedManyWithoutUsersInput
+    grn?: grnUncheckedCreateNestedManyWithoutUsersInput
+    invoice?: invoiceUncheckedCreateNestedManyWithoutUsersInput
+  }
+
+  export type usersCreateOrConnectWithoutUser_roleInput = {
+    where: usersWhereUniqueInput
+    create: XOR<usersCreateWithoutUser_roleInput, usersUncheckedCreateWithoutUser_roleInput>
+  }
+
+  export type usersCreateManyUser_roleInputEnvelope = {
+    data: usersCreateManyUser_roleInput | usersCreateManyUser_roleInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type usersUpsertWithWhereUniqueWithoutUser_roleInput = {
+    where: usersWhereUniqueInput
+    update: XOR<usersUpdateWithoutUser_roleInput, usersUncheckedUpdateWithoutUser_roleInput>
+    create: XOR<usersCreateWithoutUser_roleInput, usersUncheckedCreateWithoutUser_roleInput>
+  }
+
+  export type usersUpdateWithWhereUniqueWithoutUser_roleInput = {
+    where: usersWhereUniqueInput
+    data: XOR<usersUpdateWithoutUser_roleInput, usersUncheckedUpdateWithoutUser_roleInput>
+  }
+
+  export type usersUpdateManyWithWhereWithoutUser_roleInput = {
+    where: usersScalarWhereInput
+    data: XOR<usersUpdateManyMutationInput, usersUncheckedUpdateManyWithoutUser_roleInput>
+  }
+
+  export type card_detailsCreateWithoutUsersInput = {
+    card_no: number
+    cvv?: number | null
+    exp?: string | null
+    payment_method: payment_methodCreateNestedOneWithoutCard_detailsInput
+  }
+
+  export type card_detailsUncheckedCreateWithoutUsersInput = {
+    id?: number
+    card_no: number
+    payment_method_id: number
+    cvv?: number | null
+    exp?: string | null
+  }
+
+  export type card_detailsCreateOrConnectWithoutUsersInput = {
+    where: card_detailsWhereUniqueInput
+    create: XOR<card_detailsCreateWithoutUsersInput, card_detailsUncheckedCreateWithoutUsersInput>
+  }
+
+  export type card_detailsCreateManyUsersInputEnvelope = {
+    data: card_detailsCreateManyUsersInput | card_detailsCreateManyUsersInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type grnCreateWithoutUsersInput = {
+    date: Date | string
+    total: number
+    total_qty: number
+    supplier: supplierCreateNestedOneWithoutGrnInput
+    grn_items?: grn_itemsCreateNestedManyWithoutGrnInput
+  }
+
+  export type grnUncheckedCreateWithoutUsersInput = {
+    id?: number
+    date: Date | string
+    total: number
+    total_qty: number
+    supplier_id: number
+    grn_items?: grn_itemsUncheckedCreateNestedManyWithoutGrnInput
+  }
+
+  export type grnCreateOrConnectWithoutUsersInput = {
+    where: grnWhereUniqueInput
+    create: XOR<grnCreateWithoutUsersInput, grnUncheckedCreateWithoutUsersInput>
+  }
+
+  export type grnCreateManyUsersInputEnvelope = {
+    data: grnCreateManyUsersInput | grnCreateManyUsersInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type invoiceCreateWithoutUsersInput = {
+    total: number
+    qty: number
+    datetime: Date | string
+    discount: number
+    payment_method: payment_methodCreateNestedOneWithoutInvoiceInput
+    invoice_items?: invoice_itemsCreateNestedManyWithoutInvoiceInput
+  }
+
+  export type invoiceUncheckedCreateWithoutUsersInput = {
+    id?: number
+    total: number
+    qty: number
+    datetime: Date | string
+    discount: number
+    payment_method_id: number
+    invoice_items?: invoice_itemsUncheckedCreateNestedManyWithoutInvoiceInput
+  }
+
+  export type invoiceCreateOrConnectWithoutUsersInput = {
+    where: invoiceWhereUniqueInput
+    create: XOR<invoiceCreateWithoutUsersInput, invoiceUncheckedCreateWithoutUsersInput>
+  }
+
+  export type invoiceCreateManyUsersInputEnvelope = {
+    data: invoiceCreateManyUsersInput | invoiceCreateManyUsersInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type cityCreateWithoutUsersInput = {
+    name: string
+    supplier?: supplierCreateNestedManyWithoutCityInput
+  }
+
+  export type cityUncheckedCreateWithoutUsersInput = {
+    id?: number
+    name: string
+    supplier?: supplierUncheckedCreateNestedManyWithoutCityInput
+  }
+
+  export type cityCreateOrConnectWithoutUsersInput = {
+    where: cityWhereUniqueInput
+    create: XOR<cityCreateWithoutUsersInput, cityUncheckedCreateWithoutUsersInput>
+  }
+
+  export type genderCreateWithoutUsersInput = {
+    name: string
+    supplier?: supplierCreateNestedManyWithoutGenderInput
+  }
+
+  export type genderUncheckedCreateWithoutUsersInput = {
+    id?: number
+    name: string
+    supplier?: supplierUncheckedCreateNestedManyWithoutGenderInput
+  }
+
+  export type genderCreateOrConnectWithoutUsersInput = {
+    where: genderWhereUniqueInput
+    create: XOR<genderCreateWithoutUsersInput, genderUncheckedCreateWithoutUsersInput>
+  }
+
+  export type statusCreateWithoutUsersInput = {
+    name: string
+    supplier?: supplierCreateNestedManyWithoutStatusInput
+  }
+
+  export type statusUncheckedCreateWithoutUsersInput = {
+    id?: number
+    name: string
+    supplier?: supplierUncheckedCreateNestedManyWithoutStatusInput
+  }
+
+  export type statusCreateOrConnectWithoutUsersInput = {
+    where: statusWhereUniqueInput
+    create: XOR<statusCreateWithoutUsersInput, statusUncheckedCreateWithoutUsersInput>
+  }
+
+  export type user_roleCreateWithoutUsersInput = {
+    name: string
+  }
+
+  export type user_roleUncheckedCreateWithoutUsersInput = {
+    id?: number
+    name: string
+  }
+
+  export type user_roleCreateOrConnectWithoutUsersInput = {
+    where: user_roleWhereUniqueInput
+    create: XOR<user_roleCreateWithoutUsersInput, user_roleUncheckedCreateWithoutUsersInput>
+  }
+
+  export type card_detailsUpsertWithWhereUniqueWithoutUsersInput = {
+    where: card_detailsWhereUniqueInput
+    update: XOR<card_detailsUpdateWithoutUsersInput, card_detailsUncheckedUpdateWithoutUsersInput>
+    create: XOR<card_detailsCreateWithoutUsersInput, card_detailsUncheckedCreateWithoutUsersInput>
+  }
+
+  export type card_detailsUpdateWithWhereUniqueWithoutUsersInput = {
+    where: card_detailsWhereUniqueInput
+    data: XOR<card_detailsUpdateWithoutUsersInput, card_detailsUncheckedUpdateWithoutUsersInput>
+  }
+
+  export type card_detailsUpdateManyWithWhereWithoutUsersInput = {
+    where: card_detailsScalarWhereInput
+    data: XOR<card_detailsUpdateManyMutationInput, card_detailsUncheckedUpdateManyWithoutUsersInput>
+  }
+
+  export type grnUpsertWithWhereUniqueWithoutUsersInput = {
+    where: grnWhereUniqueInput
+    update: XOR<grnUpdateWithoutUsersInput, grnUncheckedUpdateWithoutUsersInput>
+    create: XOR<grnCreateWithoutUsersInput, grnUncheckedCreateWithoutUsersInput>
+  }
+
+  export type grnUpdateWithWhereUniqueWithoutUsersInput = {
+    where: grnWhereUniqueInput
+    data: XOR<grnUpdateWithoutUsersInput, grnUncheckedUpdateWithoutUsersInput>
+  }
+
+  export type grnUpdateManyWithWhereWithoutUsersInput = {
+    where: grnScalarWhereInput
+    data: XOR<grnUpdateManyMutationInput, grnUncheckedUpdateManyWithoutUsersInput>
+  }
+
+  export type invoiceUpsertWithWhereUniqueWithoutUsersInput = {
+    where: invoiceWhereUniqueInput
+    update: XOR<invoiceUpdateWithoutUsersInput, invoiceUncheckedUpdateWithoutUsersInput>
+    create: XOR<invoiceCreateWithoutUsersInput, invoiceUncheckedCreateWithoutUsersInput>
+  }
+
+  export type invoiceUpdateWithWhereUniqueWithoutUsersInput = {
+    where: invoiceWhereUniqueInput
+    data: XOR<invoiceUpdateWithoutUsersInput, invoiceUncheckedUpdateWithoutUsersInput>
+  }
+
+  export type invoiceUpdateManyWithWhereWithoutUsersInput = {
+    where: invoiceScalarWhereInput
+    data: XOR<invoiceUpdateManyMutationInput, invoiceUncheckedUpdateManyWithoutUsersInput>
+  }
+
+  export type cityUpsertWithoutUsersInput = {
+    update: XOR<cityUpdateWithoutUsersInput, cityUncheckedUpdateWithoutUsersInput>
+    create: XOR<cityCreateWithoutUsersInput, cityUncheckedCreateWithoutUsersInput>
+    where?: cityWhereInput
+  }
+
+  export type cityUpdateToOneWithWhereWithoutUsersInput = {
+    where?: cityWhereInput
+    data: XOR<cityUpdateWithoutUsersInput, cityUncheckedUpdateWithoutUsersInput>
+  }
+
+  export type cityUpdateWithoutUsersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    supplier?: supplierUpdateManyWithoutCityNestedInput
+  }
+
+  export type cityUncheckedUpdateWithoutUsersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    supplier?: supplierUncheckedUpdateManyWithoutCityNestedInput
+  }
+
+  export type genderUpsertWithoutUsersInput = {
+    update: XOR<genderUpdateWithoutUsersInput, genderUncheckedUpdateWithoutUsersInput>
+    create: XOR<genderCreateWithoutUsersInput, genderUncheckedCreateWithoutUsersInput>
+    where?: genderWhereInput
+  }
+
+  export type genderUpdateToOneWithWhereWithoutUsersInput = {
+    where?: genderWhereInput
+    data: XOR<genderUpdateWithoutUsersInput, genderUncheckedUpdateWithoutUsersInput>
+  }
+
+  export type genderUpdateWithoutUsersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    supplier?: supplierUpdateManyWithoutGenderNestedInput
+  }
+
+  export type genderUncheckedUpdateWithoutUsersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    supplier?: supplierUncheckedUpdateManyWithoutGenderNestedInput
+  }
+
+  export type statusUpsertWithoutUsersInput = {
+    update: XOR<statusUpdateWithoutUsersInput, statusUncheckedUpdateWithoutUsersInput>
+    create: XOR<statusCreateWithoutUsersInput, statusUncheckedCreateWithoutUsersInput>
+    where?: statusWhereInput
+  }
+
+  export type statusUpdateToOneWithWhereWithoutUsersInput = {
+    where?: statusWhereInput
+    data: XOR<statusUpdateWithoutUsersInput, statusUncheckedUpdateWithoutUsersInput>
+  }
+
+  export type statusUpdateWithoutUsersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    supplier?: supplierUpdateManyWithoutStatusNestedInput
+  }
+
+  export type statusUncheckedUpdateWithoutUsersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    supplier?: supplierUncheckedUpdateManyWithoutStatusNestedInput
+  }
+
+  export type user_roleUpsertWithoutUsersInput = {
+    update: XOR<user_roleUpdateWithoutUsersInput, user_roleUncheckedUpdateWithoutUsersInput>
+    create: XOR<user_roleCreateWithoutUsersInput, user_roleUncheckedCreateWithoutUsersInput>
+    where?: user_roleWhereInput
+  }
+
+  export type user_roleUpdateToOneWithWhereWithoutUsersInput = {
+    where?: user_roleWhereInput
+    data: XOR<user_roleUpdateWithoutUsersInput, user_roleUncheckedUpdateWithoutUsersInput>
+  }
+
+  export type user_roleUpdateWithoutUsersInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type user_roleUncheckedUpdateWithoutUsersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type product_imagesCreateManyBatchInput = {
+    id?: number
+    name: string
+  }
+
+  export type product_imagesUpdateWithoutBatchInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type product_imagesUncheckedUpdateWithoutBatchInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type product_imagesUncheckedUpdateManyWithoutBatchInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type productCreateManyCategoryInput = {
+    id?: number
+    name: string
+    desc?: string | null
+    mother_plant_type_id: number
+    isActive?: boolean
+  }
+
+  export type productUpdateWithoutCategoryInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    batch?: batchUpdateManyWithoutProductNestedInput
+    mother_plant_type?: mother_plant_typeUpdateOneRequiredWithoutProductNestedInput
+  }
+
+  export type productUncheckedUpdateWithoutCategoryInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    mother_plant_type_id?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    batch?: batchUncheckedUpdateManyWithoutProductNestedInput
+  }
+
+  export type productUncheckedUpdateManyWithoutCategoryInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    mother_plant_type_id?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type supplierCreateManyCityInput = {
+    id?: number
+    fullname: string
+    company: string
+    address: string
+    mobile: string
+    email: string
+    isActive: boolean
+    status_id: number
+    gender_id: number
+  }
+
+  export type usersCreateManyCityInput = {
+    id?: number
+    fname: string
+    lname: string
+    address: string
+    nic: string
+    email: string
+    password: string
+    mobile: string
+    p_img?: string | null
+    user_role_id: number
+    gender_id: number
+    status_id: number
+  }
+
+  export type supplierUpdateWithoutCityInput = {
+    fullname?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    grn?: grnUpdateManyWithoutSupplierNestedInput
+    gender?: genderUpdateOneRequiredWithoutSupplierNestedInput
+    status?: statusUpdateOneRequiredWithoutSupplierNestedInput
+  }
+
+  export type supplierUncheckedUpdateWithoutCityInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fullname?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    status_id?: IntFieldUpdateOperationsInput | number
+    gender_id?: IntFieldUpdateOperationsInput | number
+    grn?: grnUncheckedUpdateManyWithoutSupplierNestedInput
+  }
+
+  export type supplierUncheckedUpdateManyWithoutCityInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fullname?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    status_id?: IntFieldUpdateOperationsInput | number
+    gender_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type usersUpdateWithoutCityInput = {
+    fname?: StringFieldUpdateOperationsInput | string
+    lname?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    nic?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    p_img?: NullableStringFieldUpdateOperationsInput | string | null
+    card_details?: card_detailsUpdateManyWithoutUsersNestedInput
+    grn?: grnUpdateManyWithoutUsersNestedInput
+    invoice?: invoiceUpdateManyWithoutUsersNestedInput
+    gender?: genderUpdateOneRequiredWithoutUsersNestedInput
+    status?: statusUpdateOneRequiredWithoutUsersNestedInput
+    user_role?: user_roleUpdateOneRequiredWithoutUsersNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutCityInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fname?: StringFieldUpdateOperationsInput | string
+    lname?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    nic?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    p_img?: NullableStringFieldUpdateOperationsInput | string | null
+    user_role_id?: IntFieldUpdateOperationsInput | number
+    gender_id?: IntFieldUpdateOperationsInput | number
+    status_id?: IntFieldUpdateOperationsInput | number
+    card_details?: card_detailsUncheckedUpdateManyWithoutUsersNestedInput
+    grn?: grnUncheckedUpdateManyWithoutUsersNestedInput
+    invoice?: invoiceUncheckedUpdateManyWithoutUsersNestedInput
+  }
+
+  export type usersUncheckedUpdateManyWithoutCityInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fname?: StringFieldUpdateOperationsInput | string
+    lname?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    nic?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    p_img?: NullableStringFieldUpdateOperationsInput | string | null
+    user_role_id?: IntFieldUpdateOperationsInput | number
+    gender_id?: IntFieldUpdateOperationsInput | number
+    status_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type supplierCreateManyGenderInput = {
+    id?: number
+    fullname: string
+    company: string
+    address: string
+    mobile: string
+    email: string
+    isActive: boolean
+    status_id: number
+    city_id: number
+  }
+
+  export type usersCreateManyGenderInput = {
+    id?: number
+    fname: string
+    lname: string
+    address: string
+    nic: string
+    email: string
+    password: string
+    mobile: string
+    p_img?: string | null
+    user_role_id: number
+    city_id: number
+    status_id: number
+  }
+
+  export type supplierUpdateWithoutGenderInput = {
+    fullname?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    grn?: grnUpdateManyWithoutSupplierNestedInput
+    city?: cityUpdateOneRequiredWithoutSupplierNestedInput
+    status?: statusUpdateOneRequiredWithoutSupplierNestedInput
+  }
+
+  export type supplierUncheckedUpdateWithoutGenderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fullname?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    status_id?: IntFieldUpdateOperationsInput | number
+    city_id?: IntFieldUpdateOperationsInput | number
+    grn?: grnUncheckedUpdateManyWithoutSupplierNestedInput
+  }
+
+  export type supplierUncheckedUpdateManyWithoutGenderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fullname?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    status_id?: IntFieldUpdateOperationsInput | number
+    city_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type usersUpdateWithoutGenderInput = {
+    fname?: StringFieldUpdateOperationsInput | string
+    lname?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    nic?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    p_img?: NullableStringFieldUpdateOperationsInput | string | null
+    card_details?: card_detailsUpdateManyWithoutUsersNestedInput
+    grn?: grnUpdateManyWithoutUsersNestedInput
+    invoice?: invoiceUpdateManyWithoutUsersNestedInput
+    city?: cityUpdateOneRequiredWithoutUsersNestedInput
+    status?: statusUpdateOneRequiredWithoutUsersNestedInput
+    user_role?: user_roleUpdateOneRequiredWithoutUsersNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutGenderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fname?: StringFieldUpdateOperationsInput | string
+    lname?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    nic?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    p_img?: NullableStringFieldUpdateOperationsInput | string | null
+    user_role_id?: IntFieldUpdateOperationsInput | number
+    city_id?: IntFieldUpdateOperationsInput | number
+    status_id?: IntFieldUpdateOperationsInput | number
+    card_details?: card_detailsUncheckedUpdateManyWithoutUsersNestedInput
+    grn?: grnUncheckedUpdateManyWithoutUsersNestedInput
+    invoice?: invoiceUncheckedUpdateManyWithoutUsersNestedInput
+  }
+
+  export type usersUncheckedUpdateManyWithoutGenderInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fname?: StringFieldUpdateOperationsInput | string
+    lname?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    nic?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    p_img?: NullableStringFieldUpdateOperationsInput | string | null
+    user_role_id?: IntFieldUpdateOperationsInput | number
+    city_id?: IntFieldUpdateOperationsInput | number
+    status_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type grn_itemsCreateManyGrnInput = {
+    id?: number
+    price: number
+    cost: number
+    product_id: number
+    qty: number
+    size_id: number
+    desc?: string | null
+    product_type_id: number
+  }
+
+  export type grn_itemsUpdateWithoutGrnInput = {
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    product_id?: IntFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    size_id?: IntFieldUpdateOperationsInput | number
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    product_type?: product_typeUpdateOneRequiredWithoutGrn_itemsNestedInput
+  }
+
+  export type grn_itemsUncheckedUpdateWithoutGrnInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    product_id?: IntFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    size_id?: IntFieldUpdateOperationsInput | number
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    product_type_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type grn_itemsUncheckedUpdateManyWithoutGrnInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    product_id?: IntFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    size_id?: IntFieldUpdateOperationsInput | number
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    product_type_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type invoice_itemsCreateManyInvoiceInput = {
+    id?: number
+    price: number
+    cost: number
+    product_id: number
+    qty: number
+    batch_id: number
+    product_type_id: number
+  }
+
+  export type invoice_itemsUpdateWithoutInvoiceInput = {
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    product_id?: IntFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    batch_id?: IntFieldUpdateOperationsInput | number
+    product_type?: product_typeUpdateOneRequiredWithoutInvoice_itemsNestedInput
+  }
+
+  export type invoice_itemsUncheckedUpdateWithoutInvoiceInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    product_id?: IntFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    batch_id?: IntFieldUpdateOperationsInput | number
+    product_type_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type invoice_itemsUncheckedUpdateManyWithoutInvoiceInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    product_id?: IntFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    batch_id?: IntFieldUpdateOperationsInput | number
+    product_type_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type productCreateManyMother_plant_typeInput = {
+    id?: number
+    name: string
+    desc?: string | null
+    category_id: number
+    isActive?: boolean
+  }
+
+  export type productUpdateWithoutMother_plant_typeInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    batch?: batchUpdateManyWithoutProductNestedInput
+    category?: categoryUpdateOneRequiredWithoutProductNestedInput
+  }
+
+  export type productUncheckedUpdateWithoutMother_plant_typeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    category_id?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    batch?: batchUncheckedUpdateManyWithoutProductNestedInput
+  }
+
+  export type productUncheckedUpdateManyWithoutMother_plant_typeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    category_id?: IntFieldUpdateOperationsInput | number
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+  }
+
+  export type card_detailsCreateManyPayment_methodInput = {
+    id?: number
+    card_no: number
+    cvv?: number | null
+    exp?: string | null
+    users_id: number
+  }
+
+  export type invoiceCreateManyPayment_methodInput = {
+    id?: number
+    total: number
+    qty: number
+    datetime: Date | string
+    discount: number
+    users_id: number
+  }
+
+  export type card_detailsUpdateWithoutPayment_methodInput = {
+    card_no?: IntFieldUpdateOperationsInput | number
+    cvv?: NullableIntFieldUpdateOperationsInput | number | null
+    exp?: NullableStringFieldUpdateOperationsInput | string | null
+    users?: usersUpdateOneRequiredWithoutCard_detailsNestedInput
+  }
+
+  export type card_detailsUncheckedUpdateWithoutPayment_methodInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    card_no?: IntFieldUpdateOperationsInput | number
+    cvv?: NullableIntFieldUpdateOperationsInput | number | null
+    exp?: NullableStringFieldUpdateOperationsInput | string | null
+    users_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type card_detailsUncheckedUpdateManyWithoutPayment_methodInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    card_no?: IntFieldUpdateOperationsInput | number
+    cvv?: NullableIntFieldUpdateOperationsInput | number | null
+    exp?: NullableStringFieldUpdateOperationsInput | string | null
+    users_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type invoiceUpdateWithoutPayment_methodInput = {
+    total?: FloatFieldUpdateOperationsInput | number
+    qty?: FloatFieldUpdateOperationsInput | number
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    discount?: FloatFieldUpdateOperationsInput | number
+    users?: usersUpdateOneRequiredWithoutInvoiceNestedInput
+    invoice_items?: invoice_itemsUpdateManyWithoutInvoiceNestedInput
+  }
+
+  export type invoiceUncheckedUpdateWithoutPayment_methodInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    total?: FloatFieldUpdateOperationsInput | number
+    qty?: FloatFieldUpdateOperationsInput | number
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    discount?: FloatFieldUpdateOperationsInput | number
+    users_id?: IntFieldUpdateOperationsInput | number
+    invoice_items?: invoice_itemsUncheckedUpdateManyWithoutInvoiceNestedInput
+  }
+
+  export type invoiceUncheckedUpdateManyWithoutPayment_methodInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    total?: FloatFieldUpdateOperationsInput | number
+    qty?: FloatFieldUpdateOperationsInput | number
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    discount?: FloatFieldUpdateOperationsInput | number
+    users_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type pot_batchCreateManyPotInput = {
+    id?: number
+    qty: number
+    price: number
+    cost: number
+    desc?: string | null
+    pot_size_id: number
+    code: string
+  }
+
+  export type pot_batchUpdateWithoutPotInput = {
+    qty?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    code?: StringFieldUpdateOperationsInput | string
+    pot_size?: pot_sizeUpdateOneRequiredWithoutPot_batchNestedInput
+    pot_images?: pot_imagesUpdateManyWithoutPot_batchNestedInput
+  }
+
+  export type pot_batchUncheckedUpdateWithoutPotInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    pot_size_id?: IntFieldUpdateOperationsInput | number
+    code?: StringFieldUpdateOperationsInput | string
+    pot_images?: pot_imagesUncheckedUpdateManyWithoutPot_batchNestedInput
+  }
+
+  export type pot_batchUncheckedUpdateManyWithoutPotInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    pot_size_id?: IntFieldUpdateOperationsInput | number
+    code?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type pot_imagesCreateManyPot_batchInput = {
+    id?: number
+    name: string
+  }
+
+  export type pot_imagesUpdateWithoutPot_batchInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type pot_imagesUncheckedUpdateWithoutPot_batchInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type pot_imagesUncheckedUpdateManyWithoutPot_batchInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type pot_batchCreateManyPot_sizeInput = {
+    id?: number
+    qty: number
+    price: number
+    cost: number
+    desc?: string | null
+    pot_id: number
+    code: string
+  }
+
+  export type pot_batchUpdateWithoutPot_sizeInput = {
+    qty?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    code?: StringFieldUpdateOperationsInput | string
+    pot?: potUpdateOneRequiredWithoutPot_batchNestedInput
+    pot_images?: pot_imagesUpdateManyWithoutPot_batchNestedInput
+  }
+
+  export type pot_batchUncheckedUpdateWithoutPot_sizeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    pot_id?: IntFieldUpdateOperationsInput | number
+    code?: StringFieldUpdateOperationsInput | string
+    pot_images?: pot_imagesUncheckedUpdateManyWithoutPot_batchNestedInput
+  }
+
+  export type pot_batchUncheckedUpdateManyWithoutPot_sizeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    pot_id?: IntFieldUpdateOperationsInput | number
+    code?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type batchCreateManyProductInput = {
+    id?: number
+    qty: number
+    price: number
+    cost: number
+    desc?: string | null
+    size_id: number
+    code: string
+  }
+
+  export type batchUpdateWithoutProductInput = {
+    qty?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    code?: StringFieldUpdateOperationsInput | string
+    size?: sizeUpdateOneRequiredWithoutBatchNestedInput
+    product_images?: product_imagesUpdateManyWithoutBatchNestedInput
+  }
+
+  export type batchUncheckedUpdateWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    size_id?: IntFieldUpdateOperationsInput | number
+    code?: StringFieldUpdateOperationsInput | string
+    product_images?: product_imagesUncheckedUpdateManyWithoutBatchNestedInput
+  }
+
+  export type batchUncheckedUpdateManyWithoutProductInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    size_id?: IntFieldUpdateOperationsInput | number
+    code?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type grn_itemsCreateManyProduct_typeInput = {
+    id?: number
+    price: number
+    cost: number
+    product_id: number
+    qty: number
+    size_id: number
+    desc?: string | null
+    grn_id: number
+  }
+
+  export type invoice_itemsCreateManyProduct_typeInput = {
+    id?: number
+    price: number
+    cost: number
+    product_id: number
+    qty: number
+    batch_id: number
+    invoice_id: number
+  }
+
+  export type grn_itemsUpdateWithoutProduct_typeInput = {
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    product_id?: IntFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    size_id?: IntFieldUpdateOperationsInput | number
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    grn?: grnUpdateOneRequiredWithoutGrn_itemsNestedInput
+  }
+
+  export type grn_itemsUncheckedUpdateWithoutProduct_typeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    product_id?: IntFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    size_id?: IntFieldUpdateOperationsInput | number
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    grn_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type grn_itemsUncheckedUpdateManyWithoutProduct_typeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    product_id?: IntFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    size_id?: IntFieldUpdateOperationsInput | number
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    grn_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type invoice_itemsUpdateWithoutProduct_typeInput = {
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    product_id?: IntFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    batch_id?: IntFieldUpdateOperationsInput | number
+    invoice?: invoiceUpdateOneRequiredWithoutInvoice_itemsNestedInput
+  }
+
+  export type invoice_itemsUncheckedUpdateWithoutProduct_typeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    product_id?: IntFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    batch_id?: IntFieldUpdateOperationsInput | number
+    invoice_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type invoice_itemsUncheckedUpdateManyWithoutProduct_typeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    product_id?: IntFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    batch_id?: IntFieldUpdateOperationsInput | number
+    invoice_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type batchCreateManySizeInput = {
+    id?: number
+    qty: number
+    price: number
+    cost: number
+    desc?: string | null
+    product_id: number
+    code: string
+  }
+
+  export type batchUpdateWithoutSizeInput = {
+    qty?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    code?: StringFieldUpdateOperationsInput | string
+    product?: productUpdateOneRequiredWithoutBatchNestedInput
+    product_images?: product_imagesUpdateManyWithoutBatchNestedInput
+  }
+
+  export type batchUncheckedUpdateWithoutSizeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    product_id?: IntFieldUpdateOperationsInput | number
+    code?: StringFieldUpdateOperationsInput | string
+    product_images?: product_imagesUncheckedUpdateManyWithoutBatchNestedInput
+  }
+
+  export type batchUncheckedUpdateManyWithoutSizeInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    qty?: IntFieldUpdateOperationsInput | number
+    price?: FloatFieldUpdateOperationsInput | number
+    cost?: FloatFieldUpdateOperationsInput | number
+    desc?: NullableStringFieldUpdateOperationsInput | string | null
+    product_id?: IntFieldUpdateOperationsInput | number
+    code?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type supplierCreateManyStatusInput = {
+    id?: number
+    fullname: string
+    company: string
+    address: string
+    mobile: string
+    email: string
+    isActive: boolean
+    gender_id: number
+    city_id: number
+  }
+
+  export type usersCreateManyStatusInput = {
+    id?: number
+    fname: string
+    lname: string
+    address: string
+    nic: string
+    email: string
+    password: string
+    mobile: string
+    p_img?: string | null
+    user_role_id: number
+    gender_id: number
+    city_id: number
+  }
+
+  export type supplierUpdateWithoutStatusInput = {
+    fullname?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    grn?: grnUpdateManyWithoutSupplierNestedInput
+    city?: cityUpdateOneRequiredWithoutSupplierNestedInput
+    gender?: genderUpdateOneRequiredWithoutSupplierNestedInput
+  }
+
+  export type supplierUncheckedUpdateWithoutStatusInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fullname?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    gender_id?: IntFieldUpdateOperationsInput | number
+    city_id?: IntFieldUpdateOperationsInput | number
+    grn?: grnUncheckedUpdateManyWithoutSupplierNestedInput
+  }
+
+  export type supplierUncheckedUpdateManyWithoutStatusInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fullname?: StringFieldUpdateOperationsInput | string
+    company?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    isActive?: BoolFieldUpdateOperationsInput | boolean
+    gender_id?: IntFieldUpdateOperationsInput | number
+    city_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type usersUpdateWithoutStatusInput = {
+    fname?: StringFieldUpdateOperationsInput | string
+    lname?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    nic?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    p_img?: NullableStringFieldUpdateOperationsInput | string | null
+    card_details?: card_detailsUpdateManyWithoutUsersNestedInput
+    grn?: grnUpdateManyWithoutUsersNestedInput
+    invoice?: invoiceUpdateManyWithoutUsersNestedInput
+    city?: cityUpdateOneRequiredWithoutUsersNestedInput
+    gender?: genderUpdateOneRequiredWithoutUsersNestedInput
+    user_role?: user_roleUpdateOneRequiredWithoutUsersNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutStatusInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fname?: StringFieldUpdateOperationsInput | string
+    lname?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    nic?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    p_img?: NullableStringFieldUpdateOperationsInput | string | null
+    user_role_id?: IntFieldUpdateOperationsInput | number
+    gender_id?: IntFieldUpdateOperationsInput | number
+    city_id?: IntFieldUpdateOperationsInput | number
+    card_details?: card_detailsUncheckedUpdateManyWithoutUsersNestedInput
+    grn?: grnUncheckedUpdateManyWithoutUsersNestedInput
+    invoice?: invoiceUncheckedUpdateManyWithoutUsersNestedInput
+  }
+
+  export type usersUncheckedUpdateManyWithoutStatusInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fname?: StringFieldUpdateOperationsInput | string
+    lname?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    nic?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    p_img?: NullableStringFieldUpdateOperationsInput | string | null
+    user_role_id?: IntFieldUpdateOperationsInput | number
+    gender_id?: IntFieldUpdateOperationsInput | number
+    city_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type grnCreateManySupplierInput = {
+    id?: number
+    date: Date | string
+    total: number
+    total_qty: number
+    users_id: number
+  }
+
+  export type grnUpdateWithoutSupplierInput = {
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    total?: FloatFieldUpdateOperationsInput | number
+    total_qty?: IntFieldUpdateOperationsInput | number
+    users?: usersUpdateOneRequiredWithoutGrnNestedInput
+    grn_items?: grn_itemsUpdateManyWithoutGrnNestedInput
+  }
+
+  export type grnUncheckedUpdateWithoutSupplierInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    total?: FloatFieldUpdateOperationsInput | number
+    total_qty?: IntFieldUpdateOperationsInput | number
+    users_id?: IntFieldUpdateOperationsInput | number
+    grn_items?: grn_itemsUncheckedUpdateManyWithoutGrnNestedInput
+  }
+
+  export type grnUncheckedUpdateManyWithoutSupplierInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    total?: FloatFieldUpdateOperationsInput | number
+    total_qty?: IntFieldUpdateOperationsInput | number
+    users_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type usersCreateManyUser_roleInput = {
+    id?: number
+    fname: string
+    lname: string
+    address: string
+    nic: string
+    email: string
+    password: string
+    mobile: string
+    p_img?: string | null
+    gender_id: number
+    city_id: number
+    status_id: number
+  }
+
+  export type usersUpdateWithoutUser_roleInput = {
+    fname?: StringFieldUpdateOperationsInput | string
+    lname?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    nic?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    p_img?: NullableStringFieldUpdateOperationsInput | string | null
+    card_details?: card_detailsUpdateManyWithoutUsersNestedInput
+    grn?: grnUpdateManyWithoutUsersNestedInput
+    invoice?: invoiceUpdateManyWithoutUsersNestedInput
+    city?: cityUpdateOneRequiredWithoutUsersNestedInput
+    gender?: genderUpdateOneRequiredWithoutUsersNestedInput
+    status?: statusUpdateOneRequiredWithoutUsersNestedInput
+  }
+
+  export type usersUncheckedUpdateWithoutUser_roleInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fname?: StringFieldUpdateOperationsInput | string
+    lname?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    nic?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    p_img?: NullableStringFieldUpdateOperationsInput | string | null
+    gender_id?: IntFieldUpdateOperationsInput | number
+    city_id?: IntFieldUpdateOperationsInput | number
+    status_id?: IntFieldUpdateOperationsInput | number
+    card_details?: card_detailsUncheckedUpdateManyWithoutUsersNestedInput
+    grn?: grnUncheckedUpdateManyWithoutUsersNestedInput
+    invoice?: invoiceUncheckedUpdateManyWithoutUsersNestedInput
+  }
+
+  export type usersUncheckedUpdateManyWithoutUser_roleInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    fname?: StringFieldUpdateOperationsInput | string
+    lname?: StringFieldUpdateOperationsInput | string
+    address?: StringFieldUpdateOperationsInput | string
+    nic?: StringFieldUpdateOperationsInput | string
+    email?: StringFieldUpdateOperationsInput | string
+    password?: StringFieldUpdateOperationsInput | string
+    mobile?: StringFieldUpdateOperationsInput | string
+    p_img?: NullableStringFieldUpdateOperationsInput | string | null
+    gender_id?: IntFieldUpdateOperationsInput | number
+    city_id?: IntFieldUpdateOperationsInput | number
+    status_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type card_detailsCreateManyUsersInput = {
+    id?: number
+    card_no: number
+    payment_method_id: number
+    cvv?: number | null
+    exp?: string | null
+  }
+
+  export type grnCreateManyUsersInput = {
+    id?: number
+    date: Date | string
+    total: number
+    total_qty: number
+    supplier_id: number
+  }
+
+  export type invoiceCreateManyUsersInput = {
+    id?: number
+    total: number
+    qty: number
+    datetime: Date | string
+    discount: number
+    payment_method_id: number
+  }
+
+  export type card_detailsUpdateWithoutUsersInput = {
+    card_no?: IntFieldUpdateOperationsInput | number
+    cvv?: NullableIntFieldUpdateOperationsInput | number | null
+    exp?: NullableStringFieldUpdateOperationsInput | string | null
+    payment_method?: payment_methodUpdateOneRequiredWithoutCard_detailsNestedInput
+  }
+
+  export type card_detailsUncheckedUpdateWithoutUsersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    card_no?: IntFieldUpdateOperationsInput | number
+    payment_method_id?: IntFieldUpdateOperationsInput | number
+    cvv?: NullableIntFieldUpdateOperationsInput | number | null
+    exp?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type card_detailsUncheckedUpdateManyWithoutUsersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    card_no?: IntFieldUpdateOperationsInput | number
+    payment_method_id?: IntFieldUpdateOperationsInput | number
+    cvv?: NullableIntFieldUpdateOperationsInput | number | null
+    exp?: NullableStringFieldUpdateOperationsInput | string | null
+  }
+
+  export type grnUpdateWithoutUsersInput = {
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    total?: FloatFieldUpdateOperationsInput | number
+    total_qty?: IntFieldUpdateOperationsInput | number
+    supplier?: supplierUpdateOneRequiredWithoutGrnNestedInput
+    grn_items?: grn_itemsUpdateManyWithoutGrnNestedInput
+  }
+
+  export type grnUncheckedUpdateWithoutUsersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    total?: FloatFieldUpdateOperationsInput | number
+    total_qty?: IntFieldUpdateOperationsInput | number
+    supplier_id?: IntFieldUpdateOperationsInput | number
+    grn_items?: grn_itemsUncheckedUpdateManyWithoutGrnNestedInput
+  }
+
+  export type grnUncheckedUpdateManyWithoutUsersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    date?: DateTimeFieldUpdateOperationsInput | Date | string
+    total?: FloatFieldUpdateOperationsInput | number
+    total_qty?: IntFieldUpdateOperationsInput | number
+    supplier_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type invoiceUpdateWithoutUsersInput = {
+    total?: FloatFieldUpdateOperationsInput | number
+    qty?: FloatFieldUpdateOperationsInput | number
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    discount?: FloatFieldUpdateOperationsInput | number
+    payment_method?: payment_methodUpdateOneRequiredWithoutInvoiceNestedInput
+    invoice_items?: invoice_itemsUpdateManyWithoutInvoiceNestedInput
+  }
+
+  export type invoiceUncheckedUpdateWithoutUsersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    total?: FloatFieldUpdateOperationsInput | number
+    qty?: FloatFieldUpdateOperationsInput | number
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    discount?: FloatFieldUpdateOperationsInput | number
+    payment_method_id?: IntFieldUpdateOperationsInput | number
+    invoice_items?: invoice_itemsUncheckedUpdateManyWithoutInvoiceNestedInput
+  }
+
+  export type invoiceUncheckedUpdateManyWithoutUsersInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    total?: FloatFieldUpdateOperationsInput | number
+    qty?: FloatFieldUpdateOperationsInput | number
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    discount?: FloatFieldUpdateOperationsInput | number
+    payment_method_id?: IntFieldUpdateOperationsInput | number
   }
 
 

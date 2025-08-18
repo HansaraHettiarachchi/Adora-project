@@ -136,7 +136,8 @@ exports.Prisma.Card_detailsScalarFieldEnum = {
   card_no: 'card_no',
   payment_method_id: 'payment_method_id',
   cvv: 'cvv',
-  exp: 'exp'
+  exp: 'exp',
+  users_id: 'users_id'
 };
 
 exports.Prisma.CategoryScalarFieldEnum = {
@@ -224,6 +225,12 @@ exports.Prisma.Pot_batchScalarFieldEnum = {
   code: 'code'
 };
 
+exports.Prisma.Pot_imagesScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  pot_batch_id: 'pot_batch_id'
+};
+
 exports.Prisma.Pot_sizeScalarFieldEnum = {
   id: 'id',
   size: 'size',
@@ -237,6 +244,12 @@ exports.Prisma.ProductScalarFieldEnum = {
   mother_plant_type_id: 'mother_plant_type_id',
   category_id: 'category_id',
   isActive: 'isActive'
+};
+
+exports.Prisma.Product_imagesScalarFieldEnum = {
+  id: 'id',
+  name: 'name',
+  batch_id: 'batch_id'
 };
 
 exports.Prisma.Product_typeScalarFieldEnum = {
@@ -287,18 +300,6 @@ exports.Prisma.UsersScalarFieldEnum = {
   gender_id: 'gender_id',
   city_id: 'city_id',
   status_id: 'status_id'
-};
-
-exports.Prisma.Pot_imagesScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  pot_batch_id: 'pot_batch_id'
-};
-
-exports.Prisma.Product_imagesScalarFieldEnum = {
-  id: 'id',
-  name: 'name',
-  batch_id: 'batch_id'
 };
 
 exports.Prisma.SortOrder = {
@@ -354,6 +355,10 @@ exports.Prisma.pot_batchOrderByRelevanceFieldEnum = {
   code: 'code'
 };
 
+exports.Prisma.pot_imagesOrderByRelevanceFieldEnum = {
+  name: 'name'
+};
+
 exports.Prisma.pot_sizeOrderByRelevanceFieldEnum = {
   size: 'size',
   short_key: 'short_key'
@@ -362,6 +367,10 @@ exports.Prisma.pot_sizeOrderByRelevanceFieldEnum = {
 exports.Prisma.productOrderByRelevanceFieldEnum = {
   name: 'name',
   desc: 'desc'
+};
+
+exports.Prisma.product_imagesOrderByRelevanceFieldEnum = {
+  name: 'name'
 };
 
 exports.Prisma.product_typeOrderByRelevanceFieldEnum = {
@@ -400,14 +409,6 @@ exports.Prisma.usersOrderByRelevanceFieldEnum = {
   p_img: 'p_img'
 };
 
-exports.Prisma.pot_imagesOrderByRelevanceFieldEnum = {
-  name: 'name'
-};
-
-exports.Prisma.product_imagesOrderByRelevanceFieldEnum = {
-  name: 'name'
-};
-
 
 exports.Prisma.ModelName = {
   batch: 'batch',
@@ -423,16 +424,16 @@ exports.Prisma.ModelName = {
   payment_method: 'payment_method',
   pot: 'pot',
   pot_batch: 'pot_batch',
+  pot_images: 'pot_images',
   pot_size: 'pot_size',
   product: 'product',
+  product_images: 'product_images',
   product_type: 'product_type',
   size: 'size',
   status: 'status',
   supplier: 'supplier',
   user_role: 'user_role',
-  users: 'users',
-  pot_images: 'pot_images',
-  product_images: 'product_images'
+  users: 'users'
 };
 
 /**

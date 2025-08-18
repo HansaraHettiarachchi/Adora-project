@@ -6,6 +6,9 @@ import type { PaymentMethod } from "../types/EntityType.js";
 const paymentRoutes = Router();
 const paymentController = new PaymentController();
 
+paymentRoutes.get('/', (req, res) => {
+  res.send("Payment routes are working!");
+});
 /**
  * @route POST /set-payment-method
  * @description Creates a new payment method
@@ -61,6 +64,78 @@ paymentRoutes.get("/get-payment-method-by-id/:id", authenticate, async (req, res
 paymentRoutes.get("/get-all-payment-methods", authenticate, async (req, res) => {
   try {
     const result = await paymentController.getAllPaymentMethods();
+    res.status(result.status).json(result);
+  } catch (error: any) {
+    res.status(500).json({ error: error.message || "Internal Server Error" });
+  }
+});
+
+/**
+ * @route POST /set-invoice
+ * @description Creates a new invoice and invoice items using batch data
+ * @access Protected
+ *
+ * Expected payload (type: Invoice):
+ * {
+ *   total: number,
+ *   qty: number,
+ *   datetime: string,
+ *   discount: number,
+ *   payment_method_id: number,
+ *   users_id: number,
+ *   invoice_items: Array<InvoiceItemBatchRef>
+ * }
+ *
+ * Where InvoiceItemBatchRef is:
+ * {
+ *   batch_id: number, // required, comes from frontend
+ *   product_type_id: number, // required (Plant or Pot use 1 as default)
+ *   price?: number, // optional, will use batch.price if not provided
+ *   cost?: number, // optional, will use batch.cost if not provided
+ *   product_id?: number, // optional, will use batch.product_id if not provided
+ *   qty?: number // optional, will use batch.qty if not provided
+ * }
+ *
+ * The backend will fetch batch data for each batch_id and fill missing fields for invoice_items.
+ *
+ * Response:
+ *   Invoice created message or validation error
+ */
+paymentRoutes.post("/set-invoice", authenticate, async (req, res) => {
+  try {
+    const result = await paymentController.setInvoice(req.body);
+    res.status(result.status).json(result);
+  } catch (error: any) {
+    res.status(500).json({ error: error.message || "Internal Server Error" });
+  }
+});
+
+/**
+ * @route GET /get-all-invoice-data-by-id/:id
+ * @description Gets invoice and its items by invoice id
+ * @access Protected
+ *
+ * Params:
+ *   id: number
+ */
+paymentRoutes.get("/get-all-invoice-data-by-id/:id", authenticate, async (req, res) => {
+  const id = Number(req.params.id);
+  try {
+    const result = await paymentController.getInvoiceDataById(id);
+    res.status(result.status).json(result);
+  } catch (error: any) {
+    res.status(500).json({ error: error.message || "Internal Server Error" });
+  }
+});
+
+/**
+ * @route GET /get-all-invoices
+ * @description Gets all invoices
+ * @access Protected
+ */
+paymentRoutes.get("/get-all-invoices", authenticate, async (req, res) => {
+  try {
+    const result = await paymentController.getAllInvoices();
     res.status(result.status).json(result);
   } catch (error: any) {
     res.status(500).json({ error: error.message || "Internal Server Error" });

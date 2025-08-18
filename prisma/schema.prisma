@@ -26,12 +26,14 @@ model batch {
 }
 
 model card_details {
-  id                Int     @id @default(autoincrement())
+  id                Int            @id @default(autoincrement())
   card_no           Int
   payment_method_id Int
   cvv               Int?
-  exp               String? @db.VarChar(45)
+  exp               String?        @db.VarChar(45)
   users_id          Int
+  payment_method    payment_method @relation(fields: [payment_method_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_card_details_payment_method1")
+  users             users          @relation(fields: [users_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_card_details_users1")
 
   @@index([payment_method_id], map: "fk_card_details_payment_method1_idx")
   @@index([users_id], map: "fk_card_details_users1_idx")
@@ -159,6 +161,15 @@ model pot_batch {
   @@index([pot_size_id], map: "fk_pot_batch_pot_size1_idx")
 }
 
+model pot_images {
+  id           Int       @id @default(autoincrement())
+  name         String    @db.Text
+  pot_batch_id Int
+  pot_batch    pot_batch @relation(fields: [pot_batch_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_pot_image_pot_batch1")
+
+  @@index([pot_batch_id], map: "fk_pot_image_pot_batch1_idx")
+}
+
 model pot_size {
   id        Int         @id @default(autoincrement())
   size      String      @db.VarChar(100)
@@ -179,6 +190,15 @@ model product {
 
   @@index([category_id], map: "fk_product_category1_idx")
   @@index([mother_plant_type_id], map: "fk_product_mother_plant_type1_idx")
+}
+
+model product_images {
+  id       Int    @id @default(autoincrement())
+  name     String @db.Text
+  batch_id Int
+  batch    batch  @relation(fields: [batch_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_product_image_batch1")
+
+  @@index([batch_id], map: "fk_product_image_batch1_idx")
 }
 
 model product_type {
@@ -230,46 +250,29 @@ model user_role {
 }
 
 model users {
-  id           Int       @id @default(autoincrement())
-  fname        String    @db.VarChar(45)
-  lname        String    @db.VarChar(45)
-  address      String    @db.VarChar(100)
-  nic          String    @db.VarChar(20)
-  email        String    @db.VarChar(100)
-  password     String    @db.VarChar(100)
-  mobile       String    @db.VarChar(20)
-  p_img        String?   @db.Text
+  id           Int            @id @default(autoincrement())
+  fname        String         @db.VarChar(45)
+  lname        String         @db.VarChar(45)
+  address      String         @db.VarChar(100)
+  nic          String         @db.VarChar(20)
+  email        String         @db.VarChar(100)
+  password     String         @db.VarChar(100)
+  mobile       String         @db.VarChar(20)
+  p_img        String?        @db.Text
   user_role_id Int
   gender_id    Int
   city_id      Int
   status_id    Int
+  card_details card_details[]
   grn          grn[]
   invoice      invoice[]
-  city         city      @relation(fields: [city_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_users_city1")
-  gender       gender    @relation(fields: [gender_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_users_gender1")
-  status       status    @relation(fields: [status_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_users_status1")
-  user_role    user_role @relation(fields: [user_role_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_users_user_role")
+  city         city           @relation(fields: [city_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_users_city1")
+  gender       gender         @relation(fields: [gender_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_users_gender1")
+  status       status         @relation(fields: [status_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_users_status1")
+  user_role    user_role      @relation(fields: [user_role_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_users_user_role")
 
   @@index([city_id], map: "fk_users_city1_idx")
   @@index([gender_id], map: "fk_users_gender1_idx")
   @@index([status_id], map: "fk_users_status1_idx")
   @@index([user_role_id], map: "fk_users_user_role_idx")
-}
-
-model pot_images {
-  id           Int       @id @default(autoincrement())
-  name         String    @db.Text
-  pot_batch_id Int
-  pot_batch    pot_batch @relation(fields: [pot_batch_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_pot_image_pot_batch1")
-
-  @@index([pot_batch_id], map: "fk_pot_image_pot_batch1_idx")
-}
-
-model product_images {
-  id       Int    @id @default(autoincrement())
-  name     String @db.Text
-  batch_id Int
-  batch    batch  @relation(fields: [batch_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_product_image_batch1")
-
-  @@index([batch_id], map: "fk_product_image_batch1_idx")
 }
