@@ -1,26 +1,26 @@
-// import { SupplierService } from "../service/SupplierService.js";
-// import type { Supplier } from "../types/EntityType.js";
+import { SupplierService } from "../service/SupplierService.js";
+import type { Supplier, Response } from "../types/EntityType.js";
 
-// export class SupplierController {
-//     private supplierService: SupplierService = new SupplierService();
+export class SupplierController {
+    private supplierService: SupplierService = new SupplierService();
 
-//     async setSupplier(data: Supplier): Promise<string> {
-//         return this.supplierService.createSupplier(data);
-//     }
+    async setSupplier(data: Supplier): Promise<Response> {
+        return this.supplierService.createSupplier(data);
+    }
 
-//     async getSupplierById(id: number) {
-//         return this.supplierService.getSupplierById(id);
-//     }
+    async getSupplierById(id: number): Promise<Response> {
+        return this.supplierService.getSupplierById(id);
+    }
 
-//     async getAllSuppliers() {
-//         return this.supplierService.getAllSuppliers();
-//     }
+    async getAllSuppliers(): Promise<Response> {
+        return this.supplierService.getAllSuppliers();
+    }
 
-//     async updateSupplier(id: number, data: Partial<Supplier>) {
-//         return this.supplierService.updateSupplier(id, data);
-//     }
+    async updateSupplier(id: number, data: Partial<Supplier>): Promise<Response> {
+        return this.supplierService.updateSupplier(id, data);
+    }
 
-//     async deleteSupplier(id: number) {
-//         return this.supplierService.deleteSupplier(id);
-//     }
-// }
+    async deleteSupplier(id: number): Promise<Response> {
+        return this.supplierService.deleteSupplier(id);
+    }
+}

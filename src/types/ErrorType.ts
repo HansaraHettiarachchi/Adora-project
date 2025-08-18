@@ -42,3 +42,17 @@ export type ProductErr = {
     category_id?: string;
     isActive?: string;
 };
+
+// Supplier error type
+export type SupplierErr = {
+    id?: string;
+    fullname?: string;
+    company?: string;
+    address?: string;
+    mobile?: string;
+    email?: string;
+    isActive?: boolean;
+    status_id?: string;
+    gender_id?: string;
+    city_id?: string;
+};

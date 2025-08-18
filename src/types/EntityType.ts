@@ -76,3 +76,16 @@ export type ProductCreate = {
     category_id: number;
     isActive?: boolean;
 };
+
+export type Supplier = {
+    id: number;
+    fullname: string;
+    company: string;
+    address: string;
+    mobile: string;
+    email: string;
+    isActive: boolean;
+    status_id: number;
+    gender_id: number;
+    city_id: number;
+};
