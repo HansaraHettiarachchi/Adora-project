@@ -16,10 +16,20 @@ export class StockService {
         }
     }
     async setStock(data: Stock, imageFiles: Express.Multer.File[] | null): Promise<Response> {
-        // Validate batch existence
+        // Check if a batch with the same code, product_id, and size_id already exists
+        const whereClause: any = {
+            product_id: data.product_id
+        };
+        if (data.code !== undefined) whereClause.code = data.code;
+        if (typeof data.size_id === 'number') whereClause.size_id = data.size_id;
+
+        const existingBatch = await prisma.batch.findFirst({
+            where: whereClause
+        });
+
         let batch;
-        if (!data.batch_id || data.batch_id === 0) {
-            // Create new batch
+        if (!existingBatch) {
+            // Create new batch since it does not exist
             if (typeof data.size_id !== 'number' || !data.code) {
                 return {
                     status: 400,
@@ -39,20 +49,14 @@ export class StockService {
                 }
             });
         } else {
-            batch = await prisma.batch.findUnique({ where: { id: data.batch_id } });
-            if (!batch) {
-                return {
-                    status: 404,
-                    message: 'Batch not found',
-                    data: null
-                };
-            }
+            batch = existingBatch;
             // Only update qty, not cost/price
             await prisma.batch.update({
-                where: { id: data.batch_id },
+                where: { id: batch.id },
                 data: { qty: { increment: data.qty } }
             });
         }
+
         // Handle images
         if (imageFiles && imageFiles.length > 0) {
             for (const file of imageFiles) {

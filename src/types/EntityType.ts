@@ -86,6 +86,5 @@ export type Stock = {
     price?: number;
     size_id?: number;
     code?: string;
-    images?: string[];
 };
 
