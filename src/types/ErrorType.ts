@@ -42,3 +42,15 @@ export type ProductErr = {
     category_id?: string;
     isActive?: string;
 };
+
+// Stock error type
+export type StockErr = {
+    batch_id?: string;
+    product_id?: string;
+    qty?: string;
+    cost?: string;
+    price?: string;
+    size_id?: string;
+    code?: string;
+    images?: string;
+};
