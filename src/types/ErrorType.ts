@@ -13,3 +13,32 @@ export type UserErr = {
     status_id?: string;
     p_img?: string | null;
 };
+
+// Category error type
+export type CategoryErr = {
+    id?: string;
+    name?: string;
+};
+
+// MotherPlantType error type
+export type MotherPlantTypeErr = {
+    id?: string;
+    name?: string;
+};
+
+// Size error type
+export type SizeErr = {
+    id?: string;
+    size?: string;
+    short_key?: string;
+};
+
+// Product error type
+export type ProductErr = {
+    id?: string;
+    name?: string;
+    desc?: string;
+    mother_plant_type_id?: string;
+    category_id?: string;
+    isActive?: string;
+};

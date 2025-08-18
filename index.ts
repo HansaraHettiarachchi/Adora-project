@@ -1,7 +1,9 @@
 import express from 'express';
-import userRouter from './src/routes/UserRoute.js';
+import userRouters from './src/routes/UserRoutes.js';
 import path from 'path';
 import { fileURLToPath } from 'url';
+import productRoutes from './src/routes/ProductRoutes.js';
+import { authenticate } from './src/middleware/auth.js';
 
 const app = express();
 const PORT = 3000;
@@ -16,7 +18,8 @@ const __dirname = path.dirname(__filename);
 app.use('/uploads', express.static(path.join(__dirname, 'static', 'uploads')));
 
 
-app.use('/api/v1/users', userRouter);
+app.use('/api/v1/users', userRouters);
+app.use('/api/v1/product', authenticate, productRoutes);
 
 app.listen(PORT, () => {
     console.log(`Server running on http://localhost:${PORT}`);

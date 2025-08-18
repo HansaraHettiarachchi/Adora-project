@@ -52,18 +52,21 @@ userRoutes.get('/', authenticate, (req, res) => {
  */
 userRoutes.post('/update-user', authenticate, upload.single('image'), async (req, res) => {
 
-
     try {
         const imageFile = req.file;
-        const data: User = JSON.parse(req.body.data);
+
+        if (!req.body.data) {
+            return res.status(400).json({ error: 'data needs to be provided according to the User format' });
+        }
 
         if (!imageFile) {
             return res.status(400).json({ error: 'No image file provided' });
         }
+        const data: User = JSON.parse(req.body.data);
 
         const result = await usercontroller.updateUser(imageFile, data);
 
-        res.status(201).json({ status: 201, message: 'User details update successful', data: result });
+        res.status(201).json(result);
     } catch (error) {
         console.error(error);
         res.status(500).json({ error: 'Internal Server Error' });

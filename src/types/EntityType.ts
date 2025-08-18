@@ -39,3 +39,40 @@ export type Response = {
     message: string;
     data: any;
 }
+// Category type for category endpoints
+export type Category = {
+    id: number;
+    name: string;
+};
+
+// MotherPlantType type
+export type MotherPlantType = {
+    id: number;
+    name: string;
+};
+
+// Size type
+export type Size = {
+    id: number;
+    size: string;
+    short_key: string;
+};
+
+// Product type
+export type Product = {
+    id: number;
+    name: string;
+    desc?: string | null;
+    mother_plant_type_id: number;
+    category_id: number;
+    isActive: boolean;
+};
+
+// Product creation type for validation
+export type ProductCreate = {
+    name: string;
+    desc?: string | null;
+    mother_plant_type_id: number;
+    category_id: number;
+    isActive?: boolean;
+};
