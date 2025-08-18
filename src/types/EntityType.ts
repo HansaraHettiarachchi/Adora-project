@@ -87,3 +87,22 @@ export type Stock = {
     code?: string;
     
 };
+// Supplier type for supplier endpoints
+export type Supplier = {
+    id: number;
+    fullname: string;
+    company: string;
+    address: string;
+    mobile: string;
+    email: string;
+    isActive: boolean;
+    status_id: number;
+    gender_id: number;
+    city_id: number;
+};
+
+// PaymentMethod type for payment method endpoints
+export type PaymentMethod = {
+    id: number;
+    name: string;
+};
