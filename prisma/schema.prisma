@@ -28,8 +28,10 @@ model card_details {
   payment_method_id Int
   cvv               Int?
   exp               String? @db.VarChar(45)
+  users_id          Int
 
   @@index([payment_method_id], map: "fk_card_details_payment_method1_idx")
+  @@index([users_id], map: "fk_card_details_users1_idx")
 }
 
 model category {
