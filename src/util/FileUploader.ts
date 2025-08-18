@@ -16,7 +16,8 @@ export class FileUploader {
         await fs.promises.mkdir(targetDir, { recursive: true });
         await fs.promises.rename(file.path, targetPath);
 
-        const urlPath = `/static/uploads/${filename.replace(/\\/g, '/')}`;
+        // const urlPath = `/static/uploads/${filename.replace(/\\/g, '/')}`;
+        const urlPath = `/static/${filename.replace(/\\/g, '/')}`;
         return urlPath;
     }
 

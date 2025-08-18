@@ -3,6 +3,8 @@ import { PrismaClient } from "../generated/prisma/index.js";
 import type { Response, User } from "../types/EntityType.js";
 import { generateToken } from "../middleware/auth.js";
 import type { UserErr } from "../types/ErrorType.js";
+import path from "path";
+import { FileUploader } from "../util/FileUploader.js";
 
 export class UserService {
 
@@ -12,7 +14,7 @@ export class UserService {
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) return null;
 
-        return generateToken(user);
+        return generateToken(user, '30d');
     }
     private prisma: PrismaClient = new PrismaClient();
 
@@ -76,7 +78,7 @@ export class UserService {
         }
     }
 
-    async updateUser(data: User): Promise<Response> {
+    async updateUser(data: User, imageFile: Express.Multer.File | null): Promise<Response> {
         try {
             const existingUser = await this.prisma.users.findFirst({
                 where: {
@@ -106,6 +108,23 @@ export class UserService {
                     data: errors,
                     message: "error"
                 };
+            }
+
+            const currentUser = await this.prisma.users.findUnique({ where: { id: data.id } });
+            if (!currentUser) {
+                return {
+                    status: 404,
+                    data: "User not found",
+                    message: "error"
+                };
+            }
+
+            if (imageFile) {
+                const ext = path.extname(imageFile.originalname);
+                const uniqueName = currentUser.p_img || `uploads/users/${Date.now()}_${Math.round(Math.random() * 1e9)}${ext}`;
+
+                await FileUploader.uploadFile(imageFile, uniqueName);
+                data.p_img = uniqueName;
             }
 
             data.password = await bcrypt.hash(data.password, 12);
