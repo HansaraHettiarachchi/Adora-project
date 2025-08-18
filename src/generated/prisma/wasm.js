@@ -134,7 +134,9 @@ exports.Prisma.BatchScalarFieldEnum = {
 exports.Prisma.Card_detailsScalarFieldEnum = {
   id: 'id',
   card_no: 'card_no',
-  payment_method_id: 'payment_method_id'
+  payment_method_id: 'payment_method_id',
+  cvv: 'cvv',
+  exp: 'exp'
 };
 
 exports.Prisma.CategoryScalarFieldEnum = {
@@ -312,6 +314,10 @@ exports.Prisma.NullsOrder = {
 exports.Prisma.batchOrderByRelevanceFieldEnum = {
   desc: 'desc',
   code: 'code'
+};
+
+exports.Prisma.card_detailsOrderByRelevanceFieldEnum = {
+  exp: 'exp'
 };
 
 exports.Prisma.categoryOrderByRelevanceFieldEnum = {

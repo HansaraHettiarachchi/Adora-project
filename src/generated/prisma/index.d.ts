@@ -3659,30 +3659,38 @@ export namespace Prisma {
     id: number | null
     card_no: number | null
     payment_method_id: number | null
+    cvv: number | null
   }
 
   export type Card_detailsSumAggregateOutputType = {
     id: number | null
     card_no: number | null
     payment_method_id: number | null
+    cvv: number | null
   }
 
   export type Card_detailsMinAggregateOutputType = {
     id: number | null
     card_no: number | null
     payment_method_id: number | null
+    cvv: number | null
+    exp: string | null
   }
 
   export type Card_detailsMaxAggregateOutputType = {
     id: number | null
     card_no: number | null
     payment_method_id: number | null
+    cvv: number | null
+    exp: string | null
   }
 
   export type Card_detailsCountAggregateOutputType = {
     id: number
     card_no: number
     payment_method_id: number
+    cvv: number
+    exp: number
     _all: number
   }
 
@@ -3691,30 +3699,38 @@ export namespace Prisma {
     id?: true
     card_no?: true
     payment_method_id?: true
+    cvv?: true
   }
 
   export type Card_detailsSumAggregateInputType = {
     id?: true
     card_no?: true
     payment_method_id?: true
+    cvv?: true
   }
 
   export type Card_detailsMinAggregateInputType = {
     id?: true
     card_no?: true
     payment_method_id?: true
+    cvv?: true
+    exp?: true
   }
 
   export type Card_detailsMaxAggregateInputType = {
     id?: true
     card_no?: true
     payment_method_id?: true
+    cvv?: true
+    exp?: true
   }
 
   export type Card_detailsCountAggregateInputType = {
     id?: true
     card_no?: true
     payment_method_id?: true
+    cvv?: true
+    exp?: true
     _all?: true
   }
 
@@ -3808,6 +3824,8 @@ export namespace Prisma {
     id: number
     card_no: number
     payment_method_id: number
+    cvv: number | null
+    exp: string | null
     _count: Card_detailsCountAggregateOutputType | null
     _avg: Card_detailsAvgAggregateOutputType | null
     _sum: Card_detailsSumAggregateOutputType | null
@@ -3833,6 +3851,8 @@ export namespace Prisma {
     id?: boolean
     card_no?: boolean
     payment_method_id?: boolean
+    cvv?: boolean
+    exp?: boolean
   }, ExtArgs["result"]["card_details"]>
 
 
@@ -3841,9 +3861,11 @@ export namespace Prisma {
     id?: boolean
     card_no?: boolean
     payment_method_id?: boolean
+    cvv?: boolean
+    exp?: boolean
   }
 
-  export type card_detailsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "card_no" | "payment_method_id", ExtArgs["result"]["card_details"]>
+  export type card_detailsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "card_no" | "payment_method_id" | "cvv" | "exp", ExtArgs["result"]["card_details"]>
 
   export type $card_detailsPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "card_details"
@@ -3852,6 +3874,8 @@ export namespace Prisma {
       id: number
       card_no: number
       payment_method_id: number
+      cvv: number | null
+      exp: string | null
     }, ExtArgs["result"]["card_details"]>
     composites: {}
   }
@@ -4224,6 +4248,8 @@ export namespace Prisma {
     readonly id: FieldRef<"card_details", 'Int'>
     readonly card_no: FieldRef<"card_details", 'Int'>
     readonly payment_method_id: FieldRef<"card_details", 'Int'>
+    readonly cvv: FieldRef<"card_details", 'Int'>
+    readonly exp: FieldRef<"card_details", 'String'>
   }
     
 
@@ -23906,7 +23932,9 @@ export namespace Prisma {
   export const Card_detailsScalarFieldEnum: {
     id: 'id',
     card_no: 'card_no',
-    payment_method_id: 'payment_method_id'
+    payment_method_id: 'payment_method_id',
+    cvv: 'cvv',
+    exp: 'exp'
   };
 
   export type Card_detailsScalarFieldEnum = (typeof Card_detailsScalarFieldEnum)[keyof typeof Card_detailsScalarFieldEnum]
@@ -24159,6 +24187,13 @@ export namespace Prisma {
   };
 
   export type batchOrderByRelevanceFieldEnum = (typeof batchOrderByRelevanceFieldEnum)[keyof typeof batchOrderByRelevanceFieldEnum]
+
+
+  export const card_detailsOrderByRelevanceFieldEnum: {
+    exp: 'exp'
+  };
+
+  export type card_detailsOrderByRelevanceFieldEnum = (typeof card_detailsOrderByRelevanceFieldEnum)[keyof typeof card_detailsOrderByRelevanceFieldEnum]
 
 
   export const categoryOrderByRelevanceFieldEnum: {
@@ -24423,12 +24458,17 @@ export namespace Prisma {
     id?: IntFilter<"card_details"> | number
     card_no?: IntFilter<"card_details"> | number
     payment_method_id?: IntFilter<"card_details"> | number
+    cvv?: IntNullableFilter<"card_details"> | number | null
+    exp?: StringNullableFilter<"card_details"> | string | null
   }
 
   export type card_detailsOrderByWithRelationInput = {
     id?: SortOrder
     card_no?: SortOrder
     payment_method_id?: SortOrder
+    cvv?: SortOrderInput | SortOrder
+    exp?: SortOrderInput | SortOrder
+    _relevance?: card_detailsOrderByRelevanceInput
   }
 
   export type card_detailsWhereUniqueInput = Prisma.AtLeast<{
@@ -24438,12 +24478,16 @@ export namespace Prisma {
     NOT?: card_detailsWhereInput | card_detailsWhereInput[]
     card_no?: IntFilter<"card_details"> | number
     payment_method_id?: IntFilter<"card_details"> | number
+    cvv?: IntNullableFilter<"card_details"> | number | null
+    exp?: StringNullableFilter<"card_details"> | string | null
   }, "id">
 
   export type card_detailsOrderByWithAggregationInput = {
     id?: SortOrder
     card_no?: SortOrder
     payment_method_id?: SortOrder
+    cvv?: SortOrderInput | SortOrder
+    exp?: SortOrderInput | SortOrder
     _count?: card_detailsCountOrderByAggregateInput
     _avg?: card_detailsAvgOrderByAggregateInput
     _max?: card_detailsMaxOrderByAggregateInput
@@ -24458,6 +24502,8 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"card_details"> | number
     card_no?: IntWithAggregatesFilter<"card_details"> | number
     payment_method_id?: IntWithAggregatesFilter<"card_details"> | number
+    cvv?: IntNullableWithAggregatesFilter<"card_details"> | number | null
+    exp?: StringNullableWithAggregatesFilter<"card_details"> | string | null
   }
 
   export type categoryWhereInput = {
@@ -25659,40 +25705,54 @@ export namespace Prisma {
   export type card_detailsCreateInput = {
     card_no: number
     payment_method_id: number
+    cvv?: number | null
+    exp?: string | null
   }
 
   export type card_detailsUncheckedCreateInput = {
     id?: number
     card_no: number
     payment_method_id: number
+    cvv?: number | null
+    exp?: string | null
   }
 
   export type card_detailsUpdateInput = {
     card_no?: IntFieldUpdateOperationsInput | number
     payment_method_id?: IntFieldUpdateOperationsInput | number
+    cvv?: NullableIntFieldUpdateOperationsInput | number | null
+    exp?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type card_detailsUncheckedUpdateInput = {
     id?: IntFieldUpdateOperationsInput | number
     card_no?: IntFieldUpdateOperationsInput | number
     payment_method_id?: IntFieldUpdateOperationsInput | number
+    cvv?: NullableIntFieldUpdateOperationsInput | number | null
+    exp?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type card_detailsCreateManyInput = {
     id?: number
     card_no: number
     payment_method_id: number
+    cvv?: number | null
+    exp?: string | null
   }
 
   export type card_detailsUpdateManyMutationInput = {
     card_no?: IntFieldUpdateOperationsInput | number
     payment_method_id?: IntFieldUpdateOperationsInput | number
+    cvv?: NullableIntFieldUpdateOperationsInput | number | null
+    exp?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type card_detailsUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     card_no?: IntFieldUpdateOperationsInput | number
     payment_method_id?: IntFieldUpdateOperationsInput | number
+    cvv?: NullableIntFieldUpdateOperationsInput | number | null
+    exp?: NullableStringFieldUpdateOperationsInput | string | null
   }
 
   export type categoryCreateInput = {
@@ -26948,34 +27008,75 @@ export namespace Prisma {
     _max?: NestedStringFilter<$PrismaModel>
   }
 
+  export type IntNullableFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableFilter<$PrismaModel> | number | null
+  }
+
+  export type card_detailsOrderByRelevanceInput = {
+    fields: card_detailsOrderByRelevanceFieldEnum | card_detailsOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
   export type card_detailsCountOrderByAggregateInput = {
     id?: SortOrder
     card_no?: SortOrder
     payment_method_id?: SortOrder
+    cvv?: SortOrder
+    exp?: SortOrder
   }
 
   export type card_detailsAvgOrderByAggregateInput = {
     id?: SortOrder
     card_no?: SortOrder
     payment_method_id?: SortOrder
+    cvv?: SortOrder
   }
 
   export type card_detailsMaxOrderByAggregateInput = {
     id?: SortOrder
     card_no?: SortOrder
     payment_method_id?: SortOrder
+    cvv?: SortOrder
+    exp?: SortOrder
   }
 
   export type card_detailsMinOrderByAggregateInput = {
     id?: SortOrder
     card_no?: SortOrder
     payment_method_id?: SortOrder
+    cvv?: SortOrder
+    exp?: SortOrder
   }
 
   export type card_detailsSumOrderByAggregateInput = {
     id?: SortOrder
     card_no?: SortOrder
     payment_method_id?: SortOrder
+    cvv?: SortOrder
+  }
+
+  export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
   }
 
   export type categoryOrderByRelevanceInput = {
@@ -27882,6 +27983,14 @@ export namespace Prisma {
     set?: string
   }
 
+  export type NullableIntFieldUpdateOperationsInput = {
+    set?: number | null
+    increment?: number
+    decrement?: number
+    multiply?: number
+    divide?: number
+  }
+
   export type DateTimeFieldUpdateOperationsInput = {
     set?: Date | string
   }
@@ -28019,6 +28128,33 @@ export namespace Prisma {
     _count?: NestedIntFilter<$PrismaModel>
     _min?: NestedStringFilter<$PrismaModel>
     _max?: NestedStringFilter<$PrismaModel>
+  }
+
+  export type NestedIntNullableWithAggregatesFilter<$PrismaModel = never> = {
+    equals?: number | IntFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | IntFieldRefInput<$PrismaModel>
+    lte?: number | IntFieldRefInput<$PrismaModel>
+    gt?: number | IntFieldRefInput<$PrismaModel>
+    gte?: number | IntFieldRefInput<$PrismaModel>
+    not?: NestedIntNullableWithAggregatesFilter<$PrismaModel> | number | null
+    _count?: NestedIntNullableFilter<$PrismaModel>
+    _avg?: NestedFloatNullableFilter<$PrismaModel>
+    _sum?: NestedIntNullableFilter<$PrismaModel>
+    _min?: NestedIntNullableFilter<$PrismaModel>
+    _max?: NestedIntNullableFilter<$PrismaModel>
+  }
+
+  export type NestedFloatNullableFilter<$PrismaModel = never> = {
+    equals?: number | FloatFieldRefInput<$PrismaModel> | null
+    in?: number[] | null
+    notIn?: number[] | null
+    lt?: number | FloatFieldRefInput<$PrismaModel>
+    lte?: number | FloatFieldRefInput<$PrismaModel>
+    gt?: number | FloatFieldRefInput<$PrismaModel>
+    gte?: number | FloatFieldRefInput<$PrismaModel>
+    not?: NestedFloatNullableFilter<$PrismaModel> | number | null
   }
 
   export type NestedDateTimeFilter<$PrismaModel = never> = {

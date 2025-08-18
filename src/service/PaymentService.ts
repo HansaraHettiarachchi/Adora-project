@@ -3,74 +3,230 @@ import type { PaymentMethod, Response } from "../types/EntityType.js";
 import type { PaymentMethodErr } from "../types/ErrorType.js";
 
 export class PaymentService {
-    private prisma: PrismaClient = new PrismaClient();
+  private prisma: PrismaClient;
 
-    // Create Payment Method
-    async createPaymentMethod(paymentMethodData: PaymentMethod): Promise<Response> {
-        try {
-            const existingPaymentMethod = await this.prisma.payment_method.findFirst({
-                where: {
-                    name: paymentMethodData.name
-                }
-            });
+  constructor() {
+    this.prisma = new PrismaClient();
+  }
 
-            if (existingPaymentMethod) {
-                const errors: PaymentMethodErr = { name: "Payment method name already exists" };
-                return { status: 409, data: errors, message: "error" };
-            }
+  async createPaymentMethod(data: PaymentMethod): Promise<Response> {
+    try {
+      // Basic validation
+      const errors: PaymentMethodErr = {};
+      if (!data.name || data.name.trim() === "") {
+        errors.name = "Payment method name is required";
+      }
+      if (data.name && data.name.length > 20) {
+        errors.name = "Payment method name must be 20 characters or less";
+      }
 
-            await this.prisma.payment_method.create({ data: paymentMethodData });
-            return { status: 200, data: "Payment Method Registered Successfully", message: "success" };
-        } catch (error: any) {
-            console.error("Error creating payment method:", error);
-            return { status: 401, data: `Error: ${error.message || "Unknown error occurred"}`, message: "error" };
-        }
+      if (Object.keys(errors).length > 0) {
+        return {
+          status: 400,
+          message: "Validation failed",
+          data: errors,
+        };
+      }
+
+      // Check if payment method with the same name exists
+      const existing = await this.prisma.payment_method.findFirst({
+        where: { name: data.name },
+      });
+
+      if (existing) {
+        return {
+          status: 409,
+          message: "Payment method with this name already exists",
+          data: null,
+        };
+      }
+
+      const paymentMethod = await this.prisma.payment_method.create({
+        data: {
+          name: data.name,
+        },
+      });
+
+      return {
+        status: 201,
+        message: "Payment method created successfully",
+        data: paymentMethod,
+      };
+    } catch (error: any) {
+      throw new Error(`Failed to create payment method: ${error.message}`);
     }
+  }
 
-    // Get Payment Method by ID
-    async getPaymentMethodById(paymentMethodId: number): Promise<Response> {
-        try {
-            const paymentMethod = await this.prisma.payment_method.findUnique({ where: { id: paymentMethodId } });
-            if (!paymentMethod) {
-                return { status: 404, data: null, message: "Payment Method not found" };
-            }
-            return { status: 200, data: paymentMethod, message: "success" };
-        } catch (error: any) {
-            console.error("Error fetching payment method:", error);
-            return { status: 401, data: `Error: ${error.message || "Unknown error occurred"}`, message: "error" };
-        }
-    }
+  async getPaymentMethodById(id: number): Promise<Response> {
+    try {
+      // Validate ID
+      if (!Number.isInteger(id) || id <= 0) {
+        return {
+          status: 400,
+          message: "Invalid payment method ID",
+          data: null,
+        };
+      }
 
-    // Get All Payment Methods
-    async getAllPaymentMethods(): Promise<Response> {
-        try {
-            const paymentMethods = await this.prisma.payment_method.findMany();
-            return { status: 200, data: paymentMethods, message: "success" };
-        } catch (error: any) {
-            console.error("Error fetching payment methods:", error);
-            return { status: 401, data: `Error: ${error.message || "Unknown error occurred"}`, message: "error" };
-        }
-    }
+      const paymentMethod = await this.prisma.payment_method.findUnique({
+        where: { id },
+      });
 
-    // Update Payment Method
-    async updatePaymentMethod(paymentMethodId: number, updateData: Partial<PaymentMethod>): Promise<Response> {
-        try {
-            await this.prisma.payment_method.update({ where: { id: paymentMethodId }, data: updateData });
-            return { status: 200, data: "Payment Method Updated Successfully", message: "success" };
-        } catch (error: any) {
-            console.error("Error updating payment method:", error);
-            return { status: 401, data: `Error: ${error.message || "Unknown error occurred"}`, message: "error" };
-        }
-    }
+      if (!paymentMethod) {
+        return {
+          status: 404,
+          message: "Payment method not found",
+          data: null,
+        };
+      }
 
-    // Delete Payment Method
-    async deletePaymentMethod(paymentMethodId: number): Promise<Response> {
-        try {
-            await this.prisma.payment_method.delete({ where: { id: paymentMethodId } });
-            return { status: 200, data: "Payment Method Deleted Successfully", message: "success" };
-        } catch (error: any) {
-            console.error("Error deleting payment method:", error);
-            return { status: 401, data: `Error: ${error.message || "Unknown error occurred"}`, message: "error" };
-        }
+      return {
+        status: 200,
+        message: "Payment method retrieved successfully",
+        data: paymentMethod,
+      };
+    } catch (error: any) {
+      throw new Error(`Failed to retrieve payment method: ${error.message}`);
     }
+  }
+
+  async getAllPaymentMethods(): Promise<Response> {
+    try {
+      const paymentMethods = await this.prisma.payment_method.findMany();
+
+      return {
+        status: 200,
+        message: "Payment methods retrieved successfully",
+        data: paymentMethods,
+      };
+    } catch (error: any) {
+      throw new Error(`Failed to retrieve payment methods: ${error.message}`);
+    }
+  }
+
+  async updatePaymentMethod(id: number, data: Partial<PaymentMethod>): Promise<Response> {
+    try {
+      // Validate ID
+      if (!Number.isInteger(id) || id <= 0) {
+        return {
+          status: 400,
+          message: "Invalid payment method ID",
+          data: null,
+        };
+      }
+
+      // Validate input
+      const errors: PaymentMethodErr = {};
+      if (data.name && data.name.trim() === "") {
+        errors.name = "Payment method name cannot be empty";
+      }
+      if (data.name && data.name.length > 20) {
+        errors.name = "Payment method name must be 20 characters or less";
+      }
+
+      if (Object.keys(errors).length > 0) {
+        return {
+          status: 400,
+          message: "Validation failed",
+          data: errors,
+        };
+      }
+
+      // Check if payment method exists
+      const existing = await this.prisma.payment_method.findUnique({
+        where: { id },
+      });
+
+      if (!existing) {
+        return {
+          status: 404,
+          message: "Payment method not found",
+          data: null,
+        };
+      }
+
+      // Check for duplicate name
+      if (data.name && data.name !== existing.name) {
+        const nameExists = await this.prisma.payment_method.findFirst({
+          where: { name: data.name },
+        });
+        if (nameExists) {
+          return {
+            status: 409,
+            message: "Payment method with this name already exists",
+            data: null,
+          };
+        }
+      }
+
+      const updatedPaymentMethod = await this.prisma.payment_method.update({
+        where: { id },
+        data: {
+          name: data.name ?? existing.name,
+        },
+      });
+
+      return {
+        status: 200,
+        message: "Payment method updated successfully",
+        data: updatedPaymentMethod,
+      };
+    } catch (error: any) {
+      throw new Error(`Failed to update payment method: ${error.message}`);
+    }
+  }
+
+  async deletePaymentMethod(id: number): Promise<Response> {
+    try {
+      // Validate ID
+      if (!Number.isInteger(id) || id <= 0) {
+        return {
+          status: 400,
+          message: "Invalid payment method ID",
+          data: null,
+        };
+      }
+
+      // Check if payment method exists
+      const existing = await this.prisma.payment_method.findUnique({
+        where: { id },
+      });
+
+      if (!existing) {
+        return {
+          status: 404,
+          message: "Payment method not found",
+          data: null,
+        };
+      }
+
+      // Check if payment method is referenced in invoices or card_details
+      const referencedInInvoices = await this.prisma.invoice.findFirst({
+        where: { payment_method_id: id },
+      });
+      const referencedInCardDetails = await this.prisma.card_details.findFirst({
+        where: { payment_method_id: id },
+      });
+
+      if (referencedInInvoices || referencedInCardDetails) {
+        return {
+          status: 400,
+          message: "Cannot delete payment method as it is referenced in invoices or card details",
+          data: null,
+        };
+      }
+
+      await this.prisma.payment_method.delete({
+        where: { id },
+      });
+
+      return {
+        status: 200,
+        message: "Payment method deleted successfully",
+        data: null,
+      };
+    } catch (error: any) {
+      throw new Error(`Failed to delete payment method: ${error.message}`);
+    }
+  }
 }
