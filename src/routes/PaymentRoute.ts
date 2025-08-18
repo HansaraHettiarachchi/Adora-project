@@ -6,6 +6,11 @@ import type { PaymentMethod } from "../types/EntityType.js";
 const paymentRoutes = Router();
 const paymentController = new PaymentController();
 
+
+paymentRoutes.get("/", async (_req, res) => {
+  res.send('hello himal in testing');
+});
+
 /**
  * @route POST /set-payment-method
  * @description Creates a new payment method
