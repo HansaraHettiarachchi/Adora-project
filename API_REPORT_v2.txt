@@ -1,0 +1,213 @@
+============================
+# API Endpoints Report
+============================
+
+This project exposes REST API endpoints for user and product management. Below is a summary of each endpoint, its usage, required request data, authentication, and expected response.
+
+---
+
+## User Endpoints (Base: `/api/v1/users`)
+
+1. **GET `/`** (Protected)
+   - Usage: Returns a placeholder user list.
+   - Response: `User list` (string)
+
+2. **POST `/update-user`** (Protected)
+   - Usage: Update user details and profile image.
+   - Request: `multipart/form-data`
+     - `image`: File (profile image)
+     - `data`: JSON stringified User object
+   - Response:
+     - Success: `{ status: 201, ...updated user data }`
+     - Error: `{ error: '...' }`
+
+3. **POST `/login`** (Public)
+   - Usage: Authenticate user and receive JWT token.
+   - Request: JSON
+     {
+       "email": "user@example.com",
+       "password": "yourPassword"
+     }
+   - Response:
+     - Success: `{ token: "JWT_TOKEN" }`
+     - Error: `{ error: 'Invalid email or password' }`
+
+4. **POST `/set-user`** (Public)
+   - Usage: Register a new user.
+   - Request: JSON User object
+     {
+       "fname": "First",
+       "lname": "Last",
+       "address": "Address",
+       "nic": "NIC",
+       "email": "user@example.com",
+       "password": "yourPassword",
+       "mobile": "1234567890",
+       "user_role_id": 1,
+       "gender_id": 1,
+       "city_id": 1,
+       "status_id": 1,
+       "p_img": null
+     }
+   - Response:
+     - Success: `{ status: 200, data: "User Registered Successfully" }`
+     - Error: `{ status: 409, data: { ...error fields... } }`
+
+5. **GET `/get-user-by-id/:id`** (Protected)
+   - Usage: Get user by ID.
+   - Response: User object or `{ error: 'User not found' }`
+
+6. **GET `/get-all-users`** (Protected)
+   - Usage: Get all users.
+   - Response: Array of User objects
+
+7. **GET `/get-gender-by-id/:id`** (Public)
+   - Usage: Get gender by ID.
+   - Response: Gender object or `{ error: 'Gender not found' }`
+
+8. **GET `/get-all-genders`** (Public)
+   - Usage: Get all genders.
+   - Response: Array of Gender objects
+
+9. **GET `/get-status-by-id/:id`** (Public)
+   - Usage: Get status by ID.
+   - Response: Status object or `{ error: 'Status not found' }`
+
+10. **GET `/get-all-statuses`** (Public)
+    - Usage: Get all statuses.
+    - Response: Array of Status objects
+
+11. **GET `/get-user-role-by-id/:id`** (Protected)
+    - Usage: Get user role by ID.
+    - Response: UserRole object or `{ error: 'UserRole not found' }`
+
+12. **GET `/get-all-user-roles`** (Protected)
+    - Usage: Get all user roles.
+    - Response: Array of UserRole objects
+
+13. **GET `/get-city-by-id/:id`** (Public)
+    - Usage: Get city by ID.
+    - Response: City object or `{ error: 'City not found' }`
+
+14. **GET `/get-all-cities`** (Public)
+    - Usage: Get all cities.
+    - Response: Array of City objects
+
+---
+
+## Product Endpoints (Base: `/api/v1/product`, all Protected)
+
+1. **POST `/create-product`**
+   - Usage: Create a new product.
+   - Request: JSON Product object
+     {
+       "name": "Product Name",
+       "desc": "Description",
+       "mother_plant_type_id": 1,
+       "category_id": 2,
+       "isActive": true
+     }
+   - Response:
+     - Success: `{ status: 201, message: 'Product created successfully', data: Product }`
+     - Error: `{ status: 400/409/500, message: '...', data: ... }`
+
+2. **GET `/get-all-products`**
+   - Usage: Get all products.
+   - Response: `{ status: 200, message: 'Products fetched successfully', data: Product[] }`
+
+3. **GET `/get-product-by-id/:id`**
+   - Usage: Get product by ID.
+   - Response:
+     - Success: `{ status: 200, message: 'Product fetched successfully', data: Product }`
+     - Error: `{ status: 404, message: 'Product not found', data: null }`
+
+4. **DELETE `/delete-product/:id`**
+   - Usage: Delete product by ID.
+   - Response:
+     - Success: `{ status: 200, message: 'Product deleted successfully', data: null }`
+     - Error: `{ status: 409/500, message: '...', data: null }`
+
+---
+
+## Category Endpoints (Base: `/api/v1/product`, all Protected)
+
+1. **POST `/set-category`**
+   - Usage: Create a new category.
+   - Request: `{ name: string }`
+   - Response:
+     - Success: `{ status: 201, message: 'Category created successfully', data: Category }`
+     - Error: `{ status: 400/409, message: '...', data: ... }`
+
+2. **GET `/get-all-category`**
+   - Usage: Get all categories.
+   - Response: `{ status: 200, message: 'Categories fetched successfully', data: Category[] }`
+
+3. **GET `/get-category-by-id/:id`**
+   - Usage: Get category by ID.
+   - Response: `{ status: 200, message: 'Category fetched successfully', data: Category }`
+
+4. **DELETE `/delete-category/:id`**
+   - Usage: Delete category by ID.
+   - Response: `{ status: 200, message: 'Category deleted successfully', data: null }`
+
+---
+
+## Mother Plant Type Endpoints (Base: `/api/v1/product`, all Protected)
+
+1. **POST `/set-mother-plant-type`**
+   - Usage: Create a new mother plant type.
+   - Request: `{ name: string }`
+   - Response: `{ status: 201, message: 'Mother plant type created successfully', data: MotherPlantType }`
+
+2. **GET `/get-all-mother-plant-type`**
+   - Usage: Get all mother plant types.
+   - Response: `{ status: 200, message: 'Mother plant types fetched successfully', data: MotherPlantType[] }`
+
+3. **GET `/get-mother-plant-type-by-id/:id`**
+   - Usage: Get mother plant type by ID.
+   - Response: `{ status: 200, message: 'Mother plant type fetched successfully', data: MotherPlantType }`
+
+4. **DELETE `/delete-mother-plant-type/:id`**
+   - Usage: Delete mother plant type by ID.
+   - Response: `{ status: 200, message: 'Mother plant type deleted successfully', data: null }`
+
+---
+
+## Size Endpoints (Base: `/api/v1/product`, all Protected)
+
+1. **POST `/set-size`**
+   - Usage: Create a new size.
+   - Request: `{ size: string, short_key: string }`
+   - Response: `{ status: 201, message: 'Size created successfully', data: Size }`
+
+2. **GET `/get-all-size`**
+   - Usage: Get all sizes.
+   - Response: `{ status: 200, message: 'Sizes fetched successfully', data: Size[] }`
+
+3. **GET `/get-size-by-id/:id`**
+   - Usage: Get size by ID.
+   - Response: `{ status: 200, message: 'Size fetched successfully', data: Size }`
+
+4. **DELETE `/delete-size/:id`**
+   - Usage: Delete size by ID.
+   - Response: `{ status: 200, message: 'Size deleted successfully', data: null }`
+
+---
+
+## General Notes
+- All endpoints return JSON with `status`, `message`, and `data` fields.
+- Error responses use appropriate HTTP status codes and descriptive messages.
+- Data sent to POST endpoints must match required types and validation rules.
+- For all GET/DELETE endpoints with `:id`, the `id` must be a positive integer.
+- Protected endpoints require JWT authentication in the `Authorization: Bearer <token>` header.
+- File uploads use `multipart/form-data`.
+
+---
+
+For further details, see the code in:
+- `src/routes/ProductRoutes.ts`
+- `src/controller/ProductController.ts`
+- `src/service/ProductService.ts`
+- `src/routes/UserRoutes.ts`
+- `src/controller/UserController.ts`
+- `src/service/UserService.ts`

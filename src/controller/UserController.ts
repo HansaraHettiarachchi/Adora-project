@@ -1,13 +1,22 @@
+import path from "path";
 import { UserService } from "../service/UserService.js";
-import type { User } from "../types/EntityType.js";
+import type { Response, User } from "../types/EntityType.js";
+import { FileUploader } from "../util/FileUploader.js";
 
 export class UserController {
+	private userService: UserService = new UserService();
+
+	async updateUser(imageFile: Express.Multer.File | null, data: User): Promise<Response> {
+
+		const results = this.userService.updateUser(data, (imageFile || null));
+		return results;
+	}
+	// sdfdsdsfdfdsfdsf
 	async login(email: string, password: string) {
 		return this.userService.login(email, password);
 	}
-	private userService: UserService = new UserService();
 
-	async setUser(data: User): Promise<String> {
+	async setUser(data: User): Promise<Response> {
 
 		return this.userService.createUser(data);
 	}
