@@ -5,11 +5,11 @@ import Image from "react-bootstrap/Image";
 import u_image from "../../assets/images/User-Images/user-avatar.png";
 import v_image from "../../assets/images/User-Images/visacard.png";
 import m_image from "../../assets/images/User-Images/mastercard.png";
+import { useNavigate } from "react-router-dom";
 import Popup from "./Popup";
 import OrdersList from "./OrdersList";
 import PaymentsList from "./PaymentsList";
 import PaymentForm from "./PaymentForm";
-import { useNavigate } from "react-router-dom";
 
 // Popup Component
 interface PopupProps {
