@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { CardDetailController } from "../controller/CardDetailController.js";
 import { authenticate } from "../middleware/auth.js";
-import type { CardDetail } from "../controller/CardDetailController.js";
+import type { CardDetail } from "../types/EntityType.js";
 
 const cardDetailRoutes = Router();
 const cardDetailController = new CardDetailController();

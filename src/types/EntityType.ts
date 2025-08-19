@@ -106,3 +106,12 @@ export type PaymentMethod = {
     id: number;
     name: string;
 };
+
+// CardDetail type for card detail endpoints
+export type CardDetail = {
+    id: number;
+    card_no: number;
+    payment_method_id: number;
+    cvv?: number | null;
+    exp?: string | null;
+};

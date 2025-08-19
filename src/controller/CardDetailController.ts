@@ -1,13 +1,5 @@
 import { CardDetailService } from "../service/CardDetailService.js";
-import type { Response } from "../types/EntityType.js";
-
-export type CardDetail = {
-    id: number;
-    card_no: number;
-    payment_method_id: number;
-    cvv?: number | null;
-    exp?: string | null;
-};
+import type { Response, CardDetail } from "../types/EntityType.js";
 
 export class CardDetailController {
     private cardDetailService: CardDetailService = new CardDetailService();
