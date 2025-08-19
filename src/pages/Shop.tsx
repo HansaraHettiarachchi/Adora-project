@@ -9,13 +9,12 @@ import Header from '../components/Header';
 import BreadcrumbBar from '../components/BreadcrumbBar';
 import { addToCart } from '../util/cartStorage';
 import p_image from '../assets/images/Product/image.png'; // fallback image
+import axiosInstance, { baseURL } from '../util/axiosUtil';
+import type { BE_Product } from '../types/EntitiesTypes';
 
 const resolveImage = (url?: string | null) => {
-  if (!url) return p_image;                       // fallback to local asset
-  if (/^https?:\/\//i.test(url)) return url;      // full external URL
-  if (url.startsWith('/')) return url;            // already absolute
-  if (url.startsWith('products/')) return `/${url}`; // served from /public/products/*
-  return `/uploads/${url}`;                       // backend-served uploads
+
+  return `${baseURL}uploads/${url}`;
 };
 
 
@@ -31,26 +30,24 @@ interface Product {
 }
 
 const Shop = () => {
-  const [products, setProducts] = useState<Product[]>([]);
+  const [products, setProducts] = useState<BE_Product[]>([]);
 
   useEffect(() => {
-  const token =
-    "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6NCwiZm5hbWUiOiJTYW5kYWxpIiwibG5hbWUiOiJLb2RpdGh1d2Fra3UiLCJhZGRyZXNzIjoiNDU2IEZsb3dlciBSb2FkLCBDb2xvbWJvIiwibmljIjoiMjAwMDk5OTk5OTk5IiwiZW1haWwiOiJzYW5kYWxpQGV4YW1wbGUuY29tIiwicGFzc3dvcmQiOiIkMmIkMTIkb0pXaHNLZjdnLmQxTnBnaFg4djBtLmFCZWxmd3lxWlY1Z3pZek1hWnpOSzQ0NkFJbFR3eUsiLCJtb2JpbGUiOiIwNzc3NjU0MzIxIiwicF9pbWciOm51bGwsInVzZXJfcm9sZV9pZCI6MSwiZ2VuZGVyX2lkIjoxLCJjaXR5X2lkIjoxLCJzdGF0dXNfaWQiOjEsImlhdCI6MTc1NTU4OTA2MCwiZXhwIjoxNzU4MTgxMDYwfQ.3PNE9cFf1lE15kvzL1bVKjsaApOPbRc_suaHq5RWXgI";
+    axiosInstance.get("/product/products?page=1&pageSize=5").then((res) => {
 
-  axios
-    .get("http://localhost:3000/api/v1/product/products?page=0&pageSize=5", {
-      headers: {
-        Authorization: `Bearer ${token}`,
-      },
-     })
-    .then((res) => {
-      console.log("API response:", res.data); // 👈 check structure
-      setProducts(res.data.data ?? []); // fallback depending on backend
+      if (res.data.status == 200) {
+        setProducts(res.data.data);
+      } else {
+        console.error("An internal error occured.");
+
+      }
+
+      setProducts(res.data.data);
     })
-    .catch((err) => {
-      console.error("Error fetching products:", err.response || err.message);
-    });
-}, []);
+      .catch((err) => {
+        console.error("Error fetching products:", err.response || err.message);
+      });
+  }, []);
 
 
   const handleAddToCart = (product: Product) => {
@@ -110,10 +107,10 @@ const Shop = () => {
             <Col key={product.id} md={3} className='p-2'>
               <Container className='rounded-4 px-4 py-4' style={{ backgroundColor: "#D9D9D9" }}>
                 <Image
-                    src={resolveImage(product.imageUrl)}
-                    fluid
-                    onError={(e) => { (e.currentTarget as HTMLImageElement).src = p_image; }}
-                    />
+                  src={resolveImage(product.imageUrl)}
+                  fluid
+                  onError={(e) => { (e.currentTarget as HTMLImageElement).src = p_image; }}
+                />
 
                 <Container className='d-flex justify-content-between mt-3'>
                   <div>
@@ -121,15 +118,15 @@ const Shop = () => {
                     <small>{product.desc}</small>
                   </div>
                   {/* Replace with actual price if available */}
-                  <h6 className='fw-bolder'>$335</h6>
+                  <h6 className='fw-bolder'>{product.price.toFixed(2)} LKR</h6>
                 </Container>
                 <Container fluid className='d-flex justify-content-center mt-3'>
-                  <Button 
+                  <Button
                     onClick={() => handleAddToCart(product)}
-                    className='text-uppercase px-5 fw-bold rounded-4 border-0' 
+                    className='text-uppercase px-5 fw-bold rounded-4 border-0'
                     style={{ backgroundColor: "#164C0D" }}
                   >
-                    Add To Cart <FaCartPlus className='ms-2' /> 
+                    Add To Cart <FaCartPlus className='ms-2' />
                   </Button>
                 </Container>
               </Container>
