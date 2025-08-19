@@ -7,6 +7,7 @@ import { stockRoutes } from './src/routes/StockRoutes.js';
 import { authenticate } from './src/middleware/auth.js';
 import paymentRoutes from './src/routes/PaymentRoutes.js';
 import supplierRoutes from './src/routes/SuplierRoute.js';
+import cardDetailRoutes from './src/routes/CardDetailRoutes.js';
 
 const app = express();
 const PORT = 3000;
@@ -26,6 +27,7 @@ app.use('/api/v1/product', authenticate, productRoutes);
 app.use('/api/v1/stock', authenticate, stockRoutes);
 app.use('/api/v1/payment', paymentRoutes);
 app.use('/api/v1/supplier', supplierRoutes);
+app.use('/api/v1/card-detail', cardDetailRoutes);
 
 
 app.listen(PORT, () => {
