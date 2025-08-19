@@ -186,7 +186,7 @@ model product {
   desc                 String?           @db.Text
   mother_plant_type_id Int
   category_id          Int
-  isActive             Boolean           @default(dbgenerated("b'0'")) @db.Bit(1)
+  isActive             Boolean           @default(true) @db.Bit(1)
   batch                batch[]
   category             category          @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_product_category1")
   mother_plant_type    mother_plant_type @relation(fields: [mother_plant_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_product_mother_plant_type1")
