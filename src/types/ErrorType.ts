@@ -74,3 +74,12 @@ export type PaymentMethodErr = {
     id?: string;
     name?: string;
 };
+
+// CardDetail error type
+export type CardDetailErr = {
+    id?: string;
+    card_no?: string;
+    payment_method_id?: string;
+    cvv?: string;
+    exp?: string;
+};
