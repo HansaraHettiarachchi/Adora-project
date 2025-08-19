@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import axios from 'axios';
 import { Button, Col, Container, Form, Image, InputGroup, Row } from 'react-bootstrap';
-import { FaCartPlus } from 'react-icons/fa';
+import { FaCartPlus, FaHeart } from 'react-icons/fa';
 import { IoMdSearch, IoMdStarHalf } from 'react-icons/io';
 import { IoMicOutline, IoStarSharp } from "react-icons/io5";
 import Footer from '../components/Footer';
@@ -11,23 +11,12 @@ import { addToCart } from '../util/cartStorage';
 import p_image from '../assets/images/Product/image.png'; // fallback image
 import axiosInstance, { baseURL } from '../util/axiosUtil';
 import type { BE_Product } from '../types/EntitiesTypes';
+import Swal from 'sweetalert2';
 
 const resolveImage = (url?: string | null) => {
 
   return `${baseURL}uploads/${url}`;
 };
-
-
-// TypeScript interface for product
-interface Product {
-  id: number;
-  name: string;
-  desc: string;
-  mother_plant_type_id: number;
-  category_id: number;
-  isActive: boolean;
-  imageUrl?: string | null;
-}
 
 const Shop = () => {
   const [products, setProducts] = useState<BE_Product[]>([]);
@@ -50,9 +39,24 @@ const Shop = () => {
   }, []);
 
 
-  const handleAddToCart = (product: Product) => {
-    addToCart(product);
-    alert(`${product.name} added to cart!`);
+  const handleAddToCart = (product: BE_Product) => {
+    const res = addToCart(product);
+
+    if (res) {
+      Swal.fire({
+        icon: 'info',
+        title: 'Product Already in ' + (product.qty === 0 ? "Wishlist" : "Cart"),
+        text: 'This product is already in your ' + (product.qty === 0 ? "wishlist." : "cart."),
+        confirmButtonColor: '#dfcd31ff',
+      });
+    }else{
+      Swal.fire({
+        icon: 'success',
+        title: `Product added to ${product.qty === 0 ? "Wishlist" : "Cart"}`,
+        text: `The product has been successfully added to your ${product.qty === 0 ? "wishlist." : "cart."}`,
+        confirmButtonColor: '#23B540',
+      });
+    }
   };
 
   return (
@@ -103,7 +107,7 @@ const Shop = () => {
 
         {/* 🛒 Product Grid */}
         <Row className='my-4 g-4'>
-          {products.map((product) => (
+          {products.filter((item) => (item.price !== 0)).map((product) => (
             <Col key={product.id} md={3} className='p-2'>
               <Container className='rounded-4 px-4 py-4' style={{ backgroundColor: "#D9D9D9" }}>
                 <Image
@@ -122,11 +126,19 @@ const Shop = () => {
                 </Container>
                 <Container fluid className='d-flex justify-content-center mt-3'>
                   <Button
-                    onClick={() => handleAddToCart(product)}
                     className='text-uppercase px-5 fw-bold rounded-4 border-0'
                     style={{ backgroundColor: "#164C0D" }}
+                    onClick={() => handleAddToCart(product)}
                   >
-                    Add To Cart <FaCartPlus className='ms-2' />
+                    {product.qty === 0 ? (
+                      <>
+                        Wishlist <span className='ms-2'><FaHeart /></span>
+                      </>
+                    ) : (
+                      <>
+                        Add To Cart <FaCartPlus className='ms-2' />
+                      </>
+                    )}
                   </Button>
                 </Container>
               </Container>

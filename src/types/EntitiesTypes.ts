@@ -35,3 +35,8 @@ export type BE_Product = {
   qty: number;
   imageUrl?: string | null;
 }
+
+export type Cart_Product = {
+  p_id: number;
+  qty: number;
+}

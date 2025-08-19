@@ -1,20 +1,24 @@
 // A small utility to manage cart in localStorage
 
-export const getCart = () => {
-  return JSON.parse(localStorage.getItem("cart") || "[]");
+import type { BE_Product, Cart_Product } from "../types/EntitiesTypes";
+
+export const getCart = (name: string) => {
+  return JSON.parse(localStorage.getItem(name) || "[]");
 };
 
-export const addToCart = (product: any) => {
-  const cart = getCart();
-  const existingIndex = cart.findIndex((item: any) => item.id === product.id);
+export const addToCart = (product: BE_Product): boolean => {
+  const cart: Cart_Product[] = getCart(product.qty == 0 ? "wishlist" : "cart");
+
+  const existingIndex = cart.findIndex((item: Cart_Product) => item.p_id === product.id);
 
   if (existingIndex !== -1) {
-    cart[existingIndex].quantity += 1;
+    return true;
   } else {
-    cart.push({ ...product, quantity: 1 });
+    cart.push({ p_id: product.id, qty: 1 });
   }
 
-  localStorage.setItem("cart", JSON.stringify(cart));
+  localStorage.setItem(product.qty == 0 ? "wishlist" : "cart", JSON.stringify(cart));
+  return false;
 };
 
 export const clearCart = () => {
@@ -23,7 +27,7 @@ export const clearCart = () => {
 
 // update quantity for a product
 export const updateQuantity = (id: number, qty: number) => {
-  const cart = getCart();
+  const cart = getCart(qty == 0 ? "wishlist" : "cart");
   const idx = cart.findIndex((item: any) => item.id === id);
   if (idx !== -1) {
     cart[idx].quantity = Math.max(1, qty); // don’t allow 0
@@ -32,7 +36,7 @@ export const updateQuantity = (id: number, qty: number) => {
 };
 
 // remove product from cart
-export const removeFromCart = (id: number) => {
-  const cart = getCart().filter((item: any) => item.id !== id);
+export const removeFromCart = (id: number, qty?: number) => {
+  const cart = getCart(qty == 0 ? "wishlist" : "cart").filter((item: any) => item.id !== id);
   localStorage.setItem("cart", JSON.stringify(cart));
 };
