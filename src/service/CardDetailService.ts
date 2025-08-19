@@ -1,6 +1,6 @@
 import { PrismaClient } from "../generated/prisma/index.js";
 import type { Response } from "../types/EntityType.js";
-import type { CardDetail } from "../controller/CardDetailController.js";
+import type { CardDetail } from "../types/EntityType.js";
 import type { CardDetailErr } from "../types/ErrorType.js";
 
 export class CardDetailService {
@@ -10,6 +10,7 @@ export class CardDetailService {
         this.prisma = new PrismaClient();
     }
 
+    // ------------------ CREATE ------------------
     async createCardDetail(data: CardDetail): Promise<Response> {
         try {
             // Validation
@@ -41,6 +42,7 @@ export class CardDetailService {
                 return { status: 400, message: "Validation failed", data: errors };
             }
 
+            // Ensure payment method exists
             const paymentMethod = await this.prisma.payment_method.findUnique({
                 where: { id: data.payment_method_id },
             });
@@ -67,6 +69,7 @@ export class CardDetailService {
         }
     }
 
+    // ------------------ READ ------------------
     async getCardDetailById(id: number): Promise<Response> {
         try {
             if (!Number.isInteger(id) || id <= 0) {
@@ -91,6 +94,7 @@ export class CardDetailService {
         }
     }
 
+    // ------------------ DELETE ------------------
     async deleteCardDetail(id: number): Promise<Response> {
         try {
             if (!Number.isInteger(id) || id <= 0) {
