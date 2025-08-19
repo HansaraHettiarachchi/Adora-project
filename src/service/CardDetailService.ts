@@ -56,6 +56,7 @@ export class CardDetailService {
                     payment_method_id: data.payment_method_id,
                     cvv: data.cvv ?? null,
                     exp: data.exp ?? null,
+                    users_id: data.users_id, // Ensure 'users_id' is provided in CardDetail type
                 },
             });
 

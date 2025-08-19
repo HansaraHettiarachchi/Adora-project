@@ -135,9 +135,9 @@ exports.Prisma.Card_detailsScalarFieldEnum = {
   id: 'id',
   card_no: 'card_no',
   payment_method_id: 'payment_method_id',
-  cvv: 'cvv',
+  users_id: 'users_id',
   exp: 'exp',
-  users_id: 'users_id'
+  cvv: 'cvv'
 };
 
 exports.Prisma.CategoryScalarFieldEnum = {
@@ -183,7 +183,8 @@ exports.Prisma.InvoiceScalarFieldEnum = {
   datetime: 'datetime',
   discount: 'discount',
   payment_method_id: 'payment_method_id',
-  users_id: 'users_id'
+  users_id: 'users_id',
+  order_status_id: 'order_status_id'
 };
 
 exports.Prisma.Invoice_itemsScalarFieldEnum = {
@@ -302,6 +303,11 @@ exports.Prisma.UsersScalarFieldEnum = {
   status_id: 'status_id'
 };
 
+exports.Prisma.Order_statusScalarFieldEnum = {
+  id: 'id',
+  name: 'name'
+};
+
 exports.Prisma.SortOrder = {
   asc: 'asc',
   desc: 'desc'
@@ -409,6 +415,10 @@ exports.Prisma.usersOrderByRelevanceFieldEnum = {
   p_img: 'p_img'
 };
 
+exports.Prisma.order_statusOrderByRelevanceFieldEnum = {
+  name: 'name'
+};
+
 
 exports.Prisma.ModelName = {
   batch: 'batch',
@@ -433,7 +443,8 @@ exports.Prisma.ModelName = {
   status: 'status',
   supplier: 'supplier',
   user_role: 'user_role',
-  users: 'users'
+  users: 'users',
+  order_status: 'order_status'
 };
 
 /**
