@@ -15,7 +15,9 @@ const upload = FileUploader.getMulter();
  * @route GET /
  * @description Returns user list (placeholder)
  * @access Protected
- * @returns {string} 'User list'
+ * @response
+ *   'User list'
+ *   If error: { "status": 500, "message": "Internal server error", "error": "..." }
  */
 userRoutes.get('/', authenticate, (req, res) => {
     res.send('User list');
@@ -25,30 +27,28 @@ userRoutes.get('/', authenticate, (req, res) => {
  * @route POST /update-user
  * @description Updates user details including profile image
  * @access Protected
- *
- * Expected multipart/form-data payload:
- * - image: File (profile image)
- * - data: JSON stringified object matching the User type
- *
- * Example:
- * FormData {
- *   image: <File>,
- *   data: JSON.stringify({
- *     id: 1,
- *     fname: "John",
- *     lname: "Doe",
- *     address: "123 Main St",
- *     nic: "123456789V",
- *     email: "john.doe@example.com",
- *     password: "securePassword123",
- *     mobile: "1234567890",
- *     user_role_id: 2,
- *     gender_id: 1,
- *     city_id: 5,
- *     status_id: 1,
- *     p_img: null
- *   })
- * }
+ * @body (multipart/form-data)
+ *   - image: File (profile image)
+ *   - data: JSON stringified object matching the User type
+ * @response
+ *   {
+ *     "status": 201,
+ *     "data": {
+ *       "id": 1,
+ *       "fname": "John",
+ *       "lname": "Doe",
+ *       "address": "123 Main St",
+ *       "nic": "123456789V",
+ *       "email": "john.doe@example.com",
+ *       "mobile": "1234567890",
+ *       "user_role_id": 2,
+ *       "gender_id": 1,
+ *       "city_id": 5,
+ *       "status_id": 1,
+ *       "p_img": null
+ *     }
+ *   }
+ *   If error: { "status": 500, "message": "Internal server error", "error": "..." }
  */
 userRoutes.post('/update-user', authenticate, upload.single('image'), async (req, res) => {
 
@@ -74,17 +74,17 @@ userRoutes.post('/update-user', authenticate, upload.single('image'), async (req
  * @route POST /login
  * @description Authenticates user and returns JWT token
  * @access Public
- *
- * Expected payload:
- * {
- *   email: string,
- *   password: string
- * }
- *
- * Response:
- * {
- *   token: string
- * }
+ * @body
+ *   {
+ *     "email": "user@example.com",
+ *     "password": "password123"
+ *   }
+ * @response
+ *   {
+ *     "token": "<JWT token>"
+ *   }
+ *   If error: { "status": 401, "error": "Invalid email or password" }
+ *   If error: { "status": 500, "message": "Internal server error", "error": "..." }
  */
 userRoutes.post('/login', async (req, res) => {
     const { email, password } = req.body;
@@ -103,25 +103,40 @@ userRoutes.post('/login', async (req, res) => {
  * @route POST /set-user
  * @description Creates a new user
  * @access Public
- *
- * Expected payload:
- * {
- *   fname: string,
- *   lname: string,
- *   address: string,
- *   nic: string,
- *   email: string,
- *   password: string,
- *   mobile: string,
- *   user_role_id: number,
- *   gender_id: number,
- *   city_id: number,
- *   status_id: number,
- *   p_img: string | null
- * }
- *
- * Response:
- *   User object
+ * @body
+ *   {
+ *     "fname": "John",
+ *     "lname": "Doe",
+ *     "address": "123 Main St",
+ *     "nic": "123456789V",
+ *     "email": "john.doe@example.com",
+ *     "password": "securePassword123",
+ *     "mobile": "1234567890",
+ *     "user_role_id": 2,
+ *     "gender_id": 1,
+ *     "city_id": 5,
+ *     "status_id": 1,
+ *     "p_img": null
+ *   }
+ * @response
+ *   {
+ *     "status": 201,
+ *     "data": {
+ *       "id": 1,
+ *       "fname": "John",
+ *       "lname": "Doe",
+ *       "address": "123 Main St",
+ *       "nic": "123456789V",
+ *       "email": "john.doe@example.com",
+ *       "mobile": "1234567890",
+ *       "user_role_id": 2,
+ *       "gender_id": 1,
+ *       "city_id": 5,
+ *       "status_id": 1,
+ *       "p_img": null
+ *     }
+ *   }
+ *   If error: { "status": 500, "message": "Internal server error", "error": "..." }
  */
 userRoutes.post('/set-user', async (req, res) => {
     const userData = req.body;
@@ -137,12 +152,28 @@ userRoutes.post('/set-user', async (req, res) => {
  * @route GET /get-user-by-id/:id
  * @description Gets user by ID
  * @access Protected
- *
- * Params:
- *   id: number
- *
- * Response:
- *   User object or 404 if not found
+ * @params
+ *   - id: number (required)
+ * @response
+ *   {
+ *     "status": 200,
+ *     "data": {
+ *       "id": 1,
+ *       "fname": "John",
+ *       "lname": "Doe",
+ *       "address": "123 Main St",
+ *       "nic": "123456789V",
+ *       "email": "john.doe@example.com",
+ *       "mobile": "1234567890",
+ *       "user_role_id": 2,
+ *       "gender_id": 1,
+ *       "city_id": 5,
+ *       "status_id": 1,
+ *       "p_img": null
+ *     }
+ *   }
+ *   If not found: { "status": 404, "error": "User not found" }
+ *   If error: { "status": 500, "message": "Internal server error", "error": "..." }
  */
 userRoutes.get('/get-user-by-id/:id', authenticate, async (req, res) => {
     const id = Number(req.params.id);
@@ -162,9 +193,27 @@ userRoutes.get('/get-user-by-id/:id', authenticate, async (req, res) => {
  * @route GET /get-all-users
  * @description Gets all users
  * @access Protected
- *
- * Response:
- *   Array of User objects
+ * @response
+ *   {
+ *     "status": 200,
+ *     "data": [
+ *       {
+ *         "id": 1,
+ *         "fname": "John",
+ *         "lname": "Doe",
+ *         "address": "123 Main St",
+ *         "nic": "123456789V",
+ *         "email": "john.doe@example.com",
+ *         "mobile": "1234567890",
+ *         "user_role_id": 2,
+ *         "gender_id": 1,
+ *         "city_id": 5,
+ *         "status_id": 1,
+ *         "p_img": null
+ *       }
+ *     ]
+ *   }
+ *   If error: { "status": 500, "message": "Internal server error", "error": "..." }
  */
 userRoutes.get('/get-all-users', authenticate, async (req, res) => {
     try {
@@ -179,12 +228,18 @@ userRoutes.get('/get-all-users', authenticate, async (req, res) => {
  * @route GET /get-gender-by-id/:id
  * @description Gets gender by ID
  * @access Public
- *
- * Params:
- *   id: number
- *
- * Response:
- *   Gender object or 404 if not found
+ * @params
+ *   - id: number (required)
+ * @response
+ *   {
+ *     "status": 200,
+ *     "data": {
+ *       "id": 1,
+ *       "name": "Male"
+ *     }
+ *   }
+ *   If not found: { "status": 404, "error": "Gender not found" }
+ *   If error: { "status": 500, "message": "Internal server error", "error": "..." }
  */
 userRoutes.get('/get-gender-by-id/:id', async (req, res) => {
     const id = Number(req.params.id);
@@ -204,9 +259,17 @@ userRoutes.get('/get-gender-by-id/:id', async (req, res) => {
  * @route GET /get-all-genders
  * @description Gets all genders
  * @access Public
- *
- * Response:
- *   Array of Gender objects
+ * @response
+ *   {
+ *     "status": 200,
+ *     "data": [
+ *       {
+ *         "id": 1,
+ *         "name": "Male"
+ *       }
+ *     ]
+ *   }
+ *   If error: { "status": 500, "message": "Internal server error", "error": "..." }
  */
 userRoutes.get('/get-all-genders', async (req, res) => {
     try {
@@ -221,12 +284,18 @@ userRoutes.get('/get-all-genders', async (req, res) => {
  * @route GET /get-status-by-id/:id
  * @description Gets status by ID
  * @access Public
- *
- * Params:
- *   id: number
- *
- * Response:
- *   Status object or 404 if not found
+ * @params
+ *   - id: number (required)
+ * @response
+ *   {
+ *     "status": 200,
+ *     "data": {
+ *       "id": 1,
+ *       "name": "Active"
+ *     }
+ *   }
+ *   If not found: { "status": 404, "error": "Status not found" }
+ *   If error: { "status": 500, "message": "Internal server error", "error": "..." }
  */
 userRoutes.get('/get-status-by-id/:id', async (req, res) => {
     const id = Number(req.params.id);
@@ -246,9 +315,17 @@ userRoutes.get('/get-status-by-id/:id', async (req, res) => {
  * @route GET /get-all-statuses
  * @description Gets all statuses
  * @access Public
- *
- * Response:
- *   Array of Status objects
+ * @response
+ *   {
+ *     "status": 200,
+ *     "data": [
+ *       {
+ *         "id": 1,
+ *         "name": "Active"
+ *       }
+ *     ]
+ *   }
+ *   If error: { "status": 500, "message": "Internal server error", "error": "..." }
  */
 userRoutes.get('/get-all-statuses', async (req, res) => {
     try {
@@ -263,12 +340,18 @@ userRoutes.get('/get-all-statuses', async (req, res) => {
  * @route GET /get-user-role-by-id/:id
  * @description Gets user role by ID
  * @access Protected
- *
- * Params:
- *   id: number
- *
- * Response:
- *   UserRole object or 404 if not found
+ * @params
+ *   - id: number (required)
+ * @response
+ *   {
+ *     "status": 200,
+ *     "data": {
+ *       "id": 1,
+ *       "name": "Admin"
+ *     }
+ *   }
+ *   If not found: { "status": 404, "error": "UserRole not found" }
+ *   If error: { "status": 500, "message": "Internal server error", "error": "..." }
  */
 userRoutes.get('/get-user-role-by-id/:id', authenticate, async (req, res) => {
     const id = Number(req.params.id);
@@ -288,9 +371,17 @@ userRoutes.get('/get-user-role-by-id/:id', authenticate, async (req, res) => {
  * @route GET /get-all-user-roles
  * @description Gets all user roles
  * @access Protected
- *
- * Response:
- *   Array of UserRole objects
+ * @response
+ *   {
+ *     "status": 200,
+ *     "data": [
+ *       {
+ *         "id": 1,
+ *         "name": "Admin"
+ *       }
+ *     ]
+ *   }
+ *   If error: { "status": 500, "message": "Internal server error", "error": "..." }
  */
 userRoutes.get('/get-all-user-roles', authenticate, async (req, res) => {
     try {
@@ -305,12 +396,18 @@ userRoutes.get('/get-all-user-roles', authenticate, async (req, res) => {
  * @route GET /get-city-by-id/:id
  * @description Gets city by ID
  * @access Public
- *
- * Params:
- *   id: number
- *
- * Response:
- *   City object or 404 if not found
+ * @params
+ *   - id: number (required)
+ * @response
+ *   {
+ *     "status": 200,
+ *     "data": {
+ *       "id": 1,
+ *       "name": "Colombo"
+ *     }
+ *   }
+ *   If not found: { "status": 404, "error": "City not found" }
+ *   If error: { "status": 500, "message": "Internal server error", "error": "..." }
  */
 userRoutes.get('/get-city-by-id/:id', async (req, res) => {
     const id = Number(req.params.id);
@@ -330,9 +427,17 @@ userRoutes.get('/get-city-by-id/:id', async (req, res) => {
  * @route GET /get-all-cities
  * @description Gets all cities
  * @access Public
- *
- * Response:
- *   Array of City objects
+ * @response
+ *   {
+ *     "status": 200,
+ *     "data": [
+ *       {
+ *         "id": 1,
+ *         "name": "Colombo"
+ *       }
+ *     ]
+ *   }
+ *   If error: { "status": 500, "message": "Internal server error", "error": "..." }
  */
 userRoutes.get('/get-all-cities', async (req, res) => {
     try {

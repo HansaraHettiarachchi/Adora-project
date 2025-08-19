@@ -1,9 +1,10 @@
+
 import { PaymentService } from "../service/PaymentService.js";
 import type { Invoice, PaymentMethod, Response } from "../types/EntityType.js";
 import type { InvoiceErr } from "../types/ErrorType.js";
-
 export class PaymentController {
     private paymentService: PaymentService = new PaymentService();
+
 
     async setPaymentMethod(data: PaymentMethod): Promise<Response> {
         return this.paymentService.createPaymentMethod(data);
@@ -59,5 +60,12 @@ export class PaymentController {
 
     async getAllInvoices(): Promise<Response> {
         return this.paymentService.getAllInvoices();
+    }
+
+    /**
+     * Get paginated invoices with items
+     */
+    async getPaginatedInvoices(page: number, pageSize: number): Promise<Response> {
+        return this.paymentService.getPaginatedInvoices(page, pageSize);
     }
 }

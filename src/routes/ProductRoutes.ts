@@ -82,6 +82,7 @@ const productRoutes = Router();
  *       "total": 100
  *     }
  *   }
+ *   If error: { "status": 500, "message": "Internal server error", "error": "..." }
  */
 productRoutes.get('/products', async (req, res) => {
 	try {
@@ -98,29 +99,33 @@ productRoutes.get('/products', async (req, res) => {
  *   - id: number (required)
  * @response
  *   {
- *     "id": 1,
- *     "name": "Product Name",
- *     "desc": "Description",
- *     "mother_plant_type": { "id": 1, "name": "Type A" },
- *     "category": { "id": 2, "name": "Category B" },
- *     "isActive": true,
- *     "batches": [
- *       {
- *         "id": 10,
- *         "qty": 100,
- *         "price": 50.0,
- *         "cost": 40.0,
- *         "desc": "Batch description",
- *         "size_id": 1,
- *         "code": "BATCH001",
- *         "images": [
- *           { "id": 100, "name": "img1.png", "batch_id": 10 },
- *           { "id": 101, "name": "img2.png", "batch_id": 10 }
- *         ]
- *       }
- *     ]
+ *     "status": 200,
+ *     "data": {
+ *       "id": 1,
+ *       "name": "Product Name",
+ *       "desc": "Description",
+ *       "mother_plant_type": { "id": 1, "name": "Type A" },
+ *       "category": { "id": 2, "name": "Category B" },
+ *       "isActive": true,
+ *       "batches": [
+ *         {
+ *           "id": 10,
+ *           "qty": 100,
+ *           "price": 50.0,
+ *           "cost": 40.0,
+ *           "desc": "Batch description",
+ *           "size_id": 1,
+ *           "code": "BATCH001",
+ *           "images": [
+ *             { "id": 100, "name": "img1.png", "batch_id": 10 },
+ *             { "id": 101, "name": "img2.png", "batch_id": 10 }
+ *           ]
+ *         }
+ *       ]
+ *     }
  *   }
- *   If not found: { "error": "Product not found" }
+ *   If not found: { "status": 404, "message": "Product not found", "data": null }
+ *   If error: { "status": 500, "message": "Internal server error", "error": "..." }
  */
 productRoutes.get('/product-details/:id', async (req, res) => {
 	await controller.getProductDetailById(req, res);

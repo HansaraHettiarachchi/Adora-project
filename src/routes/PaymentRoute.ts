@@ -54,23 +54,6 @@ paymentRoutes.get("/get-payment-method-by-id/:id", authenticate, async (req, res
 });
 
 /**
- * @route GET /get-all-payment-methods
- * @description Gets all payment methods
- * @access Protected
- *
- * Response:
- *   Array of Payment Method objects
- */
-paymentRoutes.get("/get-all-payment-methods", authenticate, async (req, res) => {
-  try {
-    const result = await paymentController.getAllPaymentMethods();
-    res.status(result.status).json(result);
-  } catch (error: any) {
-    res.status(500).json({ error: error.message || "Internal Server Error" });
-  }
-});
-
-/**
  * @route POST /set-invoice
  * @description Creates a new invoice and invoice items using batch data
  * @access Protected
@@ -130,15 +113,53 @@ paymentRoutes.get("/get-all-invoice-data-by-id/:id", authenticate, async (req, r
 
 /**
  * @route GET /get-all-invoices
- * @description Gets all invoices
+ * @description Gets all invoices (paginated)
  * @access Protected
+ * @query
+ *   - page: number (required)
+ *   - pageSize: number (required)
+ * @response
+ *   {
+ *     "status": 200,
+ *     "data": [
+ *       {
+ *         "id": 1,
+ *         "total": 1000,
+ *         "qty": 5,
+ *         "datetime": "2025-08-19T10:00:00.000Z",
+ *         "discount": 50,
+ *         "payment_method_id": 2,
+ *         "users_id": 3,
+ *         "invoice_items": [
+ *           {
+ *             "id": 10,
+ *             "price": 200,
+ *             "cost": 150,
+ *             "product_id": 5,
+ *             "qty": 2,
+ *             "batch_id": 7,
+ *             "invoice_id": 1,
+ *             "product_type_id": 1
+ *           }
+ *         ]
+ *       }
+ *     ],
+ *     "pagination": {
+ *       "page": 1,
+ *       "pageSize": 10,
+ *       "total": 100
+ *     }
+ *   }
+ *   If error: { "status": 500, "message": "Internal server error", "error": "..." }
  */
 paymentRoutes.get("/get-all-invoices", authenticate, async (req, res) => {
+  const page = Number(req.query.page) || 1;
+  const pageSize = Number(req.query.pageSize) || 10;
   try {
-    const result = await paymentController.getAllInvoices();
+    const result = await paymentController.getPaginatedInvoices(page, pageSize);
     res.status(result.status).json(result);
-  } catch (error: any) {
-    res.status(500).json({ error: error.message || "Internal Server Error" });
+  } catch (error) {
+    res.status(500).json({ status: 500, message: "Internal server error", error: String(error) });
   }
 });
 

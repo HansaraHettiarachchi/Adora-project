@@ -3,11 +3,45 @@ import type { PaymentMethod, Response } from "../types/EntityType.js";
 import type { PaymentMethodErr } from "../types/ErrorType.js";
 
 export class PaymentService {
+
   private prisma: PrismaClient;
 
   constructor() {
     this.prisma = new PrismaClient();
   }
+
+  /**
+   * Get paginated invoices with items
+   */
+  async getPaginatedInvoices(page: number, pageSize: number): Promise<Response> {
+    try {
+      const skip = (page - 1) * pageSize;
+      const [invoices, total] = await Promise.all([
+        this.prisma.invoice.findMany({
+          skip,
+          take: pageSize,
+        }),
+        this.prisma.invoice.count()
+      ]);
+      const result = await Promise.all(
+        invoices.map(async (inv: any) => {
+          const items = await this.prisma.invoice_items.findMany({ where: { invoice_id: inv.id } });
+          return { ...inv, invoice_items: items };
+        })
+      );
+      return {
+        status: 200,
+        message: "All invoices fetched",
+        data: {
+          invoices: result,
+          pagination: { page, pageSize, total }
+        }
+      };
+    } catch (error: any) {
+      return { status: 500, message: error.message || "Failed to fetch invoices", data: null };
+    }
+  }
+
 
   async createPaymentMethod(data: PaymentMethod): Promise<Response> {
     try {

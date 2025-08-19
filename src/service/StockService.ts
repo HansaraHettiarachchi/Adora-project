@@ -7,6 +7,28 @@ import { FileUploader } from '../util/FileUploader.js';
 const prisma = new PrismaClient();
 
 export class StockService {
+    async getBatchesByProductId(product_id: number): Promise<Response> {
+        if (!product_id) {
+            return {
+                status: 400,
+                message: 'Product ID is required',
+                data: null
+            };
+        }
+        const batches = await prisma.batch.findMany({
+            where: { product_id },
+            include: {
+                product_images: true,
+                product: true,
+                size: true
+            }
+        });
+        return {
+            status: 200,
+            message: 'Batches fetched successfully',
+            data: batches
+        };
+    }
     async deleteBatchImages(batch_id: number): Promise<void> {
         const images = await prisma.product_images.findMany({ where: { batch_id } });
         for (const img of images) {
