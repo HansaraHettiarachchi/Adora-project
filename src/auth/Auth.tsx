@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import AwtUtil from "../util/AwtUtil";
+import AwtUtil from "../util/JwtUtil";
 import type { AuthProps } from "../types/EntitiesTypes";
 import { Container } from "react-bootstrap";
 

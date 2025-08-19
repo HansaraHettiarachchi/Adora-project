@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import UserProfile from '../components/user/UserProfile';
 import './css/user.css';
 import 'bootstrap/dist/css/bootstrap.min.css';
@@ -7,12 +7,14 @@ import { Container } from 'react-bootstrap';
 import UserEdit from '../components/user/UserEdit';
 
 const User: React.FC = () => {
+
+  const [showEditProfile, setShowEditProfile] = useState<boolean>(false);
+
   return (
     <>
       <UserHeader />
       <Container>
-        <UserProfile />
-        <UserEdit />
+        {showEditProfile ? <UserEdit /> : <UserProfile  />}
       </Container>
 
     </>

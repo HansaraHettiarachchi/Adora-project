@@ -1,32 +1,45 @@
-import React, { useEffect, useState } from "react";
-import Header from "../components/Header";
-import Footer from "../components/Footer";
-import { Container, Row, Col, Carousel, Image } from "react-bootstrap";
+import { Carousel, Col, Container, Image, Row } from "react-bootstrap";
 import { BsCheck2 } from "react-icons/bs";
-import BreadcrumbBar from '../components/BreadcrumbBar'
+import BreadcrumbBar from "../components/BreadcrumbBar";
+import Footer from "../components/Footer";
+import Header from "../components/Header";
 
+/* Import all images */
+import slide1 from "../assets/images/about_slide (1).png";
+import slide2 from "../assets/images/about_slide (2).jpg";
+import slide3 from "../assets/images/about_slide (3).jpg";
+import slide4 from "../assets/images/about_slide (4).jpg";
+import slide5 from "../assets/images/about_slide (5).jpg";
 
-const initialcarddata = {
-  name: " ",
-  card_number: " ",
-  card_dfgfd: " ",
-  card_dfgfdsfdsfs: " ",
-}
+import exp1 from "../assets/images/about_experience_pic (1).png";
+import exp2 from "../assets/images/about_experience_pic (4).png";
+import exp3 from "../assets/images/about_experience_pic (3).png";
+import exp4 from "../assets/images/about_experience_pic (2).png";
+
+import hist1 from "../assets/images/about_history (1).png";
+import hist2 from "../assets/images/about_history (4).png";
+import hist3 from "../assets/images/about_history (3).png";
+import hist4 from "../assets/images/about_history (2).png";
+
+import resultBG from "../assets/images/about_result_section.png";
 
 const About = () => {
   const featuresLeft = ["Natural Materials", "5 Days Refund", "Good Woods"];
   const featuresRight = ["Free Shipping", "Best Fabrics", "Friendly Support"];
 
+  const slides = [slide1, slide2, slide3, slide4, slide5];
+  const experienceImages = [exp1, exp2, exp3, exp4];
+  const historyImages = [hist1, hist2, hist3, hist4];
+
   return (
     <>
       <Header />
-
-      <BreadcrumbBar currentPage="About"/>
+      <BreadcrumbBar currentPage="About" />
 
       {/* Top Carousel */}
       <Carousel fade interval={3000}>
-        {[1, 2, 3, 4, 5].map((num) => (
-          <Carousel.Item key={num}>
+        {slides.map((image, idx) => (
+          <Carousel.Item key={idx}>
             <img
               className="d-block w-100 about-carousel-img"
               style={{
@@ -34,9 +47,8 @@ const About = () => {
                 objectFit: "cover",
                 marginBottom: "1rem",
               }}
-              src={`src/assets/images/about_slide (${num}).${num === 1 ? "png" : "jpg"
-                }`}
-              alt={`Slide ${num}`}
+              src={image}
+              alt={`Slide ${idx + 1}`}
             />
           </Carousel.Item>
         ))}
@@ -113,7 +125,7 @@ const About = () => {
                   <p
                     key={idx}
                     style={{
-                      marginTop: idx === 0 ? "20px" : "20px",
+                      marginTop: "20px",
                       fontSize: "15px",
                       color: "black",
                       display: "flex",
@@ -141,7 +153,7 @@ const About = () => {
           {/* Right: Images */}
           <Col md={8}>
             <Row className="g-4">
-              {[1, 4, 3, 2].map((num, idx) => (
+              {experienceImages.map((image, idx) => (
                 <Col
                   md={6}
                   key={idx}
@@ -153,13 +165,14 @@ const About = () => {
                   }}
                 >
                   <Image
-                    src={`src/assets/images/about_experience_pic (${num}).png`}
+                    src={image}
                     alt={`Experience ${idx + 1}`}
                     style={{
                       width: "100%",
                       height: idx === 0 || idx === 3 ? "180px" : "250px",
                       objectFit: "cover",
-                      transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                      transition:
+                        "transform 0.3s ease, box-shadow 0.3s ease",
                       cursor: "pointer",
                     }}
                   />
@@ -180,7 +193,7 @@ const About = () => {
           {/* Left: Images */}
           <Col md={8}>
             <Row className="g-4">
-              {[1, 4, 3, 2].map((num, idx) => (
+              {historyImages.map((image, idx) => (
                 <Col
                   md={6}
                   key={idx}
@@ -192,13 +205,14 @@ const About = () => {
                   }}
                 >
                   <Image
-                    src={`src/assets/images/about_history (${num}).png`}
-                    alt={`Experience ${idx + 1}`}
+                    src={image}
+                    alt={`History ${idx + 1}`}
                     style={{
                       width: "100%",
                       height: idx === 0 || idx === 3 ? "180px" : "250px",
                       objectFit: "cover",
-                      transition: "transform 0.3s ease, box-shadow 0.3s ease",
+                      transition:
+                        "transform 0.3s ease, box-shadow 0.3s ease",
                       cursor: "pointer",
                     }}
                   />
@@ -207,7 +221,7 @@ const About = () => {
             </Row>
           </Col>
 
-          {/* Right: Features */}
+          {/* Right: Text */}
           <Col md={4} className="mb-8">
             <h2
               style={{
@@ -227,10 +241,10 @@ const About = () => {
                   it all in one place. Whether you’re styling your home, garden,
                   or office, our shop offers a carefully selected range of
                   flowers, potted plants, natural decor pieces, and fertilizers
-                  for all plant types.Inspired by nature and ancient traditions,
-                  we also celebrate the use of natural materials like wood,
-                  stone, and moss — transforming any space into a green,
-                  peaceful retreat.
+                  for all plant types. Inspired by nature and ancient
+                  traditions, we also celebrate the use of natural materials
+                  like wood, stone, and moss — transforming any space into a
+                  green, peaceful retreat.
                 </p>
               </Col>
             </Row>
@@ -242,8 +256,7 @@ const About = () => {
       <Container
         fluid
         style={{
-          backgroundImage:
-            "linear-gradient(rgba(22, 76, 13, 0.8), rgba(22, 76, 13, 0.8)), url('src/assets/images/about_result_section.png')",
+          backgroundImage: `linear-gradient(rgba(22, 76, 13, 0.8), rgba(22, 76, 13, 0.8)), url(${resultBG})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           backgroundRepeat: "no-repeat",
@@ -262,126 +275,43 @@ const About = () => {
           WHAT IS OUR RESULT?
         </h2>
         <Row className="justify-content-center align-items-center">
-          <Col
-            xs={6}
-            md={3}
-            className="mb-4"
-            style={{ transform: "translateY(-20px)", marginTop: "4rem" }}
-          >
-            <div>
-              <h3
-                style={{
-                  fontSize: "2.5rem",
-                  border: "2px solid white",
-                  display: "inline-block",
-                  padding: "10px 20px",
-                  borderRadius: "10px",
-                  width: "100px",
-                  height: "80px",
-                }}
-              >
-                55<b>+</b>
-              </h3>
-              <p
-                style={{
-                  fontSize: "0.8rem",
-                  fontWeight: "bold",
-                }}
-              >
-                Years of experience
-              </p>
-            </div>
-          </Col>
-          <Col
-            xs={6}
-            md={3}
-            className="mb-4"
-            style={{ transform: "translateY(20px)", marginTop: "6rem" }}
-          >
-            <div>
-              <h3
-                style={{
-                  fontSize: "2.5rem",
-                  border: "2px solid white",
-                  display: "inline-block",
-                  padding: "10px 20px",
-                  borderRadius: "10px",
-                  width: "100px",
-                  height: "80px",
-                }}
-              >
-                25<b>k</b>
-              </h3>
-              <p
-                style={{
-                  fontSize: "0.8rem",
-                  fontWeight: "bold",
-                }}
-              >
-                Happy Clients
-              </p>
-            </div>
-          </Col>
-          <Col
-            xs={6}
-            md={3}
-            className="mb-4"
-            style={{ transform: "translateY(-20px)", marginTop: "4rem" }}
-          >
-            <div>
-              <h3
-                style={{
-                  fontSize: "2.5rem",
-                  border: "2px solid white",
-                  display: "inline-block",
-                  padding: "10px 20px",
-                  borderRadius: "10px",
-                  width: "100px",
-                  height: "80px",
-                }}
-              >
-                15<b>+</b>
-              </h3>
-              <p
-                style={{
-                  fontSize: "0.8rem",
-                  fontWeight: "bold",
-                }}
-              >
-                Showrooms
-              </p>
-            </div>
-          </Col>
-          <Col
-            xs={6}
-            md={3}
-            className="mb-4"
-            style={{ transform: "translateY(20px)", marginTop: "6rem" }}
-          >
-            <div>
-              <h3
-                style={{
-                  fontSize: "2.5rem",
-                  border: "2px solid white",
-                  display: "inline-block",
-                  padding: "10px 20px",
-                  borderRadius: "10px",
-                  width: "100px",
-                  height: "80px",
-                }}
-              >
-                45<b>+</b>
-              </h3>
-              <p
-                style={{
-                  fontSize: "0.8rem",
-                  fontWeight: "bold",
-                }}
-              >
-                Award Winning
-              </p>
-            </div>
-          </Col>
+          {[
+            { number: "55+", text: "Years of experience" },
+            { number: "25k", text: "Happy Clients" },
+            { number: "15+", text: "Showrooms" },
+            { number: "45+", text: "Award Winning" },
+          ].map((item, idx) => (
+            <Col
+              xs={6}
+              md={3}
+              key={idx}
+              className="mb-4"
+              style={{
+                transform:
+                  idx % 2 === 0 ? "translateY(-20px)" : "translateY(20px)",
+                marginTop: idx % 2 === 0 ? "4rem" : "6rem",
+              }}
+            >
+              <div>
+                <h3
+                  style={{
+                    fontSize: "2.5rem",
+                    border: "2px solid white",
+                    display: "inline-block",
+                    padding: "10px 20px",
+                    borderRadius: "10px",
+                    width: "100px",
+                    height: "80px",
+                  }}
+                >
+                  {item.number}
+                </h3>
+                <p style={{ fontSize: "0.8rem", fontWeight: "bold" }}>
+                  {item.text}
+                </p>
+              </div>
+            </Col>
+          ))}
         </Row>
       </Container>
 
@@ -402,7 +332,7 @@ const About = () => {
         >
           WHAT IS OUR CLIENT SAYS?
         </h2>
-        <Carousel indicators={false} controls={true} interval={3000} fade>
+        <Carousel indicators={false} controls interval={3000} fade>
           {/* Feedback 1 */}
           <Carousel.Item>
             <div>

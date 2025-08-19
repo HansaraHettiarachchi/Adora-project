@@ -1,5 +1,7 @@
 import React, { useState } from "react";
 import { Container, Form, Button } from "react-bootstrap";
+import Image from "react-bootstrap/Image";
+import u_image from "../../assets/images/User-Images/user-avatar.png";
 
 export default function UserEdit() {
   const [discardHover, setDiscardHover] = useState(false);
@@ -120,14 +122,14 @@ export default function UserEdit() {
             alignItems: "center",
           }}
         >
-          <img
-            src="../../src/assets/images/User-Images/user-avatar.png"
+          <Image
+            src={u_image}
             alt="Profile"
             style={{
-              width: "140px",
-              height: "140px",
+              width: "120px",
+              height: "120px",
               borderRadius: "50%",
-              marginBottom: "10px",
+              padding: "3px",
             }}
           />
           <Button
