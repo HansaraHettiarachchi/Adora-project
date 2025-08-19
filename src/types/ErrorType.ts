@@ -45,7 +45,7 @@ export type ProductErr = {
 
 // Stock error type
 export type StockErr = {
-    batch_id?: string;
+    id?: string;
     product_id?: string;
     qty?: string;
     cost?: string;
@@ -73,6 +73,19 @@ export type SupplierErr = {
 export type PaymentMethodErr = {
     id?: string;
     name?: string;
+};
+
+    // Invoice error type
+    export type InvoiceErr = {
+        id?: string;
+        total?: string;
+        qty?: string;
+        datetime?: string;
+        discount?: string;
+        payment_method_id?: string;
+        users_id?: string;
+        invoice_items?: string;
+    };
 };
 
 // CardDetail error type

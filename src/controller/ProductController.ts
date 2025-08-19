@@ -5,6 +5,19 @@ import type { ProductErr } from '../types/ErrorType.js';
 const productService = new ProductService();
 
 export class ProductController {
+    /**
+     * Get paginated products, each with the batch of largest size_id and its first image.
+     */
+    async getPaginatedProductsWithLargestBatchImage(req: any, res: any) {
+        const page = Number(req.query.page) || 1;
+        const pageSize = Number(req.query.pageSize) || 10;
+        try {
+            const result = await productService.getPaginatedProductsWithLargestBatchImage(page, pageSize);
+            return res.status(200).json(result);
+        } catch (error) {
+            return res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
+        }
+    }
     // Product endpoints
     async createProduct(req: any, res: any) {
         const product: Product = req.body;
@@ -43,6 +56,13 @@ export class ProductController {
         return res.status(result.status).json(result);
     }
 
+    async getPaginatedProducts(req: any, res: any) {
+        const page = Number(req.query.page) || 1;
+        const pageSize = Number(req.query.pageSize) || 10;
+        const result = await productService.getPaginatedProducts(page, pageSize);
+        return res.status(result.status).json(result);
+    }
+
     async getProductById(req: any, res: any) {
         const id = Number(req.params.id);
         if (!id || isNaN(id) || id <= 0) {
@@ -50,6 +70,22 @@ export class ProductController {
         }
         const result: Response = await productService.getProductById(id);
         return res.status(result.status).json(result);
+    }
+
+    async getProductDetailById(req: any, res: any) {
+            const id = Number(req.params.id);
+            if (!id || isNaN(id) || id <= 0) {
+                return res.status(400).json({ status: 400, message: 'Invalid product ID', data: { id: 'Product ID is required' } });
+            }
+            try {
+                const result = await productService.getProductDetailById(id);
+                if (result.status === 404) {
+                    return res.status(404).json({ status: 404, message: 'Product not found', data: null });
+                }
+                return res.status(200).json(result.data);
+            } catch (error) {
+                return res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
+            }
     }
 
     async deleteProduct(req: any, res: any) {

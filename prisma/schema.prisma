@@ -9,86 +9,109 @@ datasource db {
 }
 
 model batch {
-  id         Int     @id @default(autoincrement())
-  qty        Int
-  price      Float
-  cost       Float
-  desc       String? @db.Text
-  product_id Int
-  size_id    Int
-  code       String  @db.VarChar(30)
+  id             Int              @id @default(autoincrement())
+  qty            Int
+  price          Float
+  cost           Float
+  desc           String?          @db.Text
+  product_id     Int
+  size_id        Int
+  code           String           @db.VarChar(30)
+  product        product          @relation(fields: [product_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_batch_product1")
+  size           size             @relation(fields: [size_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_batch_size1")
+  product_images product_images[]
 
   @@index([product_id], map: "fk_batch_product1_idx")
   @@index([size_id], map: "fk_batch_size1_idx")
 }
 
 model card_details {
-  id                Int     @id @default(autoincrement())
+  id                Int            @id @default(autoincrement())
   card_no           Int
   payment_method_id Int
+  users_id          Int
+  exp               String?        @db.VarChar(10)
   cvv               Int?
-  exp               String? @db.VarChar(45)
+  payment_method    payment_method @relation(fields: [payment_method_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_card_details_payment_method1")
+  users             users          @relation(fields: [users_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_card_details_users1")
 
   @@index([payment_method_id], map: "fk_card_details_payment_method1_idx")
+  @@index([users_id], map: "fk_card_details_users1_idx")
 }
 
 model category {
-  id   Int    @id @default(autoincrement())
-  name String @db.VarChar(45)
+  id      Int       @id @default(autoincrement())
+  name    String    @db.VarChar(45)
+  product product[]
 }
 
 model city {
-  id   Int    @id @default(autoincrement())
-  name String @db.VarChar(45)
+  id       Int        @id @default(autoincrement())
+  name     String     @db.VarChar(45)
+  supplier supplier[]
+  users    users[]
 }
 
 model gender {
-  id   Int    @id @default(autoincrement())
-  name String @db.VarChar(10)
+  id       Int        @id @default(autoincrement())
+  name     String     @db.VarChar(10)
+  supplier supplier[]
+  users    users[]
 }
 
 model grn {
-  id          Int      @id @default(autoincrement())
-  date        DateTime @db.DateTime(0)
+  id          Int         @id @default(autoincrement())
+  date        DateTime    @db.DateTime(0)
   total       Float
   total_qty   Int
   supplier_id Int
   users_id    Int
+  supplier    supplier    @relation(fields: [supplier_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_grn_supplier1")
+  users       users       @relation(fields: [users_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_grn_users1")
+  grn_items   grn_items[]
 
   @@index([supplier_id], map: "fk_grn_supplier1_idx")
   @@index([users_id], map: "fk_grn_users1_idx")
 }
 
 model grn_items {
-  id              Int     @id @default(autoincrement())
+  id              Int          @id @default(autoincrement())
   price           Float
   cost            Float
   product_id      Int
   qty             Int
   size_id         Int
-  desc            String? @db.Text
+  desc            String?      @db.Text
   product_type_id Int
   grn_id          Int
+  grn             grn          @relation(fields: [grn_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_grn_items_grn1")
+  product_type    product_type @relation(fields: [product_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_grn_items_product_type1")
 
   @@index([grn_id], map: "fk_grn_items_grn1_idx")
   @@index([product_type_id], map: "fk_grn_items_product_type1_idx")
 }
 
 model invoice {
-  id                Int      @id @default(autoincrement())
+  id                Int             @id @default(autoincrement())
   total             Float
   qty               Float
-  datetime          DateTime @db.DateTime(0)
+  datetime          DateTime        @db.DateTime(0)
   discount          Float
   payment_method_id Int
   users_id          Int
+  order_status_id   Int             @default(1)
+  order_status      order_status    @relation(fields: [order_status_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_invoice_order_status1")
+  payment_method    payment_method  @relation(fields: [payment_method_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_invoice_payment_method1")
+  users             users           @relation(fields: [users_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_invoice_users1")
+  invoice_items     invoice_items[]
 
   @@index([payment_method_id], map: "fk_invoice_payment_method1_idx")
   @@index([users_id], map: "fk_invoice_users1_idx")
+  @@index([order_status_id], map: "fk_invoice_order_status1_idx")
 }
 
 model invoice_items {
-  id              Int   @id @default(autoincrement())
+  id              Int          @id @default(autoincrement())
   price           Float
   cost            Float
   product_id      Int
@@ -96,74 +119,110 @@ model invoice_items {
   batch_id        Int
   invoice_id      Int
   product_type_id Int
+  invoice         invoice      @relation(fields: [invoice_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_grn_items_copy1_invoice1")
+  product_type    product_type @relation(fields: [product_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_grn_items_product_type10")
 
   @@index([invoice_id], map: "fk_grn_items_copy1_invoice1_idx")
   @@index([product_type_id], map: "fk_grn_items_product_type1_idx")
 }
 
 model mother_plant_type {
-  id   Int    @id @default(autoincrement())
-  name String @db.VarChar(45)
+  id      Int       @id @default(autoincrement())
+  name    String    @db.VarChar(45)
+  product product[]
 }
 
 model payment_method {
-  id   Int    @id @default(autoincrement())
-  name String @db.VarChar(20)
+  id           Int            @id @default(autoincrement())
+  name         String         @db.VarChar(20)
+  card_details card_details[]
+  invoice      invoice[]
 }
 
 model pot {
-  id    Int    @id @default(autoincrement())
-  name  String @db.VarChar(45)
-  price Float
-  desc  String @db.Text
+  id        Int         @id @default(autoincrement())
+  name      String      @db.VarChar(45)
+  price     Float
+  desc      String      @db.Text
+  pot_batch pot_batch[]
 }
 
 model pot_batch {
-  id          Int     @id @default(autoincrement())
+  id          Int          @id @default(autoincrement())
   qty         Int
   price       Float
   cost        Float
-  desc        String? @db.Text
+  desc        String?      @db.Text
   pot_id      Int
   pot_size_id Int
-  code        String  @db.VarChar(30)
+  code        String       @db.VarChar(30)
+  pot         pot          @relation(fields: [pot_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_pot_batch_pot1")
+  pot_size    pot_size     @relation(fields: [pot_size_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_pot_batch_pot_size1")
+  pot_images  pot_images[]
 
   @@index([pot_id], map: "fk_pot_batch_pot1_idx")
   @@index([pot_size_id], map: "fk_pot_batch_pot_size1_idx")
 }
 
+model pot_images {
+  id           Int       @id @default(autoincrement())
+  name         String    @db.Text
+  pot_batch_id Int
+  pot_batch    pot_batch @relation(fields: [pot_batch_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_pot_image_pot_batch1")
+
+  @@index([pot_batch_id], map: "fk_pot_image_pot_batch1_idx")
+}
+
 model pot_size {
-  id        Int    @id @default(autoincrement())
-  size      String @db.VarChar(100)
-  short_key String @db.VarChar(20)
+  id        Int         @id @default(autoincrement())
+  size      String      @db.VarChar(100)
+  short_key String      @db.VarChar(20)
+  pot_batch pot_batch[]
 }
 
 model product {
-  id                   Int     @id @default(autoincrement())
-  name                 String  @db.VarChar(70)
-  desc                 String? @db.Text
+  id                   Int               @id @default(autoincrement())
+  name                 String            @db.VarChar(70)
+  desc                 String?           @db.Text
   mother_plant_type_id Int
   category_id          Int
-  isActive             Boolean @default(dbgenerated("b'0'")) @db.Bit(1)
+  isActive             Boolean           @default(dbgenerated("b'0'")) @db.Bit(1)
+  batch                batch[]
+  category             category          @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_product_category1")
+  mother_plant_type    mother_plant_type @relation(fields: [mother_plant_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_product_mother_plant_type1")
 
   @@index([category_id], map: "fk_product_category1_idx")
   @@index([mother_plant_type_id], map: "fk_product_mother_plant_type1_idx")
 }
 
+model product_images {
+  id       Int    @id @default(autoincrement())
+  name     String @db.Text
+  batch_id Int
+  batch    batch  @relation(fields: [batch_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_product_image_batch1")
+
+  @@index([batch_id], map: "fk_product_image_batch1_idx")
+}
+
 model product_type {
-  id   Int    @id @default(autoincrement())
-  name String @db.VarChar(20)
+  id            Int             @id @default(autoincrement())
+  name          String          @db.VarChar(20)
+  grn_items     grn_items[]
+  invoice_items invoice_items[]
 }
 
 model size {
-  id        Int    @id @default(autoincrement())
-  size      String @db.VarChar(100)
-  short_key String @db.VarChar(20)
+  id        Int     @id @default(autoincrement())
+  size      String  @db.VarChar(100)
+  short_key String  @db.VarChar(20)
+  batch     batch[]
 }
 
 model status {
-  id   Int    @id @default(autoincrement())
-  name String @db.VarChar(10)
+  id       Int        @id @default(autoincrement())
+  name     String     @db.VarChar(10)
+  supplier supplier[]
+  users    users[]
 }
 
 model supplier {
@@ -177,6 +236,10 @@ model supplier {
   status_id Int
   gender_id Int
   city_id   Int
+  grn       grn[]
+  city      city    @relation(fields: [city_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_supplier_city1")
+  gender    gender  @relation(fields: [gender_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_supplier_gender1")
+  status    status  @relation(fields: [status_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_supplier_status1")
 
   @@index([city_id], map: "fk_supplier_city1_idx")
   @@index([gender_id], map: "fk_supplier_gender1_idx")
@@ -184,24 +247,32 @@ model supplier {
 }
 
 model user_role {
-  id   Int    @id @default(autoincrement())
-  name String @db.VarChar(20)
+  id    Int     @id @default(autoincrement())
+  name  String  @db.VarChar(20)
+  users users[]
 }
 
 model users {
-  id           Int     @id @default(autoincrement())
-  fname        String  @db.VarChar(45)
-  lname        String  @db.VarChar(45)
-  address      String  @db.VarChar(100)
-  nic          String  @db.VarChar(20)
-  email        String  @db.VarChar(100)
-  password     String  @db.VarChar(100)
-  mobile       String  @db.VarChar(20)
-  p_img        String? @db.Text
+  id           Int            @id @default(autoincrement())
+  fname        String         @db.VarChar(45)
+  lname        String         @db.VarChar(45)
+  address      String         @db.VarChar(100)
+  nic          String         @db.VarChar(20)
+  email        String         @db.VarChar(100)
+  password     String         @db.VarChar(100)
+  mobile       String         @db.VarChar(20)
+  p_img        String?        @db.Text
   user_role_id Int
   gender_id    Int
   city_id      Int
   status_id    Int
+  card_details card_details[]
+  grn          grn[]
+  invoice      invoice[]
+  city         city           @relation(fields: [city_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_users_city1")
+  gender       gender         @relation(fields: [gender_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_users_gender1")
+  status       status         @relation(fields: [status_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_users_status1")
+  user_role    user_role      @relation(fields: [user_role_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_users_user_role")
 
   @@index([city_id], map: "fk_users_city1_idx")
   @@index([gender_id], map: "fk_users_gender1_idx")
@@ -209,18 +280,8 @@ model users {
   @@index([user_role_id], map: "fk_users_user_role_idx")
 }
 
-model pot_images {
-  id           Int    @id @default(autoincrement())
-  name         String @db.Text
-  pot_batch_id Int
-
-  @@index([pot_batch_id], map: "fk_pot_image_pot_batch1_idx")
-}
-
-model product_images {
-  id       Int    @id @default(autoincrement())
-  name     String @db.Text
-  batch_id Int
-
-  @@index([batch_id], map: "fk_product_image_batch1_idx")
+model order_status {
+  id      Int       @id @default(autoincrement())
+  name    String    @db.VarChar(20)
+  invoice invoice[]
 }

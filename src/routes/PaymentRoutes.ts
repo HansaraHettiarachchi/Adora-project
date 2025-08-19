@@ -6,11 +6,9 @@ import type { PaymentMethod } from "../types/EntityType.js";
 const paymentRoutes = Router();
 const paymentController = new PaymentController();
 
-
-paymentRoutes.get("/", async (req, res) => {
-  res.send('hello himal in testing');
+paymentRoutes.get('/', (req, res) => {
+  res.send("Payment routes are working!");
 });
-
 /**
  * @route POST /set-payment-method
  * @description Creates a new payment method
@@ -56,19 +54,112 @@ paymentRoutes.get("/get-payment-method-by-id/:id", authenticate, async (req, res
 });
 
 /**
- * @route GET /get-all-payment-methods
- * @description Gets all payment methods
+ * @route POST /set-invoice
+ * @description Creates a new invoice and invoice items using batch data
  * @access Protected
  *
+ * Expected payload (type: Invoice):
+ * {
+ *   total: number,
+ *   qty: number,
+ *   datetime: string,
+ *   discount: number,
+ *   payment_method_id: number,
+ *   users_id: number,
+ *   invoice_items: Array<InvoiceItemBatchRef>
+ * }
+ *
+ * Where InvoiceItemBatchRef is:
+ * {
+ *   batch_id: number, // required, comes from frontend
+ *   product_type_id: number, // required (Plant or Pot use 1 as default)
+ *   price?: number, // optional, will use batch.price if not provided
+ *   cost?: number, // optional, will use batch.cost if not provided
+ *   product_id?: number, // optional, will use batch.product_id if not provided
+ *   qty?: number // optional, will use batch.qty if not provided
+ * }
+ *
+ * The backend will fetch batch data for each batch_id and fill missing fields for invoice_items.
+ *
  * Response:
- *   Array of Payment Method objects
+ *   Invoice created message or validation error
  */
-paymentRoutes.get("/get-all-payment-methods", authenticate, async (req, res) => {
+paymentRoutes.post("/set-invoice", authenticate, async (req, res) => {
   try {
-    const result = await paymentController.getAllPaymentMethods();
+    const result = await paymentController.setInvoice(req.body);
     res.status(result.status).json(result);
   } catch (error: any) {
     res.status(500).json({ error: error.message || "Internal Server Error" });
+  }
+});
+
+/**
+ * @route GET /get-all-invoice-data-by-id/:id
+ * @description Gets invoice and its items by invoice id
+ * @access Protected
+ *
+ * Params:
+ *   id: number
+ */
+paymentRoutes.get("/get-all-invoice-data-by-id/:id", authenticate, async (req, res) => {
+  const id = Number(req.params.id);
+  try {
+    const result = await paymentController.getInvoiceDataById(id);
+    res.status(result.status).json(result);
+  } catch (error: any) {
+    res.status(500).json({ error: error.message || "Internal Server Error" });
+  }
+});
+
+/**
+ * @route GET /get-all-invoices
+ * @description Gets all invoices (paginated)
+ * @access Protected
+ * @query
+ *   - page: number (required)
+ *   - pageSize: number (required)
+ * @response
+ *   {
+ *     "status": 200,
+ *     "data": [
+ *       {
+ *         "id": 1,
+ *         "total": 1000,
+ *         "qty": 5,
+ *         "datetime": "2025-08-19T10:00:00.000Z",
+ *         "discount": 50,
+ *         "payment_method_id": 2,
+ *         "users_id": 3,
+ *         "invoice_items": [
+ *           {
+ *             "id": 10,
+ *             "price": 200,
+ *             "cost": 150,
+ *             "product_id": 5,
+ *             "qty": 2,
+ *             "batch_id": 7,
+ *             "invoice_id": 1,
+ *             "product_type_id": 1
+ *           }
+ *         ]
+ *       }
+ *     ],
+ *     "pagination": {
+ *       "page": 1,
+ *       "pageSize": 10,
+ *       "total": 100
+ *     }
+ *   }
+ *   If error: { "status": 500, "message": "Internal server error", "error": "..." }
+ */
+paymentRoutes.get("/get-all-invoices", authenticate, async (req, res) => {
+  const page = Number(req.query.page) || 1;
+  const pageSize = Number(req.query.pageSize) || 10;
+  try {
+    const result = await paymentController.getPaginatedInvoices(page, pageSize);
+    res.status(result.status).json(result);
+  } catch (error) {
+    res.status(500).json({ status: 500, message: "Internal server error", error: String(error) });
   }
 });
 

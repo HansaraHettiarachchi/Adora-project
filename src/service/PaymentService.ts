@@ -3,11 +3,45 @@ import type { PaymentMethod, Response } from "../types/EntityType.js";
 import type { PaymentMethodErr } from "../types/ErrorType.js";
 
 export class PaymentService {
+
   private prisma: PrismaClient;
 
   constructor() {
     this.prisma = new PrismaClient();
   }
+
+  /**
+   * Get paginated invoices with items
+   */
+  async getPaginatedInvoices(page: number, pageSize: number): Promise<Response> {
+    try {
+      const skip = (page - 1) * pageSize;
+      const [invoices, total] = await Promise.all([
+        this.prisma.invoice.findMany({
+          skip,
+          take: pageSize,
+        }),
+        this.prisma.invoice.count()
+      ]);
+      const result = await Promise.all(
+        invoices.map(async (inv: any) => {
+          const items = await this.prisma.invoice_items.findMany({ where: { invoice_id: inv.id } });
+          return { ...inv, invoice_items: items };
+        })
+      );
+      return {
+        status: 200,
+        message: "All invoices fetched",
+        data: {
+          invoices: result,
+          pagination: { page, pageSize, total }
+        }
+      };
+    } catch (error: any) {
+      return { status: 500, message: error.message || "Failed to fetch invoices", data: null };
+    }
+  }
+
 
   async createPaymentMethod(data: PaymentMethod): Promise<Response> {
     try {
@@ -227,6 +261,102 @@ export class PaymentService {
       };
     } catch (error: any) {
       throw new Error(`Failed to delete payment method: ${error.message}`);
+    }
+  }
+
+  // Invoice endpoints
+  async createInvoice(data: any): Promise<Response> {
+    const prisma = this.prisma;
+    try {
+      // DB validation: check payment method and user exist
+      const paymentMethod = await prisma.payment_method.findUnique({ where: { id: data.payment_method_id } });
+      if (!paymentMethod) {
+        return { status: 404, message: "Payment method not found", data: null };
+      }
+      const user = await prisma.users.findUnique({ where: { id: data.users_id } });
+      if (!user) {
+        return { status: 404, message: "User not found", data: null };
+      }
+      // Transaction for invoice, items, and batch qty update
+      const result = await prisma.$transaction(async (tx) => {
+        // Create invoice
+        const invoice = await tx.invoice.create({
+          data: {
+            total: data.total,
+            qty: data.qty,
+            datetime: new Date(data.datetime),
+            discount: data.discount,
+            payment_method_id: data.payment_method_id,
+            users_id: data.users_id,
+          }
+        });
+        const items: any[] = [];
+        for (const item of data.invoice_items) {
+          const batch = await tx.batch.findUnique({ where: { id: item.batch_id } });
+          if (!batch) {
+            throw new Error(`Batch not found for id ${item.batch_id}`);
+          }
+          const itemQty = item.qty ?? batch.qty;
+          if (batch.qty < itemQty) {
+            throw new Error(`Insufficient stock in batch ${item.batch_id}. Available: ${batch.qty}, Requested: ${itemQty}`);
+          }
+          // Subtract qty from batch
+          await tx.batch.update({
+            where: { id: batch.id },
+            data: { qty: batch.qty - itemQty }
+          });
+          // Create invoice item
+          const createdItem = await tx.invoice_items.create({
+            data: {
+              price: item.price ?? batch.price,
+              cost: item.cost ?? batch.cost,
+              product_id: item.product_id ?? batch.product_id,
+              qty: itemQty,
+              batch_id: item.batch_id,
+              invoice_id: invoice.id,
+              product_type_id: item.product_type_id,
+            }
+          });
+          items.push(createdItem);
+        }
+        return { invoice, invoice_items: items };
+      });
+      return { status: 201, message: "Invoice created successfully", data: { ...result.invoice, invoice_items: result.invoice_items } };
+    } catch (error: any) {
+      // Transaction errors (including thrown errors above)
+      return { status: 400, message: error.message || "Failed to create invoice", data: null };
+    }
+  }
+
+  async getInvoiceDataById(id: number): Promise<Response> {
+    try {
+      const invoice = await this.prisma.invoice.findUnique({
+        where: { id },
+      });
+      if (!invoice) {
+        return { status: 404, message: "Invoice not found", data: null };
+      }
+      const items = await this.prisma.invoice_items.findMany({
+        where: { invoice_id: id },
+      });
+      return { status: 200, message: "Invoice data fetched", data: { ...invoice, invoice_items: items } };
+    } catch (error: any) {
+      return { status: 500, message: error.message || "Failed to fetch invoice data", data: null };
+    }
+  }
+
+  async getAllInvoices(): Promise<Response> {
+    try {
+      const invoices = await this.prisma.invoice.findMany();
+      const result = await Promise.all(
+        invoices.map(async (inv: any) => {
+          const items = await this.prisma.invoice_items.findMany({ where: { invoice_id: inv.id } });
+          return { ...inv, invoice_items: items };
+        })
+      );
+      return { status: 200, message: "All invoices fetched", data: result };
+    } catch (error: any) {
+      return { status: 500, message: error.message || "Failed to fetch invoices", data: null };
     }
   }
 }

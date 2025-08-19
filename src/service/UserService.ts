@@ -121,7 +121,7 @@ export class UserService {
 
             if (imageFile) {
                 const ext = path.extname(imageFile.originalname);
-                const uniqueName = currentUser.p_img || `uploads/users/${Date.now()}_${Math.round(Math.random() * 1e9)}${ext}`;
+                const uniqueName = currentUser.p_img || `users/${Date.now()}_${Math.round(Math.random() * 1e9)}${ext}`;
 
                 await FileUploader.uploadFile(imageFile, uniqueName);
                 data.p_img = uniqueName;

@@ -1,9 +1,56 @@
 import { PrismaClient } from '../generated/prisma/index.js';
-import type { Category, Response, Product, ProductCreate } from '../types/EntityType.js';
+import type { Category, Response, Product, ProductCreate, ProductImage, Batch, ProductWithBatch } from '../types/EntityType.js';
 
 const prisma = new PrismaClient();
 
 export class ProductService {
+    /**
+     * Get paginated products, each with the first saved image URL only (no batch data).
+     */
+    async getPaginatedProductsWithLargestBatchImage(page: number, pageSize: number) {
+        const skip = (page - 1) * pageSize;
+        // Fetch products with batches and images
+        const [products, total] = await Promise.all([
+            prisma.product.findMany({
+                skip,
+                take: pageSize,
+                include: {
+                    batch: {
+                        include: {
+                            product_images: true
+                        }
+                    }
+                }
+            }),
+            prisma.product.count()
+        ]);
+        // For each product, find the first saved image URL from any batch
+        const enhancedProducts = products.map((product: any) => {
+            let imageUrl: string | null = null;
+            if (product.batch && Array.isArray(product.batch)) {
+                for (const batch of product.batch) {
+                    if (batch.product_images && batch.product_images.length > 0) {
+                        imageUrl = batch.product_images[0].name;
+                        break;
+                    }
+                }
+            }
+            return {
+                id: product.id,
+                name: product.name,
+                desc: product.desc,
+                mother_plant_type_id: product.mother_plant_type_id,
+                category_id: product.category_id,
+                isActive: product.isActive,
+                imageUrl
+            };
+        });
+        return {
+            status: 200,
+            data: enhancedProducts,
+            pagination: { page, pageSize, total }
+        };
+    }
     // Product endpoints
     async createProduct(product: ProductCreate): Promise<Response> {
         const existing = await prisma.product.findFirst({
@@ -61,6 +108,50 @@ export class ProductService {
         };
     }
 
+    async getPaginatedProducts(page: number, pageSize: number) {
+        const skip = (page - 1) * pageSize;
+        const [products, total] = await Promise.all([
+            prisma.product.findMany({
+                skip,
+                take: pageSize,
+                // Only include batch if your schema supports it
+                // Remove include if not supported
+                // include: { batch: { include: { product_images: true } } }
+            }),
+            prisma.product.count()
+        ]);
+        const productList = (products as ProductWithBatch[]).map((p) => {
+            let productImage: string | null = null;
+            if (p.batch && Array.isArray(p.batch) && p.batch.length > 0) {
+                for (const b of p.batch) {
+                    if (b.product_images && Array.isArray(b.product_images) && b.product_images.length > 0) {
+                        productImage = b.product_images[0]?.name ?? null;
+                        break;
+                    }
+                }
+            }
+            return {
+                id: p.id,
+                name: p.name,
+                desc: p.desc,
+                mother_plant_type_id: p.mother_plant_type_id,
+                category_id: p.category_id,
+                isActive: p.isActive,
+                productImage
+            };
+        });
+        return {
+            status: 200,
+            message: 'Products fetched successfully',
+            data: {
+                products: productList,
+                total,
+                page,
+                pageSize
+            }
+        };
+    }
+
     async getProductById(id: number): Promise<Response> {
         const product = await prisma.product.findUnique({ where: { id } });
         if (!product) {
@@ -82,6 +173,44 @@ export class ProductService {
             status: 200,
             message: 'Product fetched successfully',
             data: productData
+        };
+    }
+
+    async getProductDetailById(id: number) {
+        const product = await prisma.product.findUnique({
+            where: { id },
+            include: {
+                category: true,
+                mother_plant_type: true,
+                batch: {
+                    include: {
+                        product_images: true,
+                    },
+                },
+            },
+        });
+        if (!product) {
+            return {
+                status: 404,
+                message: 'Product not found',
+                data: null
+            };
+        }
+        // Restructure batches and images
+        const batches = Array.isArray(product.batch)
+            ? product.batch.map((batch: Batch & { product_images?: ProductImage[] }) => ({
+                ...batch,
+                images: batch.product_images ?? [],
+            }))
+            : [];
+        const { batch, ...productFields } = product;
+        return {
+            status: 200,
+            message: 'Product detail fetched',
+            data: {
+                ...productFields,
+                batches,
+            },
         };
     }
 
