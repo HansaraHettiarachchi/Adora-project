@@ -11,8 +11,9 @@ export class ProductController {
     async getPaginatedProductsWithLargestBatchImage(req: any, res: any) {
         const page = Number(req.query.page) || 1;
         const pageSize = Number(req.query.pageSize) || 10;
+        const searchText = req.query.searchText ? String(req.query.searchText) : undefined;
         try {
-            const result = await productService.getPaginatedProductsWithLargestBatchImage(page, pageSize);
+            const result = await productService.getPaginatedProductsWithLargestBatchImage(page, pageSize, searchText);
             return res.status(200).json(result);
         } catch (error) {
             return res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });

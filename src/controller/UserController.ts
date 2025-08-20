@@ -29,6 +29,20 @@ export class UserController {
 		return this.userService.getAllUsers();
 	}
 
+	/**
+	 * Get paginated users
+	 */
+	async getPaginatedUsers(req: any, res: any) {
+		const page = Number(req.query.page) || 1;
+		const pageSize = Number(req.query.pageSize) || 10;
+		try {
+			const result = await this.userService.getPaginatedUsers(page, pageSize);
+			return res.status(200).json(result);
+		} catch (error: any) {
+			return res.status(500).json({ status: 500, message: 'Internal server error', error: error.message || String(error) });
+		}
+	}
+
 	async getGenderById(id: number) {
 		return this.userService.getGenderById(id);
 	}

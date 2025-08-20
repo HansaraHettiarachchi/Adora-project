@@ -26,6 +26,22 @@ export class UserService {
         return this.prisma.users.findMany();
     }
 
+    /**
+     * Get paginated users
+     */
+    async getPaginatedUsers(page: number, pageSize: number): Promise<{ status: number; data: User[]; pagination: { page: number; pageSize: number; total: number } }> {
+        const skip = (page - 1) * pageSize;
+        const [users, total] = await Promise.all([
+            this.prisma.users.findMany({ skip, take: pageSize }),
+            this.prisma.users.count()
+        ]);
+        return {
+            status: 200,
+            data: users,
+            pagination: { page, pageSize, total }
+        };
+    }
+
     async createUser(userData: User): Promise<Response> {
         try {
             // Check for existing user by email, mobile, or NIC (if provided)

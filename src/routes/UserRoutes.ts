@@ -91,7 +91,7 @@ userRoutes.post('/login', async (req, res) => {
     try {
         const token = await usercontroller.login(email, password);
         if (!token) {
-            return res.status(401).json({ error: 'Invalid email or password' });
+            return res.status(208).json({ error: 'Invalid email or password' });
         }
         res.status(200).json({ token });
     } catch (error: any) {
@@ -191,8 +191,11 @@ userRoutes.get('/get-user-by-id/:id', authenticate, async (req, res) => {
 
 /**
  * @route GET /get-all-users
- * @description Gets all users
+ * @description Gets paginated users
  * @access Protected
+ * @query
+ *   - page: number (optional, default 1)
+ *   - pageSize: number (optional, default 10)
  * @response
  *   {
  *     "status": 200,
@@ -211,17 +214,17 @@ userRoutes.get('/get-user-by-id/:id', authenticate, async (req, res) => {
  *         "status_id": 1,
  *         "p_img": null
  *       }
- *     ]
+ *     ],
+ *     "pagination": {
+ *       "page": 1,
+ *       "pageSize": 10,
+ *       "total": 100
+ *     }
  *   }
  *   If error: { "status": 500, "message": "Internal server error", "error": "..." }
  */
 userRoutes.get('/get-all-users', authenticate, async (req, res) => {
-    try {
-        const users = await usercontroller.getAllUsers();
-        res.status(200).json(users);
-    } catch (error: any) {
-        res.status(500).json({ error: error.message || 'Internal Server Error' });
-    }
+    await usercontroller.getPaginatedUsers(req, res);
 });
 
 /**
