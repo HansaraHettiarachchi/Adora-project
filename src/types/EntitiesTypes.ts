@@ -22,3 +22,21 @@ export interface DecodedUserData {
 export interface AuthProps {
   children?: ReactNode;
 }
+
+
+export type BE_Product = {
+  id: number;
+  name: string;
+  desc: string;
+  mother_plant_type_id: number;
+  category_id: number;
+  isActive: boolean;
+  price: number;
+  qty: number;
+  imageUrl?: string | null;
+}
+
+export type Cart_Product = {
+  p_id: number;
+  qty: number;
+}

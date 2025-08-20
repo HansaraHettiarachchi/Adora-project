@@ -1,7 +1,9 @@
 import axios from "axios";
+import { useNavigate } from "react-router-dom";
 
-export const baseURL = "http://localhost:8080/";
-export const fullUrl = baseURL + "gym-backend-ant-v2";
+export const baseURL = "http://localhost:3000/";
+export const fullUrl = baseURL + "api/v1/";
+
 
 const axiosInstance = axios.create({
     baseURL: fullUrl,

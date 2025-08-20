@@ -2,15 +2,21 @@ import React, { useState, useRef, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import { FiLogOut } from "react-icons/fi";
 import Image from "react-bootstrap/Image";
-
 import u_image from "../../assets/images/User-Images/user-avatar.png";
 import v_image from "../../assets/images/User-Images/visacard.png";
 import m_image from "../../assets/images/User-Images/mastercard.png";
+import { useNavigate } from "react-router-dom";
+import Popup from "./Popup";
+import OrdersList from "./OrdersList";
+import PaymentsList from "./PaymentsList";
+import PaymentForm from "./PaymentForm";
 
-import Popup from "../User/Popup";
-import OrdersList from "../User/OrdersList";
-import PaymentsList from "../User/PaymentsList";
-import PaymentForm from "../User/PaymentForm";
+// Popup Component
+interface PopupProps {
+  title?: React.ReactNode;
+  children: React.ReactNode;
+  onClose: () => void;
+}
 
 const UserProfile: React.FC = () => {
   const [showOrders, setShowOrders] = useState(false);
@@ -23,6 +29,8 @@ const UserProfile: React.FC = () => {
   const paymentRef = useRef<HTMLDivElement>(null);
 
   const handleAddPaymentClick = () => setShowPaymentForm(true);
+
+  const navigate = useNavigate();
 
   const closeAllPopups = () => {
     setShowOrders(false);
@@ -135,6 +143,8 @@ const UserProfile: React.FC = () => {
                   button.style.color = "#000";
                   button.style.border = "1px solid #000";
                 }}
+
+                onClick={() => navigate("/login")}
               >
                 <FiLogOut /> LOGOUT
               </Button>

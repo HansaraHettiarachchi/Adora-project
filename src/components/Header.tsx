@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { Container, Navbar, Nav } from "react-bootstrap";
 import { FaSearch, FaShoppingCart, FaHeart, FaUser } from "react-icons/fa";
 import { NavLink } from "react-router-dom";
@@ -8,6 +8,7 @@ const Header: React.FC = () => {
   // Helper for active link styling
   const linkClass = ({ isActive }: { isActive: boolean }) =>
     `nav-link ${isActive ? "text-success fw-bold" : ""}`;
+  const [showSearch, setShowSearch] = useState(false);
 
   const iconClass = ({ isActive }: { isActive: boolean }) =>
     `p-0 nav-link ${isActive ? "text-success" : ""}`;
@@ -45,11 +46,50 @@ const Header: React.FC = () => {
             </NavLink>
           </Nav>
 
-          {/* Icons */}
-          <div className="d-flex align-items-center gap-3 fs-5">
-            <NavLink to="/#" className={iconClass}>
+          {/* Adding search bar */}
+
+          {/* Search and Icons Container */}
+          <div className="d-flex align-items-center gap-3 text-success fs-5 position-relative">
+            {/* Search Input */}
+            <div
+              className="position-absolute rounded"
+              style={{
+                right: showSearch ? '120px' : '40px',
+                top: '50%',
+                transform: 'translateY(-50%)',
+                width: showSearch ? '200px' : '0px',
+                overflow: 'hidden',
+                transition: 'all 0.3s ease-in-out',
+                zIndex: 1000,
+                border: showSearch ? '2px solid #198754' : 'none'
+              }}
+            >
+
+              <input
+                type="text"
+                placeholder="Search..."
+                className="form-control rounded"
+                style={{
+                  minWidth: '250px',
+                  opacity: showSearch ? 1 : 0,
+                  transition: 'opacity 0.3s ease-in-out'
+                }}
+                autoFocus={showSearch}
+              />
+            </div>
+
+            {/* Search Icon */}
+            <Nav.Link
+              className="p-0 text-success"
+              onClick={() => setShowSearch(!showSearch)}
+              style={{
+                cursor: 'pointer',
+                zIndex: 1001,
+                position: 'relative'
+              }}
+            >
               <FaSearch />
-            </NavLink>
+            </Nav.Link>
             <NavLink to="/cart" className={iconClass}>
               <FaShoppingCart />
             </NavLink>

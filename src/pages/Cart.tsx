@@ -1,4 +1,4 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Button, Col, Container, Form, Row, Table } from "react-bootstrap";
 import { FaTrash } from "react-icons/fa";
 import { IoIosArrowRoundForward } from "react-icons/io";
@@ -11,49 +11,76 @@ import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { useNavigate } from "react-router-dom";
 
+import {
+  getCart,
+  updateQuantity,
+  removeFromCart,
+  clearCart,
+} from "../util/cartStorage";
+import p_image from "../assets/images/Product/image.png"; // fallback image
+
+const resolveImage = (url?: string | null) => {
+  if (!url) return p_image; // local fallback
+  if (/^https?:\/\//i.test(url)) return url; // full external URL
+  if (url.startsWith("/")) return url; // absolute path
+  if (url.startsWith("products/")) return `/${url}`; // from public/
+  return `/uploads/${url}`; // backend-served uploads
+};
+
+type CartItem = {
+  id: number;
+  name: string;
+  desc?: string | null;
+  category_id?: number;
+  mother_plant_type_id?: number;
+  isActive?: boolean;
+  imageUrl?: string | null;
+  quantity: number;
+  price?: number; // optional until you wire pricing
+};
+
 const CartPage = () => {
-  const isMobile = window.innerWidth <= 576;
+  const isMobile =
+    typeof window !== "undefined" ? window.innerWidth <= 576 : false;
   const navigate = useNavigate();
 
-  /* Track selected payment method */
   const [paymentMethod, setPaymentMethod] = useState("");
+  const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  const cartItems = [
-    {
-      id: 1,
-      name: "Homalomena",
-      price: 200,
-      qty: 1,
-      img: "src/assets/images/cart_item (1).png",
-    },
-    {
-      id: 2,
-      name: "Alovera",
-      price: 250,
-      qty: 1,
-      img: "src/assets/images/cart_item (2).png",
-    },
-    {
-      id: 3,
-      name: "Rose",
-      price: 350,
-      qty: 1,
-      img: "src/assets/images/cart_item (3).png",
-    },
-  ];
+  // Load cart from localStorage once
+  useEffect(() => {
+    setCartItems(getCart());
+  }, []);
 
-  const shippingFee = 200;
-  const subtotal = cartItems.reduce(
-    (acc, item) => acc + item.price * item.qty,
-    0
-  );
+  const handleQtyChange = (id: number, value: string) => {
+    const qty = Math.max(1, Number(value) || 1);
+    updateQuantity(id, qty);
+    setCartItems(getCart());
+  };
+
+  const handleRemove = (id: number) => {
+    removeFromCart(id);
+    setCartItems(getCart());
+  };
+
+  const handleEmpty = () => {
+    clearCart();
+    setCartItems([]);
+  };
+
+  // Totals
+  const itemSubtotal = (item: CartItem) =>
+    (item.price ?? 0) * (item.quantity ?? 1);
+  const subtotal = cartItems.reduce((acc, item) => acc + itemSubtotal(item), 0);
+  const shippingFee = cartItems.length > 0 ? 200 : 0;
   const total = subtotal + shippingFee;
 
-  /* Handle checkout click */
   const handleCheckout = () => {
-    if (paymentMethod === "cod") {
-      navigate("/checkout");
-    } else if (paymentMethod === "online") {
+    if (!cartItems.length) {
+      alert("Your cart is empty.");
+      return;
+    }
+    if (paymentMethod === "cod" || paymentMethod === "online") {
       navigate("/checkout");
     } else {
       alert("Please select a payment method before proceeding.");
@@ -179,7 +206,7 @@ const CartPage = () => {
                       </td>
                       <td>
                         <img
-                          src={item.img}
+                          src={resolveImage(item.imageUrl)}
                           alt={item.name}
                           style={{
                             width: isMobile ? "40px" : "60px",
@@ -190,8 +217,8 @@ const CartPage = () => {
                           }}
                         />
                       </td>
-                      <td>${item.name}</td>
-                      <td>${item.price}</td>
+                      <td>{item.name}</td>
+                      <td>{item.price != null ? `$${item.price}` : "—"}</td>
                       <td>
                         <Form.Select
                           style={{
@@ -202,7 +229,10 @@ const CartPage = () => {
                             fontSize: isMobile ? "0.85rem" : "1rem",
                             padding: isMobile ? "2px 6px" : "6px 12px",
                           }}
-                          defaultValue={item.qty}
+                          value={item.quantity}
+                          onChange={(e) =>
+                            handleQtyChange(item.id, e.target.value)
+                          }
                         >
                           {[...Array(10).keys()].map((x) => (
                             <option key={x + 1} value={x + 1}>
@@ -211,11 +241,16 @@ const CartPage = () => {
                           ))}
                         </Form.Select>
                       </td>
-                      <td>${item.price * item.qty}</td>
+                      <td>
+                        {item.price != null
+                          ? `$${(item.quantity * item.price).toFixed(2)}`
+                          : "—"}
+                      </td>
                       <td>
                         <Button
                           variant="outline-none"
                           size={isMobile ? "sm" : "lg"}
+                          onClick={() => handleRemove(item.id)}
                         >
                           <FaTrash
                             style={{
@@ -252,6 +287,7 @@ const CartPage = () => {
                 >
                   Cart Total
                 </h4>
+
                 <p
                   style={{
                     display: "flex",
@@ -259,7 +295,16 @@ const CartPage = () => {
                     fontSize: isMobile ? "0.9rem" : "1rem",
                   }}
                 >
-                  Shipping Fee: <span>${shippingFee}</span>
+                  Subtotal: <span>${subtotal.toFixed(2)}</span>
+                </p>
+                <p
+                  style={{
+                    display: "flex",
+                    justifyContent: "space-between",
+                    fontSize: isMobile ? "0.9rem" : "1rem",
+                  }}
+                >
+                  Shipping Fee: <span>${shippingFee.toFixed(2)}</span>
                 </p>
                 <h6
                   style={{
@@ -268,7 +313,7 @@ const CartPage = () => {
                     fontSize: isMobile ? "1rem" : "1.25rem",
                   }}
                 >
-                  Total: <strong>${total}</strong>
+                  Total: <strong>${total.toFixed(2)}</strong>
                 </h6>
 
                 {/* Payment method selection */}
@@ -322,9 +367,11 @@ const CartPage = () => {
                     fontWeight: "500",
                     fontSize: isMobile ? "0.9rem" : "1rem",
                   }}
+                  onClick={() => navigate("/shop")}
                 >
                   Continue Shopping
                 </Button>
+
                 <Button
                   variant="outline-none"
                   className="w-100"
@@ -333,6 +380,7 @@ const CartPage = () => {
                     fontWeight: "500",
                     fontSize: isMobile ? "0.9rem" : "1rem",
                   }}
+                  onClick={handleEmpty}
                 >
                   Empty Cart
                 </Button>
