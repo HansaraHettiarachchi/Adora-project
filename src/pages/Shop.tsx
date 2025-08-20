@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useRef, useState } from 'react';
 import axios from 'axios';
 import { Button, Col, Container, Form, Image, InputGroup, Row } from 'react-bootstrap';
 import { FaCartPlus, FaHeart } from 'react-icons/fa';
@@ -10,21 +10,29 @@ import BreadcrumbBar from '../components/BreadcrumbBar';
 import { addToCart } from '../util/cartStorage';
 import p_image from '../assets/images/Product/image.png'; // fallback image
 import axiosInstance, { baseURL } from '../util/axiosUtil';
-import type { BE_Product } from '../types/EntitiesTypes';
+import type { BE_Product, Pagination } from '../types/EntitiesTypes';
 import Swal from 'sweetalert2';
-
-const resolveImage = (url?: string | null) => {
-
-  return `${baseURL}uploads/${url}`;
-};
 
 const Shop = () => {
   const [products, setProducts] = useState<BE_Product[]>([]);
+  const [searchText, setSearchText] = useState<string>("");
+  const timeoutRef = useRef<number | null>(null);
 
-  useEffect(() => {
-    axiosInstance.get("/product/products?page=1&pageSize=5").then((res) => {
+  const pageDetails = useRef<Pagination>({
+    page: 1,
+    pageSize: 10,
+    total: 1
+  });
+
+  const resolveImage = (url?: string | null) => {
+    return `${baseURL}uploads/${url}`;
+  };
+
+  const loadData = () => {
+    axiosInstance.get(`/product/products?page=${pageDetails.current.page}&pageSize=${pageDetails.current.pageSize}&searchText=${searchText}`).then((res) => {
 
       if (res.data.status == 200) {
+        pageDetails.current = res.data.pagination;
         setProducts(res.data.data);
       } else {
         console.error("An internal error occured.");
@@ -32,12 +40,28 @@ const Shop = () => {
       }
 
       setProducts(res.data.data);
-    })
-      .catch((err) => {
-        console.error("Error fetching products:", err.response || err.message);
-      });
+    }).catch((err) => {
+      console.error("Error fetching products:", err.response || err.message);
+    });
+  }
+
+  const doLiveSearch = () => {
+    if (timeoutRef.current) {
+      clearTimeout(timeoutRef.current);
+    }
+
+    timeoutRef.current = setTimeout(() => {
+      loadData();
+    }, 400);
+  }
+
+  useEffect(() => {
+    loadData();
   }, []);
 
+  useEffect(() => {
+    doLiveSearch();
+  }, [searchText]);
 
   const handleAddToCart = (product: BE_Product) => {
     const res = addToCart(product);
@@ -49,7 +73,7 @@ const Shop = () => {
         text: 'This product is already in your ' + (product.qty === 0 ? "wishlist." : "cart."),
         confirmButtonColor: '#dfcd31ff',
       });
-    }else{
+    } else {
       Swal.fire({
         icon: 'success',
         title: `Product added to ${product.qty === 0 ? "Wishlist" : "Cart"}`,
@@ -87,7 +111,9 @@ const Shop = () => {
                 backgroundColor: 'white',
                 borderRadius: '0',
               }}
+              value={searchText}
               onFocus={e => e.target.style.boxShadow = 'none'}
+              onChange={(e) => setSearchText(e.target.value)}
             />
             <InputGroup.Text
               id="basic-addon1"
@@ -145,6 +171,31 @@ const Shop = () => {
             </Col>
           ))}
         </Row>
+
+        {/* Pagination */}
+        <Container className="d-flex justify-content-center my-4">
+
+          {[...Array(Math.round((pageDetails.current.total / pageDetails.current.pageSize)))].map((_, idx) => (
+            <Button
+              key={idx}
+              style={{
+                backgroundColor: "#164C0D",
+                color: "white",
+                border: "none",
+                borderRadius: "8px",
+                marginRight: "8px",
+                minWidth: "40px"
+              }}
+              onClick={() => {
+                pageDetails.current.page = idx + 1;
+                loadData();
+              }}
+            >
+              {idx + 1}
+            </Button>
+          ))}
+        </Container>
+
       </Container>
 
       <Footer />
