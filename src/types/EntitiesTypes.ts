@@ -39,4 +39,50 @@ export type BE_Product = {
 export type Cart_Product = {
   p_id: number;
   qty: number;
+  batch_id?: number;
+}
+
+export type Pagination = {
+  page: number;
+  pageSize: number;
+  total: number;
+}
+
+export type BatchImage = {
+  id: number;
+  name: string;
+  batch_id: number;
+};
+
+export type Batch = {
+  id: number;
+  qty: number;
+  price: number;
+  cost: number;
+  desc: string;
+  size: CommonIdName;
+  code: string;
+  images: BatchImage[];
+};
+
+export type CartFullProductDetails = {
+  id: number;
+  name: string;
+  desc: string;
+  mother_plant_type: { id: number; name: string };
+  category: { id: number; name: string };
+  isActive: boolean;
+  batches: Batch[];
+};
+
+
+export type CommonIdName = {
+  id: number;
+  name: string;
+}
+
+export type SizeData = {
+  id: number;
+  name: string;
+  batch_id: number;
 }
