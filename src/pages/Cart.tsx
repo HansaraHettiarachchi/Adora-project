@@ -2,30 +2,16 @@ import { useEffect, useState } from "react";
 import { Button, Col, Container, Form, Row, Table } from "react-bootstrap";
 import { FaTrash } from "react-icons/fa";
 import { IoIosArrowRoundForward } from "react-icons/io";
-import {
-  PiNumberCircleOneLight,
-  PiNumberCircleThreeLight,
-  PiNumberCircleTwoLight,
-} from "react-icons/pi";
+import { PiNumberCircleOneLight, PiNumberCircleThreeLight, PiNumberCircleTwoLight } from "react-icons/pi";
+import { useNavigate } from "react-router-dom";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
-import { useNavigate } from "react-router-dom";
 
-import {
-  getCart,
-  updateQuantity,
-  removeFromCart,
-  clearCart,
-} from "../util/cartStorage";
 import p_image from "../assets/images/Product/image.png"; // fallback image
-
-const resolveImage = (url?: string | null) => {
-  if (!url) return p_image; // local fallback
-  if (/^https?:\/\//i.test(url)) return url; // full external URL
-  if (url.startsWith("/")) return url; // absolute path
-  if (url.startsWith("products/")) return `/${url}`; // from public/
-  return `/uploads/${url}`; // backend-served uploads
-};
+import axiosInstance, { baseURL } from "../util/axiosUtil";
+import { getCart, removeFromCart } from "../util/cartStorage";
+import type { Cart_Product, CartFullProductDetails, CommonIdName, SizeData } from "../types/EntitiesTypes";
+import Swal from "sweetalert2";
 
 type CartItem = {
   id: number;
@@ -39,34 +25,105 @@ type CartItem = {
   price?: number; // optional until you wire pricing
 };
 
+type SelectedBatch = {
+  p_id: number;
+  batch_id: number;
+}
+
 const CartPage = () => {
   const isMobile =
     typeof window !== "undefined" ? window.innerWidth <= 576 : false;
   const navigate = useNavigate();
 
+  const [fullProduct, setFullProduct] = useState<CartFullProductDetails[]>([]);
+  const [availableSizes, setAvailableSizes] = useState<SizeData[]>([]);
+  const [selectedBatch, setSelectedBatch] = useState<SelectedBatch[]>([]);
+  const [cartProducts, setCartProducts] = useState<Cart_Product[]>([]);
+
   const [paymentMethod, setPaymentMethod] = useState("");
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
-  // Load cart from localStorage once
+  const loadData = async () => {
+    let cardProductData: CartFullProductDetails[] = [];
+
+    const cardProdcutDetails = getCart("cart");
+    setCartProducts(cardProdcutDetails);
+
+    for (const item of cardProdcutDetails) {
+      try {
+        const res = await axiosInstance.get("product/product-details/" + item.p_id);
+        if (res.status === 200) {
+          cardProductData.push(res.data);
+        }
+      } catch (e) {
+        console.error(e);
+      }
+    }
+
+    const availableSizes = [];
+    const selectedBatchs = [];
+    for (const item of cardProductData) {
+      for (const batch of item.batches) {
+        availableSizes.push({
+          id: batch.size.id,
+          name: batch.size.name,
+          batch_id: batch.id
+        });
+      }
+      selectedBatchs.push({
+        p_id: item.id,
+        batch_id: item.batches[0].id,
+      });
+
+    }
+
+    setSelectedBatch(selectedBatchs);
+    setAvailableSizes(availableSizes);
+    setFullProduct(cardProductData);
+
+  }
+
+  const resolveImage = (url?: string | null) => {
+    return `${baseURL}uploads/${url}`;
+  };
+
   useEffect(() => {
-    setCartItems(getCart());
+    loadData();
   }, []);
 
-  const handleQtyChange = (id: number, value: string) => {
-    const qty = Math.max(1, Number(value) || 1);
-    updateQuantity(id, qty);
-    setCartItems(getCart());
-  };
+  // const handleQtyChange = (id: number, value: string) => {
+  //   const qty = Math.max(1, Number(value) || 1);
+  //   updateQuantity(id, qty);
+  //   setCartItems(getCart("cart"));
+  // };
 
   const handleRemove = (id: number) => {
-    removeFromCart(id);
-    setCartItems(getCart());
+    const removed = removeFromCart(id, "cart");
+    if (removed) {
+      Swal.fire({
+        title: "Removed!",
+        text: "Item removed from cart.",
+        icon: "success",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#23B540",
+      }).then(() => {
+        loadData();
+      });
+    } else {
+      Swal.fire({
+        title: "Not found",
+        text: "Item not found in cart.",
+        icon: "warning",
+        confirmButtonText: "OK",
+        confirmButtonColor: "#23B540",
+      });
+    }
   };
 
-  const handleEmpty = () => {
-    clearCart();
-    setCartItems([]);
-  };
+  // const handleEmpty = () => {
+  //   clearCart();
+  //   setCartItems([]);
+  // };
 
   // Totals
   const itemSubtotal = (item: CartItem) =>
@@ -184,10 +241,10 @@ const CartPage = () => {
                 >
                   <tr>
                     <th></th>
-                    <th></th>
+                    <th>Images</th>
                     <th>Product</th>
                     <th>Price</th>
-                    <th>Qty.</th>
+                    <th>Qty</th>
                     <th>Subtotal</th>
                     <th>Remove</th>
                   </tr>
@@ -199,14 +256,20 @@ const CartPage = () => {
                     border: "1px solid #B8B4B4",
                   }}
                 >
-                  {cartItems.map((item) => (
+                  {fullProduct.map((item) => (
                     <tr key={item.id}>
                       <td>
                         <Form.Check type="checkbox" />
                       </td>
                       <td>
                         <img
-                          src={resolveImage(item.imageUrl)}
+                          // src={resolveImage(item.batches[0].images[0].name)}
+                          src={(() => {
+                            const selectedIndex = selectedBatch.findIndex(batch => batch.p_id === item.id);
+                            const batch = item.batches[selectedIndex >= 0 ? selectedIndex : 0];
+                            const imageName = batch?.images?.[0]?.name;
+                            return resolveImage(imageName);
+                          })()}
                           alt={item.name}
                           style={{
                             width: isMobile ? "40px" : "60px",
@@ -218,33 +281,31 @@ const CartPage = () => {
                         />
                       </td>
                       <td>{item.name}</td>
-                      <td>{item.price != null ? `$${item.price}` : "—"}</td>
                       <td>
-                        <Form.Select
-                          style={{
-                            border: "none",
-                            boxShadow: "none",
-                            textAlign: "center",
-                            backgroundColor: "transparent",
-                            fontSize: isMobile ? "0.85rem" : "1rem",
-                            padding: isMobile ? "2px 6px" : "6px 12px",
-                          }}
-                          value={item.quantity}
-                          onChange={(e) =>
-                            handleQtyChange(item.id, e.target.value)
-                          }
-                        >
-                          {[...Array(10).keys()].map((x) => (
-                            <option key={x + 1} value={x + 1}>
-                              {x + 1}
-                            </option>
-                          ))}
-                        </Form.Select>
+                        {
+                          (() => {
+                            const selected = selectedBatch.find(batch => batch.p_id === item.id);
+                            const batch = item.batches.find(currentBatch => currentBatch.id === selected?.batch_id);
+                            return batch?.price != null ? `$${batch.price}` : "—";
+                          })()
+                        }
                       </td>
                       <td>
-                        {item.price != null
-                          ? `$${(item.quantity * item.price).toFixed(2)}`
-                          : "—"}
+                        <Form.Control type="number" className="text-center align-middle" value={(() => {
+                          
+                          return 1;
+                        })()} />
+                      </td>
+                      <td>
+                        {
+                          (() => {
+                            const selected = selectedBatch.find(batch => batch.p_id === item.id);
+                            const batch = item.batches.find(currentBatch => currentBatch.id === selected?.batch_id);
+                            return batch?.price != null
+                              ? `$${batch.price.toFixed(2)}`
+                              : "—";
+                          })()
+                        }
                       </td>
                       <td>
                         <Button
@@ -380,7 +441,7 @@ const CartPage = () => {
                     fontWeight: "500",
                     fontSize: isMobile ? "0.9rem" : "1rem",
                   }}
-                  onClick={handleEmpty}
+                // onClick={handleEmpty}
                 >
                   Empty Cart
                 </Button>
@@ -395,3 +456,4 @@ const CartPage = () => {
 };
 
 export default CartPage;
+
