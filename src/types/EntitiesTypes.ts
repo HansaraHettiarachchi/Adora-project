@@ -10,14 +10,31 @@ export type Product = {
 };
 
 
-export interface DecodedUserData {
-  userId: string;
+// export interface DecodedUserData {
+//   userId: string;
+//   email: string;
+//   roleId: number;
+//   username: string;
+//   status: number;
+//   exp?: number;
+// }
+
+export type DecodedUserData = {
+  id: number;
+  fname: string;
+  lname: string;
+  address: string;
+  nic: string;
   email: string;
-  roleId: number;
-  username: string;
-  status: number;
+  password: string;
+  mobile: string;
+  user_role_id: number;
+  gender_id: number;
+  city_id: number;
+  status_id: number;
+  p_img?: string | null;
   exp?: number;
-}
+};
 
 export interface AuthProps {
   children?: ReactNode;

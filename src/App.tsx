@@ -22,6 +22,7 @@ import Shop from "./pages/Shop";
 import Payment from "./pages/Payment";
 import OrderComplete from "./pages/OrderComplete";
 import ProductAdjustmentPage from "./pages/ProductAdjustmentPage";
+import Auth from "./auth/Auth";
 
 const App: React.FC = () => {
   return (
@@ -29,8 +30,8 @@ const App: React.FC = () => {
       <Routes>
         <Route path="/" element={<Navigate to="/login" />} />
         <Route path="/home" element={<Home />} />
-        <Route path="/shop" element={<Shop />} />
-        <Route path="/user" element={<User />} />
+        <Route path="/shop" element={<Auth><Shop /></Auth>} />
+        <Route path="/user" element={<Auth><User /></Auth>} />
         <Route path="/about" element={<About />} />
         <Route path="/cart" element={<Cart />} />
         <Route path="/contact" element={<Contact />} />
@@ -38,15 +39,12 @@ const App: React.FC = () => {
         <Route path="/register" element={<Signup />} />
         <Route path="/wishlist" element={<Wishlist />} />
         <Route path="/checkout-details" element={<Checkout />} />
-        <Route path="/checkout" element={<Checkout />} />
-        <Route path="/Payment" element={<Payment />} />
-        <Route path="/OrderComplete" element={<OrderComplete />} />
-        <Route
-          path="/ProductAdjustmentPage"
-          element={<ProductAdjustmentPage />}
-        />
+        <Route path="/checkout" element={<Auth><Checkout /></Auth>} />
+        <Route path="/Payment" element={<Auth><Payment /></Auth>} />
+        <Route path="/OrderComplete" element={<Auth><OrderComplete /></Auth>} />
+        <Route path="/ProductAdjustmentPage" element={<ProductAdjustmentPage />} />
 
-        <Route path="/admin" element={<AdminBody />}>
+        <Route path="/admin" element={<Auth><AdminBody /></Auth>}>
           <Route path="" element={<Dashboard />} />
           <Route path="dashboard" element={<Dashboard />} />
           <Route path="orders" element={<Orders />} />

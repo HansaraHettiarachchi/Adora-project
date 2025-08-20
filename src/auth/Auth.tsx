@@ -1,27 +1,32 @@
 import { useEffect, useState } from "react";
-import AwtUtil from "../util/JwtUtil";
+import { useNavigate } from "react-router-dom";
+import JwtUtil from "../util/JwtUtil";
 import type { AuthProps } from "../types/EntitiesTypes";
-import { Container } from "react-bootstrap";
 
 const Auth = ({ children }: AuthProps) => {
     const [auth, setAuth] = useState<boolean>(false);
+    const navigate = useNavigate();
 
     useEffect(() => {
-        setAuth(AwtUtil.validateToken(localStorage.getItem("jwtToken")));
-    }, []);
+        const isValid = JwtUtil.validateToken(localStorage.getItem("jwtToken"));
+        
+        setAuth(isValid);
+        if (!isValid) {
+            navigate("/login");
+        }
+    }, [navigate]);
 
     const afterSignUp = () => {
-        setAuth(AwtUtil.validateToken(localStorage.getItem("jwtToken")));
-    }
+        const isValid = JwtUtil.validateToken(localStorage.getItem("jwtToken"));
+        setAuth(isValid);
+        if (!isValid) {
+            navigate("/login");
+        }
+    };
 
     return (
         <>
-            {/* {auth ? children : <SignModal show={!auth} afterSignUp={afterSignUp} />} */}
-
-            <Container>
-                <h5>You need to Sign in</h5>
-            </Container>
-
+            {auth && children}
         </>
     );
 }
