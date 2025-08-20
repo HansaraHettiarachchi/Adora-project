@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import React, { useEffect, useState, type ChangeEvent } from "react";
 import { Button, Col, Container, Form, Row, Table } from "react-bootstrap";
 import { FaTrash } from "react-icons/fa";
 import { IoIosArrowRoundForward } from "react-icons/io";
@@ -9,7 +9,7 @@ import Header from "../components/Header";
 
 import p_image from "../assets/images/Product/image.png"; // fallback image
 import axiosInstance, { baseURL } from "../util/axiosUtil";
-import { getCart, removeFromCart } from "../util/cartStorage";
+import { getCart, removeFromCart, setBatchId, updateQuantity } from "../util/cartStorage";
 import type { Cart_Product, CartFullProductDetails, CommonIdName, SizeData } from "../types/EntitiesTypes";
 import Swal from "sweetalert2";
 
@@ -29,6 +29,7 @@ type SelectedBatch = {
   p_id: number;
   batch_id: number;
 }
+type CartQty = { pId: number; qty: number }
 
 const CartPage = () => {
   const isMobile =
@@ -39,30 +40,37 @@ const CartPage = () => {
   const [availableSizes, setAvailableSizes] = useState<SizeData[]>([]);
   const [selectedBatch, setSelectedBatch] = useState<SelectedBatch[]>([]);
   const [cartProducts, setCartProducts] = useState<Cart_Product[]>([]);
+  const [cartQty, setCartQty] = useState<CartQty[]>([]);
 
   const [paymentMethod, setPaymentMethod] = useState("");
   const [cartItems, setCartItems] = useState<CartItem[]>([]);
 
   const loadData = async () => {
-    let cardProductData: CartFullProductDetails[] = [];
+    let cartProductData: CartFullProductDetails[] = [];
+    const cartProdcutDetails = getCart("cart");
+    setCartProducts(cartProdcutDetails);
 
-    const cardProdcutDetails = getCart("cart");
-    setCartProducts(cardProdcutDetails);
+    const cartQtyData: CartQty[] = [];
+    for (const item of cartProdcutDetails) {
+      cartQtyData.push({
+        pId: item.p_id,
+        qty: item.qty || 1
+      });
 
-    for (const item of cardProdcutDetails) {
       try {
         const res = await axiosInstance.get("product/product-details/" + item.p_id);
         if (res.status === 200) {
-          cardProductData.push(res.data);
+          cartProductData.push(res.data);
         }
       } catch (e) {
         console.error(e);
       }
     }
 
+    setCartQty(cartQtyData);
     const availableSizes = [];
     const selectedBatchs = [];
-    for (const item of cardProductData) {
+    for (const item of cartProductData) {
       for (const batch of item.batches) {
         availableSizes.push({
           id: batch.size.id,
@@ -72,14 +80,14 @@ const CartPage = () => {
       }
       selectedBatchs.push({
         p_id: item.id,
-        batch_id: item.batches[0].id,
+        batch_id: cartProdcutDetails.find(cartData => cartData.p_id == item.id)?.batch_id || item.batches[0].id,
       });
 
     }
 
     setSelectedBatch(selectedBatchs);
     setAvailableSizes(availableSizes);
-    setFullProduct(cardProductData);
+    setFullProduct(cartProductData);
 
   }
 
@@ -90,6 +98,19 @@ const CartPage = () => {
   useEffect(() => {
     loadData();
   }, []);
+
+  const handleCartQtyChange = (e: ChangeEvent<HTMLInputElement>) => {
+    const productId = Number(e.target.getAttribute('data-product-id'));
+    const qty = Math.max(1, Number(e.target.value) || 1);
+
+    updateQuantity(productId, qty, "cart");
+
+    setCartQty(prev =>
+      prev.map(item =>
+        item.pId === productId ? { ...item, qty } : item
+      )
+    );
+  };
 
   // const handleQtyChange = (id: number, value: string) => {
   //   const qty = Math.max(1, Number(value) || 1);
@@ -141,6 +162,31 @@ const CartPage = () => {
       navigate("/checkout");
     } else {
       alert("Please select a payment method before proceeding.");
+    }
+  };
+
+  // useEffect(() => {
+  //   console.log("selectedBatch updated:", selectedBatch);
+  // }, [selectedBatch]);
+
+  const handleSizeSelect = (event: React.ChangeEvent<HTMLSelectElement>) => {
+    console.log(localStorage.getItem("cart"));
+
+    const selectedSizeId = parseInt(event.target.value, 10);
+    const productId = Number(event.target.getAttribute('data-product-id'));
+
+    const selectSize = availableSizes.find(item => item.id === selectedSizeId && item.batch_id);
+
+    if (selectSize) {
+      setSelectedBatch(prev => {
+        const updated = prev.map(batch =>
+          batch.p_id === productId
+            ? { ...batch, batch_id: selectSize.batch_id }
+            : batch
+        );
+        setBatchId(productId, selectSize.batch_id, "cart");
+        return updated;
+      });
     }
   };
 
@@ -243,9 +289,10 @@ const CartPage = () => {
                     <th></th>
                     <th>Images</th>
                     <th>Product</th>
-                    <th>Price</th>
+                    <th>Plant Size</th>
+                    <th>Price (LKR)</th>
                     <th>Qty</th>
-                    <th>Subtotal</th>
+                    <th>Subtotal (LKR)</th>
                     <th>Remove</th>
                   </tr>
                 </thead>
@@ -268,7 +315,8 @@ const CartPage = () => {
                             const selectedIndex = selectedBatch.findIndex(batch => batch.p_id === item.id);
                             const batch = item.batches[selectedIndex >= 0 ? selectedIndex : 0];
                             const imageName = batch?.images?.[0]?.name;
-                            return resolveImage(imageName);
+
+                            return imageName ? resolveImage(imageName) : p_image;
                           })()}
                           alt={item.name}
                           style={{
@@ -282,27 +330,48 @@ const CartPage = () => {
                       </td>
                       <td>{item.name}</td>
                       <td>
+                        <Form.Select
+                          data-product-id={item.id}
+                          value={
+                            (() => {
+                              const selected = selectedBatch.find(batch => batch.p_id === item.id);
+                              const batch = item.batches.find(currentBatch => currentBatch.id === selected?.batch_id);
+                              return batch?.size.id ?? item.batches[0].size.id;
+                            })()
+                          }
+                          onChange={handleSizeSelect}
+                        >
+                          {item.batches.map((batch) => (
+                            <option key={`${item.id}-${batch.id}-${batch.size.id}`} value={batch.size.id}>
+                              {batch.size.name}
+                            </option>
+                          ))}
+                        </Form.Select>
+                      </td>
+                      <td>
                         {
                           (() => {
                             const selected = selectedBatch.find(batch => batch.p_id === item.id);
                             const batch = item.batches.find(currentBatch => currentBatch.id === selected?.batch_id);
-                            return batch?.price != null ? `$${batch.price}` : "—";
+                            return batch?.price != null ? `${batch.price.toFixed(2)}` : "—";
                           })()
                         }
                       </td>
+
                       <td>
-                        <Form.Control type="number" className="text-center align-middle" value={(() => {
-                          
-                          return 1;
-                        })()} />
+                        <Form.Control type="number" className="text-center align-middle" value={cartQty.find(cartData => cartData.pId == item.id)?.qty} onChange={handleCartQtyChange} data-product-id={item.id} />
+                        {/* <Form.Control type="number" className="text-center align-middle" value={cartProducts.find(cartProduct => cartProduct.p_id == item.id)?.qty || 1} onChange={(e) => {
+                          updateQuantity(item.id, Number(e.target.value), "cart");
+                        }} /> */}
                       </td>
                       <td>
                         {
                           (() => {
                             const selected = selectedBatch.find(batch => batch.p_id === item.id);
+
                             const batch = item.batches.find(currentBatch => currentBatch.id === selected?.batch_id);
                             return batch?.price != null
-                              ? `$${batch.price.toFixed(2)}`
+                              ? `${(batch.price * (cartQty.find(cartData => cartData.pId == item.id)?.qty || 1)).toFixed(2)}`
                               : "—";
                           })()
                         }
