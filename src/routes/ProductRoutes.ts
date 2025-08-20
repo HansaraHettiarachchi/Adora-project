@@ -53,16 +53,19 @@
 
 import { Router } from 'express';
 import { ProductController } from '../controller/ProductController.js';
+import { authenticate } from '../middleware/auth.js';
 
 const productRoutes = Router();
 // ...existing code...
 
 /**
+/**
  * @route GET /products
- * @description Get paginated products.
+ * @description Get paginated products, each with median price from batches.
  * @query
  *   - page: number (required)
  *   - pageSize: number (required)
+ *   - searchText: string (optional, matches product name, category name, or mother plant type name)
  * @response
  *   {
  *     "status": 200,
@@ -73,7 +76,10 @@ const productRoutes = Router();
  *         "desc": "Description",
  *         "mother_plant_type_id": 1,
  *         "category_id": 2,
- *         "isActive": true
+ *         "isActive": true,
+ *         "price": 50.0,
+ *         "qty": 100,
+ *         "imageUrl": "img1.png"
  *       }
  *     ],
  *     "pagination": {
@@ -128,6 +134,10 @@ productRoutes.get('/products', async (req, res) => {
  *   If error: { "status": 500, "message": "Internal server error", "error": "..." }
  */
 productRoutes.get('/product-details/:id', async (req, res) => {
+	const id = Number(req.params.id);
+	if (isNaN(id) || id <= 0) {
+		return res.status(400).json({ status: 400, message: 'Invalid product ID', data: null });
+	}
 	await controller.getProductDetailById(req, res);
 });
 
@@ -155,7 +165,7 @@ productRoutes.get('/product-details/:id', async (req, res) => {
  *     }
  *   }
  */
-productRoutes.post('/create-product', async (req, res) => {
+productRoutes.post('/create-product', authenticate, async (req, res) => {
 	try {
 		await controller.createProduct(req, res);
 	} catch (error) {
@@ -209,6 +219,10 @@ productRoutes.get('/get-all-products', async (req, res) => {
  */
 productRoutes.get('/get-product-by-id/:id', async (req, res) => {
 	try {
+		const id = Number(req.params.id);
+		if (isNaN(id) || id <= 0) {
+			return res.status(400).json({ status: 400, message: 'Invalid product ID', data: null });
+		}
 		await controller.getProductById(req, res);
 	} catch (error) {
 		res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
@@ -255,7 +269,7 @@ productRoutes.post('/set-category', async (req, res) => {
 	try {
 		await controller.setCategory(req, res);
 	} catch (error) {
-	res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
+		res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
 	}
 });
 
@@ -277,7 +291,7 @@ productRoutes.get('/get-all-category', async (req, res) => {
 	try {
 		await controller.getAllCategory(req, res);
 	} catch (error) {
-	res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
+		res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
 	}
 });
 
@@ -299,7 +313,7 @@ productRoutes.get('/get-category-by-id/:id', async (req, res) => {
 	try {
 		await controller.getCategoryById(req, res);
 	} catch (error) {
-	res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
+		res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
 	}
 });
 
@@ -318,7 +332,7 @@ productRoutes.delete('/delete-category/:id', async (req, res) => {
 	try {
 		await controller.deleteCategory(req, res);
 	} catch (error) {
-	res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
+		res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
 	}
 });
 
@@ -342,7 +356,7 @@ productRoutes.post('/set-mother-plant-type', async (req, res) => {
 	try {
 		await controller.setMotherPlantType(req, res);
 	} catch (error) {
-	res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
+		res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
 	}
 });
 
@@ -364,7 +378,7 @@ productRoutes.get('/get-all-mother-plant-type', async (req, res) => {
 	try {
 		await controller.getAllMotherPlantType(req, res);
 	} catch (error) {
-	res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
+		res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
 	}
 });
 
@@ -386,7 +400,7 @@ productRoutes.get('/get-mother-plant-type-by-id/:id', async (req, res) => {
 	try {
 		await controller.getMotherPlantTypeById(req, res);
 	} catch (error) {
-	res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
+		res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
 	}
 });
 
@@ -405,7 +419,7 @@ productRoutes.delete('/delete-mother-plant-type/:id', async (req, res) => {
 	try {
 		await controller.deleteMotherPlantType(req, res);
 	} catch (error) {
-	res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
+		res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
 	}
 });
 
@@ -431,7 +445,7 @@ productRoutes.post('/set-size', async (req, res) => {
 	try {
 		await controller.setSize(req, res);
 	} catch (error) {
-	res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
+		res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
 	}
 });
 
@@ -454,7 +468,7 @@ productRoutes.get('/get-all-size', async (req, res) => {
 	try {
 		await controller.getAllSize(req, res);
 	} catch (error) {
-	res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
+		res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
 	}
 });
 
@@ -477,7 +491,7 @@ productRoutes.get('/get-size-by-id/:id', async (req, res) => {
 	try {
 		await controller.getSizeById(req, res);
 	} catch (error) {
-	res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
+		res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
 	}
 });
 
@@ -496,7 +510,7 @@ productRoutes.delete('/delete-size/:id', async (req, res) => {
 	try {
 		await controller.deleteSize(req, res);
 	} catch (error) {
-	res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
+		res.status(500).json({ status: 500, message: 'Internal server error', error: String(error) });
 	}
 });
 

@@ -32,7 +32,7 @@ const __dirname = path.dirname(__filename);
 app.use('/uploads', express.static(path.join(__dirname, 'static', 'uploads')));
 
 app.use('/api/v1/users', userRouters);
-app.use('/api/v1/product', authenticate, productRoutes);
+app.use('/api/v1/product', productRoutes);
 app.use('/api/v1/stock', authenticate, stockRoutes);
 app.use('/api/v1/payment', authenticate, paymentRoutes);
 

@@ -95,11 +95,59 @@ paymentRoutes.post("/set-invoice", authenticate, async (req, res) => {
 
 /**
  * @route GET /get-all-invoice-data-by-id/:id
- * @description Gets invoice and its items by invoice id
+ * @description Gets invoice and its items by invoice id, including nested payment method, user, and item details.
  * @access Protected
  *
  * Params:
- *   id: number
+ *   id: number (required, invoice id)
+ *
+ * @example Request:
+ *   GET /get-all-invoice-data-by-id/1
+ *   Headers: { "Authorization": "Bearer <token>" }
+ *
+ * @example Success Response:
+ *   {
+ *     "status": 200,
+ *     "message": "Invoice fetched successfully",
+ *     "data": {
+ *       "id": 1,
+ *       "total": 1000,
+ *       "qty": 5,
+ *       "datetime": "2025-08-19T10:00:00.000Z",
+ *       "discount": 50,
+ *       "payment_method_id": 2,
+ *       "users_id": 3,
+ *       "payment_method": { "id": 2, "name": "Credit Card" },
+ *       "users": { "id": 3, "fname": "John", "lname": "Doe", ... },
+ *       "invoice_items": [
+ *         {
+ *           "id": 10,
+ *           "price": 200,
+ *           "cost": 150,
+ *           "product_id": 5,
+ *           "qty": 2,
+ *           "batch_id": 7,
+ *           "invoice_id": 1,
+ *           "product_type_id": 1,
+ *           "product_type": { "id": 1, "name": "Plant" }
+ *         }
+ *       ]
+ *     }
+ *   }
+ *
+ * @example Not Found Response:
+ *   {
+ *     "status": 404,
+ *     "message": "Invoice not found",
+ *     "data": null
+ *   }
+ *
+ * @example Error Response:
+ *   {
+ *     "status": 500,
+ *     "message": "Internal server error",
+ *     "error": "...error details..."
+ *   }
  */
 paymentRoutes.get("/get-all-invoice-data-by-id/:id", authenticate, async (req, res) => {
   const id = Number(req.params.id);
