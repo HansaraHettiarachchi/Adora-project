@@ -7,44 +7,76 @@ export class ProductService {
     /**
      * Get paginated products, each with the first saved image URL only (no batch data).
      */
-    async getPaginatedProductsWithLargestBatchImage(page: number, pageSize: number) {
+    async getPaginatedProductsWithLargestBatchImage(page: number, pageSize: number, searchText?: string) {
         const skip = (page - 1) * pageSize;
-        // Fetch products with batches and images
-        const [products, total] = await Promise.all([
-            prisma.product.findMany({
-                skip,
-                take: pageSize,
-                include: {
-                    batch: {
-                        include: {
-                            product_images: true
+        // Fetch all products with relations
+        const allProducts = await prisma.product.findMany({
+            include: {
+                batch: {
+                    include: {
+                        product_images: true
+                    }
+                },
+                category: true,
+                mother_plant_type: true
+            }
+        });
+        // Filter in JS if searchText is provided
+        let filteredProducts = allProducts;
+        if (searchText && searchText.trim() !== '') {
+            const lowerSearch = searchText.trim().toLowerCase();
+            filteredProducts = allProducts.filter((product: any) => {
+                const nameMatch = product.name?.toLowerCase().includes(lowerSearch);
+                const categoryMatch = product.category?.name?.toLowerCase().includes(lowerSearch);
+                const motherPlantMatch = product.mother_plant_type?.name?.toLowerCase().includes(lowerSearch);
+                return nameMatch || categoryMatch || motherPlantMatch;
+            });
+        }
+        const total = filteredProducts.length;
+        // Paginate after filtering
+        const products = filteredProducts.slice(skip, skip + pageSize);
+            // For each product, find the first saved image URL from any batch and calculate median price
+            const enhancedProducts = products.map((product: any) => {
+                let imageUrl: string | null = null;
+                let price: number = 0;
+                let qty: number = 0;
+                if (product.batch && Array.isArray(product.batch) && product.batch.length > 0) {
+                    // Get all batch prices
+                    const prices = product.batch
+                        .map((batch: any) => typeof batch.price === 'number' ? batch.price : null)
+                        .filter((p: number | null) => p !== null);
+                    if (prices.length > 0) {
+                        prices.sort((a: number, b: number) => a - b);
+                        const mid = Math.floor(prices.length / 2);
+                        if (prices.length % 2 === 0) {
+                            price = (prices[mid - 1]! + prices[mid]!) / 2;
+                        } else {
+                            price = prices[mid]!;
+                        }
+                    }
+                    // Sum all batch quantities
+                    qty = product.batch.reduce((sum: number, batch: any) => sum + (typeof batch.qty === 'number' ? batch.qty : 0), 0);
+                    // Get first image from any batch
+                    for (const batch of product.batch) {
+                        if (batch.product_images && batch.product_images.length > 0) {
+                            imageUrl = batch.product_images[0].name;
+                            break;
                         }
                     }
                 }
-            }),
-            prisma.product.count()
-        ]);
-        // For each product, find the first saved image URL from any batch
-        const enhancedProducts = products.map((product: any) => {
-            let imageUrl: string | null = null;
-            if (product.batch && Array.isArray(product.batch)) {
-                for (const batch of product.batch) {
-                    if (batch.product_images && batch.product_images.length > 0) {
-                        imageUrl = batch.product_images[0].name;
-                        break;
-                    }
-                }
-            }
-            return {
-                id: product.id,
-                name: product.name,
-                desc: product.desc,
-                mother_plant_type_id: product.mother_plant_type_id,
-                category_id: product.category_id,
-                isActive: product.isActive,
-                imageUrl
-            };
-        });
+                // If no batch, price and qty remain 0
+                return {
+                    id: product.id,
+                    name: product.name,
+                    desc: product.desc,
+                    mother_plant_type_id: product.mother_plant_type_id,
+                    category_id: product.category_id,
+                    isActive: product.isActive,
+                    price,
+                    qty,
+                    imageUrl
+                };
+            });
         return {
             status: 200,
             data: enhancedProducts,
