@@ -23,6 +23,7 @@ import Payment from "./pages/Payment";
 import OrderComplete from "./pages/OrderComplete";
 import ProductAdjustmentPage from "./pages/ProductAdjustmentPage";
 import Auth from "./auth/Auth";
+import Stocks from "./pages/Admin/Stocks";
 
 const App: React.FC = () => {
   return (
@@ -51,6 +52,7 @@ const App: React.FC = () => {
           <Route path="products" element={<Products />} />
           <Route path="customers" element={<Customers />} />
           <Route path="comments" element={<Comments />} />
+          <Route path="stocks" element= {<Stocks />} /> 
           <Route path="reset-passwords" element={<ResetPasswords />} />
         </Route>
       </Routes>
