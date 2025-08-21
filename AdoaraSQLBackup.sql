@@ -47,7 +47,7 @@ CREATE TABLE `batch` (
 
 LOCK TABLES `batch` WRITE;
 /*!40000 ALTER TABLE `batch` DISABLE KEYS */;
-INSERT INTO `batch` VALUES (1,384,150,100,'',1,2,'BATCH2024'),(2,450,2250,100,'',1,2,'BATCH2024_1'),(3,404,2250,100,'',2,2,'BATCH2024_2'),(4,450,2250,100,'',2,2,'BATCH2024_3'),(5,450,2250,100,'',2,2,'BATCH2024_4'),(6,450,2250,100,'',2,2,'BATCH2024_5'),(7,450,2250,100,'',2,2,'BATCH2024_6'),(8,450,2250,100,'',2,2,'BATCH2024_7'),(9,50,500,100,'',2,2,'BATCH2024_8');
+INSERT INTO `batch` VALUES (1,384,150,100,'',1,2,'BATCH2024'),(2,450,4541,100,'',1,1,'BATCH2024_1'),(3,404,452,100,'',2,2,'BATCH2024_2'),(4,450,45587,100,'',2,3,'BATCH2024_3'),(5,450,5785,100,'',2,4,'BATCH2024_4'),(6,450,78578,100,'',2,5,'BATCH2024_5'),(7,450,5785,100,'',2,6,'BATCH2024_6'),(8,450,7587,100,'',2,1,'BATCH2024_7'),(9,50,578,100,'',6,2,'BATCH2024_8');
 /*!40000 ALTER TABLE `batch` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -488,7 +488,7 @@ CREATE TABLE `product` (
   KEY `fk_product_category1_idx` (`category_id`),
   CONSTRAINT `fk_product_category1` FOREIGN KEY (`category_id`) REFERENCES `category` (`id`),
   CONSTRAINT `fk_product_mother_plant_type1` FOREIGN KEY (`mother_plant_type_id`) REFERENCES `mother_plant_type` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=6 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=8 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -497,7 +497,7 @@ CREATE TABLE `product` (
 
 LOCK TABLES `product` WRITE;
 /*!40000 ALTER TABLE `product` DISABLE KEYS */;
-INSERT INTO `product` VALUES (1,'Aloe Vera','Medicinal plant',1,3,_binary ''),(2,'Rose','Beautiful flower',2,2,_binary ''),(3,'Snake Plant','Air purifier',3,1,_binary ''),(4,'Cactus','Desert plant',1,3,_binary '\0'),(5,'Aloe dsd Vera','Medicinal plant',1,3,_binary '');
+INSERT INTO `product` VALUES (1,'Aloe Vera','Medicinal plant',1,3,_binary ''),(2,'Rose','Beautiful flower',2,2,_binary ''),(3,'Snake Plant','Air purifier',3,1,_binary ''),(4,'Cactus','Desert plant',1,3,_binary '\0'),(5,'Aloe dsd Vera','Medicinal plant',1,3,_binary ''),(6,'dsfdsfdsf','dfdsdsfdsfds',1,2,_binary '');
 /*!40000 ALTER TABLE `product` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -564,7 +564,7 @@ CREATE TABLE `size` (
   `size` varchar(100) NOT NULL,
   `short_key` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=7 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -573,7 +573,7 @@ CREATE TABLE `size` (
 
 LOCK TABLES `size` WRITE;
 /*!40000 ALTER TABLE `size` DISABLE KEYS */;
-INSERT INTO `size` VALUES (1,'Small','S'),(2,'Medium','M'),(3,'Large','L');
+INSERT INTO `size` VALUES (1,'Small','S'),(2,'Medium','M'),(3,'Large','L'),(4,'Extra Large','XL'),(5,'Double XXL','XXL'),(6,'Tripe XL','XXXL');
 /*!40000 ALTER TABLE `size` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -649,7 +649,7 @@ CREATE TABLE `user_role` (
   `id` int NOT NULL AUTO_INCREMENT,
   `name` varchar(20) NOT NULL,
   PRIMARY KEY (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=2 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -658,7 +658,7 @@ CREATE TABLE `user_role` (
 
 LOCK TABLES `user_role` WRITE;
 /*!40000 ALTER TABLE `user_role` DISABLE KEYS */;
-INSERT INTO `user_role` VALUES (1,'admin');
+INSERT INTO `user_role` VALUES (1,'admin'),(2,'Owner'),(3,'Manager'),(4,'User');
 /*!40000 ALTER TABLE `user_role` ENABLE KEYS */;
 UNLOCK TABLES;
 
@@ -692,7 +692,7 @@ CREATE TABLE `users` (
   CONSTRAINT `fk_users_gender1` FOREIGN KEY (`gender_id`) REFERENCES `gender` (`id`),
   CONSTRAINT `fk_users_status1` FOREIGN KEY (`status_id`) REFERENCES `status` (`id`),
   CONSTRAINT `fk_users_user_role` FOREIGN KEY (`user_role_id`) REFERENCES `user_role` (`id`)
-) ENGINE=InnoDB AUTO_INCREMENT=4 DEFAULT CHARSET=utf8mb3;
+) ENGINE=InnoDB AUTO_INCREMENT=5 DEFAULT CHARSET=utf8mb3;
 /*!40101 SET character_set_client = @saved_cs_client */;
 
 --
@@ -701,7 +701,7 @@ CREATE TABLE `users` (
 
 LOCK TABLES `users` WRITE;
 /*!40000 ALTER TABLE `users` DISABLE KEYS */;
-INSERT INTO `users` VALUES (1,'Hansara','Hettiarachchi','123 Pamunuwa Road, Maharagama','200017845678','hansdsaara@example.com','$2b$12$/bNuVnoxtUDAMSBX8uM2yefstsGTZdhLcRDityyXAmJtpLMoijx5S','0771234787','',1,1,1,1),(2,'Hansara','Hettiarachchi','123 Pamunuwa Road, Maharagama','20005617845678','hans56dsaara@example.com','$2b$12$wPfjWWW01CbFkEBO.mLGB.LLMUbCrEcDzdAAXc4rQndaErFDodoku','077122234787','users/1755525969092_582759082.png',1,1,1,1),(3,'Hansara','Hettiarachchi','123 Pamunuwa Road, Maharagama','200012345678','hansara@example.com','$2b$12$0/3/h9OS3W9StxuZAnfnwOXa4kQvfuOGPHkQJ7i1OxwPqw3YXGpGa','0771234567','',1,1,1,1);
+INSERT INTO `users` VALUES (1,'Hansara','Hettiarachchi','123 Pamunuwa Road, Maharagama','200017845678','hansdsaara@example.com','$2b$12$moqECW1YwvGJLExBRvZib..9kPJjACr9qDxVC6T7GLf6GCper1N..','0771234787','',1,1,1,1),(2,'Hansara','Hettiarachchi','123 Pamunuwa Road, Maharagama','20005617845678','hans56dsaara@example.com','$2b$12$moqECW1YwvGJLExBRvZib..9kPJjACr9qDxVC6T7GLf6GCper1N..','077122234787','users/1755525969092_582759082.png',1,1,1,1),(3,'Hansara','Hettiarachchi','123 Pamunuwa Road, Maharagama','200012345678','hansara@example.com','$2b$12$moqECW1YwvGJLExBRvZib..9kPJjACr9qDxVC6T7GLf6GCper1N..','0771234567','users/1755768147440_81241594.png',1,1,1,1),(4,'dasad','sdsdsada','dassad','200320011252','dsada@gmail.com','$2b$12$moqECW1YwvGJLExBRvZib..9kPJjACr9qDxVC6T7GLf6GCper1N..','0783015849',NULL,4,1,1,1);
 /*!40000 ALTER TABLE `users` ENABLE KEYS */;
 UNLOCK TABLES;
 /*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
@@ -714,4 +714,4 @@ UNLOCK TABLES;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
 /*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
 
--- Dump completed on 2025-08-20 11:36:26
+-- Dump completed on 2025-08-21 21:12:33
