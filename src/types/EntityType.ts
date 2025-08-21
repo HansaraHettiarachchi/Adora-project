@@ -109,6 +109,21 @@ export type Batch = {
     product_images: ProductImage[];
 };
 
+// Batch with foreign key relations
+export type BatchWithRelations = {
+    id: number;
+    qty: number;
+    price: number;
+    cost: number;
+    desc?: string | null;
+    product_id: number;
+    size_id: number;
+    code: string;
+    product_images: ProductImage[];
+    product: Product;
+    size: Size;
+};
+
 // Paginated product response
 export type PaginatedProductResponse = {
     status: number;

@@ -13,7 +13,7 @@ const PORT = 3000;
 
 // CORS Configuration 
 app.use(cors({
-  origin: 'http://localhost:5174', 
+  origin: 'http://localhost:5174',
   credentials: true,
   methods: ['GET', 'POST', 'PUT', 'DELETE', 'OPTIONS'],
   allowedHeaders: ['Content-Type', 'Authorization']
@@ -23,7 +23,7 @@ app.use(cors({
 app.use(express.json());
 
 app.get('/', (req, res) => {
-    res.send('Hello from Express hi it hansra!');
+  res.send('Hello from Express hi it hansra!');
 });
 
 const __filename = fileURLToPath(import.meta.url);
@@ -37,6 +37,6 @@ app.use('/api/v1/stock', authenticate, stockRoutes);
 app.use('/api/v1/payment', authenticate, paymentRoutes);
 
 app.listen(PORT, () => {
-    console.log(`Server running on http://localhost:${PORT}`);
+  console.log(`Server running on http://localhost:${PORT}`);
 });
 
