@@ -55,6 +55,52 @@ const controller = new StockController();
 const upload = FileUploader.getMulter();
 
 /**
+ * @route GET /batch/:batch_id
+ * @description Get batch details by batch id including foreign key data
+ * @access Protected
+ * @params
+ *   - batch_id: number (required)
+ * @example Request:
+ *   GET /batch/1
+ *   Headers: { "Authorization": "Bearer <token>" }
+ * @example Success Response:
+ *   {
+ *     "status": 200,
+ *     "message": "Batch fetched successfully",
+ *     "data": {
+ *       "id": 1,
+ *       "qty": 100,
+ *       "price": 50.0,
+ *       "cost": 40.0,
+ *       "desc": "Batch description",
+ *       "product_id": 1,
+ *       "size_id": 1,
+ *       "code": "BATCH001",
+ *       "product_images": [ { "id": 1, "name": "batch/1/image.png", "batch_id": 1 } ],
+ *       "product": { "id": 1, "name": "Product Name", ... },
+ *       "size": { "id": 1, "size": "Large", ... }
+ *     }
+ *   }
+ * @example Not Found Response:
+ *   {
+ *     "status": 404,
+ *     "message": "Batch not found",
+ *     "data": null
+ *   }
+ * @example Error Response:
+ *   {
+ *     "status": 500,
+ *     "message": "Internal server error",
+ *     "error": "...error details..."
+ *   }
+ */
+stockRoutes.get('/batch/:batch_id', authenticate, async (req, res) => {
+    const batch_id = Number(req.params.batch_id);
+    const result = await controller.getBatchById(batch_id);
+    res.status(result.status).json(result);
+});
+
+/**
  * @route POST /set-stock
  * @description Set or update stock (batch)
  * @access Protected

@@ -49,7 +49,8 @@ export type Response = {
     status: number;
     message: string;
     data: any;
-}
+};
+
 // Category type for category endpoints
 export type Category = {
     id: number;
@@ -77,7 +78,7 @@ export type Product = {
     mother_plant_type_id: number;
     category_id: number;
     isActive: boolean;
-    productImage?: string | null; // First image from batch.product_images
+    productImage?: string | null;
 };
 
 // Product creation type for validation
@@ -107,6 +108,21 @@ export type Batch = {
     size_id: number;
     code: string;
     product_images: ProductImage[];
+};
+
+// Batch with foreign key relations
+export type BatchWithRelations = {
+    id: number;
+    qty: number;
+    price: number;
+    cost: number;
+    desc?: string | null;
+    product_id: number;
+    size_id: number;
+    code: string;
+    product_images: ProductImage[];
+    product: Product;
+    size: Size;
 };
 
 // Paginated product response
@@ -145,8 +161,8 @@ export type Stock = {
     price?: number;
     size_id?: number;
     code?: string;
-    
 };
+
 // Supplier type for supplier endpoints
 export type Supplier = {
     id: number;
@@ -167,35 +183,44 @@ export type PaymentMethod = {
     name: string;
 };
 
-    // Invoice type
-    export type Invoice = {
-        id: number;
-        total: number;
-        qty: number;
-        datetime: string;
-        discount: number;
-        payment_method_id: number;
-        users_id: number;
-        payment_method?: PaymentMethod;
-        users?: User;
-        invoice_items?: InvoiceItem[];
-    };
+// Invoice type
+export type Invoice = {
+    id: number;
+    total: number;
+    qty: number;
+    datetime: string;
+    discount: number;
+    payment_method_id: number;
+    users_id: number;
+    payment_method?: PaymentMethod;
+    users?: User;
+    invoice_items?: InvoiceItem[];
+};
 
-    // InvoiceItem type
-    export type InvoiceItem = {
-        id: number;
-        price: number;
-        cost: number;
-        product_id: number;
-        qty: number;
-        batch_id: number;
-        invoice_id: number;
-        product_type_id: number;
-        product_type?: ProductType;
-    };
+// InvoiceItem type
+export type InvoiceItem = {
+    id: number;
+    price: number;
+    cost: number;
+    product_id: number;
+    qty: number;
+    batch_id: number;
+    invoice_id: number;
+    product_type_id: number;
+    product_type?: ProductType;
+};
 
-    // ProductType type (for invoice_items)
-    export type ProductType = {
-        id: number;
-        name: string;
-    };
+// ProductType type (for invoice_items)
+export type ProductType = {
+    id: number;
+    name: string;
+};
+
+// CardDetail type for card detail endpoints
+export type CardDetail = {
+    card_no: number;
+    payment_method_id: number;
+    cvv?: number;
+    exp?: string;
+    users_id: number;
+};

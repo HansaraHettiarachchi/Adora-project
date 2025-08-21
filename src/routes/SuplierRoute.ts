@@ -1,7 +1,7 @@
 import { Router } from "express";
 import { SupplierController } from "../controller/SupplierController.js";
 import { authenticate } from "../middleware/auth.js";
-import type { Supplier } from "../types/EntityType.js";
+import type { Supplier, Response } from "../types/EntityType.js";
 
 const supplierRoutes = Router();
 const supplierController = new SupplierController();
@@ -16,7 +16,11 @@ const supplierController = new SupplierController();
  *     "company": "Acme Inc.",
  *     "address": "123 Main St",
  *     "email": "john.smith@acme.com",
- *     "mobile": "1234567890"
+ *     "mobile": "1234567890",
+ *     "isActive": true,
+ *     "status_id": 1,
+ *     "gender_id": 1,
+ *     "city_id": 1
  *   }
  * @response
  *   {
@@ -27,20 +31,40 @@ const supplierController = new SupplierController();
  *       "company": "Acme Inc.",
  *       "address": "123 Main St",
  *       "email": "john.smith@acme.com",
- *       "mobile": "1234567890"
- *     }
+ *       "mobile": "1234567890",
+ *       "isActive": true,
+ *       "status_id": 1,
+ *       "gender_id": 1,
+ *       "city_id": 1
+ *     },
+ *     "message": "Supplier Registered Successfully"
  *   }
- *   If validation error: { "status": 400, "error": "Missing required fields" }
- *   If error: { "status": 500, "message": "Internal server error", "error": "..." }
  */
 supplierRoutes.post("/set-supplier", authenticate, async (req, res) => {
-  const supplierData: Supplier = req.body;
-  try {
-    const result = await supplierController.setSupplier(supplierData);
-    res.status(result.status).json(result);
-  } catch (error: any) {
-    res.status(500).json({ error: error.message || "Internal Server Error" });
-  }
+    const supplierData: Partial<Supplier> = req.body;
+    try {
+        // Validate required fields
+        const requiredFields = ['fullname', 'company', 'address', 'email', 'mobile', 'status_id', 'gender_id', 'city_id'];
+        const missingFields = requiredFields.filter(field => (supplierData as Record<string, unknown>)[field] === undefined);
+        if (missingFields.length > 0) {
+            return res.status(400).json({
+                status: 400,
+                message: "error",
+                data: `Missing required fields: ${missingFields.join(", ")}`
+            });
+        }
+
+        const result = await supplierController.setSupplier({
+            ...supplierData,
+            isActive: supplierData.isActive ?? true, // Default to true
+            status_id: Number(supplierData.status_id), // Ensure number
+            gender_id: Number(supplierData.gender_id),
+            city_id: Number(supplierData.city_id),
+        } as Supplier);
+        res.status(result.status).json(result);
+    } catch (error: any) {
+        res.status(500).json({ status: 500, message: "error", data: error.message || "Internal Server Error" });
+    }
 });
 
 /**
@@ -58,20 +82,23 @@ supplierRoutes.post("/set-supplier", authenticate, async (req, res) => {
  *       "company": "Acme Inc.",
  *       "address": "123 Main St",
  *       "email": "john.smith@acme.com",
- *       "mobile": "1234567890"
- *     }
+ *       "mobile": "1234567890",
+ *       "isActive": true,
+ *       "status_id": 1,
+ *       "gender_id": 1,
+ *       "city_id": 1
+ *     },
+ *     "message": "success"
  *   }
- *   If not found: { "status": 404, "error": "Supplier not found" }
- *   If error: { "status": 500, "message": "Internal server error", "error": "..." }
  */
 supplierRoutes.get("/get-supplier-by-id/:id", authenticate, async (req, res) => {
-  const id = Number(req.params.id);
-  try {
-    const result = await supplierController.getSupplierById(id);
-    res.status(result.status).json(result);
-  } catch (error: any) {
-    res.status(500).json({ error: error.message || "Internal Server Error" });
-  }
+    const id = Number(req.params.id);
+    try {
+        const result = await supplierController.getSupplierById(id);
+        res.status(result.status).json(result);
+    } catch (error: any) {
+        res.status(500).json({ status: 500, message: "error", data: error.message || "Internal Server Error" });
+    }
 });
 
 /**
@@ -88,19 +115,23 @@ supplierRoutes.get("/get-supplier-by-id/:id", authenticate, async (req, res) => 
  *         "company": "Acme Inc.",
  *         "address": "123 Main St",
  *         "email": "john.smith@acme.com",
- *         "mobile": "1234567890"
+ *         "mobile": "1234567890",
+ *         "isActive": true,
+ *         "status_id": 1,
+ *         "gender_id": 1,
+ *         "city_id": 1
  *       }
- *     ]
+ *     ],
+ *     "message": "success"
  *   }
- *   If error: { "status": 500, "message": "Internal server error", "error": "..." }
  */
 supplierRoutes.get("/get-all-suppliers", authenticate, async (req, res) => {
-  try {
-    const result = await supplierController.getAllSuppliers();
-    res.status(result.status).json(result);
-  } catch (error: any) {
-    res.status(500).json({ error: error.message || "Internal Server Error" });
-  }
+    try {
+        const result = await supplierController.getAllSuppliers();
+        res.status(result.status).json(result);
+    } catch (error: any) {
+        res.status(500).json({ status: 500, message: "error", data: error.message || "Internal Server Error" });
+    }
 });
 
 /**
@@ -120,21 +151,24 @@ supplierRoutes.get("/get-all-suppliers", authenticate, async (req, res) => {
  *       "company": "Acme Inc.",
  *       "address": "123 Main St",
  *       "email": "john.smith@acme.com",
- *       "mobile": "1234567890"
- *     }
+ *       "mobile": "1234567890",
+ *       "isActive": true,
+ *       "status_id": 1,
+ *       "gender_id": 1,
+ *       "city_id": 1
+ *     },
+ *     "message": "Supplier Updated Successfully"
  *   }
- *   If not found: { "status": 404, "error": "Supplier not found" }
- *   If error: { "status": 500, "message": "Internal server error", "error": "..." }
  */
 supplierRoutes.put("/update-supplier/:id", authenticate, async (req, res) => {
-  const id = Number(req.params.id);
-  const updateData: Partial<Supplier> = req.body;
-  try {
-    const result = await supplierController.updateSupplier(id, updateData);
-    res.status(result.status).json(result);
-  } catch (error: any) {
-    res.status(500).json({ error: error.message || "Internal Server Error" });
-  }
+    const id = Number(req.params.id);
+    const updateData: Partial<Supplier> = req.body;
+    try {
+        const result = await supplierController.updateSupplier(id, updateData);
+        res.status(result.status).json(result);
+    } catch (error: any) {
+        res.status(500).json({ status: 500, message: "error", data: error.message || "Internal Server Error" });
+    }
 });
 
 /**
@@ -146,19 +180,17 @@ supplierRoutes.put("/update-supplier/:id", authenticate, async (req, res) => {
  * @response
  *   {
  *     "status": 200,
- *     "message": "Supplier deleted successfully"
+ *     "message": "Supplier Deleted Successfully"
  *   }
- *   If not found: { "status": 404, "error": "Supplier not found" }
- *   If error: { "status": 500, "message": "Internal server error", "error": "..." }
  */
 supplierRoutes.delete("/delete-supplier/:id", authenticate, async (req, res) => {
-  const id = Number(req.params.id);
-  try {
-    const result = await supplierController.deleteSupplier(id);
-    res.status(result.status).json(result);
-  } catch (error: any) {
-    res.status(500).json({ error: error.message || "Internal Server Error" });
-  }
+    const id = Number(req.params.id);
+    try {
+        const result = await supplierController.deleteSupplier(id);
+        res.status(result.status).json(result);
+    } catch (error: any) {
+        res.status(500).json({ status: 500, message: "error", data: error.message || "Internal Server Error" });
+    }
 });
 
 export default supplierRoutes;

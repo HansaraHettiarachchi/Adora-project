@@ -29,9 +29,9 @@ model card_details {
   id                Int            @id @default(autoincrement())
   card_no           Int
   payment_method_id Int
-  cvv               Int?
-  exp               String?        @db.VarChar(45)
   users_id          Int
+  exp               String?        @db.VarChar(10)
+  cvv               Int?
   payment_method    payment_method @relation(fields: [payment_method_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_card_details_payment_method1")
   users             users          @relation(fields: [users_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_card_details_users1")
 
@@ -99,12 +99,15 @@ model invoice {
   discount          Float
   payment_method_id Int
   users_id          Int
+  order_status_id   Int             @default(1)
+  order_status      order_status    @relation(fields: [order_status_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_invoice_order_status1")
   payment_method    payment_method  @relation(fields: [payment_method_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_invoice_payment_method1")
   users             users           @relation(fields: [users_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_invoice_users1")
   invoice_items     invoice_items[]
 
   @@index([payment_method_id], map: "fk_invoice_payment_method1_idx")
   @@index([users_id], map: "fk_invoice_users1_idx")
+  @@index([order_status_id], map: "fk_invoice_order_status1_idx")
 }
 
 model invoice_items {
@@ -183,7 +186,7 @@ model product {
   desc                 String?           @db.Text
   mother_plant_type_id Int
   category_id          Int
-  isActive             Boolean           @default(dbgenerated("b'0'")) @db.Bit(1)
+  isActive             Boolean           @default(true) @db.Bit(1)
   batch                batch[]
   category             category          @relation(fields: [category_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_product_category1")
   mother_plant_type    mother_plant_type @relation(fields: [mother_plant_type_id], references: [id], onDelete: NoAction, onUpdate: NoAction, map: "fk_product_mother_plant_type1")
@@ -275,4 +278,10 @@ model users {
   @@index([gender_id], map: "fk_users_gender1_idx")
   @@index([status_id], map: "fk_users_status1_idx")
   @@index([user_role_id], map: "fk_users_user_role_idx")
+}
+
+model order_status {
+  id      Int       @id @default(autoincrement())
+  name    String    @db.VarChar(20)
+  invoice invoice[]
 }

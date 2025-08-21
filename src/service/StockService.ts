@@ -29,6 +29,36 @@ export class StockService {
             data: batches
         };
     }
+
+    async getBatchById(batch_id: number): Promise<Response> {
+        if (!batch_id) {
+            return {
+                status: 400,
+                message: 'Batch ID is required',
+                data: null
+            };
+        }
+        const batch = await prisma.batch.findUnique({
+            where: { id: batch_id },
+            include: {
+                product_images: true,
+                product: true,
+                size: true
+            }
+        });
+        if (!batch) {
+            return {
+                status: 404,
+                message: 'Batch not found',
+                data: null
+            };
+        }
+        return {
+            status: 200,
+            message: 'Batch fetched successfully',
+            data: batch
+        };
+    }
     async deleteBatchImages(batch_id: number): Promise<void> {
         const images = await prisma.product_images.findMany({ where: { batch_id } });
         for (const img of images) {
@@ -57,14 +87,16 @@ export class StockService {
         let batch;
         if (!data.id || data.id === 0) {
             // Create new batch with unique code
-            if (typeof data.size_id !== 'number' || !data.code) {
+            if (typeof data.size_id !== 'number') {
                 return {
                     status: 400,
-                    message: 'size_id and code are required to create a batch',
+                    message: 'size_id is required to create a batch',
                     data: null
                 };
             }
-            const uniqueCode = await this.generateUniqueCode(data.code);
+            // If code is not provided, generate a base code
+            let baseCode = data.code && data.code.trim() !== '' ? data.code : `BATCH_${Date.now()}`;
+            const uniqueCode = await this.generateUniqueCode(baseCode);
             batch = await prisma.batch.create({
                 data: {
                     product_id: data.product_id,
