@@ -128,6 +128,11 @@ export type user_role = $Result.DefaultSelection<Prisma.$user_rolePayload>
  * 
  */
 export type users = $Result.DefaultSelection<Prisma.$usersPayload>
+/**
+ * Model order_status
+ * 
+ */
+export type order_status = $Result.DefaultSelection<Prisma.$order_statusPayload>
 
 /**
  * ##  Prisma Client ʲˢ
@@ -476,6 +481,16 @@ export class PrismaClient<
     * ```
     */
   get users(): Prisma.usersDelegate<ExtArgs, ClientOptions>;
+
+  /**
+   * `prisma.order_status`: Exposes CRUD operations for the **order_status** model.
+    * Example usage:
+    * ```ts
+    * // Fetch zero or more Order_statuses
+    * const order_statuses = await prisma.order_status.findMany()
+    * ```
+    */
+  get order_status(): Prisma.order_statusDelegate<ExtArgs, ClientOptions>;
 }
 
 export namespace Prisma {
@@ -938,7 +953,8 @@ export namespace Prisma {
     status: 'status',
     supplier: 'supplier',
     user_role: 'user_role',
-    users: 'users'
+    users: 'users',
+    order_status: 'order_status'
   };
 
   export type ModelName = (typeof ModelName)[keyof typeof ModelName]
@@ -957,7 +973,7 @@ export namespace Prisma {
       omit: GlobalOmitOptions
     }
     meta: {
-      modelProps: "batch" | "card_details" | "category" | "city" | "gender" | "grn" | "grn_items" | "invoice" | "invoice_items" | "mother_plant_type" | "payment_method" | "pot" | "pot_batch" | "pot_images" | "pot_size" | "product" | "product_images" | "product_type" | "size" | "status" | "supplier" | "user_role" | "users"
+      modelProps: "batch" | "card_details" | "category" | "city" | "gender" | "grn" | "grn_items" | "invoice" | "invoice_items" | "mother_plant_type" | "payment_method" | "pot" | "pot_batch" | "pot_images" | "pot_size" | "product" | "product_images" | "product_type" | "size" | "status" | "supplier" | "user_role" | "users" | "order_status"
       txIsolationLevel: Prisma.TransactionIsolationLevel
     }
     model: {
@@ -2479,6 +2495,72 @@ export namespace Prisma {
           }
         }
       }
+      order_status: {
+        payload: Prisma.$order_statusPayload<ExtArgs>
+        fields: Prisma.order_statusFieldRefs
+        operations: {
+          findUnique: {
+            args: Prisma.order_statusFindUniqueArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$order_statusPayload> | null
+          }
+          findUniqueOrThrow: {
+            args: Prisma.order_statusFindUniqueOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$order_statusPayload>
+          }
+          findFirst: {
+            args: Prisma.order_statusFindFirstArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$order_statusPayload> | null
+          }
+          findFirstOrThrow: {
+            args: Prisma.order_statusFindFirstOrThrowArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$order_statusPayload>
+          }
+          findMany: {
+            args: Prisma.order_statusFindManyArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$order_statusPayload>[]
+          }
+          create: {
+            args: Prisma.order_statusCreateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$order_statusPayload>
+          }
+          createMany: {
+            args: Prisma.order_statusCreateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          delete: {
+            args: Prisma.order_statusDeleteArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$order_statusPayload>
+          }
+          update: {
+            args: Prisma.order_statusUpdateArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$order_statusPayload>
+          }
+          deleteMany: {
+            args: Prisma.order_statusDeleteManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          updateMany: {
+            args: Prisma.order_statusUpdateManyArgs<ExtArgs>
+            result: BatchPayload
+          }
+          upsert: {
+            args: Prisma.order_statusUpsertArgs<ExtArgs>
+            result: $Utils.PayloadToResult<Prisma.$order_statusPayload>
+          }
+          aggregate: {
+            args: Prisma.Order_statusAggregateArgs<ExtArgs>
+            result: $Utils.Optional<AggregateOrder_status>
+          }
+          groupBy: {
+            args: Prisma.order_statusGroupByArgs<ExtArgs>
+            result: $Utils.Optional<Order_statusGroupByOutputType>[]
+          }
+          count: {
+            args: Prisma.order_statusCountArgs<ExtArgs>
+            result: $Utils.Optional<Order_statusCountAggregateOutputType> | number
+          }
+        }
+      }
     }
   } & {
     other: {
@@ -2594,6 +2676,7 @@ export namespace Prisma {
     supplier?: supplierOmit
     user_role?: user_roleOmit
     users?: usersOmit
+    order_status?: order_statusOmit
   }
 
   /* Types for Logging */
@@ -3286,6 +3369,37 @@ export namespace Prisma {
    * UsersCountOutputType without action
    */
   export type UsersCountOutputTypeCountInvoiceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: invoiceWhereInput
+  }
+
+
+  /**
+   * Count Type Order_statusCountOutputType
+   */
+
+  export type Order_statusCountOutputType = {
+    invoice: number
+  }
+
+  export type Order_statusCountOutputTypeSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    invoice?: boolean | Order_statusCountOutputTypeCountInvoiceArgs
+  }
+
+  // Custom InputTypes
+  /**
+   * Order_statusCountOutputType without action
+   */
+  export type Order_statusCountOutputTypeDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the Order_statusCountOutputType
+     */
+    select?: Order_statusCountOutputTypeSelect<ExtArgs> | null
+  }
+
+  /**
+   * Order_statusCountOutputType without action
+   */
+  export type Order_statusCountOutputTypeCountInvoiceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     where?: invoiceWhereInput
   }
 
@@ -4360,43 +4474,43 @@ export namespace Prisma {
     id: number | null
     card_no: number | null
     payment_method_id: number | null
-    cvv: number | null
     users_id: number | null
+    cvv: number | null
   }
 
   export type Card_detailsSumAggregateOutputType = {
     id: number | null
     card_no: number | null
     payment_method_id: number | null
-    cvv: number | null
     users_id: number | null
+    cvv: number | null
   }
 
   export type Card_detailsMinAggregateOutputType = {
     id: number | null
     card_no: number | null
     payment_method_id: number | null
-    cvv: number | null
-    exp: string | null
     users_id: number | null
+    exp: string | null
+    cvv: number | null
   }
 
   export type Card_detailsMaxAggregateOutputType = {
     id: number | null
     card_no: number | null
     payment_method_id: number | null
-    cvv: number | null
-    exp: string | null
     users_id: number | null
+    exp: string | null
+    cvv: number | null
   }
 
   export type Card_detailsCountAggregateOutputType = {
     id: number
     card_no: number
     payment_method_id: number
-    cvv: number
-    exp: number
     users_id: number
+    exp: number
+    cvv: number
     _all: number
   }
 
@@ -4405,43 +4519,43 @@ export namespace Prisma {
     id?: true
     card_no?: true
     payment_method_id?: true
-    cvv?: true
     users_id?: true
+    cvv?: true
   }
 
   export type Card_detailsSumAggregateInputType = {
     id?: true
     card_no?: true
     payment_method_id?: true
-    cvv?: true
     users_id?: true
+    cvv?: true
   }
 
   export type Card_detailsMinAggregateInputType = {
     id?: true
     card_no?: true
     payment_method_id?: true
-    cvv?: true
-    exp?: true
     users_id?: true
+    exp?: true
+    cvv?: true
   }
 
   export type Card_detailsMaxAggregateInputType = {
     id?: true
     card_no?: true
     payment_method_id?: true
-    cvv?: true
-    exp?: true
     users_id?: true
+    exp?: true
+    cvv?: true
   }
 
   export type Card_detailsCountAggregateInputType = {
     id?: true
     card_no?: true
     payment_method_id?: true
-    cvv?: true
-    exp?: true
     users_id?: true
+    exp?: true
+    cvv?: true
     _all?: true
   }
 
@@ -4535,9 +4649,9 @@ export namespace Prisma {
     id: number
     card_no: number
     payment_method_id: number
-    cvv: number | null
-    exp: string | null
     users_id: number
+    exp: string | null
+    cvv: number | null
     _count: Card_detailsCountAggregateOutputType | null
     _avg: Card_detailsAvgAggregateOutputType | null
     _sum: Card_detailsSumAggregateOutputType | null
@@ -4563,9 +4677,9 @@ export namespace Prisma {
     id?: boolean
     card_no?: boolean
     payment_method_id?: boolean
-    cvv?: boolean
-    exp?: boolean
     users_id?: boolean
+    exp?: boolean
+    cvv?: boolean
     payment_method?: boolean | payment_methodDefaultArgs<ExtArgs>
     users?: boolean | usersDefaultArgs<ExtArgs>
   }, ExtArgs["result"]["card_details"]>
@@ -4576,12 +4690,12 @@ export namespace Prisma {
     id?: boolean
     card_no?: boolean
     payment_method_id?: boolean
-    cvv?: boolean
-    exp?: boolean
     users_id?: boolean
+    exp?: boolean
+    cvv?: boolean
   }
 
-  export type card_detailsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "card_no" | "payment_method_id" | "cvv" | "exp" | "users_id", ExtArgs["result"]["card_details"]>
+  export type card_detailsOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "card_no" | "payment_method_id" | "users_id" | "exp" | "cvv", ExtArgs["result"]["card_details"]>
   export type card_detailsInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     payment_method?: boolean | payment_methodDefaultArgs<ExtArgs>
     users?: boolean | usersDefaultArgs<ExtArgs>
@@ -4597,9 +4711,9 @@ export namespace Prisma {
       id: number
       card_no: number
       payment_method_id: number
-      cvv: number | null
-      exp: string | null
       users_id: number
+      exp: string | null
+      cvv: number | null
     }, ExtArgs["result"]["card_details"]>
     composites: {}
   }
@@ -4974,9 +5088,9 @@ export namespace Prisma {
     readonly id: FieldRef<"card_details", 'Int'>
     readonly card_no: FieldRef<"card_details", 'Int'>
     readonly payment_method_id: FieldRef<"card_details", 'Int'>
-    readonly cvv: FieldRef<"card_details", 'Int'>
-    readonly exp: FieldRef<"card_details", 'String'>
     readonly users_id: FieldRef<"card_details", 'Int'>
+    readonly exp: FieldRef<"card_details", 'String'>
+    readonly cvv: FieldRef<"card_details", 'Int'>
   }
     
 
@@ -10344,6 +10458,7 @@ export namespace Prisma {
     discount: number | null
     payment_method_id: number | null
     users_id: number | null
+    order_status_id: number | null
   }
 
   export type InvoiceSumAggregateOutputType = {
@@ -10353,6 +10468,7 @@ export namespace Prisma {
     discount: number | null
     payment_method_id: number | null
     users_id: number | null
+    order_status_id: number | null
   }
 
   export type InvoiceMinAggregateOutputType = {
@@ -10363,6 +10479,7 @@ export namespace Prisma {
     discount: number | null
     payment_method_id: number | null
     users_id: number | null
+    order_status_id: number | null
   }
 
   export type InvoiceMaxAggregateOutputType = {
@@ -10373,6 +10490,7 @@ export namespace Prisma {
     discount: number | null
     payment_method_id: number | null
     users_id: number | null
+    order_status_id: number | null
   }
 
   export type InvoiceCountAggregateOutputType = {
@@ -10383,6 +10501,7 @@ export namespace Prisma {
     discount: number
     payment_method_id: number
     users_id: number
+    order_status_id: number
     _all: number
   }
 
@@ -10394,6 +10513,7 @@ export namespace Prisma {
     discount?: true
     payment_method_id?: true
     users_id?: true
+    order_status_id?: true
   }
 
   export type InvoiceSumAggregateInputType = {
@@ -10403,6 +10523,7 @@ export namespace Prisma {
     discount?: true
     payment_method_id?: true
     users_id?: true
+    order_status_id?: true
   }
 
   export type InvoiceMinAggregateInputType = {
@@ -10413,6 +10534,7 @@ export namespace Prisma {
     discount?: true
     payment_method_id?: true
     users_id?: true
+    order_status_id?: true
   }
 
   export type InvoiceMaxAggregateInputType = {
@@ -10423,6 +10545,7 @@ export namespace Prisma {
     discount?: true
     payment_method_id?: true
     users_id?: true
+    order_status_id?: true
   }
 
   export type InvoiceCountAggregateInputType = {
@@ -10433,6 +10556,7 @@ export namespace Prisma {
     discount?: true
     payment_method_id?: true
     users_id?: true
+    order_status_id?: true
     _all?: true
   }
 
@@ -10530,6 +10654,7 @@ export namespace Prisma {
     discount: number
     payment_method_id: number
     users_id: number
+    order_status_id: number
     _count: InvoiceCountAggregateOutputType | null
     _avg: InvoiceAvgAggregateOutputType | null
     _sum: InvoiceSumAggregateOutputType | null
@@ -10559,6 +10684,8 @@ export namespace Prisma {
     discount?: boolean
     payment_method_id?: boolean
     users_id?: boolean
+    order_status_id?: boolean
+    order_status?: boolean | order_statusDefaultArgs<ExtArgs>
     payment_method?: boolean | payment_methodDefaultArgs<ExtArgs>
     users?: boolean | usersDefaultArgs<ExtArgs>
     invoice_items?: boolean | invoice$invoice_itemsArgs<ExtArgs>
@@ -10575,10 +10702,12 @@ export namespace Prisma {
     discount?: boolean
     payment_method_id?: boolean
     users_id?: boolean
+    order_status_id?: boolean
   }
 
-  export type invoiceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "total" | "qty" | "datetime" | "discount" | "payment_method_id" | "users_id", ExtArgs["result"]["invoice"]>
+  export type invoiceOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "total" | "qty" | "datetime" | "discount" | "payment_method_id" | "users_id" | "order_status_id", ExtArgs["result"]["invoice"]>
   export type invoiceInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    order_status?: boolean | order_statusDefaultArgs<ExtArgs>
     payment_method?: boolean | payment_methodDefaultArgs<ExtArgs>
     users?: boolean | usersDefaultArgs<ExtArgs>
     invoice_items?: boolean | invoice$invoice_itemsArgs<ExtArgs>
@@ -10588,6 +10717,7 @@ export namespace Prisma {
   export type $invoicePayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
     name: "invoice"
     objects: {
+      order_status: Prisma.$order_statusPayload<ExtArgs>
       payment_method: Prisma.$payment_methodPayload<ExtArgs>
       users: Prisma.$usersPayload<ExtArgs>
       invoice_items: Prisma.$invoice_itemsPayload<ExtArgs>[]
@@ -10600,6 +10730,7 @@ export namespace Prisma {
       discount: number
       payment_method_id: number
       users_id: number
+      order_status_id: number
     }, ExtArgs["result"]["invoice"]>
     composites: {}
   }
@@ -10940,6 +11071,7 @@ export namespace Prisma {
    */
   export interface Prisma__invoiceClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
     readonly [Symbol.toStringTag]: "PrismaPromise"
+    order_status<T extends order_statusDefaultArgs<ExtArgs> = {}>(args?: Subset<T, order_statusDefaultArgs<ExtArgs>>): Prisma__order_statusClient<$Result.GetResult<Prisma.$order_statusPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     payment_method<T extends payment_methodDefaultArgs<ExtArgs> = {}>(args?: Subset<T, payment_methodDefaultArgs<ExtArgs>>): Prisma__payment_methodClient<$Result.GetResult<Prisma.$payment_methodPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     users<T extends usersDefaultArgs<ExtArgs> = {}>(args?: Subset<T, usersDefaultArgs<ExtArgs>>): Prisma__usersClient<$Result.GetResult<Prisma.$usersPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions> | Null, Null, ExtArgs, GlobalOmitOptions>
     invoice_items<T extends invoice$invoice_itemsArgs<ExtArgs> = {}>(args?: Subset<T, invoice$invoice_itemsArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$invoice_itemsPayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
@@ -10979,6 +11111,7 @@ export namespace Prisma {
     readonly discount: FieldRef<"invoice", 'Float'>
     readonly payment_method_id: FieldRef<"invoice", 'Int'>
     readonly users_id: FieldRef<"invoice", 'Int'>
+    readonly order_status_id: FieldRef<"invoice", 'Int'>
   }
     
 
@@ -26362,6 +26495,962 @@ export namespace Prisma {
 
 
   /**
+   * Model order_status
+   */
+
+  export type AggregateOrder_status = {
+    _count: Order_statusCountAggregateOutputType | null
+    _avg: Order_statusAvgAggregateOutputType | null
+    _sum: Order_statusSumAggregateOutputType | null
+    _min: Order_statusMinAggregateOutputType | null
+    _max: Order_statusMaxAggregateOutputType | null
+  }
+
+  export type Order_statusAvgAggregateOutputType = {
+    id: number | null
+  }
+
+  export type Order_statusSumAggregateOutputType = {
+    id: number | null
+  }
+
+  export type Order_statusMinAggregateOutputType = {
+    id: number | null
+    name: string | null
+  }
+
+  export type Order_statusMaxAggregateOutputType = {
+    id: number | null
+    name: string | null
+  }
+
+  export type Order_statusCountAggregateOutputType = {
+    id: number
+    name: number
+    _all: number
+  }
+
+
+  export type Order_statusAvgAggregateInputType = {
+    id?: true
+  }
+
+  export type Order_statusSumAggregateInputType = {
+    id?: true
+  }
+
+  export type Order_statusMinAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type Order_statusMaxAggregateInputType = {
+    id?: true
+    name?: true
+  }
+
+  export type Order_statusCountAggregateInputType = {
+    id?: true
+    name?: true
+    _all?: true
+  }
+
+  export type Order_statusAggregateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which order_status to aggregate.
+     */
+    where?: order_statusWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of order_statuses to fetch.
+     */
+    orderBy?: order_statusOrderByWithRelationInput | order_statusOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the start position
+     */
+    cursor?: order_statusWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` order_statuses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` order_statuses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Count returned order_statuses
+    **/
+    _count?: true | Order_statusCountAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to average
+    **/
+    _avg?: Order_statusAvgAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to sum
+    **/
+    _sum?: Order_statusSumAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the minimum value
+    **/
+    _min?: Order_statusMinAggregateInputType
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/aggregations Aggregation Docs}
+     * 
+     * Select which fields to find the maximum value
+    **/
+    _max?: Order_statusMaxAggregateInputType
+  }
+
+  export type GetOrder_statusAggregateType<T extends Order_statusAggregateArgs> = {
+        [P in keyof T & keyof AggregateOrder_status]: P extends '_count' | 'count'
+      ? T[P] extends true
+        ? number
+        : GetScalarType<T[P], AggregateOrder_status[P]>
+      : GetScalarType<T[P], AggregateOrder_status[P]>
+  }
+
+
+
+
+  export type order_statusGroupByArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    where?: order_statusWhereInput
+    orderBy?: order_statusOrderByWithAggregationInput | order_statusOrderByWithAggregationInput[]
+    by: Order_statusScalarFieldEnum[] | Order_statusScalarFieldEnum
+    having?: order_statusScalarWhereWithAggregatesInput
+    take?: number
+    skip?: number
+    _count?: Order_statusCountAggregateInputType | true
+    _avg?: Order_statusAvgAggregateInputType
+    _sum?: Order_statusSumAggregateInputType
+    _min?: Order_statusMinAggregateInputType
+    _max?: Order_statusMaxAggregateInputType
+  }
+
+  export type Order_statusGroupByOutputType = {
+    id: number
+    name: string
+    _count: Order_statusCountAggregateOutputType | null
+    _avg: Order_statusAvgAggregateOutputType | null
+    _sum: Order_statusSumAggregateOutputType | null
+    _min: Order_statusMinAggregateOutputType | null
+    _max: Order_statusMaxAggregateOutputType | null
+  }
+
+  type GetOrder_statusGroupByPayload<T extends order_statusGroupByArgs> = Prisma.PrismaPromise<
+    Array<
+      PickEnumerable<Order_statusGroupByOutputType, T['by']> &
+        {
+          [P in ((keyof T) & (keyof Order_statusGroupByOutputType))]: P extends '_count'
+            ? T[P] extends boolean
+              ? number
+              : GetScalarType<T[P], Order_statusGroupByOutputType[P]>
+            : GetScalarType<T[P], Order_statusGroupByOutputType[P]>
+        }
+      >
+    >
+
+
+  export type order_statusSelect<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetSelect<{
+    id?: boolean
+    name?: boolean
+    invoice?: boolean | order_status$invoiceArgs<ExtArgs>
+    _count?: boolean | Order_statusCountOutputTypeDefaultArgs<ExtArgs>
+  }, ExtArgs["result"]["order_status"]>
+
+
+
+  export type order_statusSelectScalar = {
+    id?: boolean
+    name?: boolean
+  }
+
+  export type order_statusOmit<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = $Extensions.GetOmit<"id" | "name", ExtArgs["result"]["order_status"]>
+  export type order_statusInclude<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    invoice?: boolean | order_status$invoiceArgs<ExtArgs>
+    _count?: boolean | Order_statusCountOutputTypeDefaultArgs<ExtArgs>
+  }
+
+  export type $order_statusPayload<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    name: "order_status"
+    objects: {
+      invoice: Prisma.$invoicePayload<ExtArgs>[]
+    }
+    scalars: $Extensions.GetPayloadResult<{
+      id: number
+      name: string
+    }, ExtArgs["result"]["order_status"]>
+    composites: {}
+  }
+
+  type order_statusGetPayload<S extends boolean | null | undefined | order_statusDefaultArgs> = $Result.GetResult<Prisma.$order_statusPayload, S>
+
+  type order_statusCountArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> =
+    Omit<order_statusFindManyArgs, 'select' | 'include' | 'distinct' | 'omit'> & {
+      select?: Order_statusCountAggregateInputType | true
+    }
+
+  export interface order_statusDelegate<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> {
+    [K: symbol]: { types: Prisma.TypeMap<ExtArgs>['model']['order_status'], meta: { name: 'order_status' } }
+    /**
+     * Find zero or one Order_status that matches the filter.
+     * @param {order_statusFindUniqueArgs} args - Arguments to find a Order_status
+     * @example
+     * // Get one Order_status
+     * const order_status = await prisma.order_status.findUnique({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUnique<T extends order_statusFindUniqueArgs>(args: SelectSubset<T, order_statusFindUniqueArgs<ExtArgs>>): Prisma__order_statusClient<$Result.GetResult<Prisma.$order_statusPayload<ExtArgs>, T, "findUnique", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find one Order_status that matches the filter or throw an error with `error.code='P2025'`
+     * if no matches were found.
+     * @param {order_statusFindUniqueOrThrowArgs} args - Arguments to find a Order_status
+     * @example
+     * // Get one Order_status
+     * const order_status = await prisma.order_status.findUniqueOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findUniqueOrThrow<T extends order_statusFindUniqueOrThrowArgs>(args: SelectSubset<T, order_statusFindUniqueOrThrowArgs<ExtArgs>>): Prisma__order_statusClient<$Result.GetResult<Prisma.$order_statusPayload<ExtArgs>, T, "findUniqueOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Order_status that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {order_statusFindFirstArgs} args - Arguments to find a Order_status
+     * @example
+     * // Get one Order_status
+     * const order_status = await prisma.order_status.findFirst({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirst<T extends order_statusFindFirstArgs>(args?: SelectSubset<T, order_statusFindFirstArgs<ExtArgs>>): Prisma__order_statusClient<$Result.GetResult<Prisma.$order_statusPayload<ExtArgs>, T, "findFirst", GlobalOmitOptions> | null, null, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find the first Order_status that matches the filter or
+     * throw `PrismaKnownClientError` with `P2025` code if no matches were found.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {order_statusFindFirstOrThrowArgs} args - Arguments to find a Order_status
+     * @example
+     * // Get one Order_status
+     * const order_status = await prisma.order_status.findFirstOrThrow({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     */
+    findFirstOrThrow<T extends order_statusFindFirstOrThrowArgs>(args?: SelectSubset<T, order_statusFindFirstOrThrowArgs<ExtArgs>>): Prisma__order_statusClient<$Result.GetResult<Prisma.$order_statusPayload<ExtArgs>, T, "findFirstOrThrow", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Find zero or more Order_statuses that matches the filter.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {order_statusFindManyArgs} args - Arguments to filter and select certain fields only.
+     * @example
+     * // Get all Order_statuses
+     * const order_statuses = await prisma.order_status.findMany()
+     * 
+     * // Get first 10 Order_statuses
+     * const order_statuses = await prisma.order_status.findMany({ take: 10 })
+     * 
+     * // Only select the `id`
+     * const order_statusWithIdOnly = await prisma.order_status.findMany({ select: { id: true } })
+     * 
+     */
+    findMany<T extends order_statusFindManyArgs>(args?: SelectSubset<T, order_statusFindManyArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$order_statusPayload<ExtArgs>, T, "findMany", GlobalOmitOptions>>
+
+    /**
+     * Create a Order_status.
+     * @param {order_statusCreateArgs} args - Arguments to create a Order_status.
+     * @example
+     * // Create one Order_status
+     * const Order_status = await prisma.order_status.create({
+     *   data: {
+     *     // ... data to create a Order_status
+     *   }
+     * })
+     * 
+     */
+    create<T extends order_statusCreateArgs>(args: SelectSubset<T, order_statusCreateArgs<ExtArgs>>): Prisma__order_statusClient<$Result.GetResult<Prisma.$order_statusPayload<ExtArgs>, T, "create", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Create many Order_statuses.
+     * @param {order_statusCreateManyArgs} args - Arguments to create many Order_statuses.
+     * @example
+     * // Create many Order_statuses
+     * const order_status = await prisma.order_status.createMany({
+     *   data: [
+     *     // ... provide data here
+     *   ]
+     * })
+     *     
+     */
+    createMany<T extends order_statusCreateManyArgs>(args?: SelectSubset<T, order_statusCreateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Delete a Order_status.
+     * @param {order_statusDeleteArgs} args - Arguments to delete one Order_status.
+     * @example
+     * // Delete one Order_status
+     * const Order_status = await prisma.order_status.delete({
+     *   where: {
+     *     // ... filter to delete one Order_status
+     *   }
+     * })
+     * 
+     */
+    delete<T extends order_statusDeleteArgs>(args: SelectSubset<T, order_statusDeleteArgs<ExtArgs>>): Prisma__order_statusClient<$Result.GetResult<Prisma.$order_statusPayload<ExtArgs>, T, "delete", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Update one Order_status.
+     * @param {order_statusUpdateArgs} args - Arguments to update one Order_status.
+     * @example
+     * // Update one Order_status
+     * const order_status = await prisma.order_status.update({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    update<T extends order_statusUpdateArgs>(args: SelectSubset<T, order_statusUpdateArgs<ExtArgs>>): Prisma__order_statusClient<$Result.GetResult<Prisma.$order_statusPayload<ExtArgs>, T, "update", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+    /**
+     * Delete zero or more Order_statuses.
+     * @param {order_statusDeleteManyArgs} args - Arguments to filter Order_statuses to delete.
+     * @example
+     * // Delete a few Order_statuses
+     * const { count } = await prisma.order_status.deleteMany({
+     *   where: {
+     *     // ... provide filter here
+     *   }
+     * })
+     * 
+     */
+    deleteMany<T extends order_statusDeleteManyArgs>(args?: SelectSubset<T, order_statusDeleteManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Update zero or more Order_statuses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {order_statusUpdateManyArgs} args - Arguments to update one or more rows.
+     * @example
+     * // Update many Order_statuses
+     * const order_status = await prisma.order_status.updateMany({
+     *   where: {
+     *     // ... provide filter here
+     *   },
+     *   data: {
+     *     // ... provide data here
+     *   }
+     * })
+     * 
+     */
+    updateMany<T extends order_statusUpdateManyArgs>(args: SelectSubset<T, order_statusUpdateManyArgs<ExtArgs>>): Prisma.PrismaPromise<BatchPayload>
+
+    /**
+     * Create or update one Order_status.
+     * @param {order_statusUpsertArgs} args - Arguments to update or create a Order_status.
+     * @example
+     * // Update or create a Order_status
+     * const order_status = await prisma.order_status.upsert({
+     *   create: {
+     *     // ... data to create a Order_status
+     *   },
+     *   update: {
+     *     // ... in case it already exists, update
+     *   },
+     *   where: {
+     *     // ... the filter for the Order_status we want to update
+     *   }
+     * })
+     */
+    upsert<T extends order_statusUpsertArgs>(args: SelectSubset<T, order_statusUpsertArgs<ExtArgs>>): Prisma__order_statusClient<$Result.GetResult<Prisma.$order_statusPayload<ExtArgs>, T, "upsert", GlobalOmitOptions>, never, ExtArgs, GlobalOmitOptions>
+
+
+    /**
+     * Count the number of Order_statuses.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {order_statusCountArgs} args - Arguments to filter Order_statuses to count.
+     * @example
+     * // Count the number of Order_statuses
+     * const count = await prisma.order_status.count({
+     *   where: {
+     *     // ... the filter for the Order_statuses we want to count
+     *   }
+     * })
+    **/
+    count<T extends order_statusCountArgs>(
+      args?: Subset<T, order_statusCountArgs>,
+    ): Prisma.PrismaPromise<
+      T extends $Utils.Record<'select', any>
+        ? T['select'] extends true
+          ? number
+          : GetScalarType<T['select'], Order_statusCountAggregateOutputType>
+        : number
+    >
+
+    /**
+     * Allows you to perform aggregations operations on a Order_status.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {Order_statusAggregateArgs} args - Select which aggregations you would like to apply and on what fields.
+     * @example
+     * // Ordered by age ascending
+     * // Where email contains prisma.io
+     * // Limited to the 10 users
+     * const aggregations = await prisma.user.aggregate({
+     *   _avg: {
+     *     age: true,
+     *   },
+     *   where: {
+     *     email: {
+     *       contains: "prisma.io",
+     *     },
+     *   },
+     *   orderBy: {
+     *     age: "asc",
+     *   },
+     *   take: 10,
+     * })
+    **/
+    aggregate<T extends Order_statusAggregateArgs>(args: Subset<T, Order_statusAggregateArgs>): Prisma.PrismaPromise<GetOrder_statusAggregateType<T>>
+
+    /**
+     * Group by Order_status.
+     * Note, that providing `undefined` is treated as the value not being there.
+     * Read more here: https://pris.ly/d/null-undefined
+     * @param {order_statusGroupByArgs} args - Group by arguments.
+     * @example
+     * // Group by city, order by createdAt, get count
+     * const result = await prisma.user.groupBy({
+     *   by: ['city', 'createdAt'],
+     *   orderBy: {
+     *     createdAt: true
+     *   },
+     *   _count: {
+     *     _all: true
+     *   },
+     * })
+     * 
+    **/
+    groupBy<
+      T extends order_statusGroupByArgs,
+      HasSelectOrTake extends Or<
+        Extends<'skip', Keys<T>>,
+        Extends<'take', Keys<T>>
+      >,
+      OrderByArg extends True extends HasSelectOrTake
+        ? { orderBy: order_statusGroupByArgs['orderBy'] }
+        : { orderBy?: order_statusGroupByArgs['orderBy'] },
+      OrderFields extends ExcludeUnderscoreKeys<Keys<MaybeTupleToUnion<T['orderBy']>>>,
+      ByFields extends MaybeTupleToUnion<T['by']>,
+      ByValid extends Has<ByFields, OrderFields>,
+      HavingFields extends GetHavingFields<T['having']>,
+      HavingValid extends Has<ByFields, HavingFields>,
+      ByEmpty extends T['by'] extends never[] ? True : False,
+      InputErrors extends ByEmpty extends True
+      ? `Error: "by" must not be empty.`
+      : HavingValid extends False
+      ? {
+          [P in HavingFields]: P extends ByFields
+            ? never
+            : P extends string
+            ? `Error: Field "${P}" used in "having" needs to be provided in "by".`
+            : [
+                Error,
+                'Field ',
+                P,
+                ` in "having" needs to be provided in "by"`,
+              ]
+        }[HavingFields]
+      : 'take' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "take", you also need to provide "orderBy"'
+      : 'skip' extends Keys<T>
+      ? 'orderBy' extends Keys<T>
+        ? ByValid extends True
+          ? {}
+          : {
+              [P in OrderFields]: P extends ByFields
+                ? never
+                : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+            }[OrderFields]
+        : 'Error: If you provide "skip", you also need to provide "orderBy"'
+      : ByValid extends True
+      ? {}
+      : {
+          [P in OrderFields]: P extends ByFields
+            ? never
+            : `Error: Field "${P}" in "orderBy" needs to be provided in "by"`
+        }[OrderFields]
+    >(args: SubsetIntersection<T, order_statusGroupByArgs, OrderByArg> & InputErrors): {} extends InputErrors ? GetOrder_statusGroupByPayload<T> : Prisma.PrismaPromise<InputErrors>
+  /**
+   * Fields of the order_status model
+   */
+  readonly fields: order_statusFieldRefs;
+  }
+
+  /**
+   * The delegate class that acts as a "Promise-like" for order_status.
+   * Why is this prefixed with `Prisma__`?
+   * Because we want to prevent naming conflicts as mentioned in
+   * https://github.com/prisma/prisma-client-js/issues/707
+   */
+  export interface Prisma__order_statusClient<T, Null = never, ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs, GlobalOmitOptions = {}> extends Prisma.PrismaPromise<T> {
+    readonly [Symbol.toStringTag]: "PrismaPromise"
+    invoice<T extends order_status$invoiceArgs<ExtArgs> = {}>(args?: Subset<T, order_status$invoiceArgs<ExtArgs>>): Prisma.PrismaPromise<$Result.GetResult<Prisma.$invoicePayload<ExtArgs>, T, "findMany", GlobalOmitOptions> | Null>
+    /**
+     * Attaches callbacks for the resolution and/or rejection of the Promise.
+     * @param onfulfilled The callback to execute when the Promise is resolved.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of which ever callback is executed.
+     */
+    then<TResult1 = T, TResult2 = never>(onfulfilled?: ((value: T) => TResult1 | PromiseLike<TResult1>) | undefined | null, onrejected?: ((reason: any) => TResult2 | PromiseLike<TResult2>) | undefined | null): $Utils.JsPromise<TResult1 | TResult2>
+    /**
+     * Attaches a callback for only the rejection of the Promise.
+     * @param onrejected The callback to execute when the Promise is rejected.
+     * @returns A Promise for the completion of the callback.
+     */
+    catch<TResult = never>(onrejected?: ((reason: any) => TResult | PromiseLike<TResult>) | undefined | null): $Utils.JsPromise<T | TResult>
+    /**
+     * Attaches a callback that is invoked when the Promise is settled (fulfilled or rejected). The
+     * resolved value cannot be modified from the callback.
+     * @param onfinally The callback to execute when the Promise is settled (fulfilled or rejected).
+     * @returns A Promise for the completion of the callback.
+     */
+    finally(onfinally?: (() => void) | undefined | null): $Utils.JsPromise<T>
+  }
+
+
+
+
+  /**
+   * Fields of the order_status model
+   */
+  interface order_statusFieldRefs {
+    readonly id: FieldRef<"order_status", 'Int'>
+    readonly name: FieldRef<"order_status", 'String'>
+  }
+    
+
+  // Custom InputTypes
+  /**
+   * order_status findUnique
+   */
+  export type order_statusFindUniqueArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the order_status
+     */
+    select?: order_statusSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the order_status
+     */
+    omit?: order_statusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: order_statusInclude<ExtArgs> | null
+    /**
+     * Filter, which order_status to fetch.
+     */
+    where: order_statusWhereUniqueInput
+  }
+
+  /**
+   * order_status findUniqueOrThrow
+   */
+  export type order_statusFindUniqueOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the order_status
+     */
+    select?: order_statusSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the order_status
+     */
+    omit?: order_statusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: order_statusInclude<ExtArgs> | null
+    /**
+     * Filter, which order_status to fetch.
+     */
+    where: order_statusWhereUniqueInput
+  }
+
+  /**
+   * order_status findFirst
+   */
+  export type order_statusFindFirstArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the order_status
+     */
+    select?: order_statusSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the order_status
+     */
+    omit?: order_statusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: order_statusInclude<ExtArgs> | null
+    /**
+     * Filter, which order_status to fetch.
+     */
+    where?: order_statusWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of order_statuses to fetch.
+     */
+    orderBy?: order_statusOrderByWithRelationInput | order_statusOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for order_statuses.
+     */
+    cursor?: order_statusWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` order_statuses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` order_statuses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of order_statuses.
+     */
+    distinct?: Order_statusScalarFieldEnum | Order_statusScalarFieldEnum[]
+  }
+
+  /**
+   * order_status findFirstOrThrow
+   */
+  export type order_statusFindFirstOrThrowArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the order_status
+     */
+    select?: order_statusSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the order_status
+     */
+    omit?: order_statusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: order_statusInclude<ExtArgs> | null
+    /**
+     * Filter, which order_status to fetch.
+     */
+    where?: order_statusWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of order_statuses to fetch.
+     */
+    orderBy?: order_statusOrderByWithRelationInput | order_statusOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for searching for order_statuses.
+     */
+    cursor?: order_statusWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` order_statuses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` order_statuses.
+     */
+    skip?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/distinct Distinct Docs}
+     * 
+     * Filter by unique combinations of order_statuses.
+     */
+    distinct?: Order_statusScalarFieldEnum | Order_statusScalarFieldEnum[]
+  }
+
+  /**
+   * order_status findMany
+   */
+  export type order_statusFindManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the order_status
+     */
+    select?: order_statusSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the order_status
+     */
+    omit?: order_statusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: order_statusInclude<ExtArgs> | null
+    /**
+     * Filter, which order_statuses to fetch.
+     */
+    where?: order_statusWhereInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/sorting Sorting Docs}
+     * 
+     * Determine the order of order_statuses to fetch.
+     */
+    orderBy?: order_statusOrderByWithRelationInput | order_statusOrderByWithRelationInput[]
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination#cursor-based-pagination Cursor Docs}
+     * 
+     * Sets the position for listing order_statuses.
+     */
+    cursor?: order_statusWhereUniqueInput
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Take `±n` order_statuses from the position of the cursor.
+     */
+    take?: number
+    /**
+     * {@link https://www.prisma.io/docs/concepts/components/prisma-client/pagination Pagination Docs}
+     * 
+     * Skip the first `n` order_statuses.
+     */
+    skip?: number
+    distinct?: Order_statusScalarFieldEnum | Order_statusScalarFieldEnum[]
+  }
+
+  /**
+   * order_status create
+   */
+  export type order_statusCreateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the order_status
+     */
+    select?: order_statusSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the order_status
+     */
+    omit?: order_statusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: order_statusInclude<ExtArgs> | null
+    /**
+     * The data needed to create a order_status.
+     */
+    data: XOR<order_statusCreateInput, order_statusUncheckedCreateInput>
+  }
+
+  /**
+   * order_status createMany
+   */
+  export type order_statusCreateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to create many order_statuses.
+     */
+    data: order_statusCreateManyInput | order_statusCreateManyInput[]
+    skipDuplicates?: boolean
+  }
+
+  /**
+   * order_status update
+   */
+  export type order_statusUpdateArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the order_status
+     */
+    select?: order_statusSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the order_status
+     */
+    omit?: order_statusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: order_statusInclude<ExtArgs> | null
+    /**
+     * The data needed to update a order_status.
+     */
+    data: XOR<order_statusUpdateInput, order_statusUncheckedUpdateInput>
+    /**
+     * Choose, which order_status to update.
+     */
+    where: order_statusWhereUniqueInput
+  }
+
+  /**
+   * order_status updateMany
+   */
+  export type order_statusUpdateManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * The data used to update order_statuses.
+     */
+    data: XOR<order_statusUpdateManyMutationInput, order_statusUncheckedUpdateManyInput>
+    /**
+     * Filter which order_statuses to update
+     */
+    where?: order_statusWhereInput
+    /**
+     * Limit how many order_statuses to update.
+     */
+    limit?: number
+  }
+
+  /**
+   * order_status upsert
+   */
+  export type order_statusUpsertArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the order_status
+     */
+    select?: order_statusSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the order_status
+     */
+    omit?: order_statusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: order_statusInclude<ExtArgs> | null
+    /**
+     * The filter to search for the order_status to update in case it exists.
+     */
+    where: order_statusWhereUniqueInput
+    /**
+     * In case the order_status found by the `where` argument doesn't exist, create a new order_status with this data.
+     */
+    create: XOR<order_statusCreateInput, order_statusUncheckedCreateInput>
+    /**
+     * In case the order_status was found with the provided `where` argument, update it with this data.
+     */
+    update: XOR<order_statusUpdateInput, order_statusUncheckedUpdateInput>
+  }
+
+  /**
+   * order_status delete
+   */
+  export type order_statusDeleteArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the order_status
+     */
+    select?: order_statusSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the order_status
+     */
+    omit?: order_statusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: order_statusInclude<ExtArgs> | null
+    /**
+     * Filter which order_status to delete.
+     */
+    where: order_statusWhereUniqueInput
+  }
+
+  /**
+   * order_status deleteMany
+   */
+  export type order_statusDeleteManyArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Filter which order_statuses to delete
+     */
+    where?: order_statusWhereInput
+    /**
+     * Limit how many order_statuses to delete.
+     */
+    limit?: number
+  }
+
+  /**
+   * order_status.invoice
+   */
+  export type order_status$invoiceArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the invoice
+     */
+    select?: invoiceSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the invoice
+     */
+    omit?: invoiceOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: invoiceInclude<ExtArgs> | null
+    where?: invoiceWhereInput
+    orderBy?: invoiceOrderByWithRelationInput | invoiceOrderByWithRelationInput[]
+    cursor?: invoiceWhereUniqueInput
+    take?: number
+    skip?: number
+    distinct?: InvoiceScalarFieldEnum | InvoiceScalarFieldEnum[]
+  }
+
+  /**
+   * order_status without action
+   */
+  export type order_statusDefaultArgs<ExtArgs extends $Extensions.InternalArgs = $Extensions.DefaultArgs> = {
+    /**
+     * Select specific fields to fetch from the order_status
+     */
+    select?: order_statusSelect<ExtArgs> | null
+    /**
+     * Omit specific fields from the order_status
+     */
+    omit?: order_statusOmit<ExtArgs> | null
+    /**
+     * Choose, which related nodes to fetch as well
+     */
+    include?: order_statusInclude<ExtArgs> | null
+  }
+
+
+  /**
    * Enums
    */
 
@@ -26393,9 +27482,9 @@ export namespace Prisma {
     id: 'id',
     card_no: 'card_no',
     payment_method_id: 'payment_method_id',
-    cvv: 'cvv',
+    users_id: 'users_id',
     exp: 'exp',
-    users_id: 'users_id'
+    cvv: 'cvv'
   };
 
   export type Card_detailsScalarFieldEnum = (typeof Card_detailsScalarFieldEnum)[keyof typeof Card_detailsScalarFieldEnum]
@@ -26459,7 +27548,8 @@ export namespace Prisma {
     datetime: 'datetime',
     discount: 'discount',
     payment_method_id: 'payment_method_id',
-    users_id: 'users_id'
+    users_id: 'users_id',
+    order_status_id: 'order_status_id'
   };
 
   export type InvoiceScalarFieldEnum = (typeof InvoiceScalarFieldEnum)[keyof typeof InvoiceScalarFieldEnum]
@@ -26624,6 +27714,14 @@ export namespace Prisma {
   };
 
   export type UsersScalarFieldEnum = (typeof UsersScalarFieldEnum)[keyof typeof UsersScalarFieldEnum]
+
+
+  export const Order_statusScalarFieldEnum: {
+    id: 'id',
+    name: 'name'
+  };
+
+  export type Order_statusScalarFieldEnum = (typeof Order_statusScalarFieldEnum)[keyof typeof Order_statusScalarFieldEnum]
 
 
   export const SortOrder: {
@@ -26799,6 +27897,13 @@ export namespace Prisma {
   export type usersOrderByRelevanceFieldEnum = (typeof usersOrderByRelevanceFieldEnum)[keyof typeof usersOrderByRelevanceFieldEnum]
 
 
+  export const order_statusOrderByRelevanceFieldEnum: {
+    name: 'name'
+  };
+
+  export type order_statusOrderByRelevanceFieldEnum = (typeof order_statusOrderByRelevanceFieldEnum)[keyof typeof order_statusOrderByRelevanceFieldEnum]
+
+
   /**
    * Field references
    */
@@ -26928,9 +28033,9 @@ export namespace Prisma {
     id?: IntFilter<"card_details"> | number
     card_no?: IntFilter<"card_details"> | number
     payment_method_id?: IntFilter<"card_details"> | number
-    cvv?: IntNullableFilter<"card_details"> | number | null
-    exp?: StringNullableFilter<"card_details"> | string | null
     users_id?: IntFilter<"card_details"> | number
+    exp?: StringNullableFilter<"card_details"> | string | null
+    cvv?: IntNullableFilter<"card_details"> | number | null
     payment_method?: XOR<Payment_methodScalarRelationFilter, payment_methodWhereInput>
     users?: XOR<UsersScalarRelationFilter, usersWhereInput>
   }
@@ -26939,9 +28044,9 @@ export namespace Prisma {
     id?: SortOrder
     card_no?: SortOrder
     payment_method_id?: SortOrder
-    cvv?: SortOrderInput | SortOrder
-    exp?: SortOrderInput | SortOrder
     users_id?: SortOrder
+    exp?: SortOrderInput | SortOrder
+    cvv?: SortOrderInput | SortOrder
     payment_method?: payment_methodOrderByWithRelationInput
     users?: usersOrderByWithRelationInput
     _relevance?: card_detailsOrderByRelevanceInput
@@ -26954,9 +28059,9 @@ export namespace Prisma {
     NOT?: card_detailsWhereInput | card_detailsWhereInput[]
     card_no?: IntFilter<"card_details"> | number
     payment_method_id?: IntFilter<"card_details"> | number
-    cvv?: IntNullableFilter<"card_details"> | number | null
-    exp?: StringNullableFilter<"card_details"> | string | null
     users_id?: IntFilter<"card_details"> | number
+    exp?: StringNullableFilter<"card_details"> | string | null
+    cvv?: IntNullableFilter<"card_details"> | number | null
     payment_method?: XOR<Payment_methodScalarRelationFilter, payment_methodWhereInput>
     users?: XOR<UsersScalarRelationFilter, usersWhereInput>
   }, "id">
@@ -26965,9 +28070,9 @@ export namespace Prisma {
     id?: SortOrder
     card_no?: SortOrder
     payment_method_id?: SortOrder
-    cvv?: SortOrderInput | SortOrder
-    exp?: SortOrderInput | SortOrder
     users_id?: SortOrder
+    exp?: SortOrderInput | SortOrder
+    cvv?: SortOrderInput | SortOrder
     _count?: card_detailsCountOrderByAggregateInput
     _avg?: card_detailsAvgOrderByAggregateInput
     _max?: card_detailsMaxOrderByAggregateInput
@@ -26982,9 +28087,9 @@ export namespace Prisma {
     id?: IntWithAggregatesFilter<"card_details"> | number
     card_no?: IntWithAggregatesFilter<"card_details"> | number
     payment_method_id?: IntWithAggregatesFilter<"card_details"> | number
-    cvv?: IntNullableWithAggregatesFilter<"card_details"> | number | null
-    exp?: StringNullableWithAggregatesFilter<"card_details"> | string | null
     users_id?: IntWithAggregatesFilter<"card_details"> | number
+    exp?: StringNullableWithAggregatesFilter<"card_details"> | string | null
+    cvv?: IntNullableWithAggregatesFilter<"card_details"> | number | null
   }
 
   export type categoryWhereInput = {
@@ -27282,6 +28387,8 @@ export namespace Prisma {
     discount?: FloatFilter<"invoice"> | number
     payment_method_id?: IntFilter<"invoice"> | number
     users_id?: IntFilter<"invoice"> | number
+    order_status_id?: IntFilter<"invoice"> | number
+    order_status?: XOR<Order_statusScalarRelationFilter, order_statusWhereInput>
     payment_method?: XOR<Payment_methodScalarRelationFilter, payment_methodWhereInput>
     users?: XOR<UsersScalarRelationFilter, usersWhereInput>
     invoice_items?: Invoice_itemsListRelationFilter
@@ -27295,6 +28402,8 @@ export namespace Prisma {
     discount?: SortOrder
     payment_method_id?: SortOrder
     users_id?: SortOrder
+    order_status_id?: SortOrder
+    order_status?: order_statusOrderByWithRelationInput
     payment_method?: payment_methodOrderByWithRelationInput
     users?: usersOrderByWithRelationInput
     invoice_items?: invoice_itemsOrderByRelationAggregateInput
@@ -27311,6 +28420,8 @@ export namespace Prisma {
     discount?: FloatFilter<"invoice"> | number
     payment_method_id?: IntFilter<"invoice"> | number
     users_id?: IntFilter<"invoice"> | number
+    order_status_id?: IntFilter<"invoice"> | number
+    order_status?: XOR<Order_statusScalarRelationFilter, order_statusWhereInput>
     payment_method?: XOR<Payment_methodScalarRelationFilter, payment_methodWhereInput>
     users?: XOR<UsersScalarRelationFilter, usersWhereInput>
     invoice_items?: Invoice_itemsListRelationFilter
@@ -27324,6 +28435,7 @@ export namespace Prisma {
     discount?: SortOrder
     payment_method_id?: SortOrder
     users_id?: SortOrder
+    order_status_id?: SortOrder
     _count?: invoiceCountOrderByAggregateInput
     _avg?: invoiceAvgOrderByAggregateInput
     _max?: invoiceMaxOrderByAggregateInput
@@ -27342,6 +28454,7 @@ export namespace Prisma {
     discount?: FloatWithAggregatesFilter<"invoice"> | number
     payment_method_id?: IntWithAggregatesFilter<"invoice"> | number
     users_id?: IntWithAggregatesFilter<"invoice"> | number
+    order_status_id?: IntWithAggregatesFilter<"invoice"> | number
   }
 
   export type invoice_itemsWhereInput = {
@@ -28244,6 +29357,49 @@ export namespace Prisma {
     status_id?: IntWithAggregatesFilter<"users"> | number
   }
 
+  export type order_statusWhereInput = {
+    AND?: order_statusWhereInput | order_statusWhereInput[]
+    OR?: order_statusWhereInput[]
+    NOT?: order_statusWhereInput | order_statusWhereInput[]
+    id?: IntFilter<"order_status"> | number
+    name?: StringFilter<"order_status"> | string
+    invoice?: InvoiceListRelationFilter
+  }
+
+  export type order_statusOrderByWithRelationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    invoice?: invoiceOrderByRelationAggregateInput
+    _relevance?: order_statusOrderByRelevanceInput
+  }
+
+  export type order_statusWhereUniqueInput = Prisma.AtLeast<{
+    id?: number
+    AND?: order_statusWhereInput | order_statusWhereInput[]
+    OR?: order_statusWhereInput[]
+    NOT?: order_statusWhereInput | order_statusWhereInput[]
+    name?: StringFilter<"order_status"> | string
+    invoice?: InvoiceListRelationFilter
+  }, "id">
+
+  export type order_statusOrderByWithAggregationInput = {
+    id?: SortOrder
+    name?: SortOrder
+    _count?: order_statusCountOrderByAggregateInput
+    _avg?: order_statusAvgOrderByAggregateInput
+    _max?: order_statusMaxOrderByAggregateInput
+    _min?: order_statusMinOrderByAggregateInput
+    _sum?: order_statusSumOrderByAggregateInput
+  }
+
+  export type order_statusScalarWhereWithAggregatesInput = {
+    AND?: order_statusScalarWhereWithAggregatesInput | order_statusScalarWhereWithAggregatesInput[]
+    OR?: order_statusScalarWhereWithAggregatesInput[]
+    NOT?: order_statusScalarWhereWithAggregatesInput | order_statusScalarWhereWithAggregatesInput[]
+    id?: IntWithAggregatesFilter<"order_status"> | number
+    name?: StringWithAggregatesFilter<"order_status"> | string
+  }
+
   export type batchCreateInput = {
     qty: number
     price: number
@@ -28322,8 +29478,8 @@ export namespace Prisma {
 
   export type card_detailsCreateInput = {
     card_no: number
-    cvv?: number | null
     exp?: string | null
+    cvv?: number | null
     payment_method: payment_methodCreateNestedOneWithoutCard_detailsInput
     users: usersCreateNestedOneWithoutCard_detailsInput
   }
@@ -28332,15 +29488,15 @@ export namespace Prisma {
     id?: number
     card_no: number
     payment_method_id: number
-    cvv?: number | null
-    exp?: string | null
     users_id: number
+    exp?: string | null
+    cvv?: number | null
   }
 
   export type card_detailsUpdateInput = {
     card_no?: IntFieldUpdateOperationsInput | number
-    cvv?: NullableIntFieldUpdateOperationsInput | number | null
     exp?: NullableStringFieldUpdateOperationsInput | string | null
+    cvv?: NullableIntFieldUpdateOperationsInput | number | null
     payment_method?: payment_methodUpdateOneRequiredWithoutCard_detailsNestedInput
     users?: usersUpdateOneRequiredWithoutCard_detailsNestedInput
   }
@@ -28349,33 +29505,33 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     card_no?: IntFieldUpdateOperationsInput | number
     payment_method_id?: IntFieldUpdateOperationsInput | number
-    cvv?: NullableIntFieldUpdateOperationsInput | number | null
-    exp?: NullableStringFieldUpdateOperationsInput | string | null
     users_id?: IntFieldUpdateOperationsInput | number
+    exp?: NullableStringFieldUpdateOperationsInput | string | null
+    cvv?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type card_detailsCreateManyInput = {
     id?: number
     card_no: number
     payment_method_id: number
-    cvv?: number | null
-    exp?: string | null
     users_id: number
+    exp?: string | null
+    cvv?: number | null
   }
 
   export type card_detailsUpdateManyMutationInput = {
     card_no?: IntFieldUpdateOperationsInput | number
-    cvv?: NullableIntFieldUpdateOperationsInput | number | null
     exp?: NullableStringFieldUpdateOperationsInput | string | null
+    cvv?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type card_detailsUncheckedUpdateManyInput = {
     id?: IntFieldUpdateOperationsInput | number
     card_no?: IntFieldUpdateOperationsInput | number
     payment_method_id?: IntFieldUpdateOperationsInput | number
-    cvv?: NullableIntFieldUpdateOperationsInput | number | null
-    exp?: NullableStringFieldUpdateOperationsInput | string | null
     users_id?: IntFieldUpdateOperationsInput | number
+    exp?: NullableStringFieldUpdateOperationsInput | string | null
+    cvv?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type categoryCreateInput = {
@@ -28640,6 +29796,7 @@ export namespace Prisma {
     qty: number
     datetime: Date | string
     discount: number
+    order_status?: order_statusCreateNestedOneWithoutInvoiceInput
     payment_method: payment_methodCreateNestedOneWithoutInvoiceInput
     users: usersCreateNestedOneWithoutInvoiceInput
     invoice_items?: invoice_itemsCreateNestedManyWithoutInvoiceInput
@@ -28653,6 +29810,7 @@ export namespace Prisma {
     discount: number
     payment_method_id: number
     users_id: number
+    order_status_id?: number
     invoice_items?: invoice_itemsUncheckedCreateNestedManyWithoutInvoiceInput
   }
 
@@ -28661,6 +29819,7 @@ export namespace Prisma {
     qty?: FloatFieldUpdateOperationsInput | number
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     discount?: FloatFieldUpdateOperationsInput | number
+    order_status?: order_statusUpdateOneRequiredWithoutInvoiceNestedInput
     payment_method?: payment_methodUpdateOneRequiredWithoutInvoiceNestedInput
     users?: usersUpdateOneRequiredWithoutInvoiceNestedInput
     invoice_items?: invoice_itemsUpdateManyWithoutInvoiceNestedInput
@@ -28674,6 +29833,7 @@ export namespace Prisma {
     discount?: FloatFieldUpdateOperationsInput | number
     payment_method_id?: IntFieldUpdateOperationsInput | number
     users_id?: IntFieldUpdateOperationsInput | number
+    order_status_id?: IntFieldUpdateOperationsInput | number
     invoice_items?: invoice_itemsUncheckedUpdateManyWithoutInvoiceNestedInput
   }
 
@@ -28685,6 +29845,7 @@ export namespace Prisma {
     discount: number
     payment_method_id: number
     users_id: number
+    order_status_id?: number
   }
 
   export type invoiceUpdateManyMutationInput = {
@@ -28702,6 +29863,7 @@ export namespace Prisma {
     discount?: FloatFieldUpdateOperationsInput | number
     payment_method_id?: IntFieldUpdateOperationsInput | number
     users_id?: IntFieldUpdateOperationsInput | number
+    order_status_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type invoice_itemsCreateInput = {
@@ -29524,6 +30686,42 @@ export namespace Prisma {
     status_id?: IntFieldUpdateOperationsInput | number
   }
 
+  export type order_statusCreateInput = {
+    name: string
+    invoice?: invoiceCreateNestedManyWithoutOrder_statusInput
+  }
+
+  export type order_statusUncheckedCreateInput = {
+    id?: number
+    name: string
+    invoice?: invoiceUncheckedCreateNestedManyWithoutOrder_statusInput
+  }
+
+  export type order_statusUpdateInput = {
+    name?: StringFieldUpdateOperationsInput | string
+    invoice?: invoiceUpdateManyWithoutOrder_statusNestedInput
+  }
+
+  export type order_statusUncheckedUpdateInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+    invoice?: invoiceUncheckedUpdateManyWithoutOrder_statusNestedInput
+  }
+
+  export type order_statusCreateManyInput = {
+    id?: number
+    name: string
+  }
+
+  export type order_statusUpdateManyMutationInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type order_statusUncheckedUpdateManyInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
   export type IntFilter<$PrismaModel = never> = {
     equals?: number | IntFieldRefInput<$PrismaModel>
     in?: number[]
@@ -29757,43 +30955,43 @@ export namespace Prisma {
     id?: SortOrder
     card_no?: SortOrder
     payment_method_id?: SortOrder
-    cvv?: SortOrder
-    exp?: SortOrder
     users_id?: SortOrder
+    exp?: SortOrder
+    cvv?: SortOrder
   }
 
   export type card_detailsAvgOrderByAggregateInput = {
     id?: SortOrder
     card_no?: SortOrder
     payment_method_id?: SortOrder
-    cvv?: SortOrder
     users_id?: SortOrder
+    cvv?: SortOrder
   }
 
   export type card_detailsMaxOrderByAggregateInput = {
     id?: SortOrder
     card_no?: SortOrder
     payment_method_id?: SortOrder
-    cvv?: SortOrder
-    exp?: SortOrder
     users_id?: SortOrder
+    exp?: SortOrder
+    cvv?: SortOrder
   }
 
   export type card_detailsMinOrderByAggregateInput = {
     id?: SortOrder
     card_no?: SortOrder
     payment_method_id?: SortOrder
-    cvv?: SortOrder
-    exp?: SortOrder
     users_id?: SortOrder
+    exp?: SortOrder
+    cvv?: SortOrder
   }
 
   export type card_detailsSumOrderByAggregateInput = {
     id?: SortOrder
     card_no?: SortOrder
     payment_method_id?: SortOrder
-    cvv?: SortOrder
     users_id?: SortOrder
+    cvv?: SortOrder
   }
 
   export type IntNullableWithAggregatesFilter<$PrismaModel = never> = {
@@ -30086,6 +31284,11 @@ export namespace Prisma {
     grn_id?: SortOrder
   }
 
+  export type Order_statusScalarRelationFilter = {
+    is?: order_statusWhereInput
+    isNot?: order_statusWhereInput
+  }
+
   export type Invoice_itemsListRelationFilter = {
     every?: invoice_itemsWhereInput
     some?: invoice_itemsWhereInput
@@ -30104,6 +31307,7 @@ export namespace Prisma {
     discount?: SortOrder
     payment_method_id?: SortOrder
     users_id?: SortOrder
+    order_status_id?: SortOrder
   }
 
   export type invoiceAvgOrderByAggregateInput = {
@@ -30113,6 +31317,7 @@ export namespace Prisma {
     discount?: SortOrder
     payment_method_id?: SortOrder
     users_id?: SortOrder
+    order_status_id?: SortOrder
   }
 
   export type invoiceMaxOrderByAggregateInput = {
@@ -30123,6 +31328,7 @@ export namespace Prisma {
     discount?: SortOrder
     payment_method_id?: SortOrder
     users_id?: SortOrder
+    order_status_id?: SortOrder
   }
 
   export type invoiceMinOrderByAggregateInput = {
@@ -30133,6 +31339,7 @@ export namespace Prisma {
     discount?: SortOrder
     payment_method_id?: SortOrder
     users_id?: SortOrder
+    order_status_id?: SortOrder
   }
 
   export type invoiceSumOrderByAggregateInput = {
@@ -30142,6 +31349,7 @@ export namespace Prisma {
     discount?: SortOrder
     payment_method_id?: SortOrder
     users_id?: SortOrder
+    order_status_id?: SortOrder
   }
 
   export type InvoiceScalarRelationFilter = {
@@ -30872,6 +32080,35 @@ export namespace Prisma {
     status_id?: SortOrder
   }
 
+  export type order_statusOrderByRelevanceInput = {
+    fields: order_statusOrderByRelevanceFieldEnum | order_statusOrderByRelevanceFieldEnum[]
+    sort: SortOrder
+    search: string
+  }
+
+  export type order_statusCountOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type order_statusAvgOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
+  export type order_statusMaxOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type order_statusMinOrderByAggregateInput = {
+    id?: SortOrder
+    name?: SortOrder
+  }
+
+  export type order_statusSumOrderByAggregateInput = {
+    id?: SortOrder
+  }
+
   export type productCreateNestedOneWithoutBatchInput = {
     create?: XOR<productCreateWithoutBatchInput, productUncheckedCreateWithoutBatchInput>
     connectOrCreate?: productCreateOrConnectWithoutBatchInput
@@ -31314,6 +32551,12 @@ export namespace Prisma {
     update?: XOR<XOR<product_typeUpdateToOneWithWhereWithoutGrn_itemsInput, product_typeUpdateWithoutGrn_itemsInput>, product_typeUncheckedUpdateWithoutGrn_itemsInput>
   }
 
+  export type order_statusCreateNestedOneWithoutInvoiceInput = {
+    create?: XOR<order_statusCreateWithoutInvoiceInput, order_statusUncheckedCreateWithoutInvoiceInput>
+    connectOrCreate?: order_statusCreateOrConnectWithoutInvoiceInput
+    connect?: order_statusWhereUniqueInput
+  }
+
   export type payment_methodCreateNestedOneWithoutInvoiceInput = {
     create?: XOR<payment_methodCreateWithoutInvoiceInput, payment_methodUncheckedCreateWithoutInvoiceInput>
     connectOrCreate?: payment_methodCreateOrConnectWithoutInvoiceInput
@@ -31338,6 +32581,14 @@ export namespace Prisma {
     connectOrCreate?: invoice_itemsCreateOrConnectWithoutInvoiceInput | invoice_itemsCreateOrConnectWithoutInvoiceInput[]
     createMany?: invoice_itemsCreateManyInvoiceInputEnvelope
     connect?: invoice_itemsWhereUniqueInput | invoice_itemsWhereUniqueInput[]
+  }
+
+  export type order_statusUpdateOneRequiredWithoutInvoiceNestedInput = {
+    create?: XOR<order_statusCreateWithoutInvoiceInput, order_statusUncheckedCreateWithoutInvoiceInput>
+    connectOrCreate?: order_statusCreateOrConnectWithoutInvoiceInput
+    upsert?: order_statusUpsertWithoutInvoiceInput
+    connect?: order_statusWhereUniqueInput
+    update?: XOR<XOR<order_statusUpdateToOneWithWhereWithoutInvoiceInput, order_statusUpdateWithoutInvoiceInput>, order_statusUncheckedUpdateWithoutInvoiceInput>
   }
 
   export type payment_methodUpdateOneRequiredWithoutInvoiceNestedInput = {
@@ -32309,6 +33560,48 @@ export namespace Prisma {
     connect?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
     update?: invoiceUpdateWithWhereUniqueWithoutUsersInput | invoiceUpdateWithWhereUniqueWithoutUsersInput[]
     updateMany?: invoiceUpdateManyWithWhereWithoutUsersInput | invoiceUpdateManyWithWhereWithoutUsersInput[]
+    deleteMany?: invoiceScalarWhereInput | invoiceScalarWhereInput[]
+  }
+
+  export type invoiceCreateNestedManyWithoutOrder_statusInput = {
+    create?: XOR<invoiceCreateWithoutOrder_statusInput, invoiceUncheckedCreateWithoutOrder_statusInput> | invoiceCreateWithoutOrder_statusInput[] | invoiceUncheckedCreateWithoutOrder_statusInput[]
+    connectOrCreate?: invoiceCreateOrConnectWithoutOrder_statusInput | invoiceCreateOrConnectWithoutOrder_statusInput[]
+    createMany?: invoiceCreateManyOrder_statusInputEnvelope
+    connect?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+  }
+
+  export type invoiceUncheckedCreateNestedManyWithoutOrder_statusInput = {
+    create?: XOR<invoiceCreateWithoutOrder_statusInput, invoiceUncheckedCreateWithoutOrder_statusInput> | invoiceCreateWithoutOrder_statusInput[] | invoiceUncheckedCreateWithoutOrder_statusInput[]
+    connectOrCreate?: invoiceCreateOrConnectWithoutOrder_statusInput | invoiceCreateOrConnectWithoutOrder_statusInput[]
+    createMany?: invoiceCreateManyOrder_statusInputEnvelope
+    connect?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+  }
+
+  export type invoiceUpdateManyWithoutOrder_statusNestedInput = {
+    create?: XOR<invoiceCreateWithoutOrder_statusInput, invoiceUncheckedCreateWithoutOrder_statusInput> | invoiceCreateWithoutOrder_statusInput[] | invoiceUncheckedCreateWithoutOrder_statusInput[]
+    connectOrCreate?: invoiceCreateOrConnectWithoutOrder_statusInput | invoiceCreateOrConnectWithoutOrder_statusInput[]
+    upsert?: invoiceUpsertWithWhereUniqueWithoutOrder_statusInput | invoiceUpsertWithWhereUniqueWithoutOrder_statusInput[]
+    createMany?: invoiceCreateManyOrder_statusInputEnvelope
+    set?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+    disconnect?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+    delete?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+    connect?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+    update?: invoiceUpdateWithWhereUniqueWithoutOrder_statusInput | invoiceUpdateWithWhereUniqueWithoutOrder_statusInput[]
+    updateMany?: invoiceUpdateManyWithWhereWithoutOrder_statusInput | invoiceUpdateManyWithWhereWithoutOrder_statusInput[]
+    deleteMany?: invoiceScalarWhereInput | invoiceScalarWhereInput[]
+  }
+
+  export type invoiceUncheckedUpdateManyWithoutOrder_statusNestedInput = {
+    create?: XOR<invoiceCreateWithoutOrder_statusInput, invoiceUncheckedCreateWithoutOrder_statusInput> | invoiceCreateWithoutOrder_statusInput[] | invoiceUncheckedCreateWithoutOrder_statusInput[]
+    connectOrCreate?: invoiceCreateOrConnectWithoutOrder_statusInput | invoiceCreateOrConnectWithoutOrder_statusInput[]
+    upsert?: invoiceUpsertWithWhereUniqueWithoutOrder_statusInput | invoiceUpsertWithWhereUniqueWithoutOrder_statusInput[]
+    createMany?: invoiceCreateManyOrder_statusInputEnvelope
+    set?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+    disconnect?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+    delete?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+    connect?: invoiceWhereUniqueInput | invoiceWhereUniqueInput[]
+    update?: invoiceUpdateWithWhereUniqueWithoutOrder_statusInput | invoiceUpdateWithWhereUniqueWithoutOrder_statusInput[]
+    updateMany?: invoiceUpdateManyWithWhereWithoutOrder_statusInput | invoiceUpdateManyWithWhereWithoutOrder_statusInput[]
     deleteMany?: invoiceScalarWhereInput | invoiceScalarWhereInput[]
   }
 
@@ -33380,6 +34673,20 @@ export namespace Prisma {
     invoice_items?: invoice_itemsUncheckedUpdateManyWithoutProduct_typeNestedInput
   }
 
+  export type order_statusCreateWithoutInvoiceInput = {
+    name: string
+  }
+
+  export type order_statusUncheckedCreateWithoutInvoiceInput = {
+    id?: number
+    name: string
+  }
+
+  export type order_statusCreateOrConnectWithoutInvoiceInput = {
+    where: order_statusWhereUniqueInput
+    create: XOR<order_statusCreateWithoutInvoiceInput, order_statusUncheckedCreateWithoutInvoiceInput>
+  }
+
   export type payment_methodCreateWithoutInvoiceInput = {
     name: string
     card_details?: card_detailsCreateNestedManyWithoutPayment_methodInput
@@ -33463,6 +34770,26 @@ export namespace Prisma {
   export type invoice_itemsCreateManyInvoiceInputEnvelope = {
     data: invoice_itemsCreateManyInvoiceInput | invoice_itemsCreateManyInvoiceInput[]
     skipDuplicates?: boolean
+  }
+
+  export type order_statusUpsertWithoutInvoiceInput = {
+    update: XOR<order_statusUpdateWithoutInvoiceInput, order_statusUncheckedUpdateWithoutInvoiceInput>
+    create: XOR<order_statusCreateWithoutInvoiceInput, order_statusUncheckedCreateWithoutInvoiceInput>
+    where?: order_statusWhereInput
+  }
+
+  export type order_statusUpdateToOneWithWhereWithoutInvoiceInput = {
+    where?: order_statusWhereInput
+    data: XOR<order_statusUpdateWithoutInvoiceInput, order_statusUncheckedUpdateWithoutInvoiceInput>
+  }
+
+  export type order_statusUpdateWithoutInvoiceInput = {
+    name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type order_statusUncheckedUpdateWithoutInvoiceInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    name?: StringFieldUpdateOperationsInput | string
   }
 
   export type payment_methodUpsertWithoutInvoiceInput = {
@@ -33568,6 +34895,7 @@ export namespace Prisma {
     qty: number
     datetime: Date | string
     discount: number
+    order_status?: order_statusCreateNestedOneWithoutInvoiceInput
     payment_method: payment_methodCreateNestedOneWithoutInvoiceInput
     users: usersCreateNestedOneWithoutInvoiceInput
   }
@@ -33580,6 +34908,7 @@ export namespace Prisma {
     discount: number
     payment_method_id: number
     users_id: number
+    order_status_id?: number
   }
 
   export type invoiceCreateOrConnectWithoutInvoice_itemsInput = {
@@ -33619,6 +34948,7 @@ export namespace Prisma {
     qty?: FloatFieldUpdateOperationsInput | number
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     discount?: FloatFieldUpdateOperationsInput | number
+    order_status?: order_statusUpdateOneRequiredWithoutInvoiceNestedInput
     payment_method?: payment_methodUpdateOneRequiredWithoutInvoiceNestedInput
     users?: usersUpdateOneRequiredWithoutInvoiceNestedInput
   }
@@ -33631,6 +34961,7 @@ export namespace Prisma {
     discount?: FloatFieldUpdateOperationsInput | number
     payment_method_id?: IntFieldUpdateOperationsInput | number
     users_id?: IntFieldUpdateOperationsInput | number
+    order_status_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type product_typeUpsertWithoutInvoice_itemsInput = {
@@ -33700,17 +35031,17 @@ export namespace Prisma {
 
   export type card_detailsCreateWithoutPayment_methodInput = {
     card_no: number
-    cvv?: number | null
     exp?: string | null
+    cvv?: number | null
     users: usersCreateNestedOneWithoutCard_detailsInput
   }
 
   export type card_detailsUncheckedCreateWithoutPayment_methodInput = {
     id?: number
     card_no: number
-    cvv?: number | null
-    exp?: string | null
     users_id: number
+    exp?: string | null
+    cvv?: number | null
   }
 
   export type card_detailsCreateOrConnectWithoutPayment_methodInput = {
@@ -33728,6 +35059,7 @@ export namespace Prisma {
     qty: number
     datetime: Date | string
     discount: number
+    order_status?: order_statusCreateNestedOneWithoutInvoiceInput
     users: usersCreateNestedOneWithoutInvoiceInput
     invoice_items?: invoice_itemsCreateNestedManyWithoutInvoiceInput
   }
@@ -33739,6 +35071,7 @@ export namespace Prisma {
     datetime: Date | string
     discount: number
     users_id: number
+    order_status_id?: number
     invoice_items?: invoice_itemsUncheckedCreateNestedManyWithoutInvoiceInput
   }
 
@@ -33775,9 +35108,9 @@ export namespace Prisma {
     id?: IntFilter<"card_details"> | number
     card_no?: IntFilter<"card_details"> | number
     payment_method_id?: IntFilter<"card_details"> | number
-    cvv?: IntNullableFilter<"card_details"> | number | null
-    exp?: StringNullableFilter<"card_details"> | string | null
     users_id?: IntFilter<"card_details"> | number
+    exp?: StringNullableFilter<"card_details"> | string | null
+    cvv?: IntNullableFilter<"card_details"> | number | null
   }
 
   export type invoiceUpsertWithWhereUniqueWithoutPayment_methodInput = {
@@ -33807,6 +35140,7 @@ export namespace Prisma {
     discount?: FloatFilter<"invoice"> | number
     payment_method_id?: IntFilter<"invoice"> | number
     users_id?: IntFilter<"invoice"> | number
+    order_status_id?: IntFilter<"invoice"> | number
   }
 
   export type pot_batchCreateWithoutPotInput = {
@@ -34769,8 +36103,8 @@ export namespace Prisma {
 
   export type card_detailsCreateWithoutUsersInput = {
     card_no: number
-    cvv?: number | null
     exp?: string | null
+    cvv?: number | null
     payment_method: payment_methodCreateNestedOneWithoutCard_detailsInput
   }
 
@@ -34778,8 +36112,8 @@ export namespace Prisma {
     id?: number
     card_no: number
     payment_method_id: number
-    cvv?: number | null
     exp?: string | null
+    cvv?: number | null
   }
 
   export type card_detailsCreateOrConnectWithoutUsersInput = {
@@ -34824,6 +36158,7 @@ export namespace Prisma {
     qty: number
     datetime: Date | string
     discount: number
+    order_status?: order_statusCreateNestedOneWithoutInvoiceInput
     payment_method: payment_methodCreateNestedOneWithoutInvoiceInput
     invoice_items?: invoice_itemsCreateNestedManyWithoutInvoiceInput
   }
@@ -34835,6 +36170,7 @@ export namespace Prisma {
     datetime: Date | string
     discount: number
     payment_method_id: number
+    order_status_id?: number
     invoice_items?: invoice_itemsUncheckedCreateNestedManyWithoutInvoiceInput
   }
 
@@ -35042,6 +36378,53 @@ export namespace Prisma {
   export type user_roleUncheckedUpdateWithoutUsersInput = {
     id?: IntFieldUpdateOperationsInput | number
     name?: StringFieldUpdateOperationsInput | string
+  }
+
+  export type invoiceCreateWithoutOrder_statusInput = {
+    total: number
+    qty: number
+    datetime: Date | string
+    discount: number
+    payment_method: payment_methodCreateNestedOneWithoutInvoiceInput
+    users: usersCreateNestedOneWithoutInvoiceInput
+    invoice_items?: invoice_itemsCreateNestedManyWithoutInvoiceInput
+  }
+
+  export type invoiceUncheckedCreateWithoutOrder_statusInput = {
+    id?: number
+    total: number
+    qty: number
+    datetime: Date | string
+    discount: number
+    payment_method_id: number
+    users_id: number
+    invoice_items?: invoice_itemsUncheckedCreateNestedManyWithoutInvoiceInput
+  }
+
+  export type invoiceCreateOrConnectWithoutOrder_statusInput = {
+    where: invoiceWhereUniqueInput
+    create: XOR<invoiceCreateWithoutOrder_statusInput, invoiceUncheckedCreateWithoutOrder_statusInput>
+  }
+
+  export type invoiceCreateManyOrder_statusInputEnvelope = {
+    data: invoiceCreateManyOrder_statusInput | invoiceCreateManyOrder_statusInput[]
+    skipDuplicates?: boolean
+  }
+
+  export type invoiceUpsertWithWhereUniqueWithoutOrder_statusInput = {
+    where: invoiceWhereUniqueInput
+    update: XOR<invoiceUpdateWithoutOrder_statusInput, invoiceUncheckedUpdateWithoutOrder_statusInput>
+    create: XOR<invoiceCreateWithoutOrder_statusInput, invoiceUncheckedCreateWithoutOrder_statusInput>
+  }
+
+  export type invoiceUpdateWithWhereUniqueWithoutOrder_statusInput = {
+    where: invoiceWhereUniqueInput
+    data: XOR<invoiceUpdateWithoutOrder_statusInput, invoiceUncheckedUpdateWithoutOrder_statusInput>
+  }
+
+  export type invoiceUpdateManyWithWhereWithoutOrder_statusInput = {
+    where: invoiceScalarWhereInput
+    data: XOR<invoiceUpdateManyMutationInput, invoiceUncheckedUpdateManyWithoutOrder_statusInput>
   }
 
   export type product_imagesCreateManyBatchInput = {
@@ -35442,9 +36825,9 @@ export namespace Prisma {
   export type card_detailsCreateManyPayment_methodInput = {
     id?: number
     card_no: number
-    cvv?: number | null
-    exp?: string | null
     users_id: number
+    exp?: string | null
+    cvv?: number | null
   }
 
   export type invoiceCreateManyPayment_methodInput = {
@@ -35454,29 +36837,30 @@ export namespace Prisma {
     datetime: Date | string
     discount: number
     users_id: number
+    order_status_id?: number
   }
 
   export type card_detailsUpdateWithoutPayment_methodInput = {
     card_no?: IntFieldUpdateOperationsInput | number
-    cvv?: NullableIntFieldUpdateOperationsInput | number | null
     exp?: NullableStringFieldUpdateOperationsInput | string | null
+    cvv?: NullableIntFieldUpdateOperationsInput | number | null
     users?: usersUpdateOneRequiredWithoutCard_detailsNestedInput
   }
 
   export type card_detailsUncheckedUpdateWithoutPayment_methodInput = {
     id?: IntFieldUpdateOperationsInput | number
     card_no?: IntFieldUpdateOperationsInput | number
-    cvv?: NullableIntFieldUpdateOperationsInput | number | null
-    exp?: NullableStringFieldUpdateOperationsInput | string | null
     users_id?: IntFieldUpdateOperationsInput | number
+    exp?: NullableStringFieldUpdateOperationsInput | string | null
+    cvv?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type card_detailsUncheckedUpdateManyWithoutPayment_methodInput = {
     id?: IntFieldUpdateOperationsInput | number
     card_no?: IntFieldUpdateOperationsInput | number
-    cvv?: NullableIntFieldUpdateOperationsInput | number | null
-    exp?: NullableStringFieldUpdateOperationsInput | string | null
     users_id?: IntFieldUpdateOperationsInput | number
+    exp?: NullableStringFieldUpdateOperationsInput | string | null
+    cvv?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type invoiceUpdateWithoutPayment_methodInput = {
@@ -35484,6 +36868,7 @@ export namespace Prisma {
     qty?: FloatFieldUpdateOperationsInput | number
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     discount?: FloatFieldUpdateOperationsInput | number
+    order_status?: order_statusUpdateOneRequiredWithoutInvoiceNestedInput
     users?: usersUpdateOneRequiredWithoutInvoiceNestedInput
     invoice_items?: invoice_itemsUpdateManyWithoutInvoiceNestedInput
   }
@@ -35495,6 +36880,7 @@ export namespace Prisma {
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     discount?: FloatFieldUpdateOperationsInput | number
     users_id?: IntFieldUpdateOperationsInput | number
+    order_status_id?: IntFieldUpdateOperationsInput | number
     invoice_items?: invoice_itemsUncheckedUpdateManyWithoutInvoiceNestedInput
   }
 
@@ -35505,6 +36891,7 @@ export namespace Prisma {
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     discount?: FloatFieldUpdateOperationsInput | number
     users_id?: IntFieldUpdateOperationsInput | number
+    order_status_id?: IntFieldUpdateOperationsInput | number
   }
 
   export type pot_batchCreateManyPotInput = {
@@ -35988,8 +37375,8 @@ export namespace Prisma {
     id?: number
     card_no: number
     payment_method_id: number
-    cvv?: number | null
     exp?: string | null
+    cvv?: number | null
   }
 
   export type grnCreateManyUsersInput = {
@@ -36007,12 +37394,13 @@ export namespace Prisma {
     datetime: Date | string
     discount: number
     payment_method_id: number
+    order_status_id?: number
   }
 
   export type card_detailsUpdateWithoutUsersInput = {
     card_no?: IntFieldUpdateOperationsInput | number
-    cvv?: NullableIntFieldUpdateOperationsInput | number | null
     exp?: NullableStringFieldUpdateOperationsInput | string | null
+    cvv?: NullableIntFieldUpdateOperationsInput | number | null
     payment_method?: payment_methodUpdateOneRequiredWithoutCard_detailsNestedInput
   }
 
@@ -36020,16 +37408,16 @@ export namespace Prisma {
     id?: IntFieldUpdateOperationsInput | number
     card_no?: IntFieldUpdateOperationsInput | number
     payment_method_id?: IntFieldUpdateOperationsInput | number
-    cvv?: NullableIntFieldUpdateOperationsInput | number | null
     exp?: NullableStringFieldUpdateOperationsInput | string | null
+    cvv?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type card_detailsUncheckedUpdateManyWithoutUsersInput = {
     id?: IntFieldUpdateOperationsInput | number
     card_no?: IntFieldUpdateOperationsInput | number
     payment_method_id?: IntFieldUpdateOperationsInput | number
-    cvv?: NullableIntFieldUpdateOperationsInput | number | null
     exp?: NullableStringFieldUpdateOperationsInput | string | null
+    cvv?: NullableIntFieldUpdateOperationsInput | number | null
   }
 
   export type grnUpdateWithoutUsersInput = {
@@ -36062,6 +37450,7 @@ export namespace Prisma {
     qty?: FloatFieldUpdateOperationsInput | number
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     discount?: FloatFieldUpdateOperationsInput | number
+    order_status?: order_statusUpdateOneRequiredWithoutInvoiceNestedInput
     payment_method?: payment_methodUpdateOneRequiredWithoutInvoiceNestedInput
     invoice_items?: invoice_itemsUpdateManyWithoutInvoiceNestedInput
   }
@@ -36073,6 +37462,7 @@ export namespace Prisma {
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     discount?: FloatFieldUpdateOperationsInput | number
     payment_method_id?: IntFieldUpdateOperationsInput | number
+    order_status_id?: IntFieldUpdateOperationsInput | number
     invoice_items?: invoice_itemsUncheckedUpdateManyWithoutInvoiceNestedInput
   }
 
@@ -36083,6 +37473,48 @@ export namespace Prisma {
     datetime?: DateTimeFieldUpdateOperationsInput | Date | string
     discount?: FloatFieldUpdateOperationsInput | number
     payment_method_id?: IntFieldUpdateOperationsInput | number
+    order_status_id?: IntFieldUpdateOperationsInput | number
+  }
+
+  export type invoiceCreateManyOrder_statusInput = {
+    id?: number
+    total: number
+    qty: number
+    datetime: Date | string
+    discount: number
+    payment_method_id: number
+    users_id: number
+  }
+
+  export type invoiceUpdateWithoutOrder_statusInput = {
+    total?: FloatFieldUpdateOperationsInput | number
+    qty?: FloatFieldUpdateOperationsInput | number
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    discount?: FloatFieldUpdateOperationsInput | number
+    payment_method?: payment_methodUpdateOneRequiredWithoutInvoiceNestedInput
+    users?: usersUpdateOneRequiredWithoutInvoiceNestedInput
+    invoice_items?: invoice_itemsUpdateManyWithoutInvoiceNestedInput
+  }
+
+  export type invoiceUncheckedUpdateWithoutOrder_statusInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    total?: FloatFieldUpdateOperationsInput | number
+    qty?: FloatFieldUpdateOperationsInput | number
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    discount?: FloatFieldUpdateOperationsInput | number
+    payment_method_id?: IntFieldUpdateOperationsInput | number
+    users_id?: IntFieldUpdateOperationsInput | number
+    invoice_items?: invoice_itemsUncheckedUpdateManyWithoutInvoiceNestedInput
+  }
+
+  export type invoiceUncheckedUpdateManyWithoutOrder_statusInput = {
+    id?: IntFieldUpdateOperationsInput | number
+    total?: FloatFieldUpdateOperationsInput | number
+    qty?: FloatFieldUpdateOperationsInput | number
+    datetime?: DateTimeFieldUpdateOperationsInput | Date | string
+    discount?: FloatFieldUpdateOperationsInput | number
+    payment_method_id?: IntFieldUpdateOperationsInput | number
+    users_id?: IntFieldUpdateOperationsInput | number
   }
 
 
