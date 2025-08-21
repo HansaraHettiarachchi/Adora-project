@@ -19,54 +19,50 @@ export const getTypeFromDay = (days: number): string => {
     return `per ${days} days`;
 }
 
-class AwtUtil {
-    static decodeToken(token: string): DecodedUserData | null {
-        try {
-            const decoded = jwtDecode(token) as {
-                sub: string;
-                email: string;
-                user_role_id: string | number;
-                username: string;
-                status: string | number;
-                exp?: number;
-            };
+class JwtUtil {
+  static decodeToken(token: string): DecodedUserData | null {
+    try {
+      const decoded = jwtDecode(token) as DecodedUserData;
+      return decoded;
+    } catch (error) {
+      console.error("Token decode failed:", error);
+      return null;
+    }
+  }
 
-            return {
-                userId: decoded.sub,
-                email: decoded.email,
-                roleId: Number(decoded.user_role_id),
-                username: decoded.username,
-                status: Number(decoded.status),
-                exp: decoded.exp
-            };
-        } catch (error) {
-            console.error("Token decode failed:", error);
-            return null;
-        }
+  static validateToken(token: string | null): boolean {
+    if (!token) {
+      console.warn("JWT Token is missing");
+      return false;
     }
 
-    static validateToken(token: string | null): boolean {
-        if (!token) {
-            console.warn("Awt Token is missing");
-            return false;
-        }
-        const data = this.decodeToken(token);
-        if (!data) return false;
+    const data = this.decodeToken(token);
+    if (!data) return false;
 
-        const currentTimestamp = Math.floor(Date.now() / 1000);
+    const currentTimestamp = Math.floor(Date.now() / 1000);
 
-        if (data.exp && data.exp < currentTimestamp) {
-            console.warn("Token has expired");
-            return false;
-        }
-
-        if (!data.userId || !data.email || !data.roleId || !data.username || data.status == null) {
-            console.warn("Token is missing required claims");
-            return false;
-        }
-
-        return true;
+    if (data.exp && data.exp < currentTimestamp) {
+      console.warn("Token has expired");
+      return false;
     }
+
+    // Validate essential fields
+    const requiredFields = [
+      data.id,
+      data.email,
+      data.fname,
+      data.lname,
+      data.user_role_id,
+      data.status_id
+    ];
+
+    if (requiredFields.some(field => field === undefined || field === null)) {
+      console.warn("Token is missing required claims");
+      return false;
+    }
+
+    return true;
+  }
 }
 
-export default AwtUtil;
+export default JwtUtil;

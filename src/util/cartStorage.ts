@@ -26,14 +26,23 @@ export const clearCart = () => {
 };
 
 // update quantity for a product
-// export const updateQuantity = (id: number, qty: number) => {
-//   const cart = getCart(qty == 0 ? "wishlist" : "cart");
-//   const idx = cart.findIndex((item: any) => item.id === id);
-//   if (idx !== -1) {
-//     cart[idx].quantity = Math.max(1, qty); // don’t allow 0
-//     localStorage.setItem("cart", JSON.stringify(cart));
-//   }
-// };
+export const updateQuantity = (id: number, qty: number, type: "cart" | "wishlist") => {
+  const cart = getCart(type);
+  const idx = cart.findIndex((item: Cart_Product) => item.p_id === id);
+  if (idx !== -1) {
+    cart[idx].qty = Math.max(1, qty);
+    localStorage.setItem(type, JSON.stringify(cart));
+  }
+};
+
+export const setBatchId = (product_id: number, batch_id: number, type: "cart" | "wishlist") => {
+  const items = getCart(type);
+  const idx = items.findIndex((item: Cart_Product) => item.p_id === product_id);
+  if (idx !== -1) {
+    (items[idx] as any).batch_id = batch_id;
+    localStorage.setItem(type, JSON.stringify(items));
+  }
+};
 
 // remove product from cart
 export const removeFromCart = (p_id: number, type: string): boolean => {

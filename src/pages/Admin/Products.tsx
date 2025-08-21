@@ -173,7 +173,12 @@ const Products: React.FC = () => {
               Previous
             </Button>
             <span className="fw-bold" style={{ color: "#51984A" }}>
-              | 1 | 2 | 3 | 4 | 5 |...
+              {Array.from({ length: 5 }, (_, i) => (
+                <React.Fragment key={i}>
+                  {i !== 0 && " | "}
+                  <b>{i + 1}</b>
+                </React.Fragment>
+              ))}
             </span>
             <Button
               variant="outline-none"
