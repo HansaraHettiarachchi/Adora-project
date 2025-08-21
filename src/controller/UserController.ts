@@ -2,6 +2,7 @@ import path from "path";
 import { UserService } from "../service/UserService.js";
 import type { Response, User } from "../types/EntityType.js";
 import { FileUploader } from "../util/FileUploader.js";
+import type { UserErr } from "../types/ErrorType.js"; // Make sure to import your error type
 
 export class UserController {
 	private userService: UserService = new UserService();
@@ -17,6 +18,70 @@ export class UserController {
 	}
 
 	async setUser(data: User): Promise<Response> {
+		const errors: UserErr = {};
+
+		if (!data.fname || typeof data.fname !== "string" || data.fname.trim().length === 0) {
+			errors.fname = "First name is required.";
+		} else if (data.fname.length > 45) {
+			errors.fname = "First name must not exceed 45 characters.";
+		}
+
+		if (!data.lname || typeof data.lname !== "string" || data.lname.trim().length === 0) {
+			errors.lname = "Last name is required.";
+		} else if (data.lname.length > 45) {
+			errors.lname = "Last name must not exceed 45 characters.";
+		}
+
+		if (!data.address || typeof data.address !== "string" || data.address.trim().length === 0) {
+			errors.address = "Address is required.";
+		} else if (data.address.length > 100) {
+			errors.address = "Address must not exceed 100 characters.";
+		}
+
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+		if (!data.email || !emailRegex.test(data.email)) {
+			errors.email = "Valid email is required.";
+		} else if (data.email.length > 100) {
+			errors.email = "Email must not exceed 100 characters.";
+		}
+
+		if (!data.password || typeof data.password !== "string" || data.password.length < 8) {
+			errors.password = "Password must be at least 8 characters.";
+		} else if (data.password.length > 20) {
+			errors.password = "Password must not exceed 100 characters.";
+		}
+
+		if (typeof data.gender_id !== "number") {
+			errors.gender_id = "Gender ID is required and must be a number.";
+		}
+
+		if (typeof data.city_id !== "number") {
+			errors.city_id = "City ID is required and must be a number.";
+		}
+
+		if (!data.nic || typeof data.nic !== "string" || data.nic.trim().length === 0) {
+			errors.nic = "NIC is required.";
+		} else if (data.nic.length > 20) {
+			errors.nic = "NIC must not exceed 20 characters.";
+		}
+
+		const mobileRegex = /^\d{10,20}$/;
+		if (!data.mobile || !mobileRegex.test(data.mobile)) {
+			errors.mobile = "Valid mobile number is required (10-20 digits).";
+		} else if (data.mobile.length > 20) {
+			errors.mobile = "Mobile number must not exceed 20 characters.";
+		}
+
+		if (Object.keys(errors).length > 0) {
+			const response: Response = {
+				status: 208,
+				message: "Validation failed",
+				data: errors
+			};
+			return response;
+		}
+		data.status_id = 1;
+		data.user_role_id = 4;
 
 		return this.userService.createUser(data);
 	}

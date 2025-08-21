@@ -14,12 +14,16 @@ export class UserService {
         const isMatch = await bcrypt.compare(password, user.password);
         if (!isMatch) return null;
 
+        user.password = "Oyata Seethalada..Thanikama Danenawada..?";
         return generateToken(user, '30d');
     }
     private prisma: PrismaClient = new PrismaClient();
 
     async getUserById(userId: number): Promise<User | null> {
-        return this.prisma.users.findUnique({ where: { id: userId } });
+        const user = await this.prisma.users.findUnique({ where: { id: userId } });
+        if (!user) return null;
+        const { password, ...userWithoutPassword } = user as any;
+        return userWithoutPassword as User;
     }
 
     async getAllUsers(): Promise<User[]> {
@@ -44,7 +48,6 @@ export class UserService {
 
     async createUser(userData: User): Promise<Response> {
         try {
-            // Check for existing user by email, mobile, or NIC (if provided)
             const existingUser = await this.prisma.users.findFirst({
                 where: {
                     OR: [
@@ -68,15 +71,16 @@ export class UserService {
                 }
 
                 return {
-                    status: 409,
+                    status: 208,
                     data: errors,
                     message: "error"
                 };
             }
 
             userData.password = await bcrypt.hash(userData.password, 12);
+            const { confirmPassword, ...userDataWithoutConfirm } = userData as any;
             await this.prisma.users.create({
-                data: userData
+                data: userDataWithoutConfirm
             });
 
             return {
@@ -143,10 +147,11 @@ export class UserService {
                 data.p_img = uniqueName;
             }
 
-            data.password = await bcrypt.hash(data.password, 12);
+            const { password, user_role_id, status_id, confirmPassword, ...updateData } = data as any;
+
             await this.prisma.users.update({
                 where: { id: data.id },
-                data: data
+                data: updateData
             });
 
             return {
