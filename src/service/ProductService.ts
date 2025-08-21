@@ -217,6 +217,7 @@ export class ProductService {
                 batch: {
                     include: {
                         product_images: true,
+                        size: true
                     },
                 },
             },
@@ -228,10 +229,12 @@ export class ProductService {
                 data: null
             };
         }
-        // Restructure batches and images
+        // Restructure batches and images, replace size_id with size object
         const batches = Array.isArray(product.batch)
-            ? product.batch.map((batch: Batch & { product_images?: ProductImage[] }) => ({
+            ? product.batch.map((batch: Batch & { product_images?: ProductImage[], size?: any }) => ({
                 ...batch,
+                size: batch.size ? { id: batch.size.id, name: batch.size.size } : null,
+                size_id: undefined,
                 images: batch.product_images ?? [],
             }))
             : [];

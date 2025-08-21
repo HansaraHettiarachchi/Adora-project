@@ -44,7 +44,6 @@ export class UserService {
 
     async createUser(userData: User): Promise<Response> {
         try {
-            // Check for existing user by email, mobile, or NIC (if provided)
             const existingUser = await this.prisma.users.findFirst({
                 where: {
                     OR: [
@@ -68,15 +67,16 @@ export class UserService {
                 }
 
                 return {
-                    status: 409,
+                    status: 208,
                     data: errors,
                     message: "error"
                 };
             }
 
             userData.password = await bcrypt.hash(userData.password, 12);
+            const { confirmPassword, ...userDataWithoutConfirm } = userData as any;
             await this.prisma.users.create({
-                data: userData
+                data: userDataWithoutConfirm
             });
 
             return {
