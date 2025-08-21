@@ -19,7 +19,9 @@ export type Product = {
 //   exp?: number;
 // }
 
-export type DecodedUserData = {
+
+
+export type User = {
   id: number;
   fname: string;
   lname: string;
@@ -35,6 +37,8 @@ export type DecodedUserData = {
   p_img?: string | null;
   exp?: number;
 };
+
+export type DecodedUserData = User;
 
 export interface AuthProps {
   children?: ReactNode;

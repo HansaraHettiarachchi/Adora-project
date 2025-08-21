@@ -145,8 +145,6 @@ const SignupForm: React.FC = () => {
 
       await axiosInstance.post("/users/set-user", trimmedData).then((res) => {
 
-        console.log(res.data);
-
         if (res.data.message == "success") {
           Swal.fire({
             title: "Signup Successful",

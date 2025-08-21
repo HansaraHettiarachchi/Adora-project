@@ -5,6 +5,7 @@ import AuthFooter from './AuthFooter';
 import AuthTitle from './AuthTitle';
 import axiosInstance from '../../util/axiosUtil';
 import Swal from 'sweetalert2';
+import JwtUtil from '../../util/JwtUtil';
 
 const LoginForm: React.FC = () => {
   const navigate = useNavigate();
@@ -33,9 +34,41 @@ const LoginForm: React.FC = () => {
           confirmButtonColor: '#23B540',
           confirmButtonText: 'Continue'
         }).then(() => {
-          
-          console.log(localStorage.getItem("jwtToken"));
-          navigate('/home');
+
+          const token = response.data.token;
+          let userRoleId = 0;
+          if (token) {
+            try {
+              const payload = JwtUtil.decodeToken(token);
+              console.log(payload);
+              
+              userRoleId = payload?.user_role_id || 4;
+            } catch (err) {
+              navigate('/home');
+              return;
+            }
+          }
+
+          if (userRoleId <= 3) {
+            Swal.fire({
+              title: 'Choose Your Dashboard',
+              text: 'You have admin privileges. Where would you like to go?',
+              icon: 'question',
+              showCancelButton: true,
+              confirmButtonText: 'Go to Admin Panel',
+              cancelButtonText: 'Continue to Website',
+              confirmButtonColor: '#23B540',
+              cancelButtonColor: '#3085d6'
+            }).then((result) => {
+              if (result.isConfirmed) {
+                navigate('/admin');
+              } else {
+                navigate('/home');
+              }
+            });
+          } else {
+            navigate('/home');
+          }
         });
       } else {
         Swal.fire({

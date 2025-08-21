@@ -19,7 +19,7 @@ export const getTypeFromDay = (days: number): string => {
     return `per ${days} days`;
 }
 
-class AwtUtil {
+class JwtUtil {
   static decodeToken(token: string): DecodedUserData | null {
     try {
       const decoded = jwtDecode(token) as DecodedUserData;
@@ -65,4 +65,4 @@ class AwtUtil {
   }
 }
 
-export default AwtUtil;
+export default JwtUtil;
