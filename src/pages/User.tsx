@@ -8,13 +8,13 @@ import UserEdit from '../components/User/UserEdit';
 
 const User: React.FC = () => {
 
-  const [showEditProfile, setShowEditProfile] = useState<boolean>(true);
+  const [showEditProfile, setShowEditProfile] = useState<boolean>(false);
 
   return (
     <>
       <UserHeader />
       <Container>
-        {showEditProfile ? <UserEdit /> : <UserProfile  />}
+        {showEditProfile ? <UserEdit /> : <UserProfile />}
       </Container>
 
     </>

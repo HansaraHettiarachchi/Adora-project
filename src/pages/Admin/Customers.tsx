@@ -1,6 +1,8 @@
 import React, { useState, useEffect } from "react";
 import { Card, Form, Button, Table, Spinner, Alert } from "react-bootstrap";
 import { FaEdit, FaTrash, FaSave, FaTimes } from "react-icons/fa";
+import axiosInstance from "../../util/axiosUtil";
+import type { User } from "../../types/EntitiesTypes";
 
 interface Customer {
   id: string;
@@ -17,45 +19,34 @@ const Customers: React.FC = () => {
 
   const [editId, setEditId] = useState<string | null>(null);
   const [editForm, setEditForm] = useState<Partial<Customer>>({});
+  const [page, setPage] = useState(1);
+  const [pageSize] = useState(10);
+  const [totalPages, setTotalPages] = useState(1);
 
   useEffect(() => {
     async function fetchCustomers() {
       try {
         setLoading(true);
         setError(null);
+        const params: any = {
+          page,
+          pageSize,
+        };
 
-        const data: Customer[] = [
-          {
-            id: "CI001",
-            name: "Atheef Salam",
-            email: "atheefsalam@gmail.com",
-            contact: "+94 729883619",
-          },
-          {
-            id: "CI002",
-            name: "Mohamed Mukarram",
-            email: "mukarram123@gmail.com",
-            contact: "+94 765974585",
-          },
-          {
-            id: "CI003",
-            name: "Hansara Hettiyarachchi",
-            email: "hansara256@gmail.com",
-            contact: "+94 766336412",
-          },
-          {
-            id: "CI004",
-            name: "Nipuni Navindya",
-            email: "nipuni789@gmail.com",
-            contact: "+94 759638465",
-          },
-          {
-            id: "CI005",
-            name: "Dulanka Nimsara",
-            email: "dulanka456@gmail.com",
-            contact: "+94 719634528",
-          },
-        ];
+        const data: Customer[] = [];
+        await axiosInstance.get('/users/get-all-users', { params }).then((res) => {
+          for (const user of res.data.data as User[]) {
+            data.push({
+              id: user.id.toString(),
+              name: user.fname + " " + user.lname,
+              email: user.email,
+              contact: user.mobile,
+            });
+          }
+          // Assume API returns total count as res.data.totalCount
+          const totalCount = res.data.totalCount || data.length;
+          setTotalPages(Math.max(1, Math.ceil(totalCount / pageSize)));
+        }).catch((e) => console.error(e));
 
         setCustomers(data);
       } catch (err) {
@@ -65,7 +56,14 @@ const Customers: React.FC = () => {
       }
     }
     fetchCustomers();
-  }, []);
+  }, [page, pageSize]);
+  // Pagination handlers
+  const handlePrevious = () => {
+    if (page > 1) setPage(page - 1);
+  };
+  const handleNext = () => {
+    if (page < totalPages) setPage(page + 1);
+  };
 
   const handleDelete = (id: string) => {
     if (window.confirm("Are you sure you want to delete this customer?")) {
@@ -377,17 +375,21 @@ const Customers: React.FC = () => {
               size="sm"
               className="fw-bold"
               style={{ color: "#51984A" }}
+              onClick={handlePrevious}
+              disabled={page === 1}
             >
               Previous
             </Button>
             <span className="fw-bold" style={{ color: "#51984A" }}>
-              | 1 | 2 | 3 | 4 | 5 |...
+              Page {page} of {totalPages}
             </span>
             <Button
               variant="outline-none"
               size="sm"
               className="fw-bold"
               style={{ color: "#51984A" }}
+              onClick={handleNext}
+              disabled={page === totalPages}
             >
               Next
             </Button>
