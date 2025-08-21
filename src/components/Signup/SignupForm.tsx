@@ -94,13 +94,13 @@ const SignupForm: React.FC = () => {
     if (!emailRegex.test(trimmedData.email)) {
       return "Invalid email address";
     }
-    // Sri Lankan NIC validation: old (9 digits + V/X), new (12 digits)
+   
     const oldNicRegex = /^\d{9}[vxVX]$/;
     const newNicRegex = /^\d{12}$/;
     if (!oldNicRegex.test(trimmedData.nic) && !newNicRegex.test(trimmedData.nic)) {
       return "Invalid NIC. Enter a valid Sri Lankan NIC (old or new format).";
     }
-    // International mobile validation (E.164 format, but allow common formats)
+   
     const mobileRegex = /^\+?\d{7,15}$/;
     if (!mobileRegex.test(trimmedData.mobile)) {
       return "Invalid mobile number. Enter a valid international mobile number.";

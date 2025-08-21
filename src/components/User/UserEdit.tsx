@@ -40,7 +40,7 @@ export default function UserEdit() {
         axiosInstance
           .get(`users/get-user-by-id/${decoded.id}`)
           .then(res => {
-            console.log('GET /users/get-user-by-id response:', res);
+            // console.log('GET /users/get-user-by-id response:', res);
             if (res.data && (res.data.data || res.data.id)) {
               // Accept either res.data.data or direct res.data for user object
               const user = res.data.data || res.data;

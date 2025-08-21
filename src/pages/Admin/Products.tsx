@@ -1,14 +1,25 @@
-import React, { useState, useEffect } from "react";
-import { Card, Form, Button, Table, Spinner, Alert, Image, Badge } from "react-bootstrap";
-import { FaEdit } from "react-icons/fa";
+import React, { useState, useEffect, useRef } from "react";
+import { Card, Form, Button, Table, Spinner, Alert, Image, Badge, DropdownButton, Dropdown } from "react-bootstrap";
+import { FaRecycle } from "react-icons/fa";
+import sample_image from "../../assets/images/projectSampleImg/image.png";
 import AddProduct from "../../components/admin/AddProduct";
+import Swal from "sweetalert2";
+import axiosInstance, { baseURL } from "../../util/axiosUtil";
+import { IoTrashOutline } from "react-icons/io5";
+import { FiEye } from "react-icons/fi";
+import Stock from "./Stock";
+
 
 interface Product {
-  id: string;
-  image: string;
+  id: number;
   name: string;
-  stock: number;
+  desc: string;
+  mother_plant_type_id: number;
+  category_id: number;
+  isActive: boolean;
   price: number;
+  qty: number;
+  imageUrl: string;
 }
 
 const Products: React.FC = () => {
@@ -17,20 +28,31 @@ const Products: React.FC = () => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const [showAddProduct, setShowProduct] = useState<boolean>(false);
+  const [showBatchs, setShowBatchs] = useState<boolean>(false);
+  const [page, setPage] = useState(1);
+  const [pageSize] = useState(10);
+  const [total, setTotal] = useState(0);
+  const selectedProductId = useRef<number>(0);
+
 
   useEffect(() => {
     async function fetchProducts() {
       try {
         setLoading(true);
         setError(null);
-
-        const dummyData: Product[] = [
-          { id: "P001", image: "https://i01.hsncdn.com/is/image/HomeShoppingNetwork/rocs1200/-~20794210w.jpg", name: "Snake Plant", stock: 25, price: 15 },
-          { id: "P002", image: "https://down-my.img.susercontent.com/file/7fc926c1ec48367f29f76cf5d9cc2596", name: "Aloe Vera", stock: 0, price: 12 },
-          { id: "P003", image: "https://www.lillypad.com.au/images/products/8e2sj1z4dv.jpg", name: "Peace Lily", stock: 12, price: 20 },
-          { id: "P004", image: "https://th.bing.com/th/id/R.b0165157754fe3703cb633b33696cb3b?rik=3MRs1Vej7oWy4w&riu=http%3a%2f%2fwww.bonsaiempire.com%2fimages%2fcheap-juniper-bonsai.jpg&ehk=fUeZMnuinGV2U%2fU5lBV60FheK%2bP8moF3e7MbWCZ8wNc%3d&risl=&pid=ImgRaw&r=0", name: "Bonsai Tree", stock: 0, price: 50 },
-        ];
-        setProducts(dummyData);
+        const params: any = {
+          page,
+          pageSize,
+        };
+        if (search) params.searchText = search;
+        const response = await axiosInstance.get("product/products", { params });
+        const result = response.data;
+        if (result.status === 200) {
+          setProducts(result.data);
+          setTotal(result.pagination.total);
+        } else {
+          setError(result.message || "Failed to fetch products");
+        }
       } catch (err) {
         setError((err as Error).message);
       } finally {
@@ -38,14 +60,41 @@ const Products: React.FC = () => {
       }
     }
     fetchProducts();
-  }, []);
+  }, [page, pageSize, search]);
 
-  const filteredProducts = products.filter((p) =>
-    p.name.toLowerCase().includes(search.toLowerCase())
-  );
+  const deleteProduct = async (pid: number) => {
+    const result = await Swal.fire({
+      title: 'Are you sure?',
+      text: 'Do you want to delete this product?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#d9534f',
+      cancelButtonColor: '#3085d6',
+      confirmButtonText: 'Yes, delete it!',
+      reverseButtons: true,
+    });
+    if (result.isConfirmed) {
+      try {
+        const res = await axiosInstance.delete(`product/delete-product/${pid}`);
+        if (res.data.status === 200) {
+          Swal.fire('Deleted!', res.data.message, 'success');
+          setProducts(products.filter(p => p.id !== pid));
+        } else {
+          Swal.fire('Cannot Delete', res.data.message || 'Product cannot be deleted due to related products.', 'error');
+        }
+      } catch (err: any) {
+        const msg = err?.response?.data?.message || 'Product cannot be deleted due to related products.';
+        Swal.fire('Cannot Delete', msg, 'error');
+      }
+    }
+  }
 
   return (
     <div>
+      <Stock show={showBatchs} productId={selectedProductId.current} handleClose={() => {
+        selectedProductId.current = 0;
+        setShowBatchs(false);
+      }} />
 
       <AddProduct show={showAddProduct} handleClose={() => setShowProduct(!showAddProduct)} />
       <Card
@@ -107,6 +156,7 @@ const Products: React.FC = () => {
           {!loading && !error && (
             <div className="table-responsive">
               <Table
+                responsive
                 style={{
                   border: "1px solid #2BED45",
                   borderRadius: "10px",
@@ -119,33 +169,36 @@ const Products: React.FC = () => {
                 <thead>
                   <tr>
                     <th style={{ color: "#095C1F", borderBottom: "1px solid #2BED45", padding: "8px", textAlign: "center" }}>Product ID</th>
-                    <th style={{ color: "#095C1F", borderBottom: "1px solid #2BED45", padding: "8px", textAlign: "center" }}>Plant Name</th>
-                    <th style={{ color: "#095C1F", borderBottom: "1px solid #2BED45", padding: "8px", textAlign: "center" }}>Stock</th>
-                    <th style={{ color: "#095C1F", borderBottom: "1px solid #2BED45", padding: "8px", textAlign: "center" }}>Price</th>
-                    <th style={{ color: "#095C1F", borderBottom: "1px solid #2BED45", padding: "8px", textAlign: "center" }}>Edit</th>
+                    <th style={{ color: "#095C1F", borderBottom: "1px solid #2BED45", padding: "8px", textAlign: "center" }}>Name</th>
+                    <th style={{ color: "#095C1F", borderBottom: "1px solid #2BED45", padding: "8px", textAlign: "center" }}>Description</th>
+                    <th style={{ color: "#095C1F", borderBottom: "1px solid #2BED45", padding: "8px", textAlign: "center" }}>Total Qty</th>
+                    <th style={{ color: "#095C1F", borderBottom: "1px solid #2BED45", padding: "8px", textAlign: "center" }}>Image</th>
+                    <th style={{ color: "#095C1F", borderBottom: "1px solid #2BED45", padding: "8px", textAlign: "center" }}>Action</th>
                   </tr>
                 </thead>
                 <tbody>
-                  {filteredProducts.length === 0 ? (
+                  {products.length === 0 ? (
                     <tr>
-                      <td colSpan={5} style={{ textAlign: "center", padding: "8px" }}>No products found.</td>
+                      <td colSpan={7} style={{ textAlign: "center", padding: "8px" }}>No products found.</td>
                     </tr>
                   ) : (
-                    filteredProducts.map((product) => (
+                    products.map((product) => (
                       <tr key={product.id}>
                         <td style={{ fontWeight: "bold", borderBottom: "1px solid black", padding: "8px", textAlign: "center" }}>{product.id}</td>
-                        <td style={{ borderBottom: "1px solid black", padding: "8px", display: "flex", alignItems: "center", justifyContent: "center" }}>
-                          <Image src={product.image} rounded style={{ width: "50px", height: "50px", objectFit: "cover", marginRight: "10px" }} />
-                          {product.name}
-                        </td>
-                        <td style={{ borderBottom: "1px solid black", padding: "10px", textAlign: "center" }}>
-                          {product.stock > 0 ? <Badge bg="success">Available</Badge> : <Badge bg="danger">Not Available</Badge>}
-                        </td>
+                        <td style={{ borderBottom: "1px solid black", padding: "8px", textAlign: "center" }}>{product.name}</td>
+                        <td style={{ borderBottom: "1px solid black", padding: "8px", textAlign: "center" }}>{product.desc}</td>
+                        <td style={{ borderBottom: "1px solid black", padding: "8px", textAlign: "center" }}>{product.qty}</td>
                         <td style={{ borderBottom: "1px solid black", padding: "8px", textAlign: "center" }}>
-                          ${product.price}
+                          <Image src={product.imageUrl ? `${baseURL}uploads/${product.imageUrl}` : sample_image} rounded style={{ width: "50px", height: "50px", objectFit: "cover" }} />
                         </td>
-                        <td style={{ borderBottom: "1px solid black", padding: "8px", textAlign: "center" }}>
-                          <FaEdit style={{ cursor: "pointer", color: "#28a745", fontSize: "18px" }} />
+                        <td style={{ borderBottom: "1px solid black", padding: "8px", textAlign: "center" }} className="align-middle">
+                          <DropdownButton id="dropdown-basic-button" title="Actions" variant="">
+                            <Dropdown.Item className="text-center" onClick={() => {
+                              selectedProductId.current = product.id;
+                              setShowBatchs(true);
+                            }}><FiEye style={{ cursor: "pointer", color: "#0d81e0ff", fontSize: "18px" }} /></Dropdown.Item>
+                            <Dropdown.Item className="text-center"><IoTrashOutline title="Delete Product" style={{ cursor: "pointer", color: "#d9534f", fontSize: "18px" }} onClick={() => deleteProduct(product.id)} /></Dropdown.Item>
+                          </DropdownButton>
                         </td>
                       </tr>
                     ))
@@ -169,14 +222,21 @@ const Products: React.FC = () => {
               size="sm"
               className="fw-bold"
               style={{ color: "#51984A" }}
+              disabled={page === 1}
+              onClick={() => setPage(page - 1)}
             >
               Previous
             </Button>
             <span className="fw-bold" style={{ color: "#51984A" }}>
-              {Array.from({ length: 5 }, (_, i) => (
+              {Array.from({ length: Math.ceil(total / pageSize) }, (_, i) => (
                 <React.Fragment key={i}>
                   {i !== 0 && " | "}
-                  <b>{i + 1}</b>
+                  <b
+                    style={{ cursor: "pointer", color: page === i + 1 ? "#095C1F" : undefined }}
+                    onClick={() => setPage(i + 1)}
+                  >
+                    {i + 1}
+                  </b>
                 </React.Fragment>
               ))}
             </span>
@@ -185,6 +245,8 @@ const Products: React.FC = () => {
               size="sm"
               className="fw-bold"
               style={{ color: "#51984A" }}
+              disabled={page === Math.ceil(total / pageSize) || total === 0}
+              onClick={() => setPage(page + 1)}
             >
               Next
             </Button>
